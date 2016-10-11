@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/SporeUI/spore-kit#readme",
   "dependencies": {
-    "spore-kit-obj": "^0.1.0",
+    "spore-kit-obj": "0.1.0",
     "spore-kit-wapp": "0.0.1"
   }
 }
