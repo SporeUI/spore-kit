@@ -27,7 +27,6 @@
     "spore-kit-num": "^0.1.0",
     "spore-kit-obj": "^0.1.1",
     "spore-kit-str": "^0.1.0",
-    "spore-kit-wapp": "^0.1.3",
-    "spore-kit-zepto": "^0.1.1"
+    "spore-kit-wapp": "^0.1.3"
   }
 }
