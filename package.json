@@ -10,23 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/SporeUI/spore-kit.git"
   },
-  "author": "TabSpace",
+  "author": "pillar0514@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/SporeUI/spore-kit/issues"
   },
   "homepage": "https://github.com/SporeUI/spore-kit#readme",
-  "dependencies": {
-    "spore-kit-app": "^0.1.0",
-    "spore-kit-arr": "^0.1.0",
-    "spore-kit-date": "^0.1.0",
-    "spore-kit-env": "^0.1.0",
-    "spore-kit-evt": "^0.1.1",
-    "spore-kit-fn": "^0.1.0",
-    "spore-kit-io": "^0.1.0",
-    "spore-kit-num": "^0.1.0",
-    "spore-kit-obj": "^0.1.1",
-    "spore-kit-str": "^0.1.0",
-    "spore-kit-wapp": "^0.1.3"
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^3.1.4"
   }
 }
