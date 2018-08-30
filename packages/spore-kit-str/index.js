@@ -1,0 +1,10 @@
+exports.bLength = require('./bLength');
+exports.dbcToSbc = require('./dbcToSbc');
+exports.decodeHTML = require('./decodeHTML');
+exports.encodeHTML = require('./encodeHTML');
+exports.getUniqueKey = require('./getUniqueKey');
+exports.hyphenate = require('./hyphenate');
+exports.ipToHex = require('./ipToHex');
+exports.leftB = require('./leftB');
+exports.sizeOfUTF8String = require('./sizeOfUTF8String');
+exports.substitute = require('./substitute');
