@@ -1,5 +1,5 @@
 /**
- * 将驼峰格式变为连字符格式
+ * 十进制IP地址转十六进制
  * @module
  * @param {string} ip 十进制数字的IPV4地址
  * @return {string} 16进制数字IPV4地址

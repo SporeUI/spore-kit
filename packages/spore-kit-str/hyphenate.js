@@ -4,13 +4,13 @@
  * @param {string} str 驼峰格式的字符串
  * @return {string} 连字符格式的字符串
  * @example
- * $hyphenate('libKitStrHyphenate'); //return 'lib-kit-str-hyphenate'
+ * hyphenate('libKitStrHyphenate'); //return 'lib-kit-str-hyphenate'
  */
 
-module.exports = function(str) {
+function hyphenate(str) {
 	return str.replace(/[A-Z]/g, function($0) {
 		return '-' + $0.toLowerCase();
 	});
-};
+}
 
-
+module.exports = hyphenate;

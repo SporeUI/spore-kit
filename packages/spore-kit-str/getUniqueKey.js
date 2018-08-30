@@ -7,7 +7,8 @@
 var time = +new Date();
 var index = 1;
 
-module.exports = function() {
+function getUniqueKey() {
 	return (time + (index++)).toString(16);
-};
+}
 
+module.exports = getUniqueKey;

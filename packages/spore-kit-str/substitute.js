@@ -6,10 +6,10 @@
  * @param {regExp} [reg=/\\?\{\{([^{}]+)\}\}/g] 解析模板的正则表达式
  * @return {string} 替换了模板的字符串
  * @example
- * $substitute('{{city}}欢迎您', {{city:'北京'}}); //return '北京欢迎您'
+ * substitute('{{city}}欢迎您', {{city:'北京'}}); //return '北京欢迎您'
 **/
 
-module.exports = function(str, obj, reg) {
+function substitute(str, obj, reg) {
 	return str.replace(reg || (/\\?\{\{([^{}]+)\}\}/g), function(match, name) {
 		if (match.charAt(0) === '\\') {
 			return match.slice(1);
@@ -17,4 +17,6 @@ module.exports = function(str, obj, reg) {
 		// 注意：obj[name] != null 等同于 obj[name] !== null && obj[name] !== undefined
 		return (obj[name] != null) ? obj[name] : '';
 	});
-};
+}
+
+module.exports = substitute;

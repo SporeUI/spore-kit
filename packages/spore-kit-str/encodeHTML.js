@@ -4,10 +4,10 @@
  * @param {string} str 含有HTML字符的字符串
  * @return {string} 经过转换的字符串
  * @example
- * $encodeHTML('&<>" ');  //return '&amp;&lt;&gt;&quot;$nbsp;'
+ * encodeHTML('&<>" ');  //return '&amp;&lt;&gt;&quot;$nbsp;'
  */
 
-module.exports = function(str) {
+function encodeHTML(str) {
 	if (typeof str !== 'string') {
 		throw new Error('encodeHTML need a string as parameter');
 	}
@@ -18,4 +18,6 @@ module.exports = function(str) {
 		.replace(/'/g, '&#39;')
 		.replace(/\u00A0/g, '&nbsp;')
 		.replace(/(\u0020|\u000B|\u2028|\u2029|\f)/g, '&#32;');
-};
+}
+
+module.exports = encodeHTML;

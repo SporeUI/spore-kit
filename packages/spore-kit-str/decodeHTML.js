@@ -4,10 +4,10 @@
  * @param {string} str 含有实体字符标记的字符串
  * @return {string} HTML字符串
  * @example
- * $decodeHTML('&amp;&lt;&gt;$nbsp;&quot;');  //return '&<> "'
+ * decodeHTML('&amp;&lt;&gt;$nbsp;&quot;');  //return '&<> "'
  */
 
-module.exports = function(str) {
+function decodeHTML(str) {
 	if (typeof str !== 'string') {
 		throw new Error('decodeHTML need a string as parameter');
 	}
@@ -18,5 +18,6 @@ module.exports = function(str) {
 		.replace(/&nbsp;/g, '\u00A0')
 		.replace(/&#32;/g, '\u0020')
 		.replace(/&amp;/g, '&');
-};
+}
 
+module.exports = decodeHTML;
