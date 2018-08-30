@@ -60,6 +60,8 @@ module.exports = {
 		'no-var': 0,
 		// 禁止正则中出现控制字符
 		'no-control-regex': 0,
+		// 总是使用箭头函数
+		'prefer-arrow-callback': 0,
 		// 规定 require 必须放在代码顶部，这对 require.ensure 有影响
 		'global-require': 0,
 		// 不在 else 中 return

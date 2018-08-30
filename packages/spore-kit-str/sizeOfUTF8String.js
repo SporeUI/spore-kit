@@ -9,7 +9,7 @@
 
 function sizeOfUTF8String(str) {
 	return (
-		typeof unescape !== undefined
+		typeof unescape !== 'undefined'
 			? unescape(encodeURIComponent(str)).length
 			: new ArrayBuffer(str, 'utf8').length
 	);

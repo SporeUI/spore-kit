@@ -7,10 +7,10 @@
  * @return {string} 替换了模板的字符串
  * @example
  * substitute('{{city}}欢迎您', {{city:'北京'}}); //return '北京欢迎您'
-**/
+ */
 
 function substitute(str, obj, reg) {
-	return str.replace(reg || (/\\?\{\{([^{}]+)\}\}/g), function(match, name) {
+	return str.replace(reg || (/\\?\{\{([^{}]+)\}\}/g), function (match, name) {
 		if (match.charAt(0) === '\\') {
 			return match.slice(1);
 		}

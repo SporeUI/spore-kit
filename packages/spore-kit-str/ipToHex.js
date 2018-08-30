@@ -7,8 +7,8 @@
  * $ipToHex('255.255.255.255'); //return 'ffffffff'
  */
 
-module.exports = function(ip) {
-	return ip.replace(/(\d+)\.*/g, function(match, num) {
+module.exports = function (ip) {
+	return ip.replace(/(\d+)\.*/g, function (match, num) {
 		num = parseInt(num, 10) || 0;
 		num = num.toString(16);
 		if (num.length < 2) {
