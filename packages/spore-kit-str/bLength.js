@@ -8,10 +8,11 @@
  */
 
 function bLength(str) {
+	var aMatch;
 	if (!str) {
 		return 0;
 	}
-	var aMatch = str.match(/[^\x00-\xff]/g);
+	aMatch = str.match(/[^\x00-\xff]/g);
 	return (str.length + (!aMatch ? 0 : aMatch.length));
 }
 

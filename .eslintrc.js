@@ -10,6 +10,7 @@ module.exports = {
 	root: true,
 	parser: 'babel-eslint',
 	parserOptions: {
+		ecmaVersion: 5,
 		sourceType: 'module'
 	},
 	env: {
@@ -55,8 +56,10 @@ module.exports = {
 		'prefer-const': 0,
 		// 无tab
 		'no-tabs': 0,
-		// 无console
-		'no-console': 0,
+		// 避免用 var 声明变量
+		'no-var': 0,
+		// 禁止正则中出现控制字符
+		'no-control-regex': 0,
 		// 规定 require 必须放在代码顶部，这对 require.ensure 有影响
 		'global-require': 0,
 		// 不在 else 中 return
