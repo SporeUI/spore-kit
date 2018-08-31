@@ -38,6 +38,8 @@ module.exports = {
 	rules: {
 		// allow optionalDependencies
 		'import/no-extraneous-dependencies': 0,
+		// 由于用了 lerna, 包依赖关系 eslint 无法识别
+		'import/no-unresolved': 0,
 		// 禁止++运算符
 		'no-plusplus': 0,
 		// 不允许修改参数
