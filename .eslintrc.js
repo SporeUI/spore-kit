@@ -19,6 +19,7 @@ module.exports = {
 	extends: 'airbnb-base',
 	plugins: [
 		'html',
+		'jest',
 		'no-for-of-loops'
 	],
 	settings: {
@@ -31,8 +32,7 @@ module.exports = {
 		$: true,
 		Zepto: true,
 		jQuery: true,
-		console: true,
-		$CONFIG: true
+		console: true
 	},
 	// add your custom rules here
 	rules: {
@@ -58,6 +58,8 @@ module.exports = {
 		'no-tabs': 0,
 		// 避免用 var 声明变量
 		'no-var': 0,
+		// 允许控制台输出
+		'no-console': 0,
 		// 禁止正则中出现控制字符
 		'no-control-regex': 0,
 		// 总是使用箭头函数
