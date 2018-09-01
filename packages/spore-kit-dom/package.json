@@ -1,5 +1,5 @@
 {
-  "name": "spore-kit-node",
+  "name": "spore-kit-dom",
   "version": "0.0.1",
   "description": "dom处理相关函数",
   "main": "index.js",
