@@ -1,0 +1,16 @@
+{
+  "name": "spore-kit-node",
+  "version": "0.0.1",
+  "description": "dom处理相关函数",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SporeUI/spore-kit/packages/spore-kit-node"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SporeUI/spore-kit/issues"
+  },
+  "homepage": "https://github.com/SporeUI/spore-kit#readme"
+}
