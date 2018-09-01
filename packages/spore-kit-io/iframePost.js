@@ -3,7 +3,7 @@
  */
 
 var $;
-if (typeof window === 'undefined') {
+if (typeof window !== 'undefined') {
 	$ = window.$;
 }
 var hiddenDiv = null;
