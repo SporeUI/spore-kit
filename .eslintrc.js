@@ -14,7 +14,8 @@ module.exports = {
 		sourceType: 'module'
 	},
 	env: {
-		browser: true
+		browser: true,
+		jest: true
 	},
 	extends: 'airbnb-base',
 	plugins: [
@@ -29,6 +30,12 @@ module.exports = {
 		],
 	},
 	globals: {
+		test: true,
+		expect: true,
+		describe: true,
+		page: true,
+		browser: true,
+		jestPuppeteer: true,
 		$: true,
 		Zepto: true,
 		jQuery: true,
