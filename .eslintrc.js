@@ -1,10 +1,10 @@
-/*
-如果觉得规则不合适, 可以在rules中对规则进行覆盖
-配置规则 http://eslint.org/docs/user-guide/configuring (可切换为中文)
-"off" or 0 - turn the rule off
-"warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
-"error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
-*/
+/**
+ * 如果觉得规则不合适, 可以在rules中对规则进行覆盖
+ * 配置规则 http://eslint.org/docs/user-guide/configuring (可切换为中文)
+ * "off" or 0 - turn the rule off
+ * "warn" or 1 - turn the rule on as a warning (doesn’t affect exit code)
+ * "error" or 2 - turn the rule on as an error (exit code is 1 when triggered)
+ */
 
 module.exports = {
 	root: true,
@@ -40,6 +40,8 @@ module.exports = {
 		'import/no-extraneous-dependencies': 0,
 		// 由于用了 lerna, 包依赖关系 eslint 无法识别
 		'import/no-unresolved': 0,
+		// 函数声明括号前不应加空格，这样与 beautify 格式化方案可直接匹配
+		'space-before-function-paren': ["error", "never"],
 		// 禁止++运算符
 		'no-plusplus': 0,
 		// 不允许修改参数
@@ -60,6 +62,8 @@ module.exports = {
 		'no-tabs': 0,
 		// 避免用 var 声明变量
 		'no-var': 0,
+		// var 声明放到函数开头
+		'vars-on-top': 0,
 		// 允许控制台输出
 		'no-console': 0,
 		// 禁止正则中出现控制字符
@@ -70,7 +74,7 @@ module.exports = {
 		'global-require': 0,
 		// 不在 else 中 return
 		'no-else-return': 0,
-		// 用什么来缩进，规定使用tab 来进行缩进，switch中case也需要一个tab .
+		// 用什么来缩进，规定使用tab 来进行缩进，switch中case也需要一个tab
 		'indent': [2, 'tab', {
 			'SwitchCase': 1
 		}],
