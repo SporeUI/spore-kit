@@ -2,7 +2,10 @@
  * 封装 iframe post 模式
  */
 
-var $ = window.$;
+var $;
+if (typeof window === 'undefined') {
+	$ = window.$;
+}
 var hiddenDiv = null;
 
 function getHiddenBox() {
@@ -41,6 +44,9 @@ function getIframe(name) {
 }
 
 function iframePost(spec) {
+	if (!$) {
+		throw new Error('Need winddow.$ like jQuery or Zepto.');
+	}
 	var conf = $.extend({
 		form: null,
 		url: '',
