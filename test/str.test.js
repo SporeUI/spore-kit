@@ -1,6 +1,6 @@
 const $str = require('spore-kit-str');
 
-describe('$kit.str.bLength', () => {
+describe('str.bLength', () => {
 	test('bLength("中文cc").length is 6', () => {
 		expect($str.bLength('中文cc')).toBe(6);
 	});

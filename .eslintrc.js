@@ -47,8 +47,9 @@ module.exports = {
 		'import/no-extraneous-dependencies': 0,
 		// 由于用了 lerna, 包依赖关系 eslint 无法识别
 		'import/no-unresolved': 0,
-		// 函数声明括号前不应加空格，这样与 beautify 格式化方案可直接匹配
-		'space-before-function-paren': ["error", "never"],
+		// 函数声明括号前无需加空格，这样与 beautify 格式化方案可直接匹配
+		// 箭头函数前加 async 会导致 [2, "never"] 规则的报错
+		'space-before-function-paren': 0,
 		// 禁止++运算符
 		'no-plusplus': 0,
 		// 不允许修改参数
