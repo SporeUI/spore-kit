@@ -1,6 +1,6 @@
 {
   "name": "spore-kit-time",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "时间相关工具函数",
   "main": "index.js",
   "repository": {
