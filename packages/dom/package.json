@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SporeUI/spore-kit/packages/spore-kit-node"
+    "url": "https://github.com/SporeUI/spore-kit/packages/dom"
   },
   "author": "",
   "license": "MIT",

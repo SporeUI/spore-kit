@@ -1,2 +1,3 @@
-exports.str = require('./packages/spore-kit-str');
-exports.io = require('./packages/spore-kit-io');
+exports.str = require('./packages/str');
+exports.io = require('./packages/io');
+exports.dom = require('./packages/dom');

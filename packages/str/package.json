@@ -1,11 +1,11 @@
 {
-  "name": "spore-kit-io",
-  "version": "0.2.2",
-  "description": "接口请求相关工具函数",
+  "name": "spore-kit-str",
+  "version": "0.3.2",
+  "description": "字符串处理相关函数",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SporeUI/spore-kit/packages/spore-kit-io"
+    "url": "https://github.com/SporeUI/spore-kit/packages/str"
   },
   "author": "",
   "license": "MIT",
