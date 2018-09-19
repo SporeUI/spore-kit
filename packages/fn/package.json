@@ -1,6 +1,6 @@
 {
   "name": "spore-kit-fn",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "函数相关的封装",
   "main": "index.js",
   "scripts": {
