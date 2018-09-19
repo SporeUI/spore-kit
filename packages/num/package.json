@@ -1,6 +1,6 @@
 {
 	"name": "spore-kit-num",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "数字处理相关工具函数",
 	"main": "index.js",
 	"repository": {
