@@ -1,0 +1,19 @@
+{
+  "name": "spore-kit-fn",
+  "version": "0.1.2",
+  "description": "函数相关的封装",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SporeUI/spore-kit-fn.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SporeUI/spore-kit-fn/issues"
+  },
+  "homepage": "https://github.com/SporeUI/spore-kit-fn#readme"
+}
