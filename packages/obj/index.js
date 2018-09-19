@@ -1,4 +1,4 @@
-exports.assign = require('./src/assign');
-exports.cover = require('./src/cover');
-exports.find = require('./src/find');
-exports.type = require('./src/type');
+exports.assign = require('./assign');
+exports.cover = require('./cover');
+exports.find = require('./find');
+exports.type = require('./type');
