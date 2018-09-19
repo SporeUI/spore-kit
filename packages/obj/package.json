@@ -1,11 +1,11 @@
 {
-  "name": "spore-kit-dom",
-  "version": "0.0.1",
-  "description": "dom 处理相关函数",
+  "name": "spore-kit-obj",
+  "version": "0.1.2",
+  "description": "object 相关工具函数",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SporeUI/spore-kit/packages/dom"
+    "url": "https://github.com/SporeUI/spore-kit/packages/obj"
   },
   "author": "pillar0514@gmail.com",
   "license": "MIT",

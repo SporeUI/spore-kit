@@ -94,6 +94,10 @@ module.exports = {
 		'function-paren-newline': 0,
 		// 管理代码中是否可以 return value
 		'consistent-return': 0,
+		// es5 相关配置
+		'prefer-rest-params': 0,
+		'no-restricted-syntax': 0,
+		'no-prototype-builtins': 0,
 		// allow debugger during development
 		'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
 	}
