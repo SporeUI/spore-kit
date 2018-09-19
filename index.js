@@ -1,3 +1,4 @@
+exports.cookie = require('./packages/cookie');
 exports.dom = require('./packages/dom');
 exports.io = require('./packages/io');
 exports.num = require('./packages/num');
