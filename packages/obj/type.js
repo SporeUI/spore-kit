@@ -8,9 +8,11 @@
  * console.info(type(undefined));	//undefined
  */
 
-module.exports = function(item) {
+function type(item) {
 	return Object.prototype.toString
 		.call(item)
 		.toLowerCase()
 		.replace(/^\[object\s*|\]$/gi, '');
-};
+}
+
+module.exports = type;

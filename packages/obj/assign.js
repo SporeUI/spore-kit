@@ -6,10 +6,10 @@
  * @return {object} 扩展后的源对象
  * @example
  * var obj = {a:1,b:2};
- * console.info($assign(obj,{b:3,c:4}));	//{a:1,b:3,c:4}
+ * console.info(assign(obj,{b:3,c:4}));	//{a:1,b:3,c:4}
  */
 
-module.exports = function(obj) {
+function assign(obj) {
 	obj = obj || {};
 	Array.prototype.slice.call(arguments, 1).forEach(function(source) {
 		var prop;
@@ -21,4 +21,6 @@ module.exports = function(obj) {
 		}
 	});
 	return obj;
-};
+}
+
+module.exports = assign;

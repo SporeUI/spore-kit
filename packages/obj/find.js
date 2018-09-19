@@ -10,7 +10,7 @@
  * console.info(find(obj,'a.c'));	//undefined
  */
 
-module.exports = function(object, path) {
+function find(object, path) {
 	path = path || '';
 	if (!path) {
 		return object;
@@ -33,4 +33,6 @@ module.exports = function(object, path) {
 	}
 
 	return pos;
-};
+}
+
+module.exports = find;

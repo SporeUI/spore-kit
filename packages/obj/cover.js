@@ -9,7 +9,7 @@
  * console.info(cover(obj,{b:3,c:4}));	//{a:1,b:3}
  */
 
-module.exports = function() {
+function cover() {
 	var args = Array.prototype.slice.call(arguments);
 	var object = args.shift();
 	if (object && typeof object.hasOwnProperty === 'function') {
@@ -28,4 +28,6 @@ module.exports = function() {
 	}
 
 	return object;
-};
+}
+
+module.exports = cover;

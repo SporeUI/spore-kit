@@ -4,10 +4,10 @@
  * @param {string} ip 十进制数字的IPV4地址
  * @return {string} 16进制数字IPV4地址
  * @example
- * $ipToHex('255.255.255.255'); //return 'ffffffff'
+ * ipToHex('255.255.255.255'); //return 'ffffffff'
  */
 
-module.exports = function (ip) {
+function ipToHex(ip) {
 	return ip.replace(/(\d+)\.*/g, function (match, num) {
 		num = parseInt(num, 10) || 0;
 		num = num.toString(16);
@@ -16,4 +16,6 @@ module.exports = function (ip) {
 		}
 		return num;
 	});
-};
+}
+
+module.exports = ipToHex;
