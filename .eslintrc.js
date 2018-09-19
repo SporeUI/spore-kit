@@ -36,9 +36,6 @@ module.exports = {
 		page: true,
 		browser: true,
 		jestPuppeteer: true,
-		$: true,
-		Zepto: true,
-		jQuery: true,
 		console: true
 	},
 	// add your custom rules here
@@ -95,6 +92,7 @@ module.exports = {
 		// 管理代码中是否可以 return value
 		'consistent-return': 0,
 		// es5 相关配置
+		'no-continue': 0,
 		'prefer-rest-params': 0,
 		'no-restricted-syntax': 0,
 		'no-prototype-builtins': 0,
