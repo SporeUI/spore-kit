@@ -2,6 +2,7 @@ exports.arr = require('./packages/arr');
 exports.cookie = require('./packages/cookie');
 exports.date = require('./packages/date');
 exports.dom = require('./packages/dom');
+exports.evt = require('./packages/evt');
 exports.fn = require('./packages/fn');
 exports.io = require('./packages/io');
 exports.num = require('./packages/num');

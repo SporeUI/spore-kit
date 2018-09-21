@@ -1,0 +1,16 @@
+{
+	"name": "spore-kit-evt",
+	"version": "0.1.1",
+	"description": "事件处理相关函数",
+	"main": "index.js",
+	"repository": {
+	  "type": "git",
+	  "url": "https://github.com/SporeUI/spore-kit/packages/evt"
+	},
+	"author": "pillar0514@gmail.com",
+	"license": "MIT",
+	"bugs": {
+	  "url": "https://github.com/SporeUI/spore-kit/issues"
+	},
+	"homepage": "https://github.com/SporeUI/spore-kit#readme"
+  }
