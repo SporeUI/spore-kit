@@ -1,0 +1,21 @@
+{
+	"name": "spore-kit-fx",
+	"version": "0.1.5",
+	"description": "fx 处理相关函数",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SporeUI/spore-kit/packages/fx"
+	},
+	"author": "pillar0514@gmail.com",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/SporeUI/spore-kit/issues"
+	},
+	"homepage": "https://github.com/SporeUI/spore-kit#readme",
+	"dependencies": {
+		"klass": "^1.4.1",
+		"spore-kit-arr": "^0.2.0",
+		"spore-kit-evt": "^0.2.0"
+	}
+}

@@ -99,6 +99,7 @@ module.exports = {
 		'no-restricted-syntax': 0,
 		'no-prototype-builtins': 0,
 		'no-underscore-dangle': 0,
+		'no-restricted-properties': 0,
 		// allow debugger during development
 		'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
 	}
