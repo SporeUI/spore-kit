@@ -6,6 +6,7 @@
 	"scripts": {
 		"test": "jest",
 		"cover": "jest --coverage",
+		"publish-packages": "lerna publish",
 		"precommit": "lint-staged"
 	},
 	"files": [
