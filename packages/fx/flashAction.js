@@ -21,9 +21,9 @@
  * 	});
  */
 
-var $ = window.$ || window.Zepto || window.jQuery;
-
 function flashAction (options) {
+	var $ = window.$ || window.Zepto || window.jQuery;
+
 	var conf = $.extend(
 		{
 			times: 3,

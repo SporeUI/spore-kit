@@ -9,9 +9,9 @@
  * smoothScrollTo(document.body);
  */
 
-var $ = window.$ || window.Zepto || window.jQuery;
-
 function smoothScrollTo(node, spec) {
+	var $ = window.$ || window.Zepto || window.jQuery;
+
 	var conf = $.extend(
 		{
 			delta: 0,

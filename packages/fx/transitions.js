@@ -14,18 +14,19 @@
  * 	});
  */
 
-var $ = window.$ || window.Zepto || window.jQuery;
+var $type = require('spore-kit-obj/type');
+var $assign = require('spore-kit-obj/assign');
 
 var $fx = require('./fx');
 
 $fx.Transition = function(transition, params) {
-	if ($.type(params) !== 'array') {
+	if ($type(params) !== 'array') {
 		params = [params];
 	}
 	var easeIn = function(pos) {
 		return transition(pos, params);
 	};
-	return $.extend(easeIn, {
+	return $assign(easeIn, {
 		easeIn: easeIn,
 		easeOut: function(pos) {
 			return 1 - transition(1 - pos, params);
@@ -47,7 +48,7 @@ var Transitions = {
 };
 
 Transitions.extend = function(transitions) {
-	$.each(transitions, function(transition) {
+	Object.keys(transitions).forEach(function(transition) {
 		Transitions[transition] = new $fx.Transition(transitions[transition]);
 	});
 };

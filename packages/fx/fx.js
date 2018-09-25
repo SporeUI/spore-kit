@@ -17,7 +17,10 @@
  * 	fx.start(0, 600);  //1秒内数字从0增加到600
  */
 
-var $ = window.$ || window.Zepto || window.jQuery;
+var $;
+if (typeof window !== 'undefined') {
+	$ = window.$ || window.Zepto || window.jQuery;
+}
 
 var $class = require('klass');
 var $events = require('spore-kit-evt/events');

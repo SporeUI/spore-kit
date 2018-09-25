@@ -7,16 +7,16 @@
  * sticky($('h1').get(0));
  */
 
-var $ = window.$ || window.Zepto || window.jQuery;
-
-var $win = $(window);
-var $doc = $(document);
-
-var ua = navigator.userAgent;
-var isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/i);
-var isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Linux') > -1;
-
 function sticky(node, options) {
+	var $ = window.$ || window.Zepto || window.jQuery;
+
+	var $win = $(window);
+	var $doc = $(document);
+
+	var ua = navigator.userAgent;
+	var isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/i);
+	var isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Linux') > -1;
+
 	var that = {};
 	that.isIOS = isIOS;
 	that.isAndroid = isAndroid;
