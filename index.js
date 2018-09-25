@@ -5,6 +5,7 @@ exports.dom = require('./packages/dom');
 exports.evt = require('./packages/evt');
 exports.fn = require('./packages/fn');
 exports.io = require('./packages/io');
+exports.io = require('./packages/location');
 exports.num = require('./packages/num');
 exports.obj = require('./packages/obj');
 exports.str = require('./packages/str');
