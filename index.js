@@ -1,3 +1,4 @@
+exports.app = require('./packages/app');
 exports.arr = require('./packages/arr');
 exports.cookie = require('./packages/cookie');
 exports.date = require('./packages/date');
