@@ -1,10 +1,14 @@
 // @see https://www.npmjs.com/package/js-cookie
 
-const Cookie = require('js-cookie');
+var Cookie = require('js-cookie');
 
-const instance = Cookie.withConverter({
-	read: val => decodeURIComponent(val),
-	write: val => encodeURIComponent(val)
+var instance = Cookie.withConverter({
+	read: function(val) {
+		return decodeURIComponent(val);
+	},
+	write: function(val) {
+		return encodeURIComponent(val);
+	}
 });
 
 module.exports = instance;
