@@ -7,6 +7,8 @@
 		"test": "jest",
 		"cover": "jest --coverage",
 		"publish-packages": "lerna publish",
+		"vuepress-dev": "vuepress dev docs",
+		"vuepress-build": "vuepress build docs",
 		"precommit": "lint-staged"
 	},
 	"files": [
@@ -42,6 +44,7 @@
 		"jest-puppeteer": "3.3.1",
 		"lerna": "^3.2.1",
 		"lint-staged": "7.2.2",
-		"puppeteer": "1.7.0"
+		"puppeteer": "1.7.0",
+		"vuepress": "0.14.4"
 	}
 }
