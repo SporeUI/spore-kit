@@ -1,17 +1,15 @@
 /**
- * @module spore-kit-evt/src/events
  * @see http://aralejs.org/
  * @see https://github.com/documentcloud/backbone/blob/master/backbone.js
  * @see https://github.com/joyent/node/blob/master/lib/events.js
  * @example
- * var $events = require('spore-kit-evt/src/events');
- * var object = new $events();
+ * var object = new Events();
  * object.on('expand', function(){ alert('expanded'); });
  * object.trigger('expand');
  *
  * //给一个对象混合events的方法
  * var obj = {};
- * $events.mixTo(obj);
+ * Events.mixTo(obj);
  */
 
 // Regular expression used to split event strings

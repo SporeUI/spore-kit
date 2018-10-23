@@ -3,45 +3,51 @@
  * 推荐用 fastclick 来解决触屏事件穿透问题
  * 此组件用在 fastclick 未能解决问题时
  * @example
- * 	var $tapStop = require('spore-kit-evt/src/tapStop');
  * 	$('.mask').on('tap', function(){
- * 		$tapStop();
+ * 		tapStop();
  * 		$(this).hide();
  * 	});
  */
-
-var $ = window.$ || window.Zepto || window.jQuery;
-
-var miniMask = $('<div></div>');
-miniMask.css({
-	'display': 'none',
-	'position': 'absolute',
-	'left': 0,
-	'top': 0,
-	'margin-left': '-20px',
-	'margin-top': '-20px',
-	'z-index': 10000,
-	'background-color': 'rgba(0,0,0,0)',
-	'width': '40px',
-	'height': '40px'
-}).appendTo(document.body);
-
+var miniMask = null;
 var pos = {};
 var timer = null;
-$(document).on('touchstart', function(evt) {
-	if (!(evt && evt.touches && evt.touches.length)) {
-		return;
-	}
-
-	var touch = evt.touches[0];
-	pos.pageX = touch.pageX;
-	pos.pageY = touch.pageY;
-});
+var touchStartBound = false;
 
 var tapStop = function(options) {
+	var $ = window.$ || window.Zepto || window.jQuery;
+
 	var conf = $.extend({
+		// 遮罩存在时间
 		delay: 500
 	}, options);
+
+	if (!miniMask) {
+		miniMask = $('<div></div>');
+		miniMask.css({
+			'display': 'none',
+			'position': 'absolute',
+			'left': 0,
+			'top': 0,
+			'margin-left': '-20px',
+			'margin-top': '-20px',
+			'z-index': 10000,
+			'background-color': 'rgba(0,0,0,0)',
+			'width': '40px',
+			'height': '40px'
+		}).appendTo(document.body);
+	}
+
+	if (!touchStartBound) {
+		$(document).on('touchstart', function(evt) {
+			if (!(evt && evt.touches && evt.touches.length)) {
+				return;
+			}
+			var touch = evt.touches[0];
+			pos.pageX = touch.pageX;
+			pos.pageY = touch.pageY;
+		});
+		touchStartBound = true;
+	}
 
 	var delay = parseInt(conf.delay, 10) || 0;
 	miniMask.show().css({

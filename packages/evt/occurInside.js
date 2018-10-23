@@ -1,18 +1,15 @@
 /**
  * 判断事件是否发生在一个元素内
- * @module spore-kit-evt/src/occurInside
  * @example
- * 	var $occurInside = require('spore-kit-evt/src/occurInside');
  * 	$('.layer').on('click', function(evt){
- * 		if($occurInside(evt, $(this).find('close'))){
+ * 		if(occurInside(evt, $(this).find('close'))){
  * 			$(this).hide();
  * 		}
  * 	});
  */
 
-var $ = window.$ || window.Zepto || window.jQuery;
-
-module.exports = function(event, node) {
+function occurInside(event, node) {
+	var $ = window.$ || window.Zepto || window.jQuery;
 	node = $(node);
 
 	if (node.length && event && event.target) {
@@ -28,4 +25,6 @@ module.exports = function(event, node) {
 	}
 
 	return false;
-};
+}
+
+module.exports = occurInside;

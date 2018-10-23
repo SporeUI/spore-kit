@@ -1,9 +1,7 @@
 /**
  * 广播组件
- * @module spore-kit-evt/src/listener
  * @example
- * 	var $listener = require('spore-kit-evt/src/listener');
- * 	var channelGlobal = new $listener([
+ * 	var channelGlobal = new Listener([
  * 		'event1'
  * 	]);
  * 	channelGlobal.on('event1', function(){
