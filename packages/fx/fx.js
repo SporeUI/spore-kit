@@ -1,15 +1,12 @@
 /**
  * @module
  * @see http://mootools.net/
- * @see module:lib/kit/fx/transitions
  * @example
- * 	var fx = new fx({
+ * 	var fx = new Fx({
  * 		duration : 1000
  * 	});
  * 	fx.set = function(now){
- * 		$(node).css({
- * 			'margin-left' : now + 'px'
- * 		});
+ * 		node.style.marginLeft = now + 'px';
  * 	};
  * 	fx.on('complete', function(){
  * 		console.info('animation end');
@@ -17,15 +14,11 @@
  * 	fx.start(0, 600);  //1秒内数字从0增加到600
  */
 
-var $;
-if (typeof window !== 'undefined') {
-	$ = window.$ || window.Zepto || window.jQuery;
-}
-
 var $class = require('klass');
 var $events = require('spore-kit-evt/events');
 var $erase = require('spore-kit-arr/erase');
 var $contains = require('spore-kit-arr/contains');
+var $assign = require('spore-kit-obj/assign');
 var $timer = require('./timer');
 
 // global timers
@@ -78,7 +71,7 @@ var Fx = $class({
 	 * @param {string} [options.link='ignore'] 动画衔接方式，可选：['ignore', 'cancel']
 	 */
 	initialize: function(options) {
-		this.options = $.extend(
+		this.options = $assign(
 			{
 				fps: 1000,
 				duration: 500,
@@ -92,7 +85,7 @@ var Fx = $class({
 	},
 
 	setOptions: function(options) {
-		this.conf = $.extend(true, {}, this.options, options);
+		this.conf = $assign({}, this.options, options);
 	},
 
 	getTransition: function() {

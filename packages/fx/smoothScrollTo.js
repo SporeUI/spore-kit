@@ -3,19 +3,23 @@
  * @param {element} node 目标DOM元素
  * @param {object} spec 选项
  * @param {number} [spec.delta=0] 目标滚动位置与目标元素顶部的间距，可以为负值
- * @param {function} [options.callback=$.noop] 滚动完成的回调函数
+ * @param {function} [options.callback=noop] 滚动完成的回调函数
  * @example
  * //滚动到页面顶端
  * smoothScrollTo(document.body);
  */
 
+var $assign = require('spore-kit-obj/assign');
+
+var noop = function() {};
+
 function smoothScrollTo(node, spec) {
 	var $ = window.$ || window.Zepto || window.jQuery;
 
-	var conf = $.extend(
+	var conf = $assign(
 		{
 			delta: 0,
-			callback: $.noop
+			callback: noop
 		},
 		spec
 	);
