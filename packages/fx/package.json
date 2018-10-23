@@ -1,6 +1,6 @@
 {
 	"name": "spore-kit-fx",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "fx 处理相关函数",
 	"main": "index.js",
 	"repository": {
@@ -16,7 +16,7 @@
 	"dependencies": {
 		"klass": "^1.4.1",
 		"spore-kit-arr": "^0.2.0",
-		"spore-kit-evt": "^0.2.0",
+		"spore-kit-evt": "^0.2.1",
 		"spore-kit-obj": "^0.2.2"
 	}
 }
