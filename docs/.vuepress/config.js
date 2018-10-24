@@ -1,3 +1,5 @@
+
+
 module.exports = {
 	dest: 'dist/docs',
 	title: 'SPORE-KIT',
@@ -30,7 +32,7 @@ module.exports = {
 			{
 				title: '参考文档',
 				children: [
-					'/packages/test'
+					'/packages/arr'
 				]
 			}
 		]

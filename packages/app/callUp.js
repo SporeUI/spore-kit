@@ -1,17 +1,18 @@
 /**
  * 呼起本地客户端
+ * @method callUp
  * @param {object} options
  * @example
- * 	callUp({
- * 		startTime: Date.now(),
- * 		waiting: 800,
- * 		waitingLimit: 50,
- * 		protocol : scheme,
- * 		fallbackUrl : download,
- * 		onFallback : function(){
- * 			// should download
- * 		}
- * 	});
+ * callUp({
+ * 	startTime: Date.now(),
+ * 	waiting: 800,
+ * 	waitingLimit: 50,
+ * 	protocol : scheme,
+ * 	fallbackUrl : download,
+ * 	onFallback : function() {
+ * 		// should download
+ * 	}
+ * });
  */
 
 var $assign = require('spore-kit-obj/assign');

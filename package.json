@@ -9,6 +9,7 @@
 		"publish-packages": "lerna publish",
 		"vuepress-dev": "vuepress dev docs",
 		"vuepress-build": "vuepress build docs",
+		"doc-build": "sh ./task/doc-build.shell",
 		"precommit": "lint-staged"
 	},
 	"files": [
@@ -31,6 +32,7 @@
 	"devDependencies": {
 		"babel-core": "6.26.3",
 		"babel-eslint": "9.0.0",
+		"documentation": "8.1.2",
 		"eslint": "5.4.0",
 		"eslint-config-airbnb-base": "13.1.0",
 		"eslint-friendly-formatter": "4.0.1",
@@ -39,12 +41,14 @@
 		"eslint-plugin-jest": "21.22.0",
 		"eslint-plugin-no-for-of-loops": "1.0.0",
 		"express": "4.16.3",
+		"gulp": "3.9.1",
 		"husky": "0.14.3",
 		"jest": "23.5.0",
 		"jest-puppeteer": "3.3.1",
 		"lerna": "^3.2.1",
 		"lint-staged": "7.2.2",
 		"puppeteer": "1.7.0",
+		"run-sequence": "2.2.1",
 		"vuepress": "0.14.4"
 	}
 }

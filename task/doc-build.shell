@@ -1,0 +1,1 @@
+./node_modules/documentation/bin/documentation.js build ./packages/arr/index.js -f md -o ./docs/packages/arr.md --markdown-toc false --np
