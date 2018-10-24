@@ -9,7 +9,7 @@
 		"publish-packages": "lerna publish",
 		"vuepress-dev": "vuepress dev docs",
 		"vuepress-build": "vuepress build docs",
-		"doc-build": "sh ./task/doc-build.shell",
+		"doc-build": "sh ./task/doc-build.sh ./packages",
 		"precommit": "lint-staged"
 	},
 	"files": [
