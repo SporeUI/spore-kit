@@ -1,6 +1,6 @@
 {
   "name": "spore-kit-time",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "时间相关工具函数",
   "main": "index.js",
   "repository": {
@@ -14,8 +14,8 @@
   },
   "homepage": "https://github.com/SporeUI/spore-kit#readme",
   "dependencies": {
-    "spore-kit-arr": "^0.2.0",
-    "spore-kit-num": "^0.2.0",
-    "spore-kit-obj": "^0.2.2"
+    "spore-kit-arr": "^0.2.1",
+    "spore-kit-num": "^0.2.1",
+    "spore-kit-obj": "^0.2.3"
   }
 }
