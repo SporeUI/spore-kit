@@ -49,7 +49,7 @@ function callUp (options) {
 
 	if (typeof conf.action === 'function') {
 		conf.action();
-	} else if ($browser.chrome) {
+	} else if ($browser().chrome) {
 		// chrome下iframe无法唤起Android客户端，这里使用window.open
 		// 另一个方案参考 https://developers.google.com/chrome/mobile/docs/intents
 		var win = window.open(conf.protocol);
