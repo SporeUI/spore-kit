@@ -6,7 +6,12 @@ var $assign = require('spore-kit-obj/assign');
 var $uaMatch = require('./uaMatch');
 
 var testers = {
-	huawei: (/che1-cl20/i)
+	huawei: (/huawei/i),
+	oppo: (/oppo/i),
+	vivo: (/vivo/i),
+	xiaomi: (/xiaomi/i),
+	samsong: (/sm-/i),
+	iphone: (/iphone/i)
 };
 
 function detect(options, checkers) {
@@ -24,9 +29,10 @@ var result = null;
 function device() {
 	if (!result) {
 		result = detect();
-		result.detect = detect;
 	}
 	return result;
 }
+
+device.detect = detect;
 
 module.exports = device;

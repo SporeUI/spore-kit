@@ -7,9 +7,9 @@ var $assign = require('spore-kit-obj/assign');
 var $uaMatch = require('./uaMatch');
 
 var testers = {
-	trident: 'trident',
-	presto: 'presto',
-	webkit: 'webkit',
+	trident: (/trident/i),
+	presto: (/presto/i),
+	webkit: (/webkit/i),
 	gecko: function(ua) {
 		return ua.indexOf('gecko') > -1 && ua.indexOf('khtml') === -1;
 	}
@@ -30,9 +30,10 @@ var result = null;
 function core() {
 	if (!result) {
 		result = detect();
-		result.detect = detect;
 	}
 	return result;
 }
+
+core.detect = detect;
 
 module.exports = core;

@@ -27,9 +27,10 @@ var result = null;
 function os() {
 	if (!result) {
 		result = detect();
-		result.detect = detect;
 	}
 	return result;
 }
+
+os.detect = detect;
 
 module.exports = os;
