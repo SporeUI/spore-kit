@@ -1,6 +1,6 @@
 # spore-kit-time
 
-时间处理，与交互工具
+时间处理与交互工具
 
 ## Release History
 

@@ -1,5 +1,5 @@
 /**
- * # 时间处理，与交互工具
+ * # 时间处理与交互工具
  * @name spore-kit-time
  * @module
  * @example
