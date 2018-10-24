@@ -1,6 +1,6 @@
 # spore-kit-io
 
-接口请求相关工具函数
+处理网络交互
 
 ## Release History
 

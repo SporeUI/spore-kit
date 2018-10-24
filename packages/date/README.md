@@ -1,6 +1,6 @@
 # spore-kit-date
 
-date 操作相关工具函数
+日期相关相关工具
 
 ## Release History
 

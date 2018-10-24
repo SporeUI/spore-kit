@@ -1,6 +1,6 @@
 # spore-kit-arr
 
-arr 操作相关工具函数
+类数组对象相关工具函数
 
 ## Release History
 

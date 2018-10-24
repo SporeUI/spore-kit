@@ -1,6 +1,6 @@
 # spore-kit-obj
 
-object 相关工具函数
+对象处理与判断
 
 ## Release History
 

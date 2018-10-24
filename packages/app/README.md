@@ -1,6 +1,6 @@
 # spore-kit-app
 
-与客户端相关的交互
+处理与客户端相关的交互
 
 ## Release History
 

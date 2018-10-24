@@ -1,6 +1,6 @@
 # spore-kit-dom
 
-dom 相关工具函数
+dom操作相关工具函数
 
 ## Release History
 

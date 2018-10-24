@@ -1,6 +1,6 @@
 # spore-kit-fn
 
-函数相关的封装
+函数包装，获取特殊执行方式
 
 ## Release History
 

@@ -1,3 +1,20 @@
+/**
+ * # 字符串处理与判断
+ * @name spore-kit-str
+ * @module
+ * @example
+ * // 统一引入 spore-kit
+ * var $kit = require('spore-kit');
+ * console.info($kit.str.substitute);
+ *
+ * // 单独引入 spore-kit-str
+ * var $str = require('spore-kit-str');
+ * console.info($str.substitute);
+ *
+ * // 单独引入一个方法
+ * var $substitute = require('spore-kit-str/substitute');
+ */
+
 exports.bLength = require('./bLength');
 exports.dbcToSbc = require('./dbcToSbc');
 exports.decodeHTML = require('./decodeHTML');

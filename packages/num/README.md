@@ -1,6 +1,6 @@
 # spore-kit-num
 
-num操作相关工具函数
+处理数字，数据转换
 
 ## Release History
 

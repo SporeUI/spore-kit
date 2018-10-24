@@ -1,6 +1,6 @@
 # spore-kit-env
 
-环境监测工具函数
+环境检测与判断工具
 
 ## Release History
 

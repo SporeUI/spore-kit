@@ -6,9 +6,9 @@
  * @param {string} [spec.maxUnit='day'] 拆分时间的最大单位，可选 ['day', 'hour', 'minute', 'second']
  * @return {object} 拆分完成的天时分秒
  * @example
- * console.info( timeSplit(12345 * 67890) );
+ * console.info( parseUnit(12345 * 67890) );
  * // Object {day: 9, hour: 16, minute: 48, second: 22, ms: 50}
- * console.info( timeSplit(12345 * 67890, {maxUnit : 'hour'}) );
+ * console.info( parseUnit(12345 * 67890, {maxUnit : 'hour'}) );
  * // Object {hour: 232, minute: 48, second: 22, ms: 50}
  */
 
@@ -22,7 +22,7 @@ var UNIT = {
 	second: 1000
 };
 
-function timeSplit(time, spec) {
+function parseUnit(time, spec) {
 	var conf = $assign({
 		maxUnit: 'day'
 	}, spec);
@@ -59,4 +59,4 @@ function timeSplit(time, spec) {
 	return data;
 }
 
-module.exports = timeSplit;
+module.exports = parseUnit;

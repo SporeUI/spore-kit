@@ -1,6 +1,6 @@
 # spore-ui-fx
 
-动画效果工具
+动画交互相关工具
 
 ## Release History
 

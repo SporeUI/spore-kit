@@ -1,6 +1,6 @@
 # spore-kit-evt
 
-事件工具函数
+处理事件与广播
 
 ## Release History
 

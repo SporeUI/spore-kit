@@ -1,6 +1,6 @@
 # spore-kit-str
 
-字符串处理相关函数
+字符串处理与判断
 
 ## Release History
 
