@@ -1,6 +1,6 @@
 /**
  * 检测操作系统类型
- * console.info(os.ios);
+ * console.info(os().ios);
  */
 var $assign = require('spore-kit-obj/assign');
 var $uaMatch = require('./uaMatch');
@@ -22,8 +22,14 @@ function detect(options, checkers) {
 	return $uaMatch(testers, conf.ua, conf);
 }
 
-var os = detect();
+var result = null;
 
-os.detect = detect;
+function os() {
+	if (!result) {
+		result = detect();
+		result.detect = detect;
+	}
+	return result;
+}
 
 module.exports = os;

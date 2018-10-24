@@ -1,6 +1,6 @@
 /**
  * 检测浏览器核心
- * console.info(core.webkit);
+ * console.info(core().webkit);
  */
 
 var $assign = require('spore-kit-obj/assign');
@@ -25,8 +25,14 @@ function detect(options, checkers) {
 	return $uaMatch(testers, conf.ua, conf);
 }
 
-var core = detect();
+var result = null;
 
-core.detect = detect;
+function core() {
+	if (!result) {
+		result = detect();
+		result.detect = detect;
+	}
+	return result;
+}
 
 module.exports = core;

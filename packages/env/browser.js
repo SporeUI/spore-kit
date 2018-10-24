@@ -1,6 +1,6 @@
 /**
  * 检测浏览器类型
- * console.info(browser.chrome);
+ * console.info(browser().chrome);
  */
 var $assign = require('spore-kit-obj/assign');
 var $uaMatch = require('./uaMatch');
@@ -25,8 +25,14 @@ function detect(options, checkers) {
 	return $uaMatch(testers, conf.ua, conf);
 }
 
-var browser = detect();
+var result = null;
 
-browser.detect = detect;
+function browser() {
+	if (!result) {
+		result = detect();
+		result.detect = detect;
+	}
+	return result;
+}
 
 module.exports = browser;

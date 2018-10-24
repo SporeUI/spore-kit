@@ -14,7 +14,13 @@
 
 function uaMatch(list, ua, conf) {
 	var result = {};
-	ua = ua || navigator.userAgent;
+	if (!ua) {
+		if (typeof window === 'undefined') {
+			ua = '';
+		} else {
+			ua = window.navigator.userAgent;
+		}
+	}
 	ua = ua.toLowerCase();
 	if (typeof list === 'object') {
 		Object.keys(list).forEach(function(key) {

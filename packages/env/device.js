@@ -1,6 +1,6 @@
 /**
  * 检测设备类型
- * console.info(device.huawei);
+ * console.info(device().huawei);
  */
 var $assign = require('spore-kit-obj/assign');
 var $uaMatch = require('./uaMatch');
@@ -19,8 +19,14 @@ function detect(options, checkers) {
 	return $uaMatch(testers, conf.ua, conf);
 }
 
-var device = detect();
+var result = null;
 
-device.detect = detect;
+function device() {
+	if (!result) {
+		result = detect();
+		result.detect = detect;
+	}
+	return result;
+}
 
 module.exports = device;
