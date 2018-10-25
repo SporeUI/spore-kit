@@ -1,38 +1,47 @@
 /**
- * 包装为一个条件触发管理器。
- *
- * - 调用管理器的 ready 函数设置条件被激活。
- * - 之前插入管理器的函数按顺序执行。
+ * 包装为一个条件触发管理器
+ * - 调用管理器的 ready 函数来激活条件。
+ * - 之前插入管理器的函数按队列顺序执行。
  * - 之后插入管理器的函数立即执行。
- * - 作用机制类似 jQuery.ready, 但可以设置任何条件
- * @return {function} 条件管理触发器函数
- * @module
+ * - 作用机制类似 jQuery.ready, 可以设置任何条件。
+ * @module prepare
+ * @returns {Function} 条件触发管理器函数，传入一个 function 作为任务执行函数参数
  * @example
- * 	var timeReady = prepare();
+ *	// 生成一个管理器函数 timeReady
+ *	var timeReady = prepare();
  *
- * 	//设置条件2秒后可执行插入的函数
- * 	setTimeout(function(){
- * 		timeReady.ready();
- * 	}, 2000);
+ *	// 设置条件为2秒后就绪
+ *	setTimeout(function () {
+ *		timeReady.ready();
+ *	}, 2000);
  *
- * 	//2秒后输出1
- * 	timeReady(function(){
- * 		console.info(1);
- * 	});
+ *	// 调用管理器函数 timeReady，插入要执行的任务函数
+ *	timeReady(function () {
+ *		// 2 秒后输出 1
+ *		console.info(1);
+ *	});
  *
- * 	//2秒后输出2
- * 	timeReady(function(){
- * 		console.info(2);
- * 	});
+ *	// 调用管理器函数 timeReady，插入要执行的任务函数
+ *	timeReady(function () {
+ *		// 2 秒后输出 2
+ *		console.info(2);
+ *	});
  *
- * 	setTimeout(function(){
- * 		//condition 已为true, 立即输出3
- * 		timeReady(function(){
- * 			console.info(3);
- * 		});
- * 	}, 2100);
+ *	// 2100ms 后执行
+ *	setTimeout(function () {
+ *		// 调用管理器函数 timeReady，插入要执行的任务函数
+ *		timeReady(function () {
+ *			// 立即执行，输出 3
+ *			console.info(3);
+ *		});
+ *	}, 2100);
  */
 
+/**
+ * 激活任务管理器的触发条件，在此之前插入管理器的任务按队列顺序执行，之后插入的任务函数立即执行。
+ * @method prepare.ready
+ * @memberof prepare
+ */
 function prepare() {
 	var queue = [];
 	var condition = false;
