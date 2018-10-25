@@ -1,15 +1,16 @@
 /**
  * 扩展并覆盖对象
- * @module
- * @param {object} obj 要扩展的对象
- * @param {object} item 要扩展的属性键值对
- * @return {object} 扩展后的源对象
+ * @method assign
+ * @param {Object} obj 要扩展的对象
+ * @param {Object} item 要扩展的属性键值对
+ * @returns {Object} 扩展后的源对象
  * @example
- * var obj = {a:1,b:2};
- * console.info(assign(obj,{b:3,c:4}));	//{a:1,b:3,c:4}
+ * var obj = {a: 1, b: 2};
+ * console.info(assign(obj, {b: 3, c: 4})); // {a: 1, b: 3, c: 4}
+ * console.info(assign({}, obj, {b: 3, c: 4})); // {a: 1, b: 3, c: 4}
  */
 
-function assign(obj) {
+function assign (obj) {
 	obj = obj || {};
 	Array.prototype.slice.call(arguments, 1).forEach(function(source) {
 		var prop;

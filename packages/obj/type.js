@@ -1,14 +1,27 @@
 /**
  * 获取数据类型
- * @module
- * @param {mixed} 任何类型数据
- * @return {string} 对象类型
+ * @method type
+ * @param {*} item 任何类型数据
+ * @returns {String} 对象类型
  * @example
- * console.info(type({}));		//function
- * console.info(type(undefined));	//undefined
+ * type({}); // 'object'
+ * type(1); // 'number'
+ * type(''); // 'string'
+ * type(function(){}); // 'function'
+ * type(); // 'undefined'
+ * type(null); // 'null'
+ * type(new Date()); // 'date'
+ * type(/a/); // 'regexp'
+ * type(Symbol('a')); // 'symbol'
+ * type(window) // 'window'
+ * type(document) // 'htmldocument'
+ * type(document.body) // 'htmlbodyelement'
+ * type(document.head) // 'htmlheadelement'
+ * type(document.getElementsByTagName('div')) // 'htmlcollection'
+ * type(document.getElementsByTagName('div')[0]) // 'htmldivelement'
  */
 
-function type(item) {
+function type (item) {
 	return Object.prototype.toString
 		.call(item)
 		.toLowerCase()

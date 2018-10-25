@@ -1,12 +1,12 @@
 /**
  * 覆盖对象，不添加新的键
- * @module
- * @param {object} object 要覆盖的对象
- * @param {object} item 要覆盖的属性键值对
- * @return {object} 覆盖后的源对象
+ * @method cover
+ * @param {Object} object 要覆盖的对象
+ * @param {Object} item 要覆盖的属性键值对
+ * @returns {Object} 覆盖后的源对象
  * @example
- * var obj = {a:1,b:2};
- * console.info(cover(obj,{b:3,c:4}));	//{a:1,b:3}
+ * var obj = {a: 1, b: 2};
+ * console.info(cover(obj,{b: 3, c: 4}));	//{a: 1, b: 3}
  */
 
 function cover() {
