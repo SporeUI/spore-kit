@@ -10,8 +10,8 @@
  * 	new Date('2018-10-25'),
  * 	'month',
  * 	0
- * ).getTime(); //1538323200000
- * new Date(time); //Mon Oct 01 2018 00:00:00 GMT+0800 (中国标准时间)
+ * ).getTime(); // 1538323200000
+ * new Date(time); // Mon Oct 01 2018 00:00:00 GMT+0800 (中国标准时间)
  */
 
 var $getTimeSplit = require('./getTimeSplit');

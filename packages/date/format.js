@@ -38,7 +38,7 @@
  * 			template : '{{YYYY}}年{{MM}}月{{DD}}日 周{{d}} {{hh}}时{{mm}}分{{ss}}秒'
  * 		})
  * 	);
- * 	//2015年09月09日 周三 14时19分42秒
+ * 	// 2015年09月09日 周三 14时19分42秒
  */
 
 var $assign = require('spore-kit-obj/assign');

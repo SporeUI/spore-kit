@@ -2,6 +2,8 @@
 
 ## spore-kit-str
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/str][1]**
+
 # 字符串处理与判断
 
 ### Examples
@@ -25,7 +27,7 @@ var $substitute = require('spore-kit-str/substitute');
 
 ### Parameters
 
--   `str` **[string][1]** 要计算长度的字符串
+-   `str` **[string][2]** 要计算长度的字符串
 
 ### Examples
 
@@ -33,7 +35,7 @@ var $substitute = require('spore-kit-str/substitute');
 bLength('中文cc');  //return 6
 ```
 
-Returns **[number][2]** 字符串长度
+Returns **[number][3]** 字符串长度
 
 ## dbcToSbc
 
@@ -41,7 +43,7 @@ Returns **[number][2]** 字符串长度
 
 ### Parameters
 
--   `str` **[string][1]** 包含了全角字符的字符串
+-   `str` **[string][2]** 包含了全角字符的字符串
 
 ### Examples
 
@@ -49,7 +51,7 @@ Returns **[number][2]** 字符串长度
 dbcToSbc('ＳＡＡＳＤＦＳＡＤＦ');	//return 'SAASDFSADF'
 ```
 
-Returns **[string][1]** 经过转换的字符串
+Returns **[string][2]** 经过转换的字符串
 
 ## decodeHTML
 
@@ -57,7 +59,7 @@ Returns **[string][1]** 经过转换的字符串
 
 ### Parameters
 
--   `str` **[string][1]** 含有实体字符标记的字符串
+-   `str` **[string][2]** 含有实体字符标记的字符串
 
 ### Examples
 
@@ -65,7 +67,7 @@ Returns **[string][1]** 经过转换的字符串
 decodeHTML('&amp;&lt;&gt;$nbsp;&quot;');  //return '&<> "'
 ```
 
-Returns **[string][1]** HTML字符串
+Returns **[string][2]** HTML字符串
 
 ## encodeHTML
 
@@ -73,7 +75,7 @@ Returns **[string][1]** HTML字符串
 
 ### Parameters
 
--   `str` **[string][1]** 含有HTML字符的字符串
+-   `str` **[string][2]** 含有HTML字符的字符串
 
 ### Examples
 
@@ -81,13 +83,13 @@ Returns **[string][1]** HTML字符串
 encodeHTML('&<>" ');  //return '&amp;&lt;&gt;&quot;$nbsp;'
 ```
 
-Returns **[string][1]** 经过转换的字符串
+Returns **[string][2]** 经过转换的字符串
 
 ## getUniqueKey
 
 生成一个不与之前重复的随机字符串
 
-Returns **[string][1]** 随机字符串
+Returns **[string][2]** 随机字符串
 
 ## hyphenate
 
@@ -95,7 +97,7 @@ Returns **[string][1]** 随机字符串
 
 ### Parameters
 
--   `str` **[string][1]** 驼峰格式的字符串
+-   `str` **[string][2]** 驼峰格式的字符串
 
 ### Examples
 
@@ -103,7 +105,7 @@ Returns **[string][1]** 随机字符串
 hyphenate('libKitStrHyphenate'); //return 'lib-kit-str-hyphenate'
 ```
 
-Returns **[string][1]** 连字符格式的字符串
+Returns **[string][2]** 连字符格式的字符串
 
 ## ipToHex
 
@@ -111,7 +113,7 @@ Returns **[string][1]** 连字符格式的字符串
 
 ### Parameters
 
--   `ip` **[string][1]** 十进制数字的IPV4地址
+-   `ip` **[string][2]** 十进制数字的IPV4地址
 
 ### Examples
 
@@ -119,7 +121,7 @@ Returns **[string][1]** 连字符格式的字符串
 ipToHex('255.255.255.255'); //return 'ffffffff'
 ```
 
-Returns **[string][1]** 16进制数字IPV4地址
+Returns **[string][2]** 16进制数字IPV4地址
 
 ## leftB
 
@@ -127,8 +129,8 @@ Returns **[string][1]** 16进制数字IPV4地址
 
 ### Parameters
 
--   `str` **[String][1]** 
--   `lens` **[Number][2]** 
+-   `str` **[String][2]** 
+-   `lens` **[Number][3]** 
 
 ### Examples
 
@@ -137,7 +139,7 @@ Returns **[string][1]** 16进制数字IPV4地址
 leftB('世界真和谐', 6); //return '世界真'
 ```
 
-Returns **[String][1]** str
+Returns **[String][2]** str
 
 ## sizeOfUTF8String
 
@@ -145,7 +147,7 @@ Returns **[String][1]** str
 
 ### Parameters
 
--   `str` **[String][1]** 
+-   `str` **[String][2]** 
 
 ### Examples
 
@@ -153,7 +155,7 @@ Returns **[String][1]** str
 sizeOfUTF8String('中文cc');  //return 8
 ```
 
-Returns **[number][2]** 字符串长度
+Returns **[number][3]** 字符串长度
 
 ## substitute
 
@@ -161,9 +163,9 @@ Returns **[number][2]** 字符串长度
 
 ### Parameters
 
--   `str` **[string][1]** 要替换模板的字符串
--   `obj` **[object][3]** 模板对应的数据对象
--   `reg` **[regExp][4]** 解析模板的正则表达式 (optional, default `/\\?\{\{([^{}]+)\}\}/g`)
+-   `str` **[string][2]** 要替换模板的字符串
+-   `obj` **[object][4]** 模板对应的数据对象
+-   `reg` **[regExp][5]** 解析模板的正则表达式 (optional, default `/\\?\{\{([^{}]+)\}\}/g`)
 
 ### Examples
 
@@ -171,12 +173,14 @@ Returns **[number][2]** 字符串长度
 substitute('{{city}}欢迎您', {{city:'北京'}}); //return '北京欢迎您'
 ```
 
-Returns **[string][1]** 替换了模板的字符串
+Returns **[string][2]** 替换了模板的字符串
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/str
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp

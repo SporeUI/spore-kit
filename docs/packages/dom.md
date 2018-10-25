@@ -2,6 +2,8 @@
 
 ## spore-kit-dom
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/dom][1]**
+
 # dom操作相关工具函数
 
 ### Examples
@@ -25,10 +27,12 @@ var $isNode = require('spore-kit-dom/isNode');
 
 ### Parameters
 
--   `node` **[Object][1]** 要判断的对象
+-   `node` **[Object][2]** 要判断的对象
 
-Returns **[Boolean][2]** 是否为dom元素
+Returns **[Boolean][3]** 是否为dom元素
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/dom
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean

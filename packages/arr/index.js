@@ -5,11 +5,11 @@
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');
- * console.info($kit.arr.contains); //function
+ * console.info($kit.arr.contains);
  *
  * // 单独引入 spore-kit-arr
  * var $arr = require('spore-kit-arr');
- * console.info($arr.contains); //function
+ * console.info($arr.contains);
  *
  * // 单独引入一个方法
  * var $contains = require('spore-kit-arr/contains');

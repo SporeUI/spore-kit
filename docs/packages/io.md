@@ -2,6 +2,8 @@
 
 ## spore-kit-io
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/io][1]**
+
 # 处理网络交互
 
 ### Examples
@@ -29,13 +31,15 @@ var $getScript = require('spore-kit-io/getScript');
 
 ### Parameters
 
--   `options` **[object][1]** script选项
-    -   `options.src` **[string][2]** script地址
-    -   `options.charset` **[string][2]** script编码 (optional, default `'utf-8'`)
-    -   `options.onLoad` **[function][3]?** script加载完成的回调函数
+-   `options` **[object][2]** script选项
+    -   `options.src` **[string][3]** script地址
+    -   `options.charset` **[string][3]** script编码 (optional, default `'utf-8'`)
+    -   `options.onLoad` **[function][4]?** script加载完成的回调函数
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/io
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function

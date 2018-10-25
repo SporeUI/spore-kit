@@ -7,6 +7,6 @@
  * origin.set('name', 'value', {
  * 	expires: 1
  * });
- * origin.read('name')	//value
+ * origin.read('name')	// 'value'
  */
 module.exports = require('js-cookie');

@@ -5,7 +5,7 @@
  * @param {*} item 要搜索的对象
  * @returns {Boolean} 如果对象在数组中，返回 true
  * @example
- * console.info(contains([1,2,3,4,5], 3));	//true
+ * console.info(contains([1,2,3,4,5], 3));	// true
  */
 
 function contains (arr, item) {

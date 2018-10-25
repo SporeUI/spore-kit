@@ -2,6 +2,8 @@
 
 ## spore-kit-num
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/num][1]**
+
 # 处理数字，数据转换
 
 ### Examples
@@ -21,7 +23,7 @@ var $limit = require('spore-kit-num/limit');
 
 ## comma
 
--   **See: [http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript][1]**
+-   **See: [http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript][2]**
 
 数字的千分位逗号分隔表示法
 
@@ -37,8 +39,8 @@ IE8 的 toLocalString 给出了小数点后2位: N.00
 
 ### Parameters
 
--   `num` **([number][2] \| [string][3])** 要补位的数字
--   `w` **[number][2]** w 补位数量 (optional, default `2`)
+-   `num` **([number][3] \| [string][4])** 要补位的数字
+-   `w` **[number][3]** w 补位数量 (optional, default `2`)
 
 ### Examples
 
@@ -46,7 +48,7 @@ IE8 的 toLocalString 给出了小数点后2位: N.00
 fixTo(0,2);	//return '00'
 ```
 
-Returns **[string][3]** 经过补位的字符串
+Returns **[string][4]** 经过补位的字符串
 
 ## limit
 
@@ -54,9 +56,9 @@ Returns **[string][3]** 经过补位的字符串
 
 ### Parameters
 
--   `num` **[number][2]** 要限制的数字
--   `min` **[number][2]** 最小边界数值
--   `max` **[number][2]** 最大边界数值
+-   `num` **[number][3]** 要限制的数字
+-   `min` **[number][3]** 最小边界数值
+-   `max` **[number][3]** 最大边界数值
 
 ### Examples
 
@@ -66,7 +68,7 @@ limit(6, 5, 10);	//return 6
 limit(11, 5, 10);	//return 10
 ```
 
-Returns **[number][2]** 经过限制的数值
+Returns **[number][3]** 经过限制的数值
 
 ## numerical
 
@@ -75,8 +77,8 @@ Returns **[number][2]** 经过限制的数值
 ### Parameters
 
 -   `str` **mixed** 要转换的数据
--   `def` **[number][2]** 转换失败时的默认值 (optional, default `0`)
--   `sys` **[number][2]** 进制 (optional, default `10`)
+-   `def` **[number][3]** 转换失败时的默认值 (optional, default `0`)
+-   `sys` **[number][3]** 进制 (optional, default `10`)
 
 ### Examples
 
@@ -85,10 +87,12 @@ numerical('10x');	//return 10
 numerical('x10');	//return 0
 ```
 
-Returns **[number][2]** 转换而得的整数
+Returns **[number][3]** 转换而得的整数
 
-[1]: http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/num
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[2]: http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

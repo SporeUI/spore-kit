@@ -8,7 +8,7 @@
  * cookie.set('name', 'value', {
  * 	expires: 1
  * });
- * cookie.read('name')	//value
+ * cookie.read('name')	// 'value'
  */
 
 var Cookie = require('js-cookie');

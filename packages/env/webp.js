@@ -10,7 +10,7 @@ var isSupportWebp = null;
  * @method webp.support
  * @returns {Boolean} 是否支持webp
  * @example
- * console.info(webp.support()); //true/false
+ * console.info(webp.support()); // true/false
  */
 function support() {
 	if (isSupportWebp === null) {

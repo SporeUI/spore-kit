@@ -8,7 +8,7 @@
  * @example
  * 	console.info(find([1,2,3,4,5], function (item) {
  * 		return item < 3;
- * 	});	//[0, 1]
+ * 	});	// [0, 1]
  */
 
 function find (arr, fn, context) {

@@ -2,6 +2,8 @@
 
 ## spore-kit-obj
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/obj][1]**
+
 # 对象处理与判断
 
 ### Examples
@@ -25,8 +27,8 @@ var $type = require('spore-kit-obj/type');
 
 ### Parameters
 
--   `obj` **[object][1]** 要扩展的对象
--   `item` **[object][1]** 要扩展的属性键值对
+-   `obj` **[object][2]** 要扩展的对象
+-   `item` **[object][2]** 要扩展的属性键值对
 
 ### Examples
 
@@ -35,7 +37,7 @@ var obj = {a:1,b:2};
 console.info(assign(obj,{b:3,c:4}));	//{a:1,b:3,c:4}
 ```
 
-Returns **[object][1]** 扩展后的源对象
+Returns **[object][2]** 扩展后的源对象
 
 ## cover
 
@@ -43,8 +45,8 @@ Returns **[object][1]** 扩展后的源对象
 
 ### Parameters
 
--   `object` **[object][1]** 要覆盖的对象
--   `item` **[object][1]** 要覆盖的属性键值对
+-   `object` **[object][2]** 要覆盖的对象
+-   `item` **[object][2]** 要覆盖的属性键值对
 
 ### Examples
 
@@ -53,7 +55,7 @@ var obj = {a:1,b:2};
 console.info(cover(obj,{b:3,c:4}));	//{a:1,b:3}
 ```
 
-Returns **[object][1]** 覆盖后的源对象
+Returns **[object][2]** 覆盖后的源对象
 
 ## spore-kit-obj/src/find
 
@@ -61,8 +63,8 @@ Returns **[object][1]** 覆盖后的源对象
 
 ### Parameters
 
--   `object` **[object][1]** 要查找的对象
--   `path` **[string][2]** 要查找的路径
+-   `object` **[object][2]** 要查找的对象
+-   `path` **[string][3]** 要查找的路径
 
 ### Examples
 
@@ -90,8 +92,10 @@ console.info(type({}));		//function
 console.info(type(undefined));	//undefined
 ```
 
-Returns **[string][2]** 对象类型
+Returns **[string][3]** 对象类型
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/obj
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

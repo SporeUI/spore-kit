@@ -10,7 +10,7 @@ var supportOnline = null;
  * @method network.support
  * @returns {Boolean} 是否支持联网检测
  * @example
- * network.support(); //true/false
+ * network.support(); // true/false
  */
 function support() {
 	if (supportOnline === null) {

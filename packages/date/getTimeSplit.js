@@ -11,7 +11,7 @@
  * 		'month'
  * 	)
  * ).toGMTString();
- * //Sat Sep 01 2018 00:00:00 GMT+0800 (中国标准时间)
+ * // Sat Sep 01 2018 00:00:00 GMT+0800 (中国标准时间)
  *
  * new Date(
  * 	getTimeSplit(
@@ -19,7 +19,7 @@
  * 		'hour'
  * 	)
  * ).toGMTString();
- * //Thu Sep 20 2018 19:00:00 GMT+0800 (中国标准时间)
+ * // Thu Sep 20 2018 19:00:00 GMT+0800 (中国标准时间)
  */
 
 var DAY = 24 * 60 * 60 * 1000;

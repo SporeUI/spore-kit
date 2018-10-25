@@ -2,6 +2,8 @@
 
 ## spore-kit-time
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/time][1]**
+
 # 时间处理与交互工具
 
 ### Examples
@@ -25,12 +27,12 @@ var $parseUnit = require('spore-kit-time/parseUnit');
 
 ### Parameters
 
--   `spec` **[object][1]** 选项
-    -   `spec.base` **[date][2]** 矫正时间，如果需要用服务端时间矫正倒计时，使用此参数 (optional, default `null`)
-    -   `spec.target` **[date][2]** 目标时间 (optional, default `Date.now()+3000`)
+-   `spec` **[object][2]** 选项
+    -   `spec.base` **[date][3]** 矫正时间，如果需要用服务端时间矫正倒计时，使用此参数 (optional, default `null`)
+    -   `spec.target` **[date][3]** 目标时间 (optional, default `Date.now()+3000`)
     -   `spec.interval` **interval** 倒计时触发间隔 (optional, default `1000`)
-    -   `spec.onChange` **[function][3]** 倒计时触发变更的事件回调 (optional, default `$.noop`)
-    -   `spec.onStop` **[function][3]** 倒计时结束的回调 (optional, default `$.noop`)
+    -   `spec.onChange` **[function][4]** 倒计时触发变更的事件回调 (optional, default `$.noop`)
+    -   `spec.onStop` **[function][4]** 倒计时结束的回调 (optional, default `$.noop`)
 
 ### Examples
 
@@ -67,9 +69,9 @@ var target = Date.now() + 5000;
 
 ### Parameters
 
--   `time` **[number][4]** 毫秒数
--   `spec` **[object][1]** 选项
-    -   `spec.maxUnit` **[string][5]** 拆分时间的最大单位，可选 ['day', 'hour', 'minute', 'second'] (optional, default `'day'`)
+-   `time` **[number][5]** 毫秒数
+-   `spec` **[object][2]** 选项
+    -   `spec.maxUnit` **[string][6]** 拆分时间的最大单位，可选 ['day', 'hour', 'minute', 'second'] (optional, default `'day'`)
 
 ### Examples
 
@@ -80,14 +82,16 @@ console.info( parseUnit(12345 * 67890, {maxUnit : 'hour'}) );
 // Object {hour: 232, minute: 48, second: 22, ms: 50}
 ```
 
-Returns **[object][1]** 拆分完成的天时分秒
+Returns **[object][2]** 拆分完成的天时分秒
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/time
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

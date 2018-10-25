@@ -2,6 +2,8 @@
 
 ## spore-kit-date
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/date][1]**
+
 # 日期相关工具
 
 ### Examples
@@ -52,10 +54,10 @@ var $format = require('spore-kit-date/format');
 
 ### Parameters
 
--   `dobj` **[Date][1]** 日期对象，或者可以被转换为日期对象的数据
--   `spec` **[Object][2]?** 格式化选项
-    -   `spec.weekday` **[Array][3]** 一周内各天对应名称，顺序从周日算起 (optional, default `'日一二三四五六'.split('')`)
-    -   `spec.template` **[String][4]** 格式化模板 (optional, default `'{{YYYY}}-{{MM}}-{{DD}} {{hh}}:{{mm}}'`)
+-   `dobj` **[Date][2]** 日期对象，或者可以被转换为日期对象的数据
+-   `spec` **[Object][3]?** 格式化选项
+    -   `spec.weekday` **[Array][4]** 一周内各天对应名称，顺序从周日算起 (optional, default `'日一二三四五六'.split('')`)
+    -   `spec.template` **[String][5]** 格式化模板 (optional, default `'{{YYYY}}-{{MM}}-{{DD}} {{hh}}:{{mm}}'`)
 
 ### Examples
 
@@ -68,7 +70,7 @@ console.info(
 	//2015年09月09日 周三 14时19分42秒
 ```
 
-Returns **[String][4]** 格式化完成的字符串
+Returns **[String][5]** 格式化完成的字符串
 
 ## getLastStart
 
@@ -76,9 +78,9 @@ Returns **[String][4]** 格式化完成的字符串
 
 ### Parameters
 
--   `time` **([Number][5] \| [Date][1])** 实际时间
--   `type` **[String][4]** 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
--   `count` **[Number][5]** 多少单位时间之前
+-   `time` **([Number][6] \| [Date][2])** 实际时间
+-   `type` **[String][5]** 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
+-   `count` **[Number][6]** 多少单位时间之前
 
 ### Examples
 
@@ -91,7 +93,7 @@ var time = getLastStart(
 new Date(time); //Mon Oct 01 2018 00:00:00 GMT+0800 (中国标准时间)
 ```
 
-Returns **[Date][1]** 最近单位时间的起始时间对象
+Returns **[Date][2]** 最近单位时间的起始时间对象
 
 ## getTimeSplit
 
@@ -99,8 +101,8 @@ Returns **[Date][1]** 最近单位时间的起始时间对象
 
 ### Parameters
 
--   `time` **([Number][5] \| [Date][1])** 实际时间
--   `type` **[String][4]** 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
+-   `time` **([Number][6] \| [Date][2])** 实际时间
+-   `type` **[String][5]** 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
 
 ### Examples
 
@@ -122,14 +124,16 @@ new Date(
 //Thu Sep 20 2018 19:00:00 GMT+0800 (中国标准时间)
 ```
 
-Returns **[Date][1]** 时间整点对象
+Returns **[Date][2]** 时间整点对象
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/date
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number

@@ -2,6 +2,8 @@
 
 ## spore-kit-evt
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/evt][1]**
+
 # 处理事件与广播
 
 ### Examples
@@ -21,31 +23,26 @@ var $occurInside = require('spore-kit-evt/occurInside');
 
 ## Events
 
--   **See: [http://aralejs.org/][1]**
--   **See: [https://github.com/documentcloud/backbone/blob/master/backbone.js][2]**
--   **See: [https://github.com/joyent/node/blob/master/lib/events.js][3]**
+-   **See: [http://aralejs.org/][2]**
+-   **See: [https://github.com/documentcloud/backbone/blob/master/backbone.js][3]**
+-   **See: [https://github.com/joyent/node/blob/master/lib/events.js][4]**
 
 A module that can be mixed in to _any object_ in order to provide it
 with custom events. You may bind with `on` or remove with `off` callback
 functions to an event; `trigger`-ing an event fires all callbacks in
 succession.
 
+一个可以被混合到任何对象的模块，用于提供自定义事件。
+可以用 on, off 方法来绑定移除事件。
+用 trigger 来触发事件通知
+
 ### Examples
 
 ```javascript
-var object = new Events();
-object.on(
-	'expand',
-	function(){
-		alert('expanded');
-	}
-);
-object.trigger('expand');
-// alert('expanded'); 将被执行
+var Events = require('spore-kit-evt/events');
 
-//给一个对象混合events的方法
-var obj = {};
-Events.mixTo(obj);
+var $kit = require('spore-kit');
+var Events = $kit.evt.events;
 ```
 
 ### Events.prototype.on
@@ -53,64 +50,196 @@ Events.mixTo(obj);
 Bind one or more space separated events, `events`, to a `callback`
 function. Passing `"all"` will bind the callback to all events fired.
 
+绑定一个事件回调函数，或者用多个空格分隔来绑定多个事件回调函数。
+传入参数 `'all'` 会在所有事件发生时被触发。
+
 #### Parameters
 
--   `events` **[String][4]** 事件名称
--   `callback` **[Function][5]** 事件回调函数
--   `context` **[Object][6]?** 回调函数的执行环境对象
+-   `events` **[String][5]** 事件名称
+-   `callback` **[Function][6]** 事件回调函数
+-   `context` **[Object][7]?** 回调函数的执行环境对象
 
-## off
+#### Examples
+
+```javascript
+var evt = new Events();
+
+// 绑定1个事件
+evt.on('event-name', function () {});
+
+// 绑定2个事件
+evt.on('event1 event2', function () {});
+
+// 绑定为所有事件
+evt.on('all', function () {});
+```
+
+### Events.prototype.off
 
 Remove one or many callbacks. If `context` is null, removes all callbacks
 with that function. If `callback` is null, removes all callbacks for the
 event. If `events` is null, removes all bound callbacks for all events.
 
-### Parameters
+移除一个或者多个事件回调函数。
+如果不传递 callback 参数，会移除所有该时间名称的事件回调函数。
+如果不指定事件名称，移除所有自定义事件回调函数。
 
--   `events` **[string][4]?** 事件名称
--   `callback` **[function][5]?** 要移除的事件回调函数
--   `context` **[object][6]?** 要移除的回调函数的执行环境对象
+#### Parameters
 
-## trigger
+-   `events` **[String][5]?** 事件名称
+-   `callback` **[Function][6]?** 要移除的事件回调函数
+-   `context` **[Object][7]?** 要移除的回调函数的执行环境对象
+
+#### Examples
+
+```javascript
+var evt = new Events();
+var bound = {};
+bound.test = function () {};
+
+// 移除事件名为 event-name 的事件回调函数 bound.test
+evt.off('event-name', bound.test);
+
+// 移除事件名为 'event' 的所有事件回调函数
+evt.off('event');
+
+// 移除所有自定义事件
+evt.off();
+```
+
+### Events.prototype.trigger
 
 Trigger one or many events, firing all bound callbacks. Callbacks are
 passed the same arguments as `trigger` is, apart from the event name
 (unless you're listening on `"all"`, which will cause your callback to
 receive the true name of the event as the first argument).
 
-### Parameters
+派发一个或者多个事件，会触发对应事件名称绑定的所有事件函数。
+第一个参数是事件名称，剩下其他参数将作为事件回调的参数。
 
--   `events` **[string][4]** 事件名称
+#### Parameters
+
+-   `events` **[string][5]** 事件名称
 -   `arg` **...any?** 事件参数
 
-## Events.mixTo
+#### Examples
+
+```javascript
+var evt = new Events();
+
+// 触发事件名为 'event-name' 的事件
+evt.trigger('event-name');
+
+// 同时触发2个事件
+evt.trigger('event1 event2');
+
+// 触发事件同时传递参数
+evt.on('event-x', function (a, b) {
+	console.info(a, b); // 1, 2
+});
+evt.trigger('event-x', 1, 2);
+```
+
+### Events.mixTo
 
 Mix `Events` to object instance or Class function.
 
-### Parameters
+将自定事件对象，混合到一个类的实例。
 
--   `receiver` **[object][6]** 要混合事件函数的对象
+#### Parameters
 
-## $events
+-   `receiver` **[Object][7]** 要混合事件函数的对象
+
+#### Examples
+
+```javascript
+// 给一个实例混合自定义事件方法
+var obj = {};
+Events.mixTo(obj);
+
+// 生成一个实例
+var o1 = Object.create(obj);
+
+// 可以在这个对象上调用自定义事件的方法了
+o1.on('event', function () {});
+```
+
+## Listener
+
+-   **See: spore-kit-evt/events**
 
 广播组件
+
+构造实例时，需要传入事件白名单列表。
+只有在白名单列表上的事件才可以被触发。
+事件添加，移除，激发的调用方法参考 Events。
 
 ### Examples
 
 ```javascript
+// 白名单里只记录了 event1 事件
 var channelGlobal = new Listener([
-		'event1'
-	]);
-	channelGlobal.on('event1', function(){
-		console.log('event1');
-	});
-	channelGlobal.on('event2', function(){
-		//will not run
-		console.log('event2');
-	});
-	channelGlobal.trigger('event1');
-	channelGlobal.trigger('event2');
+	'event1'
+]);
+channelGlobal.on('event1', function(){
+	console.log('event1');
+});
+channelGlobal.on('event2', function(){
+	// will not run
+	console.log('event2');
+});
+channelGlobal.trigger('event1');
+channelGlobal.trigger('event2');
 ```
+
+### Listener.prototype.define
+
+在白名单上定义一个事件名称
+
+#### Parameters
+
+-   `eventName` **[String][5]** 
+
+### Listener.prototype.undefine
+
+移除白名单上定义的事件名称
+
+#### Parameters
+
+-   `eventName` **[String][5]** 
+
+### Listener.prototype.on
+
+-   **See: <a href="#events-prototype-on">events.prototype.on</a>**
+
+广播组件绑定事件
+
+#### Parameters
+
+-   `eventName` **[String][5]** 要绑定的事件名称
+-   `fn` **[Function][6]** 要绑定的事件回调函数
+
+### Listener.prototype.off
+
+-   **See: <a href="#events-prototype-off">events.prototype.off</a>**
+
+广播组件移除事件
+
+#### Parameters
+
+-   `eventName` **[String][5]** 要移除绑定的事件名称
+-   `fn` **[Function][6]** 要移除绑定的事件回调函数
+
+### Listener.prototype.trigger
+
+-   **See: <a href="#events-prototype-trigger">events.prototype.trigger</a>**
+
+广播组件派发事件
+
+#### Parameters
+
+-   `eventName` **[String][5]** 要触发的事件名称
+-   `arg` **...any?** 事件参数
 
 ## occurInside
 
@@ -146,14 +275,16 @@ $('.mask').on('tap', function(){
 	});
 ```
 
-[1]: http://aralejs.org/
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/evt
 
-[2]: https://github.com/documentcloud/backbone/blob/master/backbone.js
+[2]: http://aralejs.org/
 
-[3]: https://github.com/joyent/node/blob/master/lib/events.js
+[3]: https://github.com/documentcloud/backbone/blob/master/backbone.js
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[4]: https://github.com/joyent/node/blob/master/lib/events.js
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

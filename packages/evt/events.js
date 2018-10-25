@@ -3,24 +3,20 @@
  * with custom events. You may bind with `on` or remove with `off` callback
  * functions to an event; `trigger`-ing an event fires all callbacks in
  * succession.
- * @module Events
+ *
+ * 一个可以被混合到任何对象的模块，用于提供自定义事件。
+ * 可以用 on, off 方法来绑定移除事件。
+ * 用 trigger 来触发事件通知
+ *
+ * @class Events
  * @see http://aralejs.org/
  * @see https://github.com/documentcloud/backbone/blob/master/backbone.js
  * @see https://github.com/joyent/node/blob/master/lib/events.js
  * @example
- * var object = new Events();
- * object.on(
- * 	'expand',
- * 	function(){
- * 		alert('expanded');
- * 	}
- * );
- * object.trigger('expand');
- * // alert('expanded'); 将被执行
+ * var Events = require('spore-kit-evt/events');
  *
- * //给一个对象混合events的方法
- * var obj = {};
- * Events.mixTo(obj);
+ * var $kit = require('spore-kit');
+ * var Events = $kit.evt.events;
  */
 
 // Regular expression used to split event strings
@@ -50,11 +46,25 @@ var Events = function() {};
  * Bind one or more space separated events, `events`, to a `callback`
  * function. Passing `"all"` will bind the callback to all events fired.
  *
+ * 绑定一个事件回调函数，或者用多个空格分隔来绑定多个事件回调函数。
+ * 传入参数 `'all'` 会在所有事件发生时被触发。
+ *
  * @method Events.prototype.on
  * @memberof Events
  * @param {String} events 事件名称
  * @param {Function} callback 事件回调函数
  * @param {Object} [context] 回调函数的执行环境对象
+ * @example
+ * var evt = new Events();
+ *
+ * // 绑定1个事件
+ * evt.on('event-name', function () {});
+ *
+ * // 绑定2个事件
+ * evt.on('event1 event2', function () {});
+ *
+ * // 绑定为所有事件
+ * evt.on('all', function () {});
  */
 
 Events.prototype.on = function(events, callback, context) {
@@ -83,11 +93,28 @@ Events.prototype.on = function(events, callback, context) {
  * with that function. If `callback` is null, removes all callbacks for the
  * event. If `events` is null, removes all bound callbacks for all events.
  *
+ * 移除一个或者多个事件回调函数。
+ * 如果不传递 callback 参数，会移除所有该时间名称的事件回调函数。
+ * 如果不指定事件名称，移除所有自定义事件回调函数。
+ *
  * @method Events.prototype.off
  * @memberof Events
  * @param {String} [events] 事件名称
  * @param {Function} [callback] 要移除的事件回调函数
  * @param {Object} [context] 要移除的回调函数的执行环境对象
+ * @example
+ * var evt = new Events();
+ * var bound = {};
+ * bound.test = function () {};
+ *
+ * // 移除事件名为 event-name 的事件回调函数 bound.test
+ * evt.off('event-name', bound.test);
+ *
+ * // 移除事件名为 'event' 的所有事件回调函数
+ * evt.off('event');
+ *
+ * // 移除所有自定义事件
+ * evt.off();
  */
 
 Events.prototype.off = function(events, callback, context) {
@@ -141,10 +168,27 @@ Events.prototype.off = function(events, callback, context) {
  * (unless you're listening on `"all"`, which will cause your callback to
  * receive the true name of the event as the first argument).
  *
- * @function trigger
- * @memberof module:lib/more/events
+ * 派发一个或者多个事件，会触发对应事件名称绑定的所有事件函数。
+ * 第一个参数是事件名称，剩下其他参数将作为事件回调的参数。
+ *
+ * @method Events.prototype.trigger
+ * @memberof Events
  * @param {string} events 事件名称
  * @param {...*} [arg] 事件参数
+ * @example
+ * var evt = new Events();
+ *
+ * // 触发事件名为 'event-name' 的事件
+ * evt.trigger('event-name');
+ *
+ * // 同时触发2个事件
+ * evt.trigger('event1 event2');
+ *
+ * // 触发事件同时传递参数
+ * evt.on('event-x', function (a, b) {
+ * 	console.info(a, b); // 1, 2
+ * });
+ * evt.trigger('event-x', 1, 2);
  */
 Events.prototype.trigger = function(events) {
 	var cache;
@@ -205,9 +249,21 @@ Events.prototype.trigger = function(events) {
 /**
  * Mix `Events` to object instance or Class function.
  *
- * @function Events.mixTo
- * @memberof module:lib/more/events
- * @param {object} receiver 要混合事件函数的对象
+ * 将自定事件对象，混合到一个类的实例。
+ *
+ * @method Events.mixTo
+ * @memberof Events
+ * @param {Object} receiver 要混合事件函数的对象
+ * @example
+ * // 给一个实例混合自定义事件方法
+ * var obj = {};
+ * Events.mixTo(obj);
+ *
+ * // 生成一个实例
+ * var o1 = Object.create(obj);
+ *
+ * // 可以在这个对象上调用自定义事件的方法了
+ * o1.on('event', function () {});
  */
 Events.mixTo = function(receiver) {
 	receiver = receiver.prototype || receiver;

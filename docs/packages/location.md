@@ -2,6 +2,8 @@
 
 ## spore-kit-location
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/location][1]**
+
 # 处理地址字符串
 
 ### Examples
@@ -27,7 +29,7 @@ var $getQuery = require('spore-kit-location/getQuery');
 
 ### Parameters
 
--   `url` **[string][1]** URL字符串
+-   `url` **[string][2]** URL字符串
 
 ### Examples
 
@@ -39,7 +41,7 @@ console.info( getQuery(url, 'beijing') );
 //	'huanyingni'
 ```
 
-Returns **([object][2] \| [string][1])** query对象 | 参数值
+Returns **([object][3] \| [string][2])** query对象 | 参数值
 
 ## setQuery
 
@@ -47,8 +49,8 @@ Returns **([object][2] \| [string][1])** query对象 | 参数值
 
 ### Parameters
 
--   `url` **[string][1]** URL字符串
--   `query` **[object][2]** 参数对象
+-   `url` **[string][2]** URL字符串
+-   `query` **[object][3]** 参数对象
 
 ### Examples
 
@@ -121,7 +123,7 @@ console.assert(
 	console.table(table);
 ```
 
-Returns **[string][1]** 拼接好参数的URL字符串
+Returns **[string][2]** 拼接好参数的URL字符串
 
 ## parse
 
@@ -130,7 +132,7 @@ Returns **[string][1]** 拼接好参数的URL字符串
 ### Parameters
 
 -   `url`  
--   `str` **[string][1]** URL字符串
+-   `str` **[string][2]** URL字符串
 
 ### Examples
 
@@ -148,8 +150,10 @@ console.info( parse('http://t.sina.com.cn/profile?beijing=huanyingni') );
 //	}
 ```
 
-Returns **[object][2]** JSON对象
+Returns **[object][3]** JSON对象
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/location
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

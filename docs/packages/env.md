@@ -2,6 +2,8 @@
 
 ## spore-kit-env
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/env][1]**
+
 # 环境检测与判断工具
 
 ### Examples
@@ -42,7 +44,7 @@ var $touchable = require('spore-kit-env/touchable');
 console.info(browser().chrome);
 ```
 
-Returns **[Object][1]** UA 检查结果
+Returns **[Object][2]** UA 检查结果
 
 ## core
 
@@ -61,7 +63,7 @@ Returns **[Object][1]** UA 检查结果
 console.info(core().webkit);
 ```
 
-Returns **[Object][1]** UA 检查结果
+Returns **[Object][2]** UA 检查结果
 
 ## device
 
@@ -82,7 +84,7 @@ Returns **[Object][1]** UA 检查结果
 console.info(device().huawei);
 ```
 
-Returns **[Object][1]** UA 检查结果
+Returns **[Object][2]** UA 检查结果
 
 ## network
 
@@ -90,7 +92,7 @@ Returns **[Object][1]** UA 检查结果
 
 ## network.support
 
-判断是否支持联网检测
+判断页面是否支持联网检测
 
 ### Examples
 
@@ -98,11 +100,11 @@ Returns **[Object][1]** UA 检查结果
 network.support(); //true/false
 ```
 
-Returns **[Boolean][2]** 是否支持联网检测
+Returns **[Boolean][3]** 是否支持联网检测
 
 ## network.onLine
 
-判断是否联网
+判断页面是否联网
 
 ### Examples
 
@@ -110,7 +112,7 @@ Returns **[Boolean][2]** 是否支持联网检测
 network.onLine(); //true/false
 ```
 
-Returns **[Boolean][2]** 是否联网
+Returns **[Boolean][3]** 是否联网
 
 ## os
 
@@ -127,11 +129,11 @@ Returns **[Boolean][2]** 是否联网
 console.info(os().ios);
 ```
 
-Returns **[Object][1]** UA 检查结果
+Returns **[Object][2]** UA 检查结果
 
 ## touchable
 
-判断是否支持触摸屏
+判断浏览器是否支持触摸屏
 
 ### Examples
 
@@ -141,7 +143,7 @@ if (touchable()) {
 }
 ```
 
-Returns **[Boolean][2]** 是否支持触摸屏
+Returns **[Boolean][3]** 是否支持触摸屏
 
 ## uaMatch
 
@@ -149,9 +151,9 @@ UA字符串匹配列表
 
 ### Parameters
 
--   `list` **[Object][1]** 检测 Hash 列表
--   `ua` **[String][3]** 用于检测的 UA 字符串
--   `conf` **[Object][1]** 检测器选项，传递给检测函数
+-   `list` **[Object][2]** 检测 Hash 列表
+-   `ua` **[String][4]** 用于检测的 UA 字符串
+-   `conf` **[Object][2]** 检测器选项，传递给检测函数
 
 ### Examples
 
@@ -167,9 +169,13 @@ console.info(rs.presto); //true
 console.info(rs.trident); //undefined
 ```
 
+## webp
+
+webp 相关检测
+
 ## webp.support
 
-判断是否支持webp
+判断浏览器是否支持webp
 
 ### Examples
 
@@ -177,14 +183,12 @@ console.info(rs.trident); //undefined
 console.info(webp.support()); //true/false
 ```
 
-Returns **[Boolean][2]** 是否支持webp
+Returns **[Boolean][3]** 是否支持webp
 
-## webp
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/env
 
-webp 相关检测
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
-
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

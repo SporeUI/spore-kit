@@ -12,8 +12,8 @@
  * 		return ua.indexOf('gecko') > -1 && ua.indexOf('khtml') === -1;
  * 	}
  * }, 'xxx presto xxx');
- * console.info(rs.presto); //true
- * console.info(rs.trident); //undefined
+ * console.info(rs.presto); // true
+ * console.info(rs.trident); // undefined
  */
 
 function uaMatch(list, ua, conf) {

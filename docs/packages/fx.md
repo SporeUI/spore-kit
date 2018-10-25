@@ -2,6 +2,8 @@
 
 ## spore-kit-fx
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/fx][1]**
+
 # 动画交互相关工具
 
 ### Examples
@@ -25,12 +27,12 @@ var $smoothScrollTo = require('spore-kit-fx/smoothScrollTo');
 
 ### Parameters
 
--   `options` **[object][1]** 选项
-    -   `options.times` **[number][2]** 闪烁次数 (optional, default `3`)
-    -   `options.delay` **[number][2]** 闪烁间隔时间，单位为毫秒 (optional, default `100`)
-    -   `options.actionOdd` **[function][3]** 奇数回调 (optional, default `$.noop`)
-    -   `options.actionEven` **[function][3]** 偶数回调 (optional, default `$.noop`)
-    -   `options.recover` **[function][3]?** 状态恢复回调
+-   `options` **[object][2]** 选项
+    -   `options.times` **[number][3]** 闪烁次数 (optional, default `3`)
+    -   `options.delay` **[number][3]** 闪烁间隔时间，单位为毫秒 (optional, default `100`)
+    -   `options.actionOdd` **[function][4]** 奇数回调 (optional, default `$.noop`)
+    -   `options.actionEven` **[function][4]** 偶数回调 (optional, default `$.noop`)
+    -   `options.recover` **[function][4]?** 状态恢复回调
 
 ### Examples
 
@@ -51,7 +53,7 @@ var text = $('#target span.txt');
 
 ## fx
 
--   **See: [http://mootools.net/][4]**
+-   **See: [http://mootools.net/][5]**
 
 ### Examples
 
@@ -74,13 +76,13 @@ var fx = new Fx({
 
 ### Parameters
 
--   `options` **[object][1]?** 动画选项
-    -   `options.fps` **[number][2]** 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率 (optional, default `1000`)
-    -   `options.duration` **[number][2]** 动画持续时间(ms) (optional, default `500`)
-    -   `options.transition` **([string][5] \| [function][3])?** 动画执行方式，参见 kit/util/transitions
-    -   `options.frames` **[number][2]?** 从哪一帧开始执行
-    -   `options.frameSkip` **[boolean][6]** 是否跳帧 (optional, default `true`)
-    -   `options.link` **[string][5]** 动画衔接方式，可选：['ignore', 'cancel'] (optional, default `'ignore'`)
+-   `options` **[object][2]?** 动画选项
+    -   `options.fps` **[number][3]** 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率 (optional, default `1000`)
+    -   `options.duration` **[number][3]** 动画持续时间(ms) (optional, default `500`)
+    -   `options.transition` **([string][6] \| [function][4])?** 动画执行方式，参见 kit/util/transitions
+    -   `options.frames` **[number][3]?** 从哪一帧开始执行
+    -   `options.frameSkip` **[boolean][7]** 是否跳帧 (optional, default `true`)
+    -   `options.link` **[string][6]** 动画衔接方式，可选：['ignore', 'cancel'] (optional, default `'ignore'`)
 
 ## set
 
@@ -88,7 +90,7 @@ var fx = new Fx({
 
 ### Parameters
 
--   `now` **[number][2]** 当前动画帧的过渡数值
+-   `now` **[number][3]** 当前动画帧的过渡数值
 
 ## start
 
@@ -96,8 +98,8 @@ var fx = new Fx({
 
 ### Parameters
 
--   `from` **[number][2]** 动画开始数值
--   `to` **[number][2]** 动画结束数值
+-   `from` **[number][3]** 动画开始数值
+-   `to` **[number][3]** 动画结束数值
 
 Returns **any** this
 
@@ -145,7 +147,7 @@ Returns **any** this
 
 判断动画是否正在运行
 
-Returns **[boolean][6]** true/false
+Returns **[boolean][7]** true/false
 
 ## $assign
 
@@ -153,9 +155,9 @@ Returns **[boolean][6]** true/false
 
 ### Parameters
 
--   `node` **[element][7]** 目标DOM元素
--   `spec` **[object][1]** 选项
-    -   `spec.delta` **[number][2]** 目标滚动位置与目标元素顶部的间距，可以为负值 (optional, default `0`)
+-   `node` **[element][8]** 目标DOM元素
+-   `spec` **[object][2]** 选项
+    -   `spec.delta` **[number][3]** 目标滚动位置与目标元素顶部的间距，可以为负值 (optional, default `0`)
 
 ### Examples
 
@@ -170,9 +172,9 @@ IOS sticky 效果 polyfill
 
 ### Parameters
 
--   `node` **[element][7]** 目标DOM元素
--   `options` **[object][1]** 选项
-    -   `options.styles` **[object][1]** 进入 sticky 状态时的样式 (optional, default `{}`)
+-   `node` **[element][8]** 目标DOM元素
+-   `options` **[object][2]** 选项
+    -   `options.styles` **[object][2]** 进入 sticky 状态时的样式 (optional, default `{}`)
 
 ### Examples
 
@@ -200,10 +202,10 @@ timer.setTimeout(function(){
 
 #### Parameters
 
--   `fn` **[function][3]** 定时重复调用的函数
--   `delay` **[number][2]** 重复调用的间隔时间(ms) (optional, default `0`)
+-   `fn` **[function][4]** 定时重复调用的函数
+-   `delay` **[number][3]** 重复调用的间隔时间(ms) (optional, default `0`)
 
-Returns **[object][1]** 定时器对象，可传入clearInterval方法来终止这个定时器
+Returns **[object][2]** 定时器对象，可传入clearInterval方法来终止这个定时器
 
 ### clearInterval
 
@@ -211,7 +213,7 @@ Returns **[object][1]** 定时器对象，可传入clearInterval方法来终止�
 
 #### Parameters
 
--   `obj` **[object][1]** 定时器对象
+-   `obj` **[object][2]** 定时器对象
 
 ### setTimeout
 
@@ -219,10 +221,10 @@ Returns **[object][1]** 定时器对象，可传入clearInterval方法来终止�
 
 #### Parameters
 
--   `fn` **[function][3]** 延时调用的函数
--   `delay` **[number][2]** 延时调用的间隔时间(ms) (optional, default `0`)
+-   `fn` **[function][4]** 延时调用的函数
+-   `delay` **[number][3]** 延时调用的间隔时间(ms) (optional, default `0`)
 
-Returns **[object][1]** 定时器对象，可传入clearTimeout方法来终止这个定时器
+Returns **[object][2]** 定时器对象，可传入clearTimeout方法来终止这个定时器
 
 ### clearTimeout
 
@@ -230,11 +232,11 @@ Returns **[object][1]** 定时器对象，可传入clearTimeout方法来终止�
 
 #### Parameters
 
--   `obj` **[object][1]** 定时器对象
+-   `obj` **[object][2]** 定时器对象
 
 ## transitions
 
--   **See: [http://mootools.net/][4]**
+-   **See: [http://mootools.net/][5]**
 
 动画运行方式库
 
@@ -253,16 +255,18 @@ Returns **[object][1]** 定时器对象，可传入clearTimeout方法来终止�
 	});
 ```
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/fx
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[4]: http://mootools.net/
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[5]: http://mootools.net/
 
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[7]: https://developer.mozilla.org/docs/Web/API/Element
+[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[8]: https://developer.mozilla.org/docs/Web/API/Element

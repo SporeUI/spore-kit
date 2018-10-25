@@ -2,6 +2,8 @@
 
 ## spore-kit-fn
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/fn][1]**
+
 # 函数包装，获取特殊执行方式
 
 ### Examples
@@ -25,9 +27,9 @@ var $delay = require('spore-kit-fn/delay');
 
 ### Parameters
 
--   `fn` **[function][1]** 要延迟触发的函数
--   `duration` **[number][2]** 延迟时间[ms]
--   `bind` **[object][3]?** 函数的this指向
+-   `fn` **[function][2]** 要延迟触发的函数
+-   `duration` **[number][3]** 延迟时间[ms]
+-   `bind` **[object][4]?** 函数的this指向
 
 ### Examples
 
@@ -43,7 +45,7 @@ $('#input').keydown(delay(function(){
 }, 200, comp));
 ```
 
-Returns **[function][1]** 经过包装的延迟触发函数
+Returns **[function][2]** 经过包装的延迟触发函数
 
 ## lock
 
@@ -51,9 +53,9 @@ Returns **[function][1]** 经过包装的延迟触发函数
 
 ### Parameters
 
--   `fn` **[function][1]** 要延迟触发的函数
--   `delay` **[number][2]** 延迟时间[ms]
--   `bind` **[object][3]?** 函数的this指向
+-   `fn` **[function][2]** 要延迟触发的函数
+-   `delay` **[number][3]** 延迟时间[ms]
+-   `bind` **[object][4]?** 函数的this指向
 
 ### Examples
 
@@ -65,7 +67,7 @@ var request = function(){
 	//连续按键，仅在200ms结束后再次按键，才会再次请求
 ```
 
-Returns **[function][1]** 经过包装的冷却触发函数
+Returns **[function][2]** 经过包装的冷却触发函数
 
 ## once
 
@@ -73,8 +75,8 @@ Returns **[function][1]** 经过包装的冷却触发函数
 
 ### Parameters
 
--   `fn` **[function][1]** 要延迟触发的函数
--   `bind` **[object][3]?** 函数的this指向
+-   `fn` **[function][2]** 要延迟触发的函数
+-   `bind` **[object][4]?** 函数的this指向
 
 ### Examples
 
@@ -86,7 +88,7 @@ var fn = once(function(){
 	fn(); //will do nothing
 ```
 
-Returns **[function][1]** 该函数仅能触发执行一次
+Returns **[function][2]** 该函数仅能触发执行一次
 
 ## queue
 
@@ -94,9 +96,9 @@ Returns **[function][1]** 该函数仅能触发执行一次
 
 ### Parameters
 
--   `fn` **[function][1]** 要延迟触发的函数
--   `delay` **[number][2]** 延迟时间[ms]
--   `bind` **[object][3]?** 函数的this指向
+-   `fn` **[function][2]** 要延迟触发的函数
+-   `delay` **[number][3]** 延迟时间[ms]
+-   `bind` **[object][4]?** 函数的this指向
 
 ### Examples
 
@@ -111,7 +113,7 @@ var t1 = Date.now();
 	}
 ```
 
-Returns **[function][1]** 经过包装的队列触发函数
+Returns **[function][2]** 经过包装的队列触发函数
 
 ## prepare
 
@@ -150,7 +152,7 @@ var timeReady = prepare();
 	}, 2100);
 ```
 
-Returns **[function][1]** 条件管理触发器函数
+Returns **[function][2]** 条件管理触发器函数
 
 ## regular
 
@@ -158,9 +160,9 @@ Returns **[function][1]** 条件管理触发器函数
 
 ### Parameters
 
--   `fn` **[function][1]** 要延迟触发的函数
--   `delay` **[number][2]** 延迟时间[ms]
--   `bind` **[object][3]?** 函数的this指向
+-   `fn` **[function][2]** 要延迟触发的函数
+-   `delay` **[number][3]** 延迟时间[ms]
+-   `bind` **[object][4]?** 函数的this指向
 
 ### Examples
 
@@ -176,10 +178,12 @@ var comp = {
 	}, 200, comp));
 ```
 
-Returns **[function][1]** 经过包装的定时触发函数
+Returns **[function][2]** 经过包装的定时触发函数
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/fn
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
