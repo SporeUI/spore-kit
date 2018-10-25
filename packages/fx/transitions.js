@@ -1,17 +1,30 @@
 /**
  * 动画运行方式库
- * @module
- * @see http://mootools.net/
- * @example:
- * 	new fx({
- * 		transition : transitions.Sine.easeInOut
- * 	});
- * 	new fx({
- * 		transition : 'Sine:In'
- * 	});
- * 	new fx({
- * 		transition : 'Sine:In:Out'
- * 	});
+ * - Pow
+ * - Expo
+ * - Circ
+ * - Sine
+ * - Back
+ * - Bounce
+ * - Elastic
+ * - Quad
+ * - Cubic
+ * - Quart
+ * - Quint
+ * @module transitions
+ * @see https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions
+ * @example
+ *	var Fx = require('spore-kit-fx/fx');
+ *	var transitions = require('spore-kit-fx/transitions');
+ *	new Fx({
+ *		transition : transitions.Sine.easeInOut
+ *	});
+ *	new Fx({
+ *		transition : 'Sine:In'
+ *	});
+ *	new Fx({
+ *		transition : 'Sine:In:Out'
+ *	});
  */
 
 var $type = require('spore-kit-obj/type');

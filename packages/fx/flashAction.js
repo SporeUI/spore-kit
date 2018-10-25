@@ -1,36 +1,37 @@
 /**
  * 封装闪烁动作
+ * @method flashAction
  * @param {object} options 选项
- * @param {number} [options.times=3] 闪烁次数
- * @param {number} [options.delay=100] 闪烁间隔时间，单位为毫秒
- * @param {function} [options.actionOdd=$.noop] 奇数回调
- * @param {function} [options.actionEven=$.noop] 偶数回调
+ * @param {number} [options.times=3] 闪烁次数，默认3次
+ * @param {number} [options.delay=100] 闪烁间隔时间(ms)
+ * @param {function} [options.actionOdd] 奇数回调
+ * @param {function} [options.actionEven] 偶数回调
  * @param {function} [options.recover] 状态恢复回调
  * @example
- * 	var text = $('#target span.txt');
- * 	$flashAction({
- * 		actionOdd : function(){
- * 			text.css('color', '#f00');
- * 		},
- * 		actionEven : function(){
- * 			text.css('color', '#00f');
- * 		},
- * 		recover : function(){
- * 			text.css('color', '#000');
- * 		}
- * 	});
+ * 	// 文字闪烁，奇数次呈现为红色，偶数次成纤维蓝色，动画结束呈现为黑色
+ *	var text = $('#target span.txt');
+ *	$flashAction({
+ *		actionOdd : function (){
+ *			text.css('color', '#f00');
+ *		},
+ *		actionEven : function (){
+ *			text.css('color', '#00f');
+ *		},
+ *		recover : function (){
+ *			text.css('color', '#000');
+ *		}
+ *	});
  */
+var $assign = require('spore-kit-obj/assign');
 
 function flashAction (options) {
-	var $ = window.$ || window.Zepto || window.jQuery;
-
-	var conf = $.extend(
+	var conf = $assign(
 		{
 			times: 3,
 			delay: 100,
-			actionOdd: $.noop,
-			actionEven: $.noop,
-			recover: $.noop
+			actionOdd: null,
+			actionEven: null,
+			recover: null
 		},
 		options
 	);
@@ -40,13 +41,17 @@ function flashAction (options) {
 		queue.push((i + 1) * conf.delay);
 	}
 
-	$.each(queue, function(index, time) {
-		setTimeout(function() {
+	queue.forEach(function (time, index) {
+		setTimeout(function () {
 			if (index >= queue.length - 1) {
-				conf.recover();
+				if (conf.recover === 'function') {
+					conf.recover();
+				}
 			} else if (index % 2 === 0) {
-				conf.actionEven();
-			} else {
+				if (typeof conf.actionEven === 'function') {
+					conf.actionEven();
+				}
+			} else if (typeof conf.actionOdd === 'function') {
 				conf.actionOdd();
 			}
 		}, time);

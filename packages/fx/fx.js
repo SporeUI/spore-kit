@@ -1,17 +1,32 @@
 /**
- * @module
- * @see http://mootools.net/
+ * 动画类 - 用于处理不适合使用 transition 的动画场景
+ *
+ * 可绑定的事件
+ * - start 动画开始时触发
+ * - complete 动画已完成
+ * - stop 动画尚未完成就被中断
+ * - cancel 动画被取消
+ * @class Fx
+ * @see https://mootools.net/core/docs/1.6.0/Fx/Fx
+ * @constructor
+ * @param {Object} [options] 动画选项
+ * @param {Number} [options.fps=60] 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率
+ * @param {Number} [options.duration=500] 动画持续时间(ms)
+ * @param {String|Function} [options.transition] 动画执行方式，参见 spore-kit-fx/transitions
+ * @param {Number} [options.frames] 从哪一帧开始执行
+ * @param {Boolean} [options.frameSkip=true] 是否跳帧
+ * @param {String} [options.link='ignore'] 动画衔接方式，可选：['ignore', 'cancel']
  * @example
- * 	var fx = new Fx({
- * 		duration : 1000
- * 	});
- * 	fx.set = function(now){
- * 		node.style.marginLeft = now + 'px';
- * 	};
- * 	fx.on('complete', function(){
- * 		console.info('animation end');
- * 	});
- * 	fx.start(0, 600);  //1秒内数字从0增加到600
+ *	var fx = new Fx({
+ *		duration : 1000
+ *	});
+ *	fx.set = function (now) {
+ *		node.style.marginLeft = now + 'px';
+ *	};
+ *	fx.on('complete', function(){
+ *		console.info('animation end');
+ *	});
+ *	fx.start(0, 600);  // 1秒内数字从0增加到600
  */
 
 var $class = require('klass');
@@ -26,7 +41,7 @@ var $timer = require('./timer');
 var instances = {};
 var timers = {};
 
-var loop = function() {
+var loop = function () {
 	var now = Date.now();
 	for (var i = this.length; i--;) {
 		var instance = this[i];
@@ -36,7 +51,7 @@ var loop = function() {
 	}
 };
 
-var pushInstance = function(fps) {
+var pushInstance = function (fps) {
 	var list = instances[fps] || (instances[fps] = []);
 	list.push(this);
 	if (!timers[fps]) {
@@ -47,7 +62,7 @@ var pushInstance = function(fps) {
 	}
 };
 
-var pullInstance = function(fps) {
+var pullInstance = function (fps) {
 	var list = instances[fps];
 	if (list) {
 		$erase(list, this);
@@ -59,21 +74,10 @@ var pullInstance = function(fps) {
 };
 
 var Fx = $class({
-	/**
-	 * 动画类 - 用于处理不适合使用transition的场景
-	 * @constructor
-	 * @param {object} [options] 动画选项
-	 * @param {number} [options.fps=1000] 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率
-	 * @param {number} [options.duration=500] 动画持续时间(ms)
-	 * @param {string|function} [options.transition] 动画执行方式，参见 kit/util/transitions
-	 * @param {number} [options.frames] 从哪一帧开始执行
-	 * @param {boolean} [options.frameSkip=true] 是否跳帧
-	 * @param {string} [options.link='ignore'] 动画衔接方式，可选：['ignore', 'cancel']
-	 */
-	initialize: function(options) {
+	initialize: function (options) {
 		this.options = $assign(
 			{
-				fps: 1000,
+				fps: 60,
 				duration: 500,
 				transition: null,
 				frames: null,
@@ -84,17 +88,35 @@ var Fx = $class({
 		);
 	},
 
-	setOptions: function(options) {
+	/**
+	 * 设置实例的选项
+	 * @method Fx.prototype.setOptions
+	 * @memberof Fx
+	 * @param {Object} options 动画选项
+	 */
+	setOptions: function (options) {
 		this.conf = $assign({}, this.options, options);
 	},
 
-	getTransition: function() {
-		return function(p) {
+	/**
+	 * 设置动画的执行方式，配置缓动效果
+	 * @interface getTransition
+	 * @memberof Fx
+	 * @example
+	 *	var fx = new Fx();
+	 *	fx.getTransition = function () {
+	 *		return function (p) {
+	 *			return -(Math.cos(Math.PI * p) - 1) / 2;
+	 *		};
+	 *	};
+	 */
+	getTransition: function () {
+		return function (p) {
 			return -(Math.cos(Math.PI * p) - 1) / 2;
 		};
 	},
 
-	step: function(now) {
+	step: function (now) {
 		if (this.options.frameSkip) {
 			var diff = this.time != null ? now - this.time : 0;
 			var frames = diff / this.frameInterval;
@@ -113,20 +135,27 @@ var Fx = $class({
 			this.stop();
 		}
 	},
+
 	/**
 	 * 设置当前动画帧的过渡数值
-	 * @interface
-	 * @param {number} now 当前动画帧的过渡数值
+	 * @interface set
+	 * @memberof Fx
+	 * @param {Number} now 当前动画帧的过渡数值
+	 * @example
+	 *	var fx = new Fx();
+	 *	fx.set = function (now) {
+	 *		node.style.marginLeft = now + 'px';
+	 *	};
 	 */
-	set: function(now) {
+	set: function (now) {
 		return now;
 	},
 
-	compute: function(from, to, delta) {
+	compute: function (from, to, delta) {
 		return Fx.compute(from, to, delta);
 	},
 
-	check: function() {
+	check: function () {
 		if (!this.isRunning()) {
 			return true;
 		}
@@ -139,12 +168,15 @@ var Fx = $class({
 
 	/**
 	 * 开始执行动画
-	 * @param {number} from 动画开始数值
-	 * @param {number} to 动画结束数值
-	 * @return this
-	 * @fires #start
+	 * @method start
+	 * @memberof Fx
+	 * @param {Number} from 动画开始数值
+	 * @param {Number} to 动画结束数值
+	 * @example
+	 *	var fx = new Fx();
+	 *	fx.start(); // 开始动画
 	 */
-	start: function(from, to) {
+	start: function (from, to) {
 		if (!this.check(from, to)) {
 			return this;
 		}
@@ -159,10 +191,6 @@ var Fx = $class({
 		this.duration = Fx.Durations[duration] || parseInt(duration, 10) || 0;
 		this.frameInterval = 1000 / fps;
 		this.frames = frames || Math.round(this.duration / this.frameInterval);
-		/**
-		 * 动画开始
-		 * @event #start
-		 */
 		this.trigger('start');
 		pushInstance.call(this, fps);
 		return this;
@@ -170,25 +198,20 @@ var Fx = $class({
 
 	/**
 	 * 停止动画
-	 * @return this
-	 * @fires #complete
-	 * @fires #stop
+	 * @method stop
+	 * @memberof Fx
+	 * @example
+	 *	var fx = new Fx();
+	 *	fx.start();
+	 *	fx.stop(); // 立刻停止动画
 	 */
-	stop: function() {
+	stop: function () {
 		if (this.isRunning()) {
 			this.time = null;
 			pullInstance.call(this, this.options.fps);
 			if (this.frames === this.frame) {
-				/**
-				 * 动画已完成
-				 * @event #complete
-				 */
 				this.trigger('complete');
 			} else {
-				/**
-				 * 动画尚未完成就被中断
-				 * @event #stop
-				 */
 				this.trigger('stop');
 			}
 		}
@@ -197,18 +220,18 @@ var Fx = $class({
 
 	/**
 	 * 取消动画
-	 * @return this
-	 * @fires #cancel
+	 * @method cancel
+	 * @memberof Fx
+	 * @example
+	 *	var fx = new Fx();
+	 *	fx.start();
+	 *	fx.cancel(); // 立刻取消动画
 	 */
-	cancel: function() {
+	cancel: function () {
 		if (this.isRunning()) {
 			this.time = null;
 			pullInstance.call(this, this.options.fps);
 			this.frame = this.frames;
-			/**
-			 * 动画被取消
-			 * @event #cancel
-			 */
 			this.trigger('cancel');
 		}
 		return this;
@@ -216,9 +239,14 @@ var Fx = $class({
 
 	/**
 	 * 暂停动画
-	 * @return this
+	 * @method pause
+	 * @memberof Fx
+	 * @example
+	 *	var fx = new Fx();
+	 *	fx.start();
+	 *	fx.pause(); // 立刻暂停动画
 	 */
-	pause: function() {
+	pause: function () {
 		if (this.isRunning()) {
 			this.time = null;
 			pullInstance.call(this, this.options.fps);
@@ -228,9 +256,15 @@ var Fx = $class({
 
 	/**
 	 * 继续执行动画
-	 * @return this
+	 * @method resume
+	 * @memberof Fx
+	 * @example
+	 *	var fx = new Fx();
+	 *	fx.start();
+	 *	fx.pause();
+	 *	fx.resume(); // 立刻继续动画
 	 */
-	resume: function() {
+	resume: function () {
 		if (this.frame < this.frames && !this.isRunning()) {
 			pushInstance.call(this, this.options.fps);
 		}
@@ -239,9 +273,16 @@ var Fx = $class({
 
 	/**
 	 * 判断动画是否正在运行
-	 * @return {boolean} true/false
+	 * @method isRunning
+	 * @memberof Fx
+	 * @returns {Boolean} 动画是否正在运行
+	 * @example
+	 *	var fx = new Fx();
+	 *	fx.start();
+	 *	fx.pause();
+	 *	fx.isRunning(); // false
 	 */
-	isRunning: function() {
+	isRunning: function () {
 		var list = instances[this.options.fps];
 		return list && $contains(list, this);
 	}
@@ -249,7 +290,7 @@ var Fx = $class({
 
 $events.mixTo(Fx);
 
-Fx.compute = function(from, to, delta) {
+Fx.compute = function (from, to, delta) {
 	return (to - from) * delta + from;
 };
 

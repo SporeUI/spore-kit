@@ -1,25 +1,27 @@
 /**
- * 平滑滚动到某个元素
- * @param {element} node 目标DOM元素
- * @param {object} spec 选项
- * @param {number} [spec.delta=0] 目标滚动位置与目标元素顶部的间距，可以为负值
- * @param {function} [options.callback=noop] 滚动完成的回调函数
+ * 平滑滚动到某个元素，只进行垂直方向的滚动
+ * - requires jQuery/Zepto
+ * @method smoothScrollTo
+ * @param {Object} node 目标DOM元素
+ * @param {Object} spec 选项
+ * @param {Number} [spec.delta=0] 目标滚动位置与目标元素顶部的间距，可以为负值
+ * @param {Number} [spec.maxDelay=3000] 动画执行时间限制(ms)，动画执行超过此时间则直接停止，立刻滚动到目标位置
+ * @param {Function} [options.callback] 滚动完成的回调函数
  * @example
- * //滚动到页面顶端
+ * // 滚动到页面顶端
  * smoothScrollTo(document.body);
  */
 
 var $assign = require('spore-kit-obj/assign');
 
-var noop = function() {};
-
-function smoothScrollTo(node, spec) {
+function smoothScrollTo (node, spec) {
 	var $ = window.$ || window.Zepto || window.jQuery;
 
 	var conf = $assign(
 		{
 			delta: 0,
-			callback: noop
+			maxDelay: 3000,
+			callback: null
 		},
 		spec
 	);
@@ -33,7 +35,7 @@ function smoothScrollTo(node, spec) {
 
 	var timer = null;
 
-	var stopTimer = function() {
+	var stopTimer = function () {
 		if (timer) {
 			clearInterval(timer);
 			timer = null;
@@ -44,7 +46,7 @@ function smoothScrollTo(node, spec) {
 		}
 	};
 
-	timer = setInterval(function() {
+	timer = setInterval(function () {
 		var sTop = $(window).scrollTop();
 		var delta = sTop - target;
 		if (delta > 0) {
@@ -66,9 +68,9 @@ function smoothScrollTo(node, spec) {
 		}
 	}, 16);
 
-	setTimeout(function() {
+	setTimeout(function () {
 		stopTimer();
-	}, 3000);
+	}, conf.maxDelay);
 }
 
 module.exports = smoothScrollTo;

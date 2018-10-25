@@ -28,141 +28,205 @@ var $smoothScrollTo = require('spore-kit-fx/smoothScrollTo');
 ### Parameters
 
 -   `options` **[object][2]** 选项
-    -   `options.times` **[number][3]** 闪烁次数 (optional, default `3`)
-    -   `options.delay` **[number][3]** 闪烁间隔时间，单位为毫秒 (optional, default `100`)
-    -   `options.actionOdd` **[function][4]** 奇数回调 (optional, default `$.noop`)
-    -   `options.actionEven` **[function][4]** 偶数回调 (optional, default `$.noop`)
+    -   `options.times` **[number][3]** 闪烁次数，默认3次 (optional, default `3`)
+    -   `options.delay` **[number][3]** 闪烁间隔时间(ms) (optional, default `100`)
+    -   `options.actionOdd` **[function][4]?** 奇数回调
+    -   `options.actionEven` **[function][4]?** 偶数回调
     -   `options.recover` **[function][4]?** 状态恢复回调
 
 ### Examples
 
 ```javascript
+// 文字闪烁，奇数次呈现为红色，偶数次成纤维蓝色，动画结束呈现为黑色
 var text = $('#target span.txt');
-	$flashAction({
-		actionOdd : function(){
-			text.css('color', '#f00');
-		},
-		actionEven : function(){
-			text.css('color', '#00f');
-		},
-		recover : function(){
-			text.css('color', '#000');
-		}
-	});
+$flashAction({
+	actionOdd : function (){
+		text.css('color', '#f00');
+	},
+	actionEven : function (){
+		text.css('color', '#00f');
+	},
+	recover : function (){
+		text.css('color', '#000');
+	}
+});
 ```
 
-## fx
+## Fx
 
--   **See: [http://mootools.net/][5]**
+-   **See: [https://mootools.net/core/docs/1.6.0/Fx/Fx][5]**
+
+动画类 - 用于处理不适合使用 transition 的动画场景
+
+可绑定的事件
+
+-   start 动画开始时触发
+-   complete 动画已完成
+-   stop 动画尚未完成就被中断
+-   cancel 动画被取消
+
+### Parameters
+
+-   `options` **[Object][2]?** 动画选项
+    -   `options.fps` **[Number][3]** 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率 (optional, default `60`)
+    -   `options.duration` **[Number][3]** 动画持续时间(ms) (optional, default `500`)
+    -   `options.transition` **([String][6] \| [Function][4])?** 动画执行方式，参见 spore-kit-fx/transitions
+    -   `options.frames` **[Number][3]?** 从哪一帧开始执行
+    -   `options.frameSkip` **[Boolean][7]** 是否跳帧 (optional, default `true`)
+    -   `options.link` **[String][6]** 动画衔接方式，可选：['ignore', 'cancel'] (optional, default `'ignore'`)
 
 ### Examples
 
 ```javascript
 var fx = new Fx({
-		duration : 1000
-	});
-	fx.set = function(now){
-		node.style.marginLeft = now + 'px';
-	};
-	fx.on('complete', function(){
-		console.info('animation end');
-	});
-	fx.start(0, 600);  //1秒内数字从0增加到600
+	duration : 1000
+});
+fx.set = function (now) {
+	node.style.marginLeft = now + 'px';
+};
+fx.on('complete', function(){
+	console.info('animation end');
+});
+fx.start(0, 600);  // 1秒内数字从0增加到600
 ```
 
-## initialize
+### Fx.prototype.setOptions
 
-动画类 - 用于处理不适合使用transition的场景
+设置实例的选项
 
-### Parameters
+#### Parameters
 
--   `options` **[object][2]?** 动画选项
-    -   `options.fps` **[number][3]** 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率 (optional, default `1000`)
-    -   `options.duration` **[number][3]** 动画持续时间(ms) (optional, default `500`)
-    -   `options.transition` **([string][6] \| [function][4])?** 动画执行方式，参见 kit/util/transitions
-    -   `options.frames` **[number][3]?** 从哪一帧开始执行
-    -   `options.frameSkip` **[boolean][7]** 是否跳帧 (optional, default `true`)
-    -   `options.link` **[string][6]** 动画衔接方式，可选：['ignore', 'cancel'] (optional, default `'ignore'`)
+-   `options` **[Object][2]** 动画选项
 
-## set
+### getTransition
+
+设置动画的执行方式，配置缓动效果
+
+#### Examples
+
+```javascript
+var fx = new Fx();
+fx.getTransition = function () {
+	return function (p) {
+		return -(Math.cos(Math.PI * p) - 1) / 2;
+	};
+};
+```
+
+### set
 
 设置当前动画帧的过渡数值
 
-### Parameters
+#### Parameters
 
--   `now` **[number][3]** 当前动画帧的过渡数值
+-   `now` **[Number][3]** 当前动画帧的过渡数值
 
-## start
+#### Examples
+
+```javascript
+var fx = new Fx();
+fx.set = function (now) {
+	node.style.marginLeft = now + 'px';
+};
+```
+
+### start
 
 开始执行动画
 
-### Parameters
+#### Parameters
 
--   `from` **[number][3]** 动画开始数值
--   `to` **[number][3]** 动画结束数值
+-   `from` **[Number][3]** 动画开始数值
+-   `to` **[Number][3]** 动画结束数值
 
-Returns **any** this
+#### Examples
 
-## #start
+```javascript
+var fx = new Fx();
+fx.start(); // 开始动画
+```
 
-动画开始
-
-## stop
+### stop
 
 停止动画
 
-Returns **any** this
+#### Examples
 
-## #complete
+```javascript
+var fx = new Fx();
+fx.start();
+fx.stop(); // 立刻停止动画
+```
 
-动画已完成
-
-## #stop
-
-动画尚未完成就被中断
-
-## cancel
+### cancel
 
 取消动画
 
-Returns **any** this
+#### Examples
 
-## #cancel
+```javascript
+var fx = new Fx();
+fx.start();
+fx.cancel(); // 立刻取消动画
+```
 
-动画被取消
-
-## pause
+### pause
 
 暂停动画
 
-Returns **any** this
+#### Examples
 
-## resume
+```javascript
+var fx = new Fx();
+fx.start();
+fx.pause(); // 立刻暂停动画
+```
+
+### resume
 
 继续执行动画
 
-Returns **any** this
+#### Examples
 
-## isRunning
+```javascript
+var fx = new Fx();
+fx.start();
+fx.pause();
+fx.resume(); // 立刻继续动画
+```
+
+### isRunning
 
 判断动画是否正在运行
 
-Returns **[boolean][7]** true/false
+#### Examples
 
-## $assign
+```javascript
+var fx = new Fx();
+fx.start();
+fx.pause();
+fx.isRunning(); // false
+```
 
-平滑滚动到某个元素
+Returns **[Boolean][7]** 动画是否正在运行
+
+## smoothScrollTo
+
+平滑滚动到某个元素，只进行垂直方向的滚动
+
+-   requires jQuery/Zepto
 
 ### Parameters
 
--   `node` **[element][8]** 目标DOM元素
--   `spec` **[object][2]** 选项
-    -   `spec.delta` **[number][3]** 目标滚动位置与目标元素顶部的间距，可以为负值 (optional, default `0`)
+-   `node` **[Object][2]** 目标DOM元素
+-   `spec` **[Object][2]** 选项
+    -   `spec.delta` **[Number][3]** 目标滚动位置与目标元素顶部的间距，可以为负值 (optional, default `0`)
+    -   `spec.maxDelay` **[Number][3]** 动画执行时间限制(ms)，动画执行超过此时间则直接停止，立刻滚动到目标位置 (optional, default `3000`)
 
 ### Examples
 
 ```javascript
-//滚动到页面顶端
+// 滚动到页面顶端
 smoothScrollTo(document.body);
 ```
 
@@ -170,11 +234,17 @@ smoothScrollTo(document.body);
 
 IOS sticky 效果 polyfill
 
+-   requires jQuery/Zepto
+
 ### Parameters
 
--   `node` **[element][8]** 目标DOM元素
--   `options` **[object][2]** 选项
-    -   `options.styles` **[object][2]** 进入 sticky 状态时的样式 (optional, default `{}`)
+-   `node` **[Object][2]** 目标DOM元素
+-   `options` **[Object][2]** 选项
+    -   `options.clone` **[Boolean][7]** 是否创建一个 clone 元素 (optional, default `true`)
+    -   `options.placeholder` **[Object][2]** sticky 效果启动时的占位 dom 元素 (optional, default `null`)
+    -   `options.disableAndroid` **[Boolean][7]** 是否在 Android 下停用 sticky 效果 (optional, default `false`)
+    -   `options.offsetParent` **[Object][2]** 提供一个相对定位元素来匹配浮动时的定位样式 (optional, default `null`)
+    -   `options.styles` **[Object][2]** 进入 sticky 状态时的样式 (optional, default `{}`)
 
 ### Examples
 
@@ -186,73 +256,75 @@ sticky($('h1').get(0));
 
 用 requestAnimationFrame 包装定时器
 
-如果浏览器不支持 requestAnimationFrame API，则使用BOM原本的定时器API
+-   如果浏览器不支持 requestAnimationFrame API，则使用 BOM 原本的定时器API
+-   requires jQuery/Zepto
 
 ### Examples
 
 ```javascript
-timer.setTimeout(function(){
-		console.info('output this log after 1000ms');
-	}, 1000);
+timer.setTimeout(function () {
+	console.info('output this log after 1000ms');
+}, 1000);
 ```
 
-### setInterval
+### timer.setInterval
 
 设置重复调用定时器
 
 #### Parameters
 
--   `fn` **[function][4]** 定时重复调用的函数
--   `delay` **[number][3]** 重复调用的间隔时间(ms) (optional, default `0`)
+-   `fn` **[Function][4]** 定时重复调用的函数
+-   `delay` **[Number][3]** 重复调用的间隔时间(ms) (optional, default `0`)
 
-Returns **[object][2]** 定时器对象，可传入clearInterval方法来终止这个定时器
+Returns **[Object][2]** 定时器对象，可传入 clearInterval 方法来终止这个定时器
 
-### clearInterval
+### timer.clearInterval
 
 清除重复调用定时器
 
 #### Parameters
 
--   `obj` **[object][2]** 定时器对象
+-   `obj` **[Object][2]** 定时器对象
 
-### setTimeout
+### timer.setTimeout
 
 设置延时调用定时器
 
 #### Parameters
 
--   `fn` **[function][4]** 延时调用的函数
--   `delay` **[number][3]** 延时调用的间隔时间(ms) (optional, default `0`)
+-   `fn` **[Function][4]** 延时调用的函数
+-   `delay` **[Number][3]** 延时调用的间隔时间(ms) (optional, default `0`)
 
-Returns **[object][2]** 定时器对象，可传入clearTimeout方法来终止这个定时器
+Returns **[Object][2]** 定时器对象，可传入 clearTimeout 方法来终止这个定时器
 
-### clearTimeout
+### timer.clearTimeout
 
 清除延时调用定时器
 
 #### Parameters
 
--   `obj` **[object][2]** 定时器对象
+-   `obj` **[Object][2]** 定时器对象
 
 ## transitions
 
--   **See: [http://mootools.net/][5]**
+-   **See: [https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions][8]**
 
 动画运行方式库
 
 ### Examples
 
 ```javascript
-:
-	new fx({
-		transition : transitions.Sine.easeInOut
-	});
-	new fx({
-		transition : 'Sine:In'
-	});
-	new fx({
-		transition : 'Sine:In:Out'
-	});
+var Fx = require('spore-kit-fx/fx');
+var transitions = require('spore-kit-fx/transitions');
+new Fx({
+	transition : transitions.Sine.easeInOut
+});
+new Fx({
+	transition : 'Sine:In'
+});
+new Fx({
+	transition : 'Sine:In:Out'
+});
 ```
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/fx
@@ -263,10 +335,10 @@ Returns **[object][2]** 定时器对象，可传入clearTimeout方法来终止�
 
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[5]: http://mootools.net/
+[5]: https://mootools.net/core/docs/1.6.0/Fx/Fx
 
 [6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[8]: https://developer.mozilla.org/docs/Web/API/Element
+[8]: https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions

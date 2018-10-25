@@ -1,8 +1,13 @@
 /**
  * IOS sticky 效果 polyfill
- * @param {element} node 目标DOM元素
- * @param {object} options 选项
- * @param {object} [options.styles={}] 进入 sticky 状态时的样式
+ * - requires jQuery/Zepto
+ * @param {Object} node 目标DOM元素
+ * @param {Object} options 选项
+ * @param {Boolean} [options.clone=true] 是否创建一个 clone 元素
+ * @param {Object} [options.placeholder=null] sticky 效果启动时的占位 dom 元素
+ * @param {Boolean} [options.disableAndroid=false] 是否在 Android 下停用 sticky 效果
+ * @param {Object} [options.offsetParent=null] 提供一个相对定位元素来匹配浮动时的定位样式
+ * @param {Object} [options.styles={}] 进入 sticky 状态时的样式
  * @example
  * sticky($('h1').get(0));
  */
