@@ -1,7 +1,26 @@
 /**
- * 呼起本地客户端
+ * 此方法用于呼起本地客户端，呼起失败时，跳转到客户端下载地址或者中间页
+ * - 首先需要客户端提供一个协议地址 protocol
+ * - 然后通过浏览器访问该地址或者 iframe 访问该协议地址来触发客户端的打开动作
+ * - 在设定好的超时时间 (waiting) 到达时进行检查
+ * - 由于 IOS 下，跳转到 APP，页面 JS 会被阻止执行
+ * - 所以如果超时时间大大超过了预期时间范围，可断定 APP 已被打开，此时触发 onTimeout 回调事件函数
+ * - 对于 IOS，此时如果从 APP 返回页面，就可以通过 waitingLimit 时间差来判断是否要执行 fallback 回调事件函数
+ * - Android 下，跳转到 APP，页面 JS 会继续执行
+ * - 此时无论 APP 是否已打开，都会触发 onFallback 事件与 fallback 回调事件函数
+ * - fallback 默认操作是跳转到 fallbackUrl 客户端下载地址或者中间页地址
+ * - 这样对于没有安装 APP 的移动端，页面会在超时事件发生时，直接跳转到 fallbackUrl
  * @method callUp
  * @param {object} options
+ * @param {string} options.protocol 客户端APP呼起协议地址
+ * @param {string} c 客户端下载地址或者中间页地址
+ * @param {function} options.action 自定义呼起客户端的方式
+ * @param {number} [options.startTime=new Date().getTime()] 呼起客户端的开始时间(ms)，以时间数值作为参数
+ * @param {number} [options.waiting=800] 呼起超时等待时间(ms)
+ * @param {number} [options.waitingLimit=50] 超时后检查回调是否在此时间限制内触发(ms)
+ * @param {function} [options.fallback=function () { window.location = fallbackUrl; }] 默认回退操作
+ * @param {function} [options.onFallback] 呼起操作未能成功执行时触发的回调事件函数
+ * @param {function} [options.onTimeout] 呼起超时触发的回调事件函数
  * @example
  * callUp({
  * 	startTime: Date.now(),
@@ -18,31 +37,20 @@
 var $assign = require('spore-kit-obj/assign');
 var $browser = require('spore-kit-env/browser');
 
-var noop = function() {};
-
 function callUp (options) {
 	var conf = $assign({
-		// 客户端APP呼起协议地址
 		protocol: '',
-		// 客户端下载地址或者中间页地址
 		fallbackUrl: '',
-		// 自定义呼起客户端的方式
 		action: null,
-		// 开始时间
 		startTime: new Date().getTime(),
-		// 呼起超时等待时间
 		waiting: 800,
-		// 超时后检查回调是否在此时间限制内触发
 		waitingLimit: 50,
-		// 默认回退操作
 		fallback: function(fallbackUrl) {
 			// 在一定时间内无法唤起客户端，跳转下载地址或到中间页
 			window.location = fallbackUrl;
 		},
-		// 呼起超时触发的事件
-		onTimeout: noop,
-		// 呼起操作未能成功执行时触发的事件
-		onFallback: noop
+		onFallback: null,
+		onTimeout: null
 	}, options);
 
 	var wId;
@@ -77,13 +85,19 @@ function callUp (options) {
 			document.body.removeChild(iframe);
 		}
 
-		conf.onTimeout();
+		if (typeof conf.onTimeout === 'function') {
+			conf.onTimeout();
+		}
 
 		// ios下，跳转到APP，页面JS会被阻止执行。
 		// 因此如果超时时间大大超过了预期时间范围，可断定APP已被打开。
 		if (new Date().getTime() - conf.startTime < conf.waiting + conf.waitingLimit) {
-			conf.onFallback();
-			conf.fallback(conf.fallbackUrl);
+			if (typeof conf.onFallback === 'function') {
+				conf.onFallback();
+			}
+			if (typeof conf.fallback === 'function') {
+				conf.fallback(conf.fallbackUrl);
+			}
 		}
 	}, conf.waiting);
 }

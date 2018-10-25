@@ -32,7 +32,7 @@ module.exports = {
 		],
 		sidebar: [
 			{
-				title: '文档说明',
+				title: '简介',
 				children: [
 					'/'
 				]
