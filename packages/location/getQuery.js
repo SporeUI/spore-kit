@@ -1,16 +1,16 @@
 /**
  * 解析 location.search 为一个JSON对象
- *
- * 或者获取其中某个参数
- * @module
- * @param {string} url URL字符串
- * @return {object|string} query对象 | 参数值
+ * - 或者获取其中某个参数
+ * @method getQuery
+ * @param {String} url URL字符串
+ * @param {String} name 参数名称
+ * @returns {Object|String} query对象 | 参数值
  * @example
- * var url = 'http://localhost/profile?beijing=huanyingni';
- * console.info( getQuery(url) );
- * //	{beijing : 'huanyingni'}
- * console.info( getQuery(url, 'beijing') );
- * //	'huanyingni'
+ *	var url = 'http://localhost/profile?beijing=huanyingni';
+ *	console.info( getQuery(url) );
+ *	// {beijing : 'huanyingni'}
+ *	console.info( getQuery(url, 'beijing') );
+ *	// 'huanyingni'
  */
 
 var cache = {};

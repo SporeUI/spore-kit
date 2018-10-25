@@ -25,23 +25,24 @@ var $getQuery = require('spore-kit-location/getQuery');
 
 解析 location.search 为一个JSON对象
 
-或者获取其中某个参数
+-   或者获取其中某个参数
 
 ### Parameters
 
--   `url` **[string][2]** URL字符串
+-   `url` **[String][2]** URL字符串
+-   `name` **[String][2]** 参数名称
 
 ### Examples
 
 ```javascript
 var url = 'http://localhost/profile?beijing=huanyingni';
 console.info( getQuery(url) );
-//	{beijing : 'huanyingni'}
+// {beijing : 'huanyingni'}
 console.info( getQuery(url, 'beijing') );
-//	'huanyingni'
+// 'huanyingni'
 ```
 
-Returns **([object][3] \| [string][2])** query对象 | 参数值
+Returns **([Object][3] \| [String][2])** query对象 | 参数值
 
 ## setQuery
 
@@ -49,81 +50,25 @@ Returns **([object][3] \| [string][2])** query对象 | 参数值
 
 ### Parameters
 
--   `url` **[string][2]** URL字符串
--   `query` **[object][3]** 参数对象
+-   `url` **[String][2]** URL字符串
+-   `query` **[Object][3]** 参数对象
 
 ### Examples
 
 ```javascript
-console.assert(
-		setQuery('localhost', {a: 1}),
-		'localhost?a=1'
-	);
-
-	var table = [
-		{
-			url: 'localhost',
-			result: 'localhost'
-		},
-		{
-			url: '',
-			query: {a: 1},
-			result: '?a=1'
-		},
-		{
-			url: 'localhost',
-			query: {a: 1},
-			result: 'localhost?a=1'
-		},
-		{
-			url: 'localhost?a=1',
-			query: {a: 2},
-			result: 'localhost?a=2'
-		},
-		{
-			url: 'localhost?a=1',
-			query: {a: ''},
-			result: 'localhost?a='
-		},
-		{
-			url: 'localhost?a=1',
-			query: {a: null},
-			result: 'localhost'
-		},
-		{
-			url: 'localhost?a=1',
-			query: {b: 2},
-			result: 'localhost?a=1&b=2'
-		},
-		{
-			url: 'localhost?a=1&b=1',
-			query: {a: 2, b: 3},
-			result: 'localhost?a=2&b=3'
-		},
-		{
-			url: 'localhost#a=1',
-			query: {a: 2, b: 3},
-			result: 'localhost?a=2&b=3#a=1'
-		},
-		{
-			url: '#a=1',
-			query: {a: 2, b: 3},
-			result: '?a=2&b=3#a=1'
-		}
-	].map(function(item){
-		var result = setQuery(item.url, item.query);
-		return {
-			url: item.url,
-			query: item.query ? JSON.stringify(item.query) : item.query,
-			'should': item.result,
-			actual: result,
-			assert: result === item.result
-		};
-	});
-	console.table(table);
+setQuery('localhost'); // 'localhost'
+setQuery('localhost', {a: 1}); // 'localhost?a=1'
+setQuery('', {a: 1}); // '?a=1'
+setQuery('localhost?a=1', {a: 2}); // 'localhost?a=2'
+setQuery('localhost?a=1', {a: ''}); // 'localhost?a='
+setQuery('localhost?a=1', {a: null}); // 'localhost'
+setQuery('localhost?a=1', {b: 2}); // 'localhost?a=1&b=2'
+setQuery('localhost?a=1&b=1', {a: 2, b: 3}); // 'localhost?a=2&b=3'
+setQuery('localhost#a=1', {a: 2, b: 3}); // 'localhost?a=2&b=3#a=1'
+setQuery('#a=1', {a: 2, b: 3}); // '?a=2&b=3#a=1'
 ```
 
-Returns **[string][2]** 拼接好参数的URL字符串
+Returns **[String][2]** 拼接好参数的URL字符串
 
 ## parse
 
@@ -131,8 +76,7 @@ Returns **[string][2]** 拼接好参数的URL字符串
 
 ### Parameters
 
--   `url`  
--   `str` **[string][2]** URL字符串
+-   `str` **[String][2]** URL字符串
 
 ### Examples
 
@@ -150,7 +94,7 @@ console.info( parse('http://t.sina.com.cn/profile?beijing=huanyingni') );
 //	}
 ```
 
-Returns **[object][3]** JSON对象
+Returns **[Object][3]** JSON对象
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/location
 
