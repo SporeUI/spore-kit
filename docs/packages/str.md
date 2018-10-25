@@ -158,10 +158,10 @@ Returns **[String][2]** str
 ### Examples
 
 ```javascript
-sizeOfUTF8String('中文cc');  //return 8
+sizeOfUTF8String('中文cc'); //return 8
 ```
 
-Returns **[number][3]** 字符串长度
+Returns **[Number][3]** 字符串长度
 
 ## substitute
 
@@ -169,17 +169,17 @@ Returns **[number][3]** 字符串长度
 
 ### Parameters
 
--   `str` **[string][2]** 要替换模板的字符串
--   `obj` **[object][4]** 模板对应的数据对象
--   `reg` **[regExp][5]** 解析模板的正则表达式 (optional, default `/\\?\{\{([^{}]+)\}\}/g`)
+-   `str` **[String][2]** 要替换模板的字符串
+-   `obj` **[Object][4]** 模板对应的数据对象
+-   `reg` **[RegExp][5]** 解析模板的正则表达式 (optional, default `/\\?\{\{([^{}]+)\}\}/g`)
 
 ### Examples
 
 ```javascript
-substitute('{{city}}欢迎您', {{city:'北京'}}); //return '北京欢迎您'
+substitute('{{city}}欢迎您', {{city:'北京'}}); // '北京欢迎您'
 ```
 
-Returns **[string][2]** 替换了模板的字符串
+Returns **[String][2]** 替换了模板的字符串
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/str
 
