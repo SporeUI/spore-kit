@@ -1,7 +1,7 @@
 /**
  * # 环境检测与判断工具
- * @name spore-kit-env
- * @module
+ * @module spore-kit-env
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/env
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');

@@ -1,7 +1,7 @@
 /**
  * # 函数包装，获取特殊执行方式
- * @name spore-kit-fn
- * @module
+ * @module spore-kit-fn
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/fn
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');

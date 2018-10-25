@@ -1,7 +1,7 @@
 /**
  * # dom操作相关工具函数
- * @name spore-kit-dom
- * @module
+ * @module spore-kit-dom
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/dom
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');

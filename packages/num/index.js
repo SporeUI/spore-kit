@@ -1,7 +1,7 @@
 /**
  * # 处理数字，数据转换
- * @name spore-kit-num
- * @module
+ * @module spore-kit-num
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/num
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');

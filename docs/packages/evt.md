@@ -19,73 +19,75 @@ console.info($evt.occurInside);
 var $occurInside = require('spore-kit-evt/occurInside');
 ```
 
-## eventSplitter
+## Events
 
 -   **See: [http://aralejs.org/][1]**
 -   **See: [https://github.com/documentcloud/backbone/blob/master/backbone.js][2]**
 -   **See: [https://github.com/joyent/node/blob/master/lib/events.js][3]**
-
-### Examples
-
-```javascript
-var object = new Events();
-object.on('expand', function(){ alert('expanded'); });
-object.trigger('expand');
-
-//给一个对象混合events的方法
-var obj = {};
-Events.mixTo(obj);
-```
-
-## module:lib/more/events
-
-Events
 
 A module that can be mixed in to _any object_ in order to provide it
 with custom events. You may bind with `on` or remove with `off` callback
 functions to an event; `trigger`-ing an event fires all callbacks in
 succession.
 
-### on
+### Examples
+
+```javascript
+var object = new Events();
+object.on(
+	'expand',
+	function(){
+		alert('expanded');
+	}
+);
+object.trigger('expand');
+// alert('expanded'); 将被执行
+
+//给一个对象混合events的方法
+var obj = {};
+Events.mixTo(obj);
+```
+
+### Events.prototype.on
 
 Bind one or more space separated events, `events`, to a `callback`
 function. Passing `"all"` will bind the callback to all events fired.
 
 #### Parameters
 
--   `events` **[string][4]** 事件名称
--   `callback` **[function][5]** 事件回调函数
--   `context` **[object][6]?** 回调函数的执行环境对象
+-   `events` **[String][4]** 事件名称
+-   `callback` **[Function][5]** 事件回调函数
+-   `context` **[Object][6]?** 回调函数的执行环境对象
 
-### off
+## off
 
 Remove one or many callbacks. If `context` is null, removes all callbacks
 with that function. If `callback` is null, removes all callbacks for the
 event. If `events` is null, removes all bound callbacks for all events.
 
-#### Parameters
+### Parameters
 
 -   `events` **[string][4]?** 事件名称
 -   `callback` **[function][5]?** 要移除的事件回调函数
 -   `context` **[object][6]?** 要移除的回调函数的执行环境对象
 
-### trigger
+## trigger
 
 Trigger one or many events, firing all bound callbacks. Callbacks are
 passed the same arguments as `trigger` is, apart from the event name
 (unless you're listening on `"all"`, which will cause your callback to
 receive the true name of the event as the first argument).
 
-#### Parameters
+### Parameters
 
 -   `events` **[string][4]** 事件名称
 -   `arg` **...any?** 事件参数
 
-### Events.mixTo
+## Events.mixTo
 
 Mix `Events` to object instance or Class function.
 
-#### Parameters
+### Parameters
 
 -   `receiver` **[object][6]** 要混合事件函数的对象
 

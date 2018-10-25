@@ -1,7 +1,7 @@
 /**
  * # 时间处理与交互工具
- * @name spore-kit-time
- * @module
+ * @module spore-kit-time
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/time
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');

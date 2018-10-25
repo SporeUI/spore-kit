@@ -1,11 +1,22 @@
 /**
+ * A module that can be mixed in to *any object* in order to provide it
+ * with custom events. You may bind with `on` or remove with `off` callback
+ * functions to an event; `trigger`-ing an event fires all callbacks in
+ * succession.
+ * @module Events
  * @see http://aralejs.org/
  * @see https://github.com/documentcloud/backbone/blob/master/backbone.js
  * @see https://github.com/joyent/node/blob/master/lib/events.js
  * @example
  * var object = new Events();
- * object.on('expand', function(){ alert('expanded'); });
+ * object.on(
+ * 	'expand',
+ * 	function(){
+ * 		alert('expanded');
+ * 	}
+ * );
  * object.trigger('expand');
+ * // alert('expanded'); 将被执行
  *
  * //给一个对象混合events的方法
  * var obj = {};
@@ -33,28 +44,17 @@ if (!keys) {
 	};
 }
 
-/**
- * Events
- *
- * A module that can be mixed in to *any object* in order to provide it
- * with custom events. You may bind with `on` or remove with `off` callback
- * functions to an event; `trigger`-ing an event fires all callbacks in
- * succession.
- *
- * @constructor module:lib/more/events
- */
-
 var Events = function() {};
 
 /**
  * Bind one or more space separated events, `events`, to a `callback`
  * function. Passing `"all"` will bind the callback to all events fired.
  *
- * @function on
- * @memberof module:lib/more/events
- * @param {string} events 事件名称
- * @param {function} callback 事件回调函数
- * @param {object} [context] 回调函数的执行环境对象
+ * @method Events.prototype.on
+ * @memberof Events
+ * @param {String} events 事件名称
+ * @param {Function} callback 事件回调函数
+ * @param {Object} [context] 回调函数的执行环境对象
  */
 
 Events.prototype.on = function(events, callback, context) {
@@ -83,11 +83,11 @@ Events.prototype.on = function(events, callback, context) {
  * with that function. If `callback` is null, removes all callbacks for the
  * event. If `events` is null, removes all bound callbacks for all events.
  *
- * @function off
- * @memberof module:lib/more/events
- * @param {string} [events] 事件名称
- * @param {function} [callback] 要移除的事件回调函数
- * @param {object} [context] 要移除的回调函数的执行环境对象
+ * @method Events.prototype.off
+ * @memberof Events
+ * @param {String} [events] 事件名称
+ * @param {Function} [callback] 要移除的事件回调函数
+ * @param {Object} [context] 要移除的回调函数的执行环境对象
  */
 
 Events.prototype.off = function(events, callback, context) {

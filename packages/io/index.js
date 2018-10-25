@@ -1,7 +1,7 @@
 /**
  * # 处理网络交互
- * @name spore-kit-io
- * @module
+ * @module spore-kit-io
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/io
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');

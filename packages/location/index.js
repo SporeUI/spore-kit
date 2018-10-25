@@ -1,7 +1,7 @@
 /**
  * # 处理地址字符串
- * @name spore-kit-location
- * @module
+ * @module spore-kit-location
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/location
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');

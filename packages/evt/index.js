@@ -1,7 +1,7 @@
 /**
  * # 处理事件与广播
- * @name spore-kit-evt
- * @module
+ * @module spore-kit-evt
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/evt
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');

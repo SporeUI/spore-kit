@@ -1,7 +1,7 @@
 /**
  * # 动画交互相关工具
- * @name spore-kit-fx
- * @module
+ * @module spore-kit-fx
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/fx
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');
