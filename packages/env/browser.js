@@ -1,5 +1,20 @@
 /**
  * 检测浏览器类型
+ *
+ * 支持的类型检测
+ * - qq
+ * - uc
+ * - baidu
+ * - miui
+ * - weixin
+ * - qzone
+ * - qqnews
+ * - qqhouse
+ * - qqbrowser
+ * - chrome
+ * @method browser
+ * @returns {Object} UA 检查结果
+ * @example
  * console.info(browser().chrome);
  */
 var $assign = require('spore-kit-obj/assign');

@@ -1,5 +1,14 @@
 /**
  * 检测浏览器核心
+ *
+ * 支持的类型检测
+ * - trident
+ * - presto
+ * - webkit
+ * - gecko
+ * @method core
+ * @returns {Object} UA 检查结果
+ * @example
  * console.info(core().webkit);
  */
 

@@ -25,10 +25,10 @@ var $isNode = require('spore-kit-dom/isNode');
 
 ### Parameters
 
--   `node` **[element][1]** 
+-   `node` **[Object][1]** 要判断的对象
 
-Returns **[boolean][2]** true/false
+Returns **[Boolean][2]** 是否为dom元素
 
-[1]: https://developer.mozilla.org/docs/Web/API/Element
+[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean

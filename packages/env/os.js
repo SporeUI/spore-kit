@@ -1,5 +1,12 @@
 /**
  * 检测操作系统类型
+ *
+ * 支持的类型检测
+ * - ios
+ * - android
+ * @method os
+ * @returns {Object} UA 检查结果
+ * @example
  * console.info(os().ios);
  */
 var $assign = require('spore-kit-obj/assign');

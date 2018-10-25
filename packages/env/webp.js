@@ -1,8 +1,16 @@
 var isSupportWebp = null;
 
 /**
- * 判断是否支持webp
- * @return {boolean} true/false
+ * webp 相关检测
+ * @module webp
+ */
+
+/**
+ * 判断浏览器是否支持webp
+ * @method webp.support
+ * @returns {Boolean} 是否支持webp
+ * @example
+ * console.info(webp.support()); //true/false
  */
 function support() {
 	if (isSupportWebp === null) {

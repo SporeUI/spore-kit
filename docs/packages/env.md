@@ -19,61 +19,129 @@ console.info($env.touchable);
 var $touchable = require('spore-kit-env/touchable');
 ```
 
-## $assign
+## browser
 
 检测浏览器类型
-console.info(browser().chrome);
 
-## $assign
+支持的类型检测
 
-检测浏览器核心
-console.info(core().webkit);
-
-## $assign
-
-检测设备类型
-console.info(device().huawei);
-
-## $assign
-
-检测操作系统类型
-console.info(os().ios);
-
-## supportOnline
-
-网络环境检测
-
-## support
-
-判断是否支持联网检测
-
-Returns **[boolean][1]** true/false
-
-## support
-
-判断是否支持webp
-
-Returns **[boolean][1]** true/false
-
-## onLine
-
-判断是否联网
-
-Returns **[boolean][1]** true/false
-
-## isTouchable
-
-判断是否支持触摸屏
-
-Type: [boolean][1]
+-   qq
+-   uc
+-   baidu
+-   miui
+-   weixin
+-   qzone
+-   qqnews
+-   qqhouse
+-   qqbrowser
+-   chrome
 
 ### Examples
 
 ```javascript
-if(touchable()){
-		//It is a touch device.
-	}
+console.info(browser().chrome);
 ```
+
+Returns **[Object][1]** UA 检查结果
+
+## core
+
+检测浏览器核心
+
+支持的类型检测
+
+-   trident
+-   presto
+-   webkit
+-   gecko
+
+### Examples
+
+```javascript
+console.info(core().webkit);
+```
+
+Returns **[Object][1]** UA 检查结果
+
+## device
+
+检测设备类型
+
+支持的类型检测
+
+-   huawei
+-   oppo
+-   vivo
+-   xiaomi
+-   samsong
+-   iphone
+
+### Examples
+
+```javascript
+console.info(device().huawei);
+```
+
+Returns **[Object][1]** UA 检查结果
+
+## network
+
+网络环境检测
+
+## network.support
+
+判断是否支持联网检测
+
+### Examples
+
+```javascript
+network.support(); //true/false
+```
+
+Returns **[Boolean][2]** 是否支持联网检测
+
+## network.onLine
+
+判断是否联网
+
+### Examples
+
+```javascript
+network.onLine(); //true/false
+```
+
+Returns **[Boolean][2]** 是否联网
+
+## os
+
+检测操作系统类型
+
+支持的类型检测
+
+-   ios
+-   android
+
+### Examples
+
+```javascript
+console.info(os().ios);
+```
+
+Returns **[Object][1]** UA 检查结果
+
+## touchable
+
+判断是否支持触摸屏
+
+### Examples
+
+```javascript
+if (touchable()) {
+	//It is a touch device.
+}
+```
+
+Returns **[Boolean][2]** 是否支持触摸屏
 
 ## uaMatch
 
@@ -81,22 +149,42 @@ UA字符串匹配列表
 
 ### Parameters
 
--   `list`  
--   `ua`  
--   `conf`  
+-   `list` **[Object][1]** 检测 Hash 列表
+-   `ua` **[String][3]** 用于检测的 UA 字符串
+-   `conf` **[Object][1]** 检测器选项，传递给检测函数
 
 ### Examples
 
 ```javascript
 var rs = uaMatch({
-		trident: 'trident',
-		presto: /presto/,
-		gecko: function(ua){
-			return ua.indexOf('gecko') > -1 && ua.indexOf('khtml') === -1;
-		}
-	}, 'xxx presto xxx');
-	console.info(rs.presto); //true
-	console.info(rs.trident); //undefined
+	trident: 'trident',
+	presto: /presto/,
+	gecko: function(ua){
+		return ua.indexOf('gecko') > -1 && ua.indexOf('khtml') === -1;
+	}
+}, 'xxx presto xxx');
+console.info(rs.presto); //true
+console.info(rs.trident); //undefined
 ```
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+## webp.support
+
+判断是否支持webp
+
+### Examples
+
+```javascript
+console.info(webp.support()); //true/false
+```
+
+Returns **[Boolean][2]** 是否支持webp
+
+## webp
+
+webp 相关检测
+
+[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

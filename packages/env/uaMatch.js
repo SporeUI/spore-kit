@@ -1,15 +1,19 @@
 /**
  * UA字符串匹配列表
+ * @method uaMatch
+ * @param {Object} list 检测 Hash 列表
+ * @param {String} ua 用于检测的 UA 字符串
+ * @param {Object} conf 检测器选项，传递给检测函数
  * @example
- * 	var rs = uaMatch({
- * 		trident: 'trident',
- * 		presto: /presto/,
- * 		gecko: function(ua){
- * 			return ua.indexOf('gecko') > -1 && ua.indexOf('khtml') === -1;
- * 		}
- * 	}, 'xxx presto xxx');
- * 	console.info(rs.presto); //true
- * 	console.info(rs.trident); //undefined
+ * var rs = uaMatch({
+ * 	trident: 'trident',
+ * 	presto: /presto/,
+ * 	gecko: function(ua){
+ * 		return ua.indexOf('gecko') > -1 && ua.indexOf('khtml') === -1;
+ * 	}
+ * }, 'xxx presto xxx');
+ * console.info(rs.presto); //true
+ * console.info(rs.trident); //undefined
  */
 
 function uaMatch(list, ua, conf) {

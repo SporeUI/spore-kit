@@ -1,5 +1,16 @@
 /**
  * 检测设备类型
+ *
+ * 支持的类型检测
+ * - huawei
+ * - oppo
+ * - vivo
+ * - xiaomi
+ * - samsong
+ * - iphone
+ * @method device
+ * @returns {Object} UA 检查结果
+ * @example
  * console.info(device().huawei);
  */
 var $assign = require('spore-kit-obj/assign');

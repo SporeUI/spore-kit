@@ -1,7 +1,7 @@
 /**
  * 判断对象是否为dom元素
- * @param {element} node
- * @return {boolean} true/false
+ * @param {Object} node 要判断的对象
+ * @return {Boolean} 是否为dom元素
  */
 function isNode(node) {
 	return (

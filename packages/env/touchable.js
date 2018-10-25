@@ -1,10 +1,11 @@
 /**
- * 判断是否支持触摸屏
- * @type {boolean}
+ * 判断浏览器是否支持触摸屏
+ * @method touchable
+ * @returns {Boolean} 是否支持触摸屏
  * @example
- * 	if(touchable()){
- * 		//It is a touch device.
- * 	}
+ * if (touchable()) {
+ * 	//It is a touch device.
+ * }
  */
 
 var isTouchable = null;
