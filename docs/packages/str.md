@@ -27,15 +27,15 @@ var $substitute = require('spore-kit-str/substitute');
 
 ### Parameters
 
--   `str` **[string][2]** 要计算长度的字符串
+-   `str` **[String][2]** 要计算长度的字符串
 
 ### Examples
 
 ```javascript
-bLength('中文cc');  //return 6
+bLength('中文cc'); // 6
 ```
 
-Returns **[number][3]** 字符串长度
+Returns **[Number][3]** 字符串长度
 
 ## dbcToSbc
 
@@ -43,15 +43,15 @@ Returns **[number][3]** 字符串长度
 
 ### Parameters
 
--   `str` **[string][2]** 包含了全角字符的字符串
+-   `str` **[String][2]** 包含了全角字符的字符串
 
 ### Examples
 
 ```javascript
-dbcToSbc('ＳＡＡＳＤＦＳＡＤＦ');	//return 'SAASDFSADF'
+dbcToSbc('ＳＡＡＳＤＦＳＡＤＦ'); // 'SAASDFSADF'
 ```
 
-Returns **[string][2]** 经过转换的字符串
+Returns **[String][2]** 经过转换的字符串
 
 ## decodeHTML
 
@@ -59,15 +59,15 @@ Returns **[string][2]** 经过转换的字符串
 
 ### Parameters
 
--   `str` **[string][2]** 含有实体字符标记的字符串
+-   `str` **[String][2]** 含有实体字符的字符串
 
 ### Examples
 
 ```javascript
-decodeHTML('&amp;&lt;&gt;$nbsp;&quot;');  //return '&<> "'
+decodeHTML('&amp;&lt;&gt;$nbsp;&quot;'); // '&<> "'
 ```
 
-Returns **[string][2]** HTML字符串
+Returns **[String][2]** HTML字符串
 
 ## encodeHTML
 
@@ -75,21 +75,27 @@ Returns **[string][2]** HTML字符串
 
 ### Parameters
 
--   `str` **[string][2]** 含有HTML字符的字符串
+-   `str` **[String][2]** 含有HTML字符的字符串
 
 ### Examples
 
 ```javascript
-encodeHTML('&<>" ');  //return '&amp;&lt;&gt;&quot;$nbsp;'
+encodeHTML('&<>" '); // '&amp;&lt;&gt;&quot;$nbsp;'
 ```
 
-Returns **[string][2]** 经过转换的字符串
+Returns **[String][2]** 经过转换的字符串
 
 ## getUniqueKey
 
 生成一个不与之前重复的随机字符串
 
-Returns **[string][2]** 随机字符串
+### Examples
+
+```javascript
+getUniqueKey(); // '166aae1fa9f'
+```
+
+Returns **[String][2]** 随机字符串
 
 ## hyphenate
 
@@ -97,15 +103,15 @@ Returns **[string][2]** 随机字符串
 
 ### Parameters
 
--   `str` **[string][2]** 驼峰格式的字符串
+-   `str` **[String][2]** 驼峰格式的字符串
 
 ### Examples
 
 ```javascript
-hyphenate('libKitStrHyphenate'); //return 'lib-kit-str-hyphenate'
+hyphenate('libKitStrHyphenate'); // 'lib-kit-str-hyphenate'
 ```
 
-Returns **[string][2]** 连字符格式的字符串
+Returns **[String][2]** 连字符格式的字符串
 
 ## ipToHex
 
@@ -113,7 +119,7 @@ Returns **[string][2]** 连字符格式的字符串
 
 ### Parameters
 
--   `ip` **[string][2]** 十进制数字的IPV4地址
+-   `ip` **[String][2]** 十进制数字的IPV4地址
 
 ### Examples
 
@@ -121,7 +127,7 @@ Returns **[string][2]** 连字符格式的字符串
 ipToHex('255.255.255.255'); //return 'ffffffff'
 ```
 
-Returns **[string][2]** 16进制数字IPV4地址
+Returns **[String][2]** 16进制数字IPV4地址
 
 ## leftB
 
@@ -136,7 +142,7 @@ Returns **[string][2]** 16进制数字IPV4地址
 
 ```javascript
 //向汉编致敬
-leftB('世界真和谐', 6); //return '世界真'
+leftB('世界真和谐', 6); // '世界真'
 ```
 
 Returns **[String][2]** str

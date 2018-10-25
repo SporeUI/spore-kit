@@ -1,13 +1,13 @@
 /**
  * 取字符串 utf8 编码长度，from 王集鹄
- * @module
+ * @method sizeOfUTF8String
  * @param {String} str
- * @return {number} 字符串长度
+ * @returns {Number} 字符串长度
  * @example
- * sizeOfUTF8String('中文cc');  //return 8
+ * sizeOfUTF8String('中文cc'); //return 8
 */
 
-function sizeOfUTF8String(str) {
+function sizeOfUTF8String (str) {
 	return (
 		typeof unescape !== 'undefined'
 			? unescape(encodeURIComponent(str)).length

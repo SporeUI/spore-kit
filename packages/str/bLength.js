@@ -1,13 +1,13 @@
 /**
  * 获取字符串长度，一个中文算2个字符
- * @module
- * @param {string} str 要计算长度的字符串
- * @return {number} 字符串长度
+ * @method bLength
+ * @param {String} str 要计算长度的字符串
+ * @returns {Number} 字符串长度
  * @example
- * bLength('中文cc');  //return 6
+ * bLength('中文cc'); // 6
  */
 
-function bLength(str) {
+function bLength (str) {
 	var aMatch;
 	if (!str) {
 		return 0;

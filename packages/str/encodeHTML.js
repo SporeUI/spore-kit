@@ -1,13 +1,13 @@
 /**
  * 编码HTML，将HTML字符转为实体字符
- * @module
- * @param {string} str 含有HTML字符的字符串
- * @return {string} 经过转换的字符串
+ * @method encodeHTML
+ * @param {String} str 含有HTML字符的字符串
+ * @returns {String} 经过转换的字符串
  * @example
- * encodeHTML('&<>" ');  //return '&amp;&lt;&gt;&quot;$nbsp;'
+ * encodeHTML('&<>" '); // '&amp;&lt;&gt;&quot;$nbsp;'
  */
 
-function encodeHTML(str) {
+function encodeHTML (str) {
 	if (typeof str !== 'string') {
 		throw new Error('encodeHTML need a string as parameter');
 	}

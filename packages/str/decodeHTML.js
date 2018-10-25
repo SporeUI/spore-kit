@@ -1,13 +1,13 @@
 /**
  * 解码HTML，将实体字符转换为HTML字符
- * @module
- * @param {string} str 含有实体字符标记的字符串
- * @return {string} HTML字符串
+ * @method decodeHTML
+ * @param {String} str 含有实体字符的字符串
+ * @returns {String} HTML字符串
  * @example
- * decodeHTML('&amp;&lt;&gt;$nbsp;&quot;');  //return '&<> "'
+ * decodeHTML('&amp;&lt;&gt;$nbsp;&quot;'); // '&<> "'
  */
 
-function decodeHTML(str) {
+function decodeHTML (str) {
 	if (typeof str !== 'string') {
 		throw new Error('decodeHTML need a string as parameter');
 	}

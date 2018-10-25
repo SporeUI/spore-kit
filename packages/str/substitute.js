@@ -1,15 +1,15 @@
 /**
  * 简单模板函数
- * @module
- * @param {string} str 要替换模板的字符串
- * @param {object} obj 模板对应的数据对象
- * @param {regExp} [reg=/\\?\{\{([^{}]+)\}\}/g] 解析模板的正则表达式
- * @return {string} 替换了模板的字符串
+ * @method substitute
+ * @param {String} str 要替换模板的字符串
+ * @param {Object} obj 模板对应的数据对象
+ * @param {RegExp} [reg=/\\?\{\{([^{}]+)\}\}/g] 解析模板的正则表达式
+ * @return {String} 替换了模板的字符串
  * @example
- * substitute('{{city}}欢迎您', {{city:'北京'}}); //return '北京欢迎您'
+ * substitute('{{city}}欢迎您', {{city:'北京'}}); // '北京欢迎您'
  */
 
-function substitute(str, obj, reg) {
+function substitute (str, obj, reg) {
 	return str.replace(reg || (/\\?\{\{([^{}]+)\}\}/g), function (match, name) {
 		if (match.charAt(0) === '\\') {
 			return match.slice(1);
