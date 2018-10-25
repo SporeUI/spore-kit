@@ -14,7 +14,7 @@
  */
 
 function once (fn, bind) {
-	return function() {
+	return function () {
 		bind = bind || this;
 		if (typeof fn === 'function') {
 			fn.apply(bind, arguments);

@@ -23,7 +23,7 @@ function lock (fn, delay, bind) {
 		}
 		bind = bind || this;
 		var args = arguments;
-		timer = setTimeout(function() {
+		timer = setTimeout(function () {
 			timer = null;
 		}, delay);
 		if (typeof fn === 'function') {

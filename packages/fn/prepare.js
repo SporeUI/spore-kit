@@ -42,7 +42,7 @@
  * @method prepare.ready
  * @memberof prepare
  */
-function prepare() {
+function prepare () {
 	var queue = [];
 	var condition = false;
 	var model;

@@ -19,15 +19,15 @@
  *	}, 200, comp));
  */
 
-function reqular(fn, delay, bind) {
+function reqular (fn, delay, bind) {
 	var enable = true;
 	var timer = null;
-	return function() {
+	return function () {
 		bind = bind || this;
 		enable = true;
 		var args = arguments;
 		if (!timer) {
-			timer = setInterval(function() {
+			timer = setInterval(function () {
 				if (typeof fn === 'function') {
 					fn.apply(bind, args);
 				}

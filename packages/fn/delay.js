@@ -21,9 +21,9 @@
  *	}, 500, comp));
  */
 
-function delay(fn, duration, bind) {
+function delay (fn, duration, bind) {
 	var timer = null;
-	return function() {
+	return function () {
 		bind = bind || this;
 		if (timer) {
 			clearTimeout(timer);

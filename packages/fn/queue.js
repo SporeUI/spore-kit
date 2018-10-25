@@ -17,7 +17,7 @@
  *	}
  */
 
-function queue(fn, delay, bind) {
+function queue (fn, delay, bind) {
 	var timer = null;
 	var arr = [];
 	return function() {
