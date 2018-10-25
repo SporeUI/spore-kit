@@ -2,6 +2,8 @@
 
 ## spore-kit-arr
 
+-   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/arr][1]**
+
 # 类数组对象相关工具函数
 
 ### Examples
@@ -25,7 +27,7 @@ var $contains = require('spore-kit-arr/contains');
 
 ### Parameters
 
--   `arr` **[Array][1]** 要操作的数组
+-   `arr` **[Array][2]** 要操作的数组
 -   `item` **any** 要搜索的对象
 
 ### Examples
@@ -34,7 +36,7 @@ var $contains = require('spore-kit-arr/contains');
 console.info(contains([1,2,3,4,5], 3));	//true
 ```
 
-Returns **[Boolean][2]** 如果对象在数组中，返回 true
+Returns **[Boolean][3]** 如果对象在数组中，返回 true
 
 ## erase
 
@@ -42,7 +44,7 @@ Returns **[Boolean][2]** 如果对象在数组中，返回 true
 
 ### Parameters
 
--   `arr` **[Array][1]** 要操作的数组
+-   `arr` **[Array][2]** 要操作的数组
 -   `item` **any** 要清除的对象
 
 ### Examples
@@ -51,7 +53,7 @@ Returns **[Boolean][2]** 如果对象在数组中，返回 true
 console.info(erase([1,2,3,4,5],3));	//[1,2,4,5]
 ```
 
-Returns **[Number][3]** 对象原本所在位置
+Returns **[Number][4]** 对象原本所在位置
 
 ## find
 
@@ -59,9 +61,9 @@ Returns **[Number][3]** 对象原本所在位置
 
 ### Parameters
 
--   `arr` **[Array][1]** 要操作的数组
--   `fn` **[Function][4]** 条件函数
--   `context` **[Object][5]?** 函数的this指向
+-   `arr` **[Array][2]** 要操作的数组
+-   `fn` **[Function][5]** 条件函数
+-   `context` **[Object][6]?** 函数的this指向
 
 ### Examples
 
@@ -71,7 +73,7 @@ console.info(find([1,2,3,4,5], function (item) {
 	});	//[0, 1]
 ```
 
-Returns **[Array][1]** 符合条件的元素在数组中的位置
+Returns **[Array][2]** 符合条件的元素在数组中的位置
 
 ## flatten
 
@@ -79,7 +81,7 @@ Returns **[Array][1]** 符合条件的元素在数组中的位置
 
 ### Parameters
 
--   `arr` **[array][1]** 要操作的数组
+-   `arr` **[array][2]** 要操作的数组
 
 ### Examples
 
@@ -87,7 +89,7 @@ Returns **[Array][1]** 符合条件的元素在数组中的位置
 console.info(flatten([1, [2,3], [4,5]]));	//[1,2,3,4,5]
 ```
 
-Returns **[array][1]** 经过扁平化处理的数组
+Returns **[array][2]** 经过扁平化处理的数组
 
 ## include
 
@@ -95,7 +97,7 @@ Returns **[array][1]** 经过扁平化处理的数组
 
 ### Parameters
 
--   `arr` **[Array][1]** 要操作的数组
+-   `arr` **[Array][2]** 要操作的数组
 -   `item` **any** 要插入的对象
 
 ### Examples
@@ -105,14 +107,16 @@ console.info(include([1,2,3],4));	//[1,2,3,4]
 console.info(include([1,2,3],3));	//[1,2,3]
 ```
 
-Returns **[Array][1]** 经过处理的源数组
+Returns **[Array][2]** 经过处理的源数组
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[1]: https://github.com/SporeUI/spore-kit/tree/master/packages/arr
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

@@ -58,7 +58,7 @@ callUp({
 	waitingLimit: 50,
 	protocol : scheme,
 	fallbackUrl : download,
-	onFallback : function() {
+	onFallback : function () {
 		// should download
 	}
 });

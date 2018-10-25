@@ -1,4 +1,12 @@
-// @see https://www.npmjs.com/package/js-cookie
-// 编码过的字符会发生变化，服务端会识别错误
-// 所以有时还是需要以不编码的方式存储 cookie
+/**
+ * 提供对 cookie 的读写能力
+ * - 此模块直接提供 js-cookie 的原生能力，不做任何自动编解码
+ * @module origin
+ * @see https://www.npmjs.com/package/js-cookie
+ * @example
+ * origin.set('name', 'value', {
+ * 	expires: 1
+ * });
+ * origin.read('name')	//value
+ */
 module.exports = require('js-cookie');

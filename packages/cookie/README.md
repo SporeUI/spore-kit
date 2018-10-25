@@ -1,6 +1,6 @@
 # spore-kit-cookie
 
-Cookie相关工具函数
+本地存储相关工具函数
 
 ## Release History
 

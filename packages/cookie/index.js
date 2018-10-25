@@ -1,7 +1,7 @@
 /**
- * # Cookie相关工具函数
- * @name spore-kit-cookie
- * @module
+ * # 本地存储相关工具函数
+ * @module spore-kit-cookie
+ * @see https://github.com/SporeUI/spore-kit/tree/master/packages/cookie
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');
@@ -16,3 +16,4 @@
  */
 
 exports.cookie = require('./cookie');
+exports.origin = require('./origin');
