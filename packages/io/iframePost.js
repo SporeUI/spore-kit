@@ -1,14 +1,49 @@
 /**
  * 封装 iframe post 模式
+ * - requires jQuery/Zepto
+ * @method iframePost
+ * @param {Object} spec 请求选项
+ * @param {Object} [spec.form=null] 要请求的表单
+ * @param {String} spec.url 请求地址
+ * @param {Array|Object} spec.data 请求数据
+ * @param {String} [spec.target=''] 目标 iframe 名称
+ * @param {String} [spec.method='post'] 请求方式
+ * @param {String} [spec.acceptCharset=''] 请求目标的编码
+ * @param {String} [spec.jsonp='callback'] 传递给接口的回调参数名称
+ * @param {String} [spec.jsonpMethod=''] 传递给接口的回调参数的传递方式，可选['post', 'get']
+ * @param {String} [spec.jsonpCallback=''] 传递给接口的回调函数名称，默认自动生成
+ * @param {String} [spec.jsonpAddParent=''] 传递给接口的回调函数名称需要附带的前缀调用路径
+ * @param {Function} [spec.complete] 获得数据的回调函数
+ * @param {Function} [spec.success] 成功获得数据的回调函数
+ * @example
+ *	document.domain = 'qq.com';
+ *	iframePost({
+ *		url: 'http://a.qq.com/form',
+ *		data: [{
+ *			n1: 'v1',
+ *			n2: 'v2'
+ *		}],
+ *		success: function (rs) {
+ *			console.info(rs);
+ *		}
+ *	});
  */
 
-var $;
-if (typeof window !== 'undefined') {
-	$ = window.$;
-}
 var hiddenDiv = null;
 
-function getHiddenBox() {
+function get$ () {
+	var $;
+	if (typeof window !== 'undefined') {
+		$ = window.$ || window.jQuery || window.Zepto;
+	}
+	if (!$) {
+		throw new Error('Need winddow.$ like jQuery or Zepto.');
+	}
+	return $;
+}
+
+function getHiddenBox () {
+	var $ = get$();
 	if (hiddenDiv === null) {
 		hiddenDiv = $('<div/>').css('display', 'none');
 		hiddenDiv.appendTo(document.body);
@@ -16,13 +51,15 @@ function getHiddenBox() {
 	return hiddenDiv;
 }
 
-function getForm() {
+function getForm () {
+	var $ = get$();
 	var form = $('<form style="display:none;"></form>');
 	form.appendTo(getHiddenBox());
 	return form;
 }
 
-function getHiddenInput(form, name) {
+function getHiddenInput (form, name) {
+	var $ = get$();
 	var input = $(form).find('[name="' + name + '"]');
 	if (!input.get(0)) {
 		input = $('<input type="hidden" name="' + name + '" value=""/>');
@@ -31,7 +68,8 @@ function getHiddenInput(form, name) {
 	return input;
 }
 
-function getIframe(name) {
+function getIframe (name) {
+	var $ = get$();
 	var iframe = $(
 		'<iframe id="'
 		+ name
@@ -43,10 +81,8 @@ function getIframe(name) {
 	return iframe;
 }
 
-function iframePost(spec) {
-	if (!$) {
-		throw new Error('Need winddow.$ like jQuery or Zepto.');
-	}
+function iframePost (spec) {
+	var $ = get$();
 	var conf = $.extend({
 		form: null,
 		url: '',
@@ -59,7 +95,6 @@ function iframePost(spec) {
 		jsonpCallback: '',
 		jsonpAddParent: '',
 		complete: $.noop,
-		error: $.noop,
 		success: $.noop
 	}, spec);
 

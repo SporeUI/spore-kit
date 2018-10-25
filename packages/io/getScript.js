@@ -1,9 +1,17 @@
 /**
- * 加载script
- * @param {object} options script选项
- * @param {string} options.src script地址
- * @param {string} [options.charset='utf-8'] script编码
- * @param {function} [options.onLoad] script加载完成的回调函数
+ * 加载 script 文件
+ * @method getScript
+ * @param {Object} options 选项
+ * @param {String} options.src script 地址
+ * @param {String} [options.charset='utf-8'] script 编码
+ * @param {Function} [options.onLoad] script 加载完成的回调函数
+ * @example
+ *	getScript({
+ *		src: 'https://code.jquery.com/jquery-3.3.1.min.js',
+ *		onLoad: function () {
+ *			console.info(window.jQuery);
+ *		}
+ *	});
  */
 
 function getScript(options) {

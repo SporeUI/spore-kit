@@ -311,6 +311,18 @@ Returns **[Object][2]** 定时器对象，可传入 clearTimeout 方法来终止
 
 动画运行方式库
 
+-   Pow
+-   Expo
+-   Circ
+-   Sine
+-   Back
+-   Bounce
+-   Elastic
+-   Quad
+-   Cubic
+-   Quart
+-   Quint
+
 ### Examples
 
 ```javascript
