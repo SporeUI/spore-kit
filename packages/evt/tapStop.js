@@ -2,13 +2,14 @@
  * 用遮罩的方式阻止 tap 事件穿透引发表单元素获取焦点。
  * - 推荐用 fastclick 来解决触屏事件穿透问题。
  * - 此组件用在 fastclick 未能解决问题时。或者不方便使用 fastclick 时。
+ * @method tapStop
  * @param {Object} options 点击选项
  * @param {Number} options.delay 临时浮层在这个延迟时间(ms)之后关闭
  * @example
- * 	$('.mask').on('tap', function(){
- * 		tapStop();
- * 		$(this).hide();
- * 	});
+ * $('.mask').on('tap', function(){
+ * 	tapStop();
+ * 	$(this).hide();
+ * });
  */
 var miniMask = null;
 var pos = {};

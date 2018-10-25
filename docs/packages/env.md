@@ -90,23 +90,23 @@ Returns **[Object][2]** UA 检查结果
 
 网络环境检测
 
-## network.support
+### network.support
 
 判断页面是否支持联网检测
 
-### Examples
+#### Examples
 
 ```javascript
-network.support(); //true/false
+network.support(); // true/false
 ```
 
 Returns **[Boolean][3]** 是否支持联网检测
 
-## network.onLine
+### network.onLine
 
 判断页面是否联网
 
-### Examples
+#### Examples
 
 ```javascript
 network.onLine(); //true/false
@@ -165,22 +165,22 @@ var rs = uaMatch({
 		return ua.indexOf('gecko') > -1 && ua.indexOf('khtml') === -1;
 	}
 }, 'xxx presto xxx');
-console.info(rs.presto); //true
-console.info(rs.trident); //undefined
+console.info(rs.presto); // true
+console.info(rs.trident); // undefined
 ```
 
 ## webp
 
 webp 相关检测
 
-## webp.support
+### webp.support
 
 判断浏览器是否支持webp
 
-### Examples
+#### Examples
 
 ```javascript
-console.info(webp.support()); //true/false
+console.info(webp.support()); // true/false
 ```
 
 Returns **[Boolean][3]** 是否支持webp

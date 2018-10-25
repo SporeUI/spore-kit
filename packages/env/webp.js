@@ -8,6 +8,7 @@ var isSupportWebp = null;
 /**
  * 判断浏览器是否支持webp
  * @method webp.support
+ * @memberof webp
  * @returns {Boolean} 是否支持webp
  * @example
  * console.info(webp.support()); // true/false

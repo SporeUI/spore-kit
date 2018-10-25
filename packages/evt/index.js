@@ -15,7 +15,7 @@
  * var $occurInside = require('spore-kit-evt/occurInside');
  */
 
-exports.events = require('./events');
-exports.listener = require('./listener');
+exports.Events = require('./events');
+exports.Listener = require('./listener');
 exports.occurInside = require('./occurInside');
 exports.tapStop = require('./tapStop');

@@ -7,6 +7,12 @@
  * @see spore-kit-evt/events
  * @class Listener
  * @example
+ * @example
+ * var Listener = require('spore-kit-evt/listener');
+ *
+ * var $kit = require('spore-kit');
+ * var Listener = $kit.evt.Listener;
+ *
  * // 白名单里只记录了 event1 事件
  * var channelGlobal = new Listener([
  * 	'event1'

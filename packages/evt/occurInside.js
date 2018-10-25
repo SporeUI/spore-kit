@@ -7,11 +7,11 @@
  * @param {Object} node 用于比较事件发生区域的 Dom 对象
  * @returns {Boolean} 事件是否发生在 node 内
  * @example
- * 	$('.layer').on('click', function(evt){
- * 		if(occurInside(evt, $(this).find('close'))){
- * 			$(this).hide();
- * 		}
- * 	});
+ * $('.layer').on('click', function(evt){
+ * 	if(occurInside(evt, $(this).find('close'))){
+ * 		$(this).hide();
+ * 	}
+ * });
  */
 
 function occurInside(event, node) {

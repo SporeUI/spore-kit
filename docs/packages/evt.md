@@ -42,7 +42,7 @@ succession.
 var Events = require('spore-kit-evt/events');
 
 var $kit = require('spore-kit');
-var Events = $kit.evt.events;
+var Events = $kit.evt.Events;
 ```
 
 ### Events.prototype.on
@@ -177,6 +177,11 @@ o1.on('event', function () {});
 ### Examples
 
 ```javascript
+var Listener = require('spore-kit-evt/listener');
+
+var $kit = require('spore-kit');
+var Listener = $kit.evt.Listener;
+
 // 白名单里只记录了 event1 事件
 var channelGlobal = new Listener([
 	'event1'
@@ -243,36 +248,46 @@ channelGlobal.trigger('event2');
 
 ## occurInside
 
-判断事件是否发生在一个元素内
+判断事件是否发生在一个 Dom 元素内。
+
+常用于判断点击事件发生在浮层外时关闭浮层。
 
 ### Parameters
 
--   `event`  
--   `node`  
+-   `event` **[Object][7]** 浏览器事件对象
+-   `node` **[Object][7]** 用于比较事件发生区域的 Dom 对象
 
 ### Examples
 
 ```javascript
 $('.layer').on('click', function(evt){
-		if(occurInside(evt, $(this).find('close'))){
-			$(this).hide();
-		}
-	});
+	if(occurInside(evt, $(this).find('close'))){
+		$(this).hide();
+	}
+});
 ```
 
-## miniMask
+Returns **[Boolean][8]** 事件是否发生在 node 内
 
-用遮罩的方式阻止tap事件穿透引发表单元素获取焦点
-推荐用 fastclick 来解决触屏事件穿透问题
-此组件用在 fastclick 未能解决问题时
+## tapStop
+
+用遮罩的方式阻止 tap 事件穿透引发表单元素获取焦点。
+
+-   推荐用 fastclick 来解决触屏事件穿透问题。
+-   此组件用在 fastclick 未能解决问题时。或者不方便使用 fastclick 时。
+
+### Parameters
+
+-   `options` **[Object][7]** 点击选项
+    -   `options.delay` **[Number][9]** 临时浮层在这个延迟时间(ms)之后关闭
 
 ### Examples
 
 ```javascript
 $('.mask').on('tap', function(){
-		tapStop();
-		$(this).hide();
-	});
+	tapStop();
+	$(this).hide();
+});
 ```
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/evt
@@ -288,3 +303,7 @@ $('.mask').on('tap', function(){
 [6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
 [7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[9]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number

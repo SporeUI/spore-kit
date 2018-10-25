@@ -16,7 +16,7 @@
  * var Events = require('spore-kit-evt/events');
  *
  * var $kit = require('spore-kit');
- * var Events = $kit.evt.events;
+ * var Events = $kit.evt.Events;
  */
 
 // Regular expression used to split event strings

@@ -2,7 +2,7 @@
 
 原子化工具库
 
-## 构建目的
+## 何时使用
 
 虽然已经有了 underscore, lodash 这样优秀的工具库，但是日常开发中还是有很多常用的方法并未囊括在其中。
 
@@ -23,6 +23,6 @@ console.info($kit.arr.contains); //function
 var $arr = require('spore-kit-arr');
 console.info($arr.contains); //function
 
-// 单独引入一个方法
+// 单独引入一个方法（推荐）
 var $contains = require('spore-kit-arr/contains');
 ```
