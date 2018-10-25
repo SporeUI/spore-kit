@@ -1,7 +1,6 @@
 /**
  * 包装为触发一次后，预置时间内不能再次触发的函数
- *
- * 类似于技能冷却。
+ * - 类似于技能冷却。
  * @method lock
  * @param {Function} fn 要延迟触发的函数
  * @param {Number} delay 延迟时间(ms)

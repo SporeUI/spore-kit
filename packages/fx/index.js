@@ -16,7 +16,7 @@
  */
 
 exports.flashAction = require('./flashAction');
-exports.fx = require('./fx');
+exports.Fx = require('./fx');
 exports.smoothScrollTo = require('./smoothScrollTo');
 exports.sticky = require('./sticky');
 exports.timer = require('./timer');

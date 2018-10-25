@@ -3,11 +3,9 @@
  * with custom events. You may bind with `on` or remove with `off` callback
  * functions to an event; `trigger`-ing an event fires all callbacks in
  * succession.
- *
- * 一个可以被混合到任何对象的模块，用于提供自定义事件。
- * 可以用 on, off 方法来绑定移除事件。
- * 用 trigger 来触发事件通知
- *
+ * - 一个可以被混合到任何对象的模块，用于提供自定义事件。
+ * - 可以用 on, off 方法来绑定移除事件。
+ * - 用 trigger 来触发事件通知。
  * @class Events
  * @see http://aralejs.org/
  * @see https://github.com/documentcloud/backbone/blob/master/backbone.js
@@ -45,10 +43,8 @@ var Events = function() {};
 /**
  * Bind one or more space separated events, `events`, to a `callback`
  * function. Passing `"all"` will bind the callback to all events fired.
- *
- * 绑定一个事件回调函数，或者用多个空格分隔来绑定多个事件回调函数。
- * 传入参数 `'all'` 会在所有事件发生时被触发。
- *
+ * - 绑定一个事件回调函数，或者用多个空格分隔来绑定多个事件回调函数。
+ * - 传入参数 `'all'` 会在所有事件发生时被触发。
  * @method Events.prototype.on
  * @memberof Events
  * @param {String} events 事件名称
@@ -92,11 +88,9 @@ Events.prototype.on = function(events, callback, context) {
  * Remove one or many callbacks. If `context` is null, removes all callbacks
  * with that function. If `callback` is null, removes all callbacks for the
  * event. If `events` is null, removes all bound callbacks for all events.
- *
- * 移除一个或者多个事件回调函数。
- * 如果不传递 callback 参数，会移除所有该时间名称的事件回调函数。
- * 如果不指定事件名称，移除所有自定义事件回调函数。
- *
+ * - 移除一个或者多个事件回调函数。
+ * - 如果不传递 callback 参数，会移除所有该时间名称的事件回调函数。
+ * - 如果不指定事件名称，移除所有自定义事件回调函数。
  * @method Events.prototype.off
  * @memberof Events
  * @param {String} [events] 事件名称
@@ -167,10 +161,8 @@ Events.prototype.off = function(events, callback, context) {
  * passed the same arguments as `trigger` is, apart from the event name
  * (unless you're listening on `"all"`, which will cause your callback to
  * receive the true name of the event as the first argument).
- *
- * 派发一个或者多个事件，会触发对应事件名称绑定的所有事件函数。
- * 第一个参数是事件名称，剩下其他参数将作为事件回调的参数。
- *
+ * - 派发一个或者多个事件，会触发对应事件名称绑定的所有事件函数。
+ * - 第一个参数是事件名称，剩下其他参数将作为事件回调的参数。
  * @method Events.prototype.trigger
  * @memberof Events
  * @param {string} events 事件名称
@@ -248,9 +240,7 @@ Events.prototype.trigger = function(events) {
 
 /**
  * Mix `Events` to object instance or Class function.
- *
- * 将自定事件对象，混合到一个类的实例。
- *
+ * - 将自定事件对象，混合到一个类的实例。
  * @method Events.mixTo
  * @memberof Events
  * @param {Object} receiver 要混合事件函数的对象
