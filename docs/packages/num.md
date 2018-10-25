@@ -27,11 +27,19 @@ var $limit = require('spore-kit-num/limit');
 
 数字的千分位逗号分隔表示法
 
-IE8 的 toLocalString 给出了小数点后2位: N.00
+-   IE8 的 toLocalString 给出了小数点后2位: N.00
 
 ### Parameters
 
--   `num`  
+-   `num` **[Number][3]** 数字
+
+### Examples
+
+```javascript
+comma(1234567); //'1,234,567'
+```
+
+Returns **[String][4]** 千分位表示的数字
 
 ## fixTo
 
@@ -39,16 +47,16 @@ IE8 的 toLocalString 给出了小数点后2位: N.00
 
 ### Parameters
 
--   `num` **([number][3] \| [string][4])** 要补位的数字
--   `w` **[number][3]** w 补位数量 (optional, default `2`)
+-   `num` **([Number][3] \| [String][4])** 要补位的数字
+-   `w` **[Number][3]** w 补位数量 (optional, default `2`)
 
 ### Examples
 
 ```javascript
-fixTo(0,2);	//return '00'
+fixTo(0, 2);	//return '00'
 ```
 
-Returns **[string][4]** 经过补位的字符串
+Returns **[String][4]** 经过补位的字符串
 
 ## limit
 
@@ -56,38 +64,38 @@ Returns **[string][4]** 经过补位的字符串
 
 ### Parameters
 
--   `num` **[number][3]** 要限制的数字
--   `min` **[number][3]** 最小边界数值
--   `max` **[number][3]** 最大边界数值
+-   `num` **[Number][3]** 要限制的数字
+-   `min` **[Number][3]** 最小边界数值
+-   `max` **[Number][3]** 最大边界数值
 
 ### Examples
 
 ```javascript
-limit(1, 5, 10);	//return 5
-limit(6, 5, 10);	//return 6
-limit(11, 5, 10);	//return 10
+limit(1, 5, 10); // 5
+limit(6, 5, 10); // 6
+limit(11, 5, 10); // 10
 ```
 
-Returns **[number][3]** 经过限制的数值
+Returns **[Number][3]** 经过限制的数值
 
 ## numerical
 
-将数据类型转为整数数字
+将数据类型转为整数数字，转换失败则返回一个默认值
 
 ### Parameters
 
--   `str` **mixed** 要转换的数据
--   `def` **[number][3]** 转换失败时的默认值 (optional, default `0`)
--   `sys` **[number][3]** 进制 (optional, default `10`)
+-   `str` **any** 要转换的数据
+-   `def` **[Number][3]** 转换失败时的默认值 (optional, default `0`)
+-   `sys` **[Number][3]** 进制 (optional, default `10`)
 
 ### Examples
 
 ```javascript
-numerical('10x');	//return 10
-numerical('x10');	//return 0
+numerical('10x'); // 10
+numerical('x10'); // 0
 ```
 
-Returns **[number][3]** 转换而得的整数
+Returns **[Number][3]** 转换而得的整数
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/num
 
