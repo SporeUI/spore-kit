@@ -1,5 +1,5 @@
 /**
- * # 日期相关相关工具
+ * # 日期相关工具
  * @name spore-kit-date
  * @module
  * @example

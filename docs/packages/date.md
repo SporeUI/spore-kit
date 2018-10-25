@@ -2,7 +2,7 @@
 
 ## spore-kit-date
 
-# 日期相关相关工具
+# 日期相关工具
 
 ### Examples
 
@@ -23,26 +23,52 @@ var $format = require('spore-kit-date/format');
 
 日期对象格式化输出
 
+格式化日期对象模板键值说明
+
+-   year 年份原始数值
+-   month 月份原始数值[1, 12]
+-   date 日期原始数值[1, 31]
+-   day 星期原始数值[0, 6]
+-   hours 小时原始数值[0, 23]
+-   miniutes 分钟原始数值[0, 59]
+-   seconds 秒原始数值[0, 59]
+-   milliSeconds 毫秒原始数值[0, 999]
+-   YYYY 年份数值，精确到4位(12 => '0012')
+-   YY 年份数值，精确到2位(2018 => '18')
+-   Y 年份原始数值
+-   MM 月份数值，精确到2位(9 => '09')
+-   M 月份原始数值
+-   DD 日期数值，精确到2位(3 => '03')
+-   D 日期原始数值
+-   d 星期数值，通过 weekday 参数映射取得(0 => '日')
+-   hh 小时数值，精确到2位(9 => '09')
+-   h 小时原始数值
+-   mm 分钟数值，精确到2位(9 => '09')
+-   m 分钟原始数值
+-   ss 秒数值，精确到2位(9 => '09')
+-   s 秒原始数值
+-   mss 毫秒数值，精确到3位(9 => '009')
+-   ms 毫秒原始数值
+
 ### Parameters
 
--   `dobj` **[date][1]** 日期对象，或者可以被转换为日期对象的数据
--   `spec` **[object][2]** 格式化选项
-    -   `spec.weekday` **[array][3]** 一周内各天对应字符，从周日算起 (optional, default `'日一二三四五六'.split('')`)
-    -   `spec.template` **[string][4]** 格式化模板 (optional, default `'{{YYYY}}-{{MM}}-{{DD}} {{hh}}:{{mm}}'`)
+-   `dobj` **[Date][1]** 日期对象，或者可以被转换为日期对象的数据
+-   `spec` **[Object][2]?** 格式化选项
+    -   `spec.weekday` **[Array][3]** 一周内各天对应名称，顺序从周日算起 (optional, default `'日一二三四五六'.split('')`)
+    -   `spec.template` **[String][4]** 格式化模板 (optional, default `'{{YYYY}}-{{MM}}-{{DD}} {{hh}}:{{mm}}'`)
 
 ### Examples
 
 ```javascript
-var $dateFormat = require('lib/kit/date/format');
-	console.info(
-		$dateFormat(new Date(),{
+console.info(
+		format(new Date(),{
 			template : '{{YYYY}}年{{MM}}月{{DD}}日 周{{d}} {{hh}}时{{mm}}分{{ss}}秒'
 		})
 	);
 	//2015年09月09日 周三 14时19分42秒
 ```
 
-Returns **[string][4]** 格式化完成的字符串
+Returns **[String][4]** 格式化完成的字符串
 
 ## getLastStart
 
@@ -50,18 +76,53 @@ Returns **[string][4]** 格式化完成的字符串
 
 ### Parameters
 
--   `time` **([number][5] \| [date][1])** 实际时间
--   `type` **[string][4]** 时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
--   `count` **[number][5]** 多少单位时间之前
+-   `time` **([Number][5] \| [Date][1])** 实际时间
+-   `type` **[String][4]** 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
+-   `count` **[Number][5]** 多少单位时间之前
 
-## DAY
+### Examples
 
-获取某个时间的 整年|整月|整日|整时|整分 时间戳
+```javascript
+var time = getLastStart(
+	new Date('2018-10-25'),
+	'month',
+	0
+).getTime(); //1538323200000
+new Date(time); //Mon Oct 01 2018 00:00:00 GMT+0800 (中国标准时间)
+```
+
+Returns **[Date][1]** 最近单位时间的起始时间对象
+
+## getTimeSplit
+
+获取某个时间的 整年|整月|整日|整时|整分 时间对象
 
 ### Parameters
 
--   `time` **([number][5] \| [date][1])** 实际时间
--   `type` **[string][4]** 时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
+-   `time` **([Number][5] \| [Date][1])** 实际时间
+-   `type` **[String][4]** 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
+
+### Examples
+
+```javascript
+new Date(
+	getTimeSplit(
+		'2018-09-20',
+		'month'
+	)
+).toGMTString();
+//Sat Sep 01 2018 00:00:00 GMT+0800 (中国标准时间)
+
+new Date(
+	getTimeSplit(
+		'2018-09-20 19:23:36',
+		'hour'
+	)
+).toGMTString();
+//Thu Sep 20 2018 19:00:00 GMT+0800 (中国标准时间)
+```
+
+Returns **[Date][1]** 时间整点对象
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 

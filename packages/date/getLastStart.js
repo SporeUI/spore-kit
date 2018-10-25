@@ -1,9 +1,17 @@
 /**
  * 获取过去一段时间的起始日期，如3月前第1天，2周前第1天，3小时前整点
- * @module
- * @param {number|date} time 实际时间
- * @param {string} type 时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
- * @param {number} count 多少单位时间之前
+ * @method getLastStart
+ * @param {Number|Date} time 实际时间
+ * @param {String} type 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
+ * @param {Number} count 多少单位时间之前
+ * @returns {Date} 最近单位时间的起始时间对象
+ * @example
+ * var time = getLastStart(
+ * 	new Date('2018-10-25'),
+ * 	'month',
+ * 	0
+ * ).getTime(); //1538323200000
+ * new Date(time); //Mon Oct 01 2018 00:00:00 GMT+0800 (中国标准时间)
  */
 
 var $getTimeSplit = require('./getTimeSplit');
@@ -18,6 +26,10 @@ function getLastStart(time, type, count) {
 	var month;
 	var allMonths;
 	var unit;
+	if (!type) {
+		throw new Error('required param type');
+	}
+	count = count || 0;
 	if (type === 'year') {
 		year = datetime.getFullYear();
 		year -= count;
