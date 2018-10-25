@@ -25,16 +25,16 @@ var $contains = require('spore-kit-arr/contains');
 
 ### Parameters
 
--   `arr` **[array][1]** 要操作的数组
+-   `arr` **[Array][1]** 要操作的数组
 -   `item` **any** 要搜索的对象
 
 ### Examples
 
 ```javascript
-console.info(contains([1,2,3,4,5],3));	//true
+console.info(contains([1,2,3,4,5], 3));	//true
 ```
 
-Returns **[boolean][2]** 如果对象在数组中，返回true
+Returns **[Boolean][2]** 如果对象在数组中，返回 true
 
 ## erase
 
@@ -42,7 +42,7 @@ Returns **[boolean][2]** 如果对象在数组中，返回true
 
 ### Parameters
 
--   `arr` **[array][1]** 要操作的数组
+-   `arr` **[Array][1]** 要操作的数组
 -   `item` **any** 要清除的对象
 
 ### Examples
@@ -51,7 +51,7 @@ Returns **[boolean][2]** 如果对象在数组中，返回true
 console.info(erase([1,2,3,4,5],3));	//[1,2,4,5]
 ```
 
-Returns **[number][3]** 对象原本所在位置
+Returns **[Number][3]** 对象原本所在位置
 
 ## find
 
@@ -59,19 +59,19 @@ Returns **[number][3]** 对象原本所在位置
 
 ### Parameters
 
--   `arr` **[array][1]** 要操作的数组
--   `fn` **[function][4]** 条件函数
--   `context` **[object][5]?** 函数的this指向
+-   `arr` **[Array][1]** 要操作的数组
+-   `fn` **[Function][4]** 条件函数
+-   `context` **[Object][5]?** 函数的this指向
 
 ### Examples
 
 ```javascript
-console.info(find([1,2,3,4,5],function(item){
+console.info(find([1,2,3,4,5], function (item) {
 		return item < 3;
 	});	//[0, 1]
 ```
 
-Returns **[array][1]** 符合条件的元素在数组中的位置
+Returns **[Array][1]** 符合条件的元素在数组中的位置
 
 ## flatten
 
@@ -84,7 +84,7 @@ Returns **[array][1]** 符合条件的元素在数组中的位置
 ### Examples
 
 ```javascript
-console.info(flatten([1,[2,3],[4,5]]));	//[1,2,3,4,5]
+console.info(flatten([1, [2,3], [4,5]]));	//[1,2,3,4,5]
 ```
 
 Returns **[array][1]** 经过扁平化处理的数组
@@ -95,7 +95,7 @@ Returns **[array][1]** 经过扁平化处理的数组
 
 ### Parameters
 
--   `arr` **[array][1]** 要操作的数组
+-   `arr` **[Array][1]** 要操作的数组
 -   `item` **any** 要插入的对象
 
 ### Examples
@@ -105,7 +105,7 @@ console.info(include([1,2,3],4));	//[1,2,3,4]
 console.info(include([1,2,3],3));	//[1,2,3]
 ```
 
-Returns **[array][1]** 经过处理的源数组
+Returns **[Array][1]** 经过处理的源数组
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 

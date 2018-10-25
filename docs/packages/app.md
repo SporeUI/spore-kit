@@ -38,16 +38,16 @@ var $callUp = require('spore-kit-app/callUp');
 
 ### Parameters
 
--   `options` **[object][2]** 
-    -   `options.protocol` **[string][3]** 客户端APP呼起协议地址
-    -   `options.fallbackUrl` **[string][3]** 客户端下载地址或者中间页地址
-    -   `options.action` **[function][4]** 自定义呼起客户端的方式
-    -   `options.startTime` **[number][5]** 呼起客户端的开始时间(ms)，以时间数值作为参数 (optional, default `newDate().getTime()`)
-    -   `options.waiting` **[number][5]** 呼起超时等待时间(ms) (optional, default `800`)
-    -   `options.waitingLimit` **[number][5]** 超时后检查回调是否在此时间限制内触发(ms) (optional, default `50`)
-    -   `options.fallback` **[function][4]** 默认回退操作 (optional, default `function(){window.location=fallbackUrl;}`)
-    -   `options.onFallback` **[function][4]** 呼起操作未能成功执行时触发的回调事件函数 (optional, default `null`)
-    -   `options.onTimeout` **[function][4]** 呼起超时触发的回调事件函数 (optional, default `null`)
+-   `options` **[Object][2]** 
+    -   `options.protocol` **[String][3]** 客户端APP呼起协议地址
+    -   `options.fallbackUrl` **[String][3]** 客户端下载地址或者中间页地址
+    -   `options.action` **[Function][4]** 自定义呼起客户端的方式
+    -   `options.startTime` **[Number][5]** 呼起客户端的开始时间(ms)，以时间数值作为参数 (optional, default `newDate().getTime()`)
+    -   `options.waiting` **[Number][5]** 呼起超时等待时间(ms) (optional, default `800`)
+    -   `options.waitingLimit` **[Number][5]** 超时后检查回调是否在此时间限制内触发(ms) (optional, default `50`)
+    -   `options.fallback` **[Function][4]** 默认回退操作 (optional, default `function(){window.location=fallbackUrl;}`)
+    -   `options.onFallback` **[Function][4]** 呼起操作未能成功执行时触发的回调事件函数 (optional, default `null`)
+    -   `options.onTimeout` **[Function][4]** 呼起超时触发的回调事件函数 (optional, default `null`)
 
 ### Examples
 

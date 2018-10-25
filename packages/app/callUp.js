@@ -11,16 +11,16 @@
  * - fallback 默认操作是跳转到 fallbackUrl 客户端下载地址或者中间页地址
  * - 这样对于没有安装 APP 的移动端，页面会在超时事件发生时，直接跳转到 fallbackUrl
  * @method callUp
- * @param {object} options
- * @param {string} options.protocol 客户端APP呼起协议地址
- * @param {string} options.fallbackUrl 客户端下载地址或者中间页地址
- * @param {function} options.action 自定义呼起客户端的方式
- * @param {number} [options.startTime=new Date().getTime()] 呼起客户端的开始时间(ms)，以时间数值作为参数
- * @param {number} [options.waiting=800] 呼起超时等待时间(ms)
- * @param {number} [options.waitingLimit=50] 超时后检查回调是否在此时间限制内触发(ms)
- * @param {function} [options.fallback=function () { window.location = fallbackUrl; }] 默认回退操作
- * @param {function} [options.onFallback=null] 呼起操作未能成功执行时触发的回调事件函数
- * @param {function} [options.onTimeout=null] 呼起超时触发的回调事件函数
+ * @param {Object} options
+ * @param {String} options.protocol 客户端APP呼起协议地址
+ * @param {String} options.fallbackUrl 客户端下载地址或者中间页地址
+ * @param {Function} options.action 自定义呼起客户端的方式
+ * @param {Number} [options.startTime=new Date().getTime()] 呼起客户端的开始时间(ms)，以时间数值作为参数
+ * @param {Number} [options.waiting=800] 呼起超时等待时间(ms)
+ * @param {Number} [options.waitingLimit=50] 超时后检查回调是否在此时间限制内触发(ms)
+ * @param {Function} [options.fallback=function () { window.location = fallbackUrl; }] 默认回退操作
+ * @param {Function} [options.onFallback=null] 呼起操作未能成功执行时触发的回调事件函数
+ * @param {Function} [options.onTimeout=null] 呼起超时触发的回调事件函数
  * @example
  * callUp({
  * 	startTime: Date.now(),
@@ -28,7 +28,7 @@
  * 	waitingLimit: 50,
  * 	protocol : scheme,
  * 	fallbackUrl : download,
- * 	onFallback : function() {
+ * 	onFallback : function () {
  * 		// should download
  * 	}
  * });
