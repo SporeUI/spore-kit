@@ -7,8 +7,8 @@
 		"test": "jest",
 		"cover": "jest --coverage",
 		"publish-packages": "lerna publish",
-		"vuepress-dev": "vuepress dev docs",
-		"vuepress-build": "vuepress build docs",
+		"vuepress-dev": "vuepress dev docs-src",
+		"vuepress-build": "vuepress build docs-src",
 		"doc-build": "sh ./task/doc-build.sh ./packages",
 		"precommit": "lint-staged"
 	},
