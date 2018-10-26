@@ -9,7 +9,7 @@ let childrenFiles = packagesFiles.map(file => {
 });
 
 module.exports = {
-	base: '/',
+	base: '/spore-kit',
 	dest: 'docs',
 	title: 'SPORE-KIT',
 	serviceWorker: false,
