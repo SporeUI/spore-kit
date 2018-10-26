@@ -1,5 +1,5 @@
 /**
- * # dom操作相关工具函数
+ * # DOM 操作相关工具函数
  * @module spore-kit-dom
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/dom
  * @example
