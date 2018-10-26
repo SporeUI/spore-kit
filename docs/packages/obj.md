@@ -88,8 +88,21 @@ Returns **any** 对象路径上的值
 ### Examples
 
 ```javascript
-console.info(type({})); // function
-console.info(type(undefined)); // undefined
+type({}); // 'object'
+type(1); // 'number'
+type(''); // 'string'
+type(function(){}); // 'function'
+type(); // 'undefined'
+type(null); // 'null'
+type(new Date()); // 'date'
+type(/a/); // 'regexp'
+type(Symbol('a')); // 'symbol'
+type(window) // 'window'
+type(document) // 'htmldocument'
+type(document.body) // 'htmlbodyelement'
+type(document.head) // 'htmlheadelement'
+type(document.getElementsByTagName('div')) // 'htmlcollection'
+type(document.getElementsByTagName('div')[0]) // 'htmldivelement'
 ```
 
 Returns **[String][3]** 对象类型

@@ -67,7 +67,7 @@ console.info(
 			template : '{{YYYY}}年{{MM}}月{{DD}}日 周{{d}} {{hh}}时{{mm}}分{{ss}}秒'
 		})
 	);
-	//2015年09月09日 周三 14时19分42秒
+	// 2015年09月09日 周三 14时19分42秒
 ```
 
 Returns **[String][5]** 格式化完成的字符串
@@ -89,8 +89,8 @@ var time = getLastStart(
 	new Date('2018-10-25'),
 	'month',
 	0
-).getTime(); //1538323200000
-new Date(time); //Mon Oct 01 2018 00:00:00 GMT+0800 (中国标准时间)
+).getTime(); // 1538323200000
+new Date(time); // Mon Oct 01 2018 00:00:00 GMT+0800 (中国标准时间)
 ```
 
 Returns **[Date][2]** 最近单位时间的起始时间对象
@@ -113,7 +113,7 @@ new Date(
 		'month'
 	)
 ).toGMTString();
-//Sat Sep 01 2018 00:00:00 GMT+0800 (中国标准时间)
+// Sat Sep 01 2018 00:00:00 GMT+0800 (中国标准时间)
 
 new Date(
 	getTimeSplit(
@@ -121,7 +121,7 @@ new Date(
 		'hour'
 	)
 ).toGMTString();
-//Thu Sep 20 2018 19:00:00 GMT+0800 (中国标准时间)
+// Thu Sep 20 2018 19:00:00 GMT+0800 (中国标准时间)
 ```
 
 Returns **[Date][2]** 时间整点对象

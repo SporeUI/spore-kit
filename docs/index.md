@@ -14,6 +14,14 @@
 
 ## 快速上手
 
+```shell
+# 整体引入
+npm i spore-kit
+
+# 引入一个独立模块
+npm i spore-kit-arr
+```
+
 ```javascript
 // 统一引入 spore-kit
 var $kit = require('spore-kit');

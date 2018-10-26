@@ -171,7 +171,7 @@ setTimeout(function () {
 
 Returns **[Function][2]** 条件触发管理器函数，传入一个 function 作为任务执行函数参数
 
-### prepare.ready
+### prepare#ready
 
 激活任务管理器的触发条件，在此之前插入管理器的任务按队列顺序执行，之后插入的任务函数立即执行。
 

@@ -90,7 +90,7 @@ fx.on('complete', function(){
 fx.start(0, 600);  // 1秒内数字从0增加到600
 ```
 
-### Fx.prototype.setOptions
+### Fx#setOptions
 
 设置实例的选项
 
@@ -98,7 +98,7 @@ fx.start(0, 600);  // 1秒内数字从0增加到600
 
 -   `options` **[Object][2]** 动画选项
 
-### getTransition
+### Fx#getTransition
 
 设置动画的执行方式，配置缓动效果
 
@@ -113,7 +113,7 @@ fx.getTransition = function () {
 };
 ```
 
-### set
+### Fx#set
 
 设置当前动画帧的过渡数值
 
@@ -130,7 +130,7 @@ fx.set = function (now) {
 };
 ```
 
-### start
+### Fx#start
 
 开始执行动画
 
@@ -146,7 +146,7 @@ var fx = new Fx();
 fx.start(); // 开始动画
 ```
 
-### stop
+### Fx#stop
 
 停止动画
 
@@ -158,7 +158,7 @@ fx.start();
 fx.stop(); // 立刻停止动画
 ```
 
-### cancel
+### Fx#cancel
 
 取消动画
 
@@ -170,7 +170,7 @@ fx.start();
 fx.cancel(); // 立刻取消动画
 ```
 
-### pause
+### Fx#pause
 
 暂停动画
 
@@ -182,7 +182,7 @@ fx.start();
 fx.pause(); // 立刻暂停动画
 ```
 
-### resume
+### Fx#resume
 
 继续执行动画
 
@@ -195,7 +195,7 @@ fx.pause();
 fx.resume(); // 立刻继续动画
 ```
 
-### isRunning
+### Fx#isRunning
 
 判断动画是否正在运行
 

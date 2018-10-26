@@ -36,7 +36,7 @@ var $cookie = require('spore-kit-cookie/cookie');
 cookie.set('name', 'value', {
 	expires: 1
 });
-cookie.read('name')	//value
+cookie.read('name')	// 'value'
 ```
 
 ## origin
@@ -53,7 +53,7 @@ cookie.read('name')	//value
 origin.set('name', 'value', {
 	expires: 1
 });
-origin.read('name')	//value
+origin.read('name')	// 'value'
 ```
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/cookie

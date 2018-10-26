@@ -11,11 +11,11 @@
 ```javascript
 // 统一引入 spore-kit
 var $kit = require('spore-kit');
-console.info($kit.arr.contains); //function
+console.info($kit.arr.contains);
 
 // 单独引入 spore-kit-arr
 var $arr = require('spore-kit-arr');
-console.info($arr.contains); //function
+console.info($arr.contains);
 
 // 单独引入一个方法
 var $contains = require('spore-kit-arr/contains');
@@ -33,7 +33,7 @@ var $contains = require('spore-kit-arr/contains');
 ### Examples
 
 ```javascript
-console.info(contains([1,2,3,4,5], 3));	//true
+console.info(contains([1,2,3,4,5], 3));	// true
 ```
 
 Returns **[Boolean][3]** 如果对象在数组中，返回 true
@@ -50,7 +50,7 @@ Returns **[Boolean][3]** 如果对象在数组中，返回 true
 ### Examples
 
 ```javascript
-console.info(erase([1,2,3,4,5],3));	//[1,2,4,5]
+console.info(erase([1,2,3,4,5],3));	// [1,2,4,5]
 ```
 
 Returns **[Number][4]** 对象原本所在位置
@@ -70,7 +70,7 @@ Returns **[Number][4]** 对象原本所在位置
 ```javascript
 console.info(find([1,2,3,4,5], function (item) {
 		return item < 3;
-	});	//[0, 1]
+	});	// [0, 1]
 ```
 
 Returns **[Array][2]** 符合条件的元素在数组中的位置
@@ -86,7 +86,7 @@ Returns **[Array][2]** 符合条件的元素在数组中的位置
 ### Examples
 
 ```javascript
-console.info(flatten([1, [2,3], [4,5]]));	//[1,2,3,4,5]
+console.info(flatten([1, [2,3], [4,5]]));	// [1,2,3,4,5]
 ```
 
 Returns **[array][2]** 经过扁平化处理的数组
@@ -103,8 +103,8 @@ Returns **[array][2]** 经过扁平化处理的数组
 ### Examples
 
 ```javascript
-console.info(include([1,2,3],4));	//[1,2,3,4]
-console.info(include([1,2,3],3));	//[1,2,3]
+console.info(include([1,2,3],4));	// [1,2,3,4]
+console.info(include([1,2,3],3));	// [1,2,3]
 ```
 
 Returns **[Array][2]** 经过处理的源数组

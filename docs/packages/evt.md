@@ -45,7 +45,7 @@ var $kit = require('spore-kit');
 var Events = $kit.evt.Events;
 ```
 
-### Events.prototype.on
+### Events#on
 
 Bind one or more space separated events, `events`, to a `callback`
 function. Passing `"all"` will bind the callback to all events fired.
@@ -74,7 +74,7 @@ evt.on('event1 event2', function () {});
 evt.on('all', function () {});
 ```
 
-### Events.prototype.off
+### Events#off
 
 Remove one or many callbacks. If `context` is null, removes all callbacks
 with that function. If `callback` is null, removes all callbacks for the
@@ -107,7 +107,7 @@ evt.off('event');
 evt.off();
 ```
 
-### Events.prototype.trigger
+### Events#trigger
 
 Trigger one or many events, firing all bound callbacks. Callbacks are
 passed the same arguments as `trigger` is, apart from the event name
