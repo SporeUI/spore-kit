@@ -9,7 +9,7 @@ let childrenFiles = packagesFiles.map(file => {
 });
 
 module.exports = {
-	dest: 'dist/docs',
+	dest: 'docs',
 	title: 'SPORE-KIT',
 	serviceWorker: false,
 	head: [
