@@ -39,7 +39,7 @@
 
 /**
  * 激活任务管理器的触发条件，在此之前插入管理器的任务按队列顺序执行，之后插入的任务函数立即执行。
- * @method prepare.ready
+ * @method prepare#ready
  * @memberof prepare
  */
 function prepare () {

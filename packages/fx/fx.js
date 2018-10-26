@@ -90,7 +90,7 @@ var Fx = $class({
 
 	/**
 	 * 设置实例的选项
-	 * @method Fx.prototype.setOptions
+	 * @method Fx#setOptions
 	 * @memberof Fx
 	 * @param {Object} options 动画选项
 	 */
@@ -100,7 +100,7 @@ var Fx = $class({
 
 	/**
 	 * 设置动画的执行方式，配置缓动效果
-	 * @interface getTransition
+	 * @interface Fx#getTransition
 	 * @memberof Fx
 	 * @example
 	 *	var fx = new Fx();
@@ -138,7 +138,7 @@ var Fx = $class({
 
 	/**
 	 * 设置当前动画帧的过渡数值
-	 * @interface set
+	 * @interface Fx#set
 	 * @memberof Fx
 	 * @param {Number} now 当前动画帧的过渡数值
 	 * @example
@@ -168,7 +168,7 @@ var Fx = $class({
 
 	/**
 	 * 开始执行动画
-	 * @method start
+	 * @method Fx#start
 	 * @memberof Fx
 	 * @param {Number} from 动画开始数值
 	 * @param {Number} to 动画结束数值
@@ -198,7 +198,7 @@ var Fx = $class({
 
 	/**
 	 * 停止动画
-	 * @method stop
+	 * @method Fx#stop
 	 * @memberof Fx
 	 * @example
 	 *	var fx = new Fx();
@@ -220,7 +220,7 @@ var Fx = $class({
 
 	/**
 	 * 取消动画
-	 * @method cancel
+	 * @method Fx#cancel
 	 * @memberof Fx
 	 * @example
 	 *	var fx = new Fx();
@@ -239,7 +239,7 @@ var Fx = $class({
 
 	/**
 	 * 暂停动画
-	 * @method pause
+	 * @method Fx#pause
 	 * @memberof Fx
 	 * @example
 	 *	var fx = new Fx();
@@ -256,7 +256,7 @@ var Fx = $class({
 
 	/**
 	 * 继续执行动画
-	 * @method resume
+	 * @method Fx#resume
 	 * @memberof Fx
 	 * @example
 	 *	var fx = new Fx();
@@ -273,7 +273,7 @@ var Fx = $class({
 
 	/**
 	 * 判断动画是否正在运行
-	 * @method isRunning
+	 * @method Fx#isRunning
 	 * @memberof Fx
 	 * @returns {Boolean} 动画是否正在运行
 	 * @example

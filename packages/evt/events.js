@@ -45,7 +45,7 @@ var Events = function() {};
  * function. Passing `"all"` will bind the callback to all events fired.
  * - 绑定一个事件回调函数，或者用多个空格分隔来绑定多个事件回调函数。
  * - 传入参数 `'all'` 会在所有事件发生时被触发。
- * @method Events.prototype.on
+ * @method Events#on
  * @memberof Events
  * @param {String} events 事件名称
  * @param {Function} callback 事件回调函数
@@ -91,7 +91,7 @@ Events.prototype.on = function(events, callback, context) {
  * - 移除一个或者多个事件回调函数。
  * - 如果不传递 callback 参数，会移除所有该时间名称的事件回调函数。
  * - 如果不指定事件名称，移除所有自定义事件回调函数。
- * @method Events.prototype.off
+ * @method Events#off
  * @memberof Events
  * @param {String} [events] 事件名称
  * @param {Function} [callback] 要移除的事件回调函数
@@ -163,7 +163,7 @@ Events.prototype.off = function(events, callback, context) {
  * receive the true name of the event as the first argument).
  * - 派发一个或者多个事件，会触发对应事件名称绑定的所有事件函数。
  * - 第一个参数是事件名称，剩下其他参数将作为事件回调的参数。
- * @method Events.prototype.trigger
+ * @method Events#trigger
  * @memberof Events
  * @param {string} events 事件名称
  * @param {...*} [arg] 事件参数
