@@ -1,6 +1,6 @@
 {
   "name": "spore-kit-obj",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "object 相关工具函数",
   "main": "index.js",
   "repository": {
