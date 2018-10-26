@@ -9,6 +9,7 @@ let childrenFiles = packagesFiles.map(file => {
 });
 
 module.exports = {
+	base: '/',
 	dest: 'docs',
 	title: 'SPORE-KIT',
 	serviceWorker: false,
@@ -19,7 +20,7 @@ module.exports = {
 		}]
 	],
 	themeConfig: {
-		docsDir: 'docs',
+		docsDir: 'docs-src',
 		nav: [
 			{
 				text: '首页',
