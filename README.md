@@ -4,6 +4,10 @@
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
+## 参考文档
+
+[https://sporeui.github.io/spore-kit/](https://sporeui.github.io/spore-kit/)
+
 ## 何时使用
 
 虽然已经有了 underscore, lodash 这样优秀的工具库，但是日常开发中还是有很多常用的方法并未囊括在其中。
