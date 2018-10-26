@@ -1,6 +1,6 @@
 {
   "name": "spore-kit-dom",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "dom 处理相关函数",
   "main": "index.js",
   "repository": {
