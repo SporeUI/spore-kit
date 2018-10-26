@@ -27,40 +27,53 @@ var $parseUnit = require('spore-kit-time/parseUnit');
 
 ### Parameters
 
--   `spec` **[object][2]** 选项
-    -   `spec.base` **[date][3]** 矫正时间，如果需要用服务端时间矫正倒计时，使用此参数 (optional, default `null`)
-    -   `spec.target` **[date][3]** 目标时间 (optional, default `Date.now()+3000`)
-    -   `spec.interval` **interval** 倒计时触发间隔 (optional, default `1000`)
-    -   `spec.onChange` **[function][4]** 倒计时触发变更的事件回调 (optional, default `$.noop`)
-    -   `spec.onStop` **[function][4]** 倒计时结束的回调 (optional, default `$.noop`)
+-   `spec` **[Object][2]** 选项
+    -   `spec.base` **[Date][3]?** 矫正时间，如果需要用服务端时间矫正倒计时，使用此参数
+    -   `spec.target` **[Date][3]** 目标时间 (optional, default `Date.now()+3000`)
+    -   `spec.interval` **[Number][4]** 倒计时触发间隔 (optional, default `1000`)
+    -   `spec.onChange` **[Function][5]?** 倒计时触发变更的事件回调
+    -   `spec.onStop` **[Function][5]?** 倒计时结束的回调
 
 ### Examples
 
 ```javascript
 var target = Date.now() + 5000;
-	var cd1 = countDown({
-		target : target,
-		onChange : function(delta){
-			console.info('cd1 change', delta);
-		},
-		onStop : function(delta){
-			console.info('cd1 stop', delta);
-		}
-	});
-	setTimeout(function(){
-		//trigger stop
-		cd1.stop();
-	}, 2000);
-	var cd2 = countDown({
-		target : target,
-		interval : 2000,
-		onChange : function(delta){
-			console.info('cd2 change', delta);
-		},
-		onStop : function(delta){
-			console.info('cd2 stop', delta);
-		}
-	});
+var cd1 = countDown({
+	target : target,
+	onChange : function(delta){
+		console.info('cd1 change', delta);
+	},
+	onStop : function(delta){
+		console.info('cd1 stop', delta);
+	}
+});
+setTimeout(function(){
+	//trigger stop
+	cd1.stop();
+}, 2000);
+var cd2 = countDown({
+	target : target,
+	interval : 2000,
+	onChange : function(delta){
+		console.info('cd2 change', delta);
+	},
+	onStop : function(delta){
+		console.info('cd2 stop', delta);
+	}
+});
+```
+
+Returns **[Object][2]** 倒计时对象实例
+
+### countDown#stop
+
+停止倒计时
+
+#### Examples
+
+```javascript
+var cd = countDown();
+cd.stop();
 ```
 
 ## parseUnit
@@ -69,9 +82,9 @@ var target = Date.now() + 5000;
 
 ### Parameters
 
--   `time` **[number][5]** 毫秒数
--   `spec` **[object][2]** 选项
-    -   `spec.maxUnit` **[string][6]** 拆分时间的最大单位，可选 ['day', 'hour', 'minute', 'second'] (optional, default `'day'`)
+-   `time` **[Number][4]** 毫秒数
+-   `spec` **[Object][2]** 选项
+    -   `spec.maxUnit` **[String][6]** 拆分时间的最大单位，可选 ['day', 'hour', 'minute', 'second'] (optional, default `'day'`)
 
 ### Examples
 
@@ -82,7 +95,7 @@ console.info( parseUnit(12345 * 67890, {maxUnit : 'hour'}) );
 // Object {hour: 232, minute: 48, second: 22, ms: 50}
 ```
 
-Returns **[object][2]** 拆分完成的天时分秒
+Returns **[Object][2]** 拆分完成的天时分秒
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/time
 
@@ -90,8 +103,8 @@ Returns **[object][2]** 拆分完成的天时分秒
 
 [3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
 [6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

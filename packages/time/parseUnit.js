@@ -1,10 +1,10 @@
 /**
  * 时间数字拆分为天时分秒
- * @module
- * @param {number} time 毫秒数
- * @param {object} spec 选项
- * @param {string} [spec.maxUnit='day'] 拆分时间的最大单位，可选 ['day', 'hour', 'minute', 'second']
- * @return {object} 拆分完成的天时分秒
+ * @method parseUnit
+ * @param {Number} time 毫秒数
+ * @param {Object} spec 选项
+ * @param {String} [spec.maxUnit='day'] 拆分时间的最大单位，可选 ['day', 'hour', 'minute', 'second']
+ * @returns {Object} 拆分完成的天时分秒
  * @example
  * console.info( parseUnit(12345 * 67890) );
  * // Object {day: 9, hour: 16, minute: 48, second: 22, ms: 50}
