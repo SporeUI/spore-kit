@@ -1,4 +1,4 @@
-describe('app', () => {
+describe('dom-ui-test', () => {
 	beforeEach(async () => {
 		await page.goto('http://localhost:3000/test/dom.test.html');
 	});
