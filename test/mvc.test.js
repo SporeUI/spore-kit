@@ -6,4 +6,8 @@ describe('mvc-ui-test', () => {
 	it('title is mvc-test', async () => {
 		await expect(page).toMatch('spore-kit-mvc test');
 	});
+
+	it('Should not have any AssertionError', async () => {
+		await expect(page).not.toMatch('AssertionError');
+	});
 });
