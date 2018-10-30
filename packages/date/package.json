@@ -1,6 +1,6 @@
 {
 	"name": "spore-kit-date",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "日期相关工具函数",
 	"main": "index.js",
 	"repository": {
