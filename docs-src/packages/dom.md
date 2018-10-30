@@ -4,7 +4,7 @@
 
 -   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/dom][1]**
 
-# dom操作相关工具函数
+# DOM 操作相关工具函数
 
 ### Examples
 
@@ -31,8 +31,31 @@ var $isNode = require('spore-kit-dom/isNode');
 
 Returns **[Boolean][3]** 是否为dom元素
 
+## offset
+
+-   **See: [https://github.com/timoxley/offset][4]**
+
+获取 DOM 元素相对于 document 的边距
+
+### Parameters
+
+-   `node` **[Object][2]** 要计算 offset 的 dom 对象
+
+### Examples
+
+```javascript
+var offset = require('document-offset')
+var target = document.getElementById('target')
+console.log(offset(target))
+// {top: 69, left: 108}
+```
+
+Returns **[Object][2]** offset 对象
+
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/dom
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
 [3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[4]: https://github.com/timoxley/offset

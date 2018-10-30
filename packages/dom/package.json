@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/SporeUI/spore-kit/issues"
   },
-  "homepage": "https://github.com/SporeUI/spore-kit#readme"
+  "homepage": "https://github.com/SporeUI/spore-kit#readme",
+  "dependencies": {
+    "document-offset": "1.0.4"
+  }
 }
