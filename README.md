@@ -43,4 +43,5 @@ var $contains = require('spore-kit-arr/contains');
 
 ## Release History
 
+* 2018-10-30 v0.1.1 添加 spore-kit-mvc
 * 2018-10-26 v0.1.0 发布第一版
