@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>spore-kit-mvc Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+  </head>
+  <body>
+    <div id="test-area" style="display: none;">
+      <div class="demo-selector" >
+        <span>1</span><span>2</span>
+      </div>
+      <div class="demo-transform"></div>
+      <div class="demo-prefixfree"></div>
+    </div>
+    <div id="mocha"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script>mocha.setup('bdd');</script>
+    <script src="../dist/index.js"></script>
+	<script>
+var chai = window.chai;
+var describe = window.describe;
+var it = window.it;
+var $ = window.$;
+var expect = chai.expect;
+
+var $getUniqueKey = window.sporeKit.str.getUniqueKey;
+
+describe('mvc/klass', function() {
+	var $klass = window.sporeKit.mvc.klass;
+	this.timeout(3000);
+
+	it('mvc/klass exists', function() {
+		expect($klass).to.be.a('function');
+	});
+});
+
+describe('mvc/delegate', function() {
+	var $delegate = window.sporeKit.mvc.delegate;
+	this.timeout(3000);
+
+	it('mvc/delegate exists', function() {
+		expect($delegate).to.be.a('function');
+	});
+});
+
+describe('mvc/base', function() {
+	var $base = window.sporeKit.mvc.Base;
+	this.timeout(3000);
+
+	it('mvc/base exists', function() {
+		expect($base).to.be.a('function');
+	});
+
+	it('选项可以被设置在defaults属性对象中，初始化完成后通过conf属性获取设置的选项值', function() {
+		var Child = $base.extend({
+			defaults: {
+				prop: null
+			},
+			setProp: function(val) {
+				this.conf.prop = val;
+			},
+			getProp: function() {
+				return this.conf.prop;
+			}
+		});
+		var o1 = new Child({
+			prop: 'value'
+		});
+		var o2 = new Child();
+		o2.setProp('v1');
+		var o3 = new Child();
+
+		expect(o1.conf.prop).to.equal('value');
+		expect(o1.getProp()).to.equal('value');
+		expect(o2.conf.prop).to.equal('v1');
+		expect(o2.getProp()).to.equal('v1');
+		expect(o3.conf.prop).to.equal(null);
+		expect(o3.getProp()).to.equal(null);
+		expect($base.prototype.defaults.prop).to.equal(undefined);
+
+	});
+
+	it('defaults属性对象是设置在原型上的，所以不要在函数中直接修改defaults对象，会影响到原型', function() {
+		var Child = $base.extend({
+			defaults: {
+				a: 1
+			},
+			setDef: function(val) {
+				this.defaults.a = val;
+			}
+		});
+		var o1 = new Child();
+		var o2 = new Child();
+		o2.setDef(2);
+		var o3 = new Child();
+
+		expect(o1.conf.a).to.equal(1);
+		expect(o2.conf.a).to.equal(1);
+		expect(Child.prototype.defaults.a).to.equal(2);
+		expect(o3.conf.a).to.equal(2);
+	});
+
+	it('class Base 提供了 setOptions 方法用于设置选项', function() {
+		var Child = $base.extend({
+			defaults: {
+				a: 1,
+				b: 2,
+				c: 3
+			}
+		});
+
+		var obj = new Child();
+		obj.setOptions({
+			a: 9,
+			b: 8
+		});
+
+		expect(obj.conf.a).to.equal(9);
+		expect(obj.conf.b).to.equal(8);
+		expect(obj.conf.c).to.equal(3);
+	});
+
+	it('setOptions 方法以深度混合方式来混合选项数据', function() {
+		var Child = $base.extend({
+			defaults: {
+				a: 1,
+				b: {
+					c: 2,
+					d: 3
+				}
+			}
+		});
+
+		var o1 = new Child({
+			a: 2,
+			b: 3
+		});
+
+		var o2 = new Child({
+			a: 3,
+			b: {
+				c: 3
+			}
+		});
+
+		expect(o1.conf.a).to.equal(2);
+		expect(o1.conf.b).to.equal(3);
+		expect(o2.conf.a).to.equal(3);
+		expect(o2.conf.b.c).to.equal(3);
+		expect(o2.conf.b.d).to.equal(3);
+	});
+
+	it('可重复调用 setOptions 方法覆盖原有选项', function() {
+		var Child = $base.extend({
+			defaults: {
+				a: 1,
+				b: 2,
+				c: 3
+			}
+		});
+
+		var o1 = new Child({
+			a: 10
+		});
+		o1.setOptions({
+			b: 11
+		});
+
+		expect(o1.conf.a).to.equal(10);
+		expect(o1.conf.b).to.equal(11);
+		expect(o1.conf.c).to.equal(3);
+	});
+
+	it('提供借口 build 函数以供覆盖，build 为初始化函数', function() {
+		var builded = 0;
+		var Child = $base.extend({
+			build: function() {
+				builded++;
+			}
+		});
+		var o1 = new Child();
+
+		expect(builded).to.equal(1);
+	});
+
+	it('需要自定义 setEvents 函数来进行事件函数的绑定，默认传递字符串 "on" 作为参数', function() {
+		var eventSeted = 0;
+		var act = '';
+		var Child = $base.extend({
+			setEvents: function(action) {
+				eventSeted++;
+				act = action;
+			}
+		});
+		var o1 = new Child();
+
+		expect(eventSeted).to.equal(1);
+		expect(act).to.equal('on');
+	});
+
+	it('提供 proxy 函数确保一个函数可以在实例的上下文中执行', function() {
+		var Child = $base.extend({
+			defaults: {
+				count: 0
+			},
+			method: function() {
+				var conf = this.conf;
+				conf.count++;
+			}
+		});
+		var o1 = new Child();
+		var o2 = new Child({
+			count: 10
+		});
+		var o3 = new Child({
+			count: 10
+		});
+		var proxy = o1.proxy();
+		o2.method = proxy('method');
+		o2.method();
+		o3.method();
+
+		expect(o1.conf.count).to.equal(1);
+		expect(o2.conf.count).to.equal(10);
+		expect(o3.conf.count).to.equal(11);
+	});
+
+	it('proxy 方法可为函数设置默认参数，追加到实际参数后面', function() {
+		var Child = $base.extend({
+			defaults: {
+				str: 'obj'
+			},
+			plus: function(str, type) {
+				var conf = this.conf;
+				str = str || 0;
+				if (type === 'reverse') {
+					conf.str = str + conf.str;
+				} else {
+					conf.str = conf.str + str;
+				}
+			}
+		});
+
+		var o1 = new Child();
+		o1.plus('1');
+
+		var o2 = new Child({
+			str: 'obj2'
+		});
+		var o2proxy = o2.proxy();
+		var plus = o2proxy('plus', 'reverse');
+		o2.plus('2');
+
+		var o3 = new Child({
+			str: 'obj3'
+		});
+		o3.plus = plus;
+		o3.plus('3');
+
+		expect(o1.conf.str).to.equal('obj1');
+		expect(o2.conf.str).to.equal('3obj22');
+		expect(o3.conf.str).to.equal('obj3');
+	});
+
+	it('基类的销毁函数 destroy 用于扩展和覆盖，会解绑所有事件函数', function() {
+		var count = 0;
+		var Child = $base.extend({
+			setEvents: function() {
+				this.on('action', this.proxy('method'));
+			},
+			method: function() {
+				count++;
+			}
+		});
+		var o1 = new Child();
+		o1.trigger('action');
+		var bound = o1.bound;
+		o1.destroy();
+		o1.trigger('action');
+
+		expect($.isFunction(bound.method)).to.equal(true);
+		expect(count).to.equal(1);
+		expect(o1.bound).to.equal(null);
+	});
+
+});
+
+
+describe('mvc/model', function() {
+	var $model = window.sporeKit.mvc.Model;
+	this.timeout(3000);
+
+	it('mvc/model exists', function() {
+		expect($model).to.be.a('function');
+	});
+
+	it('可以用 get 方法获取模型的数据', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		expect(m1.get('a')).to.equal(1);
+	});
+
+	it('传入选项数据，可直接建立模型数据。', function() {
+		var m = new $model({
+			a: 1,
+			b: 2
+		});
+		expect(m.get('a')).to.equal(1);
+		expect(m.get('b')).to.equal(2);
+	});
+
+	it('未设置默认属性的情况下，不给予数据，或者给予错误的数据，创建的模型数据为空对象', function() {
+		var m1 = new $model();
+		var m2 = new $model([1, 2, 3]);
+		var m3 = new $model(null);
+
+		expect(m1.keys().length).to.equal(0);
+		expect(m2.keys().length).to.equal(0);
+		expect(m3.keys().length).to.equal(0);
+	});
+
+	it('派生的模型子类可设置默认数据，创建模型实例时，如果没有传入参数，视为使用默认数据', function() {
+		var Model = $model.extend({
+			defaults: {
+				a: 1,
+				b: 2
+			}
+		});
+
+		var m1 = new Model();
+		var m2 = new Model({
+			a: 3,
+			c: 4
+		});
+		var m3 = new Model(null);
+		var m4 = new Model([1, 2, 3]);
+
+		expect(m1.get('a')).to.equal(1);
+		expect(m1.get('b')).to.equal(2);
+		expect(m1.keys().length).to.equal(2);
+
+		expect(m2.get('a')).to.equal(3);
+		expect(m2.get('b')).to.equal(2);
+		expect(m2.get('c')).to.equal(4);
+		expect(m2.keys().length).to.equal(3);
+
+		expect(m3.get('a')).to.equal(1);
+		expect(m3.get('b')).to.equal(2);
+		expect(m3.keys().length).to.equal(2);
+
+		expect(m4.get('a')).to.equal(1);
+		expect(m4.get('b')).to.equal(2);
+		expect(m4.keys().length).to.equal(2);
+	});
+
+	it('创建实例时传入的数据，不会影响到默认数据', function() {
+		var Model = $model.extend({
+			defaults: {
+				a: 1,
+				b: 2
+			}
+		});
+
+		var m1 = new Model({
+			a: 3,
+			c: 4
+		});
+
+		expect(m1.defaults.a).to.equal(1);
+		expect(m1.defaults.b).to.equal(2);
+		expect(Object.keys(m1.defaults).length).to.equal(2);
+	});
+
+	it('set 方法用于设置属性值，不给 value 值，相当于设置 value 为 undefined', function() {
+		var m1 = new $model({
+			a: 1,
+			b: 1,
+			c: 1,
+			d: 1,
+			e: 1
+		});
+
+		m1.set('a');
+		m1.set('b', null);
+		m1.set('c', '');
+		m1.set('d', 2);
+		m1.set('e', 0);
+
+		expect(m1.get('a')).to.equal(undefined);
+		expect(m1.get('b')).to.equal(null);
+		expect(m1.get('c')).to.equal('');
+		expect(m1.get('d')).to.equal(2);
+		expect(m1.get('e')).to.equal(0);
+	});
+
+	it('可以给 set 方法传入一个对象，批量设置模型属性', function() {
+		var m1 = new $model({
+			a: 1,
+			b: 1,
+			c: 1,
+			d: 1,
+			e: 1
+		});
+
+		m1.set({
+			'a': undefined,
+			'b': null,
+			'c': '',
+			'd': 2,
+			'e': 0
+		});
+
+		expect(m1.get('a')).to.equal(undefined);
+		expect(m1.get('b')).to.equal(null);
+		expect(m1.get('c')).to.equal('');
+		expect(m1.get('d')).to.equal(2);
+		expect(m1.get('e')).to.equal(0);
+	});
+
+	it('可以通过 process 方法定义一个属性设置格式化方法，确保值的按预期格式设定', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		m1.process('a', {
+			set: function(value) {
+				return parseInt(value, 10) || 0;
+			}
+		});
+
+		m1.set('a', '5');
+		expect(m1.get('a')).to.equal(5);
+	});
+
+	it('可以通过 process 方法定义一个属性取值格式化方法，确保获得预期格式的值', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		m1.process('a', {
+			get: function(value) {
+				return value + 'px';
+			}
+		});
+
+		m1.set('a', 5);
+		expect(m1.get('a')).to.equal('5px');
+	});
+
+	it('可以通过 processors 对象批量设置预处理方法', function() {
+		var Model = $model.extend({
+			processors: {
+				a: {
+					set: function(value) {
+						return Math.abs(value);
+					},
+					get: function(value) {
+						return value + 'px';
+					}
+				},
+				b: {
+					get: function(value) {
+						return value + 'vw';
+					}
+				}
+			}
+		});
+
+		var m1 = new Model({
+			'a': -2
+		});
+		m1.set('b', 3);
+
+		expect(m1.get('a')).to.equal('2px');
+		expect(m1.get('b')).to.equal('3vw');
+	});
+
+	it('可以在 events 属性中绑定事件进行属性关联运算', function() {
+		var Model = $model.extend({
+			defaults: {
+				a: 1,
+				b: 2
+			},
+			events: {
+				'change:a': 'updateB'
+			},
+			updateB: function() {
+				this.set('b', this.get('a') + 10);
+			}
+		});
+
+		var m1 = new Model();
+		m1.set('a', 2);
+
+		expect(m1.get('b')).to.equal(12);
+	});
+
+	it('可以在 events 属性中为一个属性变更事件绑定多个函数', function() {
+		var Model = $model.extend({
+			defaults: {
+				a: 1,
+				b: 2
+			},
+			events: {
+				'change:a': 'updateB updateC'
+			},
+			updateB: function() {
+				this.set('b', this.get('a') + 10);
+			},
+			updateC: function() {
+				this.set('c', this.get('a') + 20);
+			}
+		});
+
+		var m1 = new Model();
+		m1.set('a', 2);
+
+		expect(m1.get('b')).to.equal(12);
+		expect(m1.get('c')).to.equal(22);
+	});
+
+	it('在 events 属性中添加了属性映射函数，在对象初始化接收选项参数时会自动执行', function() {
+		var Model = $model.extend({
+			defaults: {
+				a: 1,
+				b: 2
+			},
+			events: {
+				'change:a': 'updateB'
+			},
+			updateB: function() {
+				this.set('b', this.get('a') + 10);
+			}
+		});
+
+		var m1 = new Model({
+			'a': 2
+		});
+
+		expect(m1.get('b')).to.equal(12);
+	});
+
+	it('属性变化会触发模型的 change 事件，每个属性变化都会触发', function() {
+		var m1 = new $model({
+			a: 1,
+			b: 2
+		});
+
+		var count = 0;
+		m1.on('change', function() {
+			count++;
+		});
+
+		m1.set('a', 2);
+		m1.set('b', 3);
+		m1.set('c', 4);
+
+		expect(count).to.equal(3);
+	});
+
+	it('向 set 方法传递一个对象作为参数时，多个属性变化仅触发模型的 change 事件一次', function() {
+		var m1 = new $model({
+			a: 1,
+			b: 2
+		});
+
+		var count = 0;
+		m1.on('change', function() {
+			count++;
+		});
+
+		var aChanged = 0;
+		m1.on('change:a', function() {
+			aChanged++;
+		});
+
+		var bChanged = 0;
+		m1.on('change:b', function() {
+			bChanged++;
+		});
+
+		m1.set({
+			'a': 2,
+			'b': 3
+		});
+
+		expect(count).to.equal(1);
+		expect(aChanged).to.equal(1);
+		expect(bChanged).to.equal(1);
+	});
+
+	it('确保模型实例各自的操作不会影响到彼此。', function() {
+		var m1 = new $model({
+			a: 1,
+			b: 2
+		});
+		var m2 = new $model({
+			a: 2,
+			b: 1
+		});
+		m1.set('a', 3);
+		m2.set('b', 4);
+
+		expect(m1.get('a')).to.equal(3);
+		expect(m1.get('b')).to.equal(2);
+		expect(m2.get('a')).to.equal(2);
+		expect(m2.get('b')).to.equal(4);
+	});
+
+	it('可在实例绑定对应属性的 change 事件', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		m1.on('change:a', function() {
+			m1.set('b', m1.get('a') + 10);
+		});
+
+		m1.set('a', 2);
+
+		expect(m1.get('b')).to.equal(12);
+	});
+
+	it('属性变化会触发模型的 change 事件，每个属性变化都会触发对应 change 事件', function() {
+		var m1 = new $model({
+			a: 1,
+			b: 2
+		});
+
+		var count = 0;
+		m1.on('change', function() {
+			count++;
+		});
+
+		var aChanged = false;
+		m1.on('change:a', function() {
+			aChanged = true;
+		});
+
+		var bChanged = false;
+		m1.on('change:b', function() {
+			bChanged = true;
+		});
+
+		var cChanged = false;
+		m1.on('change:c', function() {
+			cChanged = true;
+		});
+
+		var dChanged = false;
+		m1.on('change:d', function() {
+			dChanged = true;
+		});
+
+		m1.set('a', 1);
+		m1.set('b', 2);
+		m1.set('c', 3);
+		m1.set('d');
+
+		expect(count).to.equal(1);
+		expect(aChanged).to.equal(false);
+		expect(bChanged).to.equal(false);
+		expect(cChanged).to.equal(true);
+		expect(dChanged).to.equal(false);
+	});
+
+	it('set 方法不传递第二个参数时，或者第二个参数为 undefined 时，不会增加模型的键值对数量，也不会触发 change 事件', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		var count = 0;
+		m1.on('change', function() {
+			count++;
+		});
+
+		var bChanged = 0;
+		m1.on('change:b', function() {
+			bChanged++;
+		});
+
+		var cChanged = 0;
+		m1.on('change:b', function() {
+			cChanged++;
+		});
+
+		m1.set('b');
+		m1.set('c', undefined);
+
+		expect(m1.keys().length).to.equal(1);
+		expect(count).to.equal(0);
+		expect(bChanged).to.equal(0);
+		expect(cChanged).to.equal(0);
+	});
+
+	it('可以通过属性名对应的 change 事件，拿到 change 发生之前的值', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		var prev = 0;
+		m1.on('change:a', function(prevA) {
+			prev = prevA;
+		});
+
+		m1.set('a', 2);
+
+		expect(prev).to.equal(1);
+	});
+
+	it('change 事件发生时，当前属性的值已经发生改变', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		var now2 = 0;
+		m1.on('change', function() {
+			now2 = m1.get('a');
+		});
+
+		var now1 = 0;
+		m1.on('change:a', function() {
+			now1 = m1.get('a');
+		});
+
+		m1.set('a', 2);
+
+		expect(now1).to.equal(2);
+		expect(now2).to.equal(2);
+	});
+
+	it('属性变更用 === 来判断，数据与类型必须一致', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		var count = 0;
+		m1.on('change', function() {
+			count++;
+		});
+
+		m1.set('a', '1');
+
+		expect(count).to.equal(1);
+	});
+
+	it('可以设置一个属性为对象，通过get方法访问这个属性，获取到的是这个对象的拷贝', function() {
+		var m1 = new $model({
+			a: {
+				a: 1
+			},
+			b: [1, 2]
+		});
+
+		var a = m1.get('a');
+		var b = m1.get('b');
+
+		a.a = 2;
+		b.unshift(3);
+
+		expect(m1.get('a').a).to.equal(1);
+		expect(b[0]).to.equal(3);
+		expect(m1.get('b')[0]).to.equal(1);
+	});
+
+	it('get 方法不传参数可以获取这个模型数据的拷贝', function() {
+		var m1 = new $model({
+			a: {
+				a: 1
+			},
+			b: [1, 2]
+		});
+
+		var obj = m1.get();
+		obj.a.a = 2;
+		obj.b.unshift(3);
+
+		expect(obj.a.hasOwnProperty('a')).to.equal(true);
+		expect(Object.keys(obj.a).length).to.equal(1);
+		expect(obj.a.a).to.equal(2);
+		expect(m1.get('a').a).to.equal(1);
+
+		expect(obj.b.length).to.equal(3);
+		expect(obj.b.join('')).to.equal('312');
+		expect(m1.get('b')[0]).to.equal(1);
+	});
+
+	it('用 keys 方法可以获取模型上的所有键名', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		m1.set('b', 1);
+
+		expect(m1.keys()[0]).to.equal('a');
+		expect(m1.keys()[1]).to.equal('b');
+		expect(m1.keys().length).to.equal(2);
+	});
+
+	it('用 remove 方法移除模型上的一个键值对，同样可以触发 change 事件', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		var aChanged = 0;
+		m1.on('change:a', function() {
+			aChanged++;
+		});
+
+		var count = 0;
+		m1.on('change', function() {
+			count++;
+		});
+
+		m1.set('b', 1);
+		m1.remove('a');
+
+		expect(m1.get('a')).to.equal(undefined);
+		expect(m1.get().hasOwnProperty('a')).to.equal(false);
+		expect(m1.get('b')).to.equal(1);
+		expect(aChanged).to.equal(1);
+		expect(count).to.equal(2);
+	});
+
+
+	it('用 clear 方法移除模型上的所有键值对，仅触发模型 change 事件 1 次，但会分别触发属性 change 事件', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		var aChanged = 0;
+		m1.on('change:a', function() {
+			aChanged++;
+		});
+
+		var bChanged = 0;
+		m1.on('change:b', function() {
+			bChanged++;
+		});
+
+		var count = 0;
+		m1.on('change', function() {
+			count++;
+		});
+
+		m1.set('b', 1);
+		m1.clear();
+
+		expect(m1.keys().length).to.equal(0);
+		expect(aChanged).to.equal(1);
+		expect(bChanged).to.equal(2);
+		expect(count).to.equal(2);
+	});
+
+	it('用 destroy 方法销毁模型，会解绑模型上的所有事件，不触发任何 change 事件', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		var count = 0;
+		m1.on('change', function() {
+			count++;
+		});
+
+		var aChanged = 0;
+		m1.on('change:a', function() {
+			aChanged++;
+		});
+
+		m1.set('a', 2);
+		m1.destroy();
+		m1.set('a', 3);
+
+		expect(count).to.equal(1);
+		expect(aChanged).to.equal(1);
+	});
+
+	it('用 destroy 方法销毁模型，该模型绑定的事件无法再被触发', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		m1.destroy();
+
+		var count = 0;
+		m1.on('change', function() {
+			count++;
+		});
+
+		var aChanged = 0;
+		m1.on('change:a', function() {
+			aChanged++;
+		});
+
+		m1.set('a', 2);
+
+		expect(count).to.equal(0);
+		expect(aChanged).to.equal(0);
+	});
+
+	it('用 destroy 方法销毁模型，模型上所有的数据都被清空为 undefined', function() {
+		var m1 = new $model({
+			a: 1
+		});
+
+		m1.destroy();
+
+		expect(Object.keys(m1.get()).length).to.equal(0);
+		expect(m1.get('a')).to.equal(undefined);
+	});
+
+});
+
+describe('mvc/view', function() {
+	var $view = window.sporeKit.mvc.View;
+	this.timeout(3000);
+
+	it('mvc/view exists', function() {
+		expect($view).to.be.a('function');
+	});
+
+	it('设置 node 选项为元素 id 或者元素本身，可设置视图的根节点。', function() {
+
+		var id = $getUniqueKey();
+		var node = $('<div></div>');
+		node.attr('id', id)
+			.css('display', 'none')
+			.appendTo(document.body);
+
+		var TestView = $view.extend({
+			defaults: {
+				node: '#' + id
+			}
+		});
+
+		var obj1 = new $view({
+			node: '#' + id
+		});
+
+		var obj2 = new TestView();
+		var obj3 = new TestView({
+			node: node.get(0)
+		});
+
+		expect(obj1.role('root').attr('id')).to.equal(id);
+		expect(obj2.role('root').attr('id')).to.equal(id);
+		expect(obj3.role('root').attr('id')).to.equal(id);
+
+		node.remove();
+
+	});
+
+	it('设置 template 选项为 html 字符串，或者字符串数组，组件初始化后，可直接创建视图 dom。', function() {
+
+		var id1 = $getUniqueKey();
+		var id2 = $getUniqueKey();
+
+		var obj1 = new $view({
+			template: '<div id="' + id1 + '"></div>'
+		});
+
+		var obj2 = new $view({
+			template: [
+				'<div id="' + id2 + '">',
+				'</div>'
+			]
+		});
+
+		expect(obj1.role('root').attr('id')).to.equal(id1);
+		expect(obj2.role('root').attr('id')).to.equal(id2);
+
+	});
+
+	it('同时设置 template 和 node ，优先使用 node 识别根元素。', function() {
+
+		var id1 = $getUniqueKey();
+		var id2 = $getUniqueKey();
+
+		var node = $('<div></div>');
+		node.attr('id', id1)
+			.css('display', 'none')
+			.appendTo(document.body);
+
+		var obj = new $view({
+			node: '#' + id1,
+			template: '<div id="' + id2 + '"></div>'
+		});
+
+		expect(obj.role('root').attr('id')).to.equal(id1);
+
+		node.remove();
+	});
+
+	it('使用 role 方法可获取根元素内部标记了 role 属性的元素。', function() {
+
+		var id = $getUniqueKey();
+		var obj = new $view({
+			template: [
+				'<div">',
+				'<div role="member" id="' + id + '"></div>',
+				'</div>'
+			]
+		});
+
+		expect(obj.role('member').attr('id')).to.equal(id);
+
+	});
+
+	it('可通过 role 选项指定选择器与对应的角色名称。', function() {
+
+		var id = $getUniqueKey();
+
+		var TestView = $view.extend({
+			defaults: {
+				template: [
+					'<div">',
+					'<div type="member" id="' + id + '"></div>',
+					'</div>'
+				],
+				role: {
+					'member': '[type="member"]'
+				}
+			}
+		});
+
+		var obj = new TestView();
+
+		expect(obj.role('member').attr('id')).to.equal(id);
+
+	});
+
+	it('可以用 resetRoles 方法清除视图缓存的角色 dom 元素。', function() {
+
+		var id1 = $getUniqueKey();
+		var id2 = $getUniqueKey();
+		var obj = new $view({
+			template: [
+				'<div">',
+				'<div role="member" id="' + id1 + '"></div>',
+				'</div>'
+			]
+		});
+
+		expect(obj.role('member').attr('id')).to.equal(id1);
+
+		obj.resetRoles();
+		obj.role('root').html('<div role="member" id="' + id2 + '"></div>');
+
+		expect(Object.keys(obj.nodes).length).to.equal(1);
+		expect(obj.role('member').attr('id')).to.equal(id2);
+		expect(Object.keys(obj.nodes).length).to.equal(2);
+
+	});
+
+	it('在 events 对象上可以绑定代理事件', function() {
+
+		var TPL = {
+			box: [
+				'<div>',
+				'<button data-val="3"></button>',
+				'</div>'
+			]
+		};
+
+		var TestView = $view.extend({
+			defaults: {
+				template: TPL.box
+			},
+			events: {
+				'button click': 'onBtnClick'
+			},
+			build: function() {
+				this.arr = [];
+				this.role('root').appendTo(document.body);
+			},
+			onBtnClick: function(evt) {
+				var node = $(evt.currentTarget);
+				this.arr.push(node.attr('data-val'));
+			}
+		});
+
+		var obj = new TestView();
+		obj.role('root').append('<button data-val="5"></button>');
+
+		obj.role('root').find('button').each(function() {
+			$(this).trigger('click');
+		});
+
+		expect(obj.arr.join('')).to.equal('35');
+
+		obj.role('root').remove();
+
+	});
+
+	it('在 events 上对一个选择器可以绑定多个代理事件', function() {
+
+		var TPL = {
+			box: [
+				'<div>',
+				'<button data-val="3"></button>',
+				'</div>'
+			]
+		};
+
+		var TestView = $view.extend({
+			defaults: {
+				template: TPL.box
+			},
+			events: {
+				'button click': 'gather add'
+			},
+			build: function() {
+				this.arr = [];
+				this.val = 0;
+				this.role('root').appendTo(document.body);
+			},
+			gather: function(evt) {
+				var node = $(evt.currentTarget);
+				this.arr.push(node.attr('data-val'));
+			},
+			add: function(evt) {
+				var node = $(evt.currentTarget);
+				this.val = this.val + parseInt(node.attr('data-val'), 10);
+			}
+		});
+
+		var obj = new TestView();
+		obj.role('root').append('<button data-val="5"></button>');
+
+		obj.role('root').find('button').each(function() {
+			$(this).trigger('click');
+		});
+
+		expect(obj.arr.join('')).to.equal('35');
+		expect(obj.val).to.equal(8);
+
+		obj.role('root').remove();
+
+	});
+
+	it('配置 events 选项可自定事件代理。', function() {
+
+		var TPL = {
+			box: [
+				'<div>',
+				'<button role="button"></button>',
+				'</div>'
+			]
+		};
+
+		var TestView = $view.extend({
+			defaults: {
+				template: TPL.box
+			},
+			events: {
+				'button click': 'method1'
+			},
+			build: function() {
+				this.val = 0;
+				this.role('root').appendTo(document.body);
+			},
+			method1: function(evt) {
+				this.val = 1;
+			},
+			method2: function(evt) {
+				this.val = 2;
+			}
+		});
+
+		var obj1 = new TestView();
+		var obj2 = new TestView({
+			events: {
+				'button click': 'method2'
+			}
+		});
+
+		obj1.role('button').trigger('click');
+		obj2.role('button').trigger('click');
+
+		expect(obj1.val).to.equal(1);
+		expect(obj2.val).to.equal(2);
+
+		obj1.role('root').remove();
+		obj2.role('root').remove();
+	});
+
+	it('view 组件提供 destroy 方法清除缓存对象。', function() {
+
+		var TPL = {
+			box: [
+				'<div>',
+				'<button role="button"></button>',
+				'</div>'
+			]
+		};
+
+		var TestView = $view.extend({
+			defaults: {
+				template: TPL.box
+			},
+			events: {
+				'button click': 'method'
+			},
+			build: function() {
+				this.val = 0;
+				this.role('root').appendTo(document.body);
+			},
+			method: function(evt) {
+				this.val = 1;
+			}
+		});
+
+		var obj = new TestView();
+		obj.destroy();
+
+		expect(Object.keys(obj.nodes).length).to.equal(0);
+
+		obj.role('button').trigger('click');
+		expect(Object.keys(obj.nodes).length).to.equal(2);
+
+		expect(obj.val).to.equal(0);
+
+		obj.role('root').remove();
+	});
+
+});
+
+	</script>
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>
