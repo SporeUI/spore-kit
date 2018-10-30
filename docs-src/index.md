@@ -34,3 +34,7 @@ console.info($arr.contains); //function
 // 单独引入一个方法（推荐）
 var $contains = require('spore-kit-arr/contains');
 ```
+
+## 测试
+
+- [测试覆盖率](https://sporeui.github.io/spore-kit/coverage/lcov-report/index.html)

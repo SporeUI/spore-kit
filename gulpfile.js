@@ -12,6 +12,8 @@ $gulp.task('build-js', function() {
 		})
 	).pipe(
 		$gulp.dest('./dist')
+	).pipe(
+		$gulp.dest('./docs/dist')
 	);
 });
 
