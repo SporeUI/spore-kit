@@ -15,7 +15,7 @@ exports.obj = _dereq_('./packages/obj');
 exports.str = _dereq_('./packages/str');
 exports.time = _dereq_('./packages/time');
 
-},{"./packages/app":3,"./packages/arr":13,"./packages/cookie":16,"./packages/date":22,"./packages/dom":26,"./packages/env":31,"./packages/evt":39,"./packages/fn":44,"./packages/io":52,"./packages/location":54,"./packages/mvc":59,"./packages/num":201,"./packages/obj":207,"./packages/str":215,"./packages/time":221}],2:[function(_dereq_,module,exports){
+},{"./packages/app":3,"./packages/arr":13,"./packages/cookie":16,"./packages/date":22,"./packages/dom":26,"./packages/env":37,"./packages/evt":45,"./packages/fn":50,"./packages/io":58,"./packages/location":60,"./packages/mvc":65,"./packages/num":207,"./packages/obj":213,"./packages/str":221,"./packages/time":227}],2:[function(_dereq_,module,exports){
 /**
  * 此方法用于呼起本地客户端，呼起失败时，跳转到客户端下载地址或者中间页
  * - 首先需要客户端提供一个协议地址 protocol
@@ -1028,8 +1028,9 @@ module.exports = substitute;
  */
 
 exports.isNode = _dereq_('./isNode');
+exports.offset = _dereq_('./offset');
 
-},{"./isNode":27}],27:[function(_dereq_,module,exports){
+},{"./isNode":27,"./offset":33}],27:[function(_dereq_,module,exports){
 /**
  * 判断对象是否为dom元素
  * @param {Object} node 要判断的对象
@@ -1046,8 +1047,491 @@ function isNode(node) {
 module.exports = isNode;
 
 },{}],28:[function(_dereq_,module,exports){
+var support = _dereq_('dom-support')
+var getDocument = _dereq_('get-document')
+var withinElement = _dereq_('within-element')
+
+/**
+ * Get offset of a DOM Element or Range within the document.
+ *
+ * @param {DOMElement|Range} el - the DOM element or Range instance to measure
+ * @return {Object} An object with `top` and `left` Number values
+ * @public
+ */
+
+module.exports = function offset(el) {
+  var doc = getDocument(el)
+  if (!doc) return
+
+  // Make sure it's not a disconnected DOM node
+  if (!withinElement(el, doc)) return
+
+  var body = doc.body
+  if (body === el) {
+    return bodyOffset(el)
+  }
+
+  var box = { top: 0, left: 0 }
+  if ( typeof el.getBoundingClientRect !== "undefined" ) {
+    // If we don't have gBCR, just use 0,0 rather than error
+    // BlackBerry 5, iOS 3 (original iPhone)
+    box = el.getBoundingClientRect()
+
+    if (el.collapsed && box.left === 0 && box.top === 0) {
+      // collapsed Range instances sometimes report 0, 0
+      // see: http://stackoverflow.com/a/6847328/376773
+      var span = doc.createElement("span");
+
+      // Ensure span has dimensions and position by
+      // adding a zero-width space character
+      span.appendChild(doc.createTextNode("\u200b"));
+      el.insertNode(span);
+      box = span.getBoundingClientRect();
+
+      // Remove temp SPAN and glue any broken text nodes back together
+      var spanParent = span.parentNode;
+      spanParent.removeChild(span);
+      spanParent.normalize();
+    }
+  }
+
+  var docEl = doc.documentElement
+  var clientTop  = docEl.clientTop  || body.clientTop  || 0
+  var clientLeft = docEl.clientLeft || body.clientLeft || 0
+  var scrollTop  = window.pageYOffset || docEl.scrollTop
+  var scrollLeft = window.pageXOffset || docEl.scrollLeft
+
+  return {
+    top: box.top  + scrollTop  - clientTop,
+    left: box.left + scrollLeft - clientLeft
+  }
+}
+
+function bodyOffset(body) {
+  var top = body.offsetTop
+  var left = body.offsetLeft
+
+  if (support.doesNotIncludeMarginInBodyOffset) {
+    top  += parseFloat(body.style.marginTop || 0)
+    left += parseFloat(body.style.marginLeft || 0)
+  }
+
+  return {
+    top: top,
+    left: left
+  }
+}
+
+},{"dom-support":29,"get-document":31,"within-element":32}],29:[function(_dereq_,module,exports){
+var domready = _dereq_('domready')
+
+module.exports = (function() {
+
+	var support,
+		all,
+		a,
+		select,
+		opt,
+		input,
+		fragment,
+		eventName,
+		i,
+		isSupported,
+		clickFn,
+		div = document.createElement("div");
+
+	// Setup
+	div.setAttribute( "className", "t" );
+	div.innerHTML = "  <link/><table></table><a href='/a'>a</a><input type='checkbox'/>";
+
+	// Support tests won't run in some limited or non-browser environments
+	all = div.getElementsByTagName("*");
+	a = div.getElementsByTagName("a")[ 0 ];
+	if ( !all || !a || !all.length ) {
+		return {};
+	}
+
+	// First batch of tests
+	select = document.createElement("select");
+	opt = select.appendChild( document.createElement("option") );
+	input = div.getElementsByTagName("input")[ 0 ];
+
+	a.style.cssText = "top:1px;float:left;opacity:.5";
+	support = {
+		// IE strips leading whitespace when .innerHTML is used
+		leadingWhitespace: ( div.firstChild.nodeType === 3 ),
+
+		// Make sure that tbody elements aren't automatically inserted
+		// IE will insert them into empty tables
+		tbody: !div.getElementsByTagName("tbody").length,
+
+		// Make sure that link elements get serialized correctly by innerHTML
+		// This requires a wrapper element in IE
+		htmlSerialize: !!div.getElementsByTagName("link").length,
+
+		// Get the style information from getAttribute
+		// (IE uses .cssText instead)
+		style: /top/.test( a.getAttribute("style") ),
+
+		// Make sure that URLs aren't manipulated
+		// (IE normalizes it by default)
+		hrefNormalized: ( a.getAttribute("href") === "/a" ),
+
+		// Make sure that element opacity exists
+		// (IE uses filter instead)
+		// Use a regex to work around a WebKit issue. See #5145
+		opacity: /^0.5/.test( a.style.opacity ),
+
+		// Verify style float existence
+		// (IE uses styleFloat instead of cssFloat)
+		cssFloat: !!a.style.cssFloat,
+
+		// Make sure that if no value is specified for a checkbox
+		// that it defaults to "on".
+		// (WebKit defaults to "" instead)
+		checkOn: ( input.value === "on" ),
+
+		// Make sure that a selected-by-default option has a working selected property.
+		// (WebKit defaults to false instead of true, IE too, if it's in an optgroup)
+		optSelected: opt.selected,
+
+		// Test setAttribute on camelCase class. If it works, we need attrFixes when doing get/setAttribute (ie6/7)
+		getSetAttribute: div.className !== "t",
+
+		// Tests for enctype support on a form (#6743)
+		enctype: !!document.createElement("form").enctype,
+
+		// Makes sure cloning an html5 element does not cause problems
+		// Where outerHTML is undefined, this still works
+		html5Clone: document.createElement("nav").cloneNode( true ).outerHTML !== "<:nav></:nav>",
+
+		// jQuery.support.boxModel DEPRECATED in 1.8 since we don't support Quirks Mode
+		boxModel: ( document.compatMode === "CSS1Compat" ),
+
+		// Will be defined later
+		submitBubbles: true,
+		changeBubbles: true,
+		focusinBubbles: false,
+		deleteExpando: true,
+		noCloneEvent: true,
+		inlineBlockNeedsLayout: false,
+		shrinkWrapBlocks: false,
+		reliableMarginRight: true,
+		boxSizingReliable: true,
+		pixelPosition: false
+	};
+
+	// Make sure checked status is properly cloned
+	input.checked = true;
+	support.noCloneChecked = input.cloneNode( true ).checked;
+
+	// Make sure that the options inside disabled selects aren't marked as disabled
+	// (WebKit marks them as disabled)
+	select.disabled = true;
+	support.optDisabled = !opt.disabled;
+
+	// Test to see if it's possible to delete an expando from an element
+	// Fails in Internet Explorer
+	try {
+		delete div.test;
+	} catch( e ) {
+		support.deleteExpando = false;
+	}
+
+	if ( !div.addEventListener && div.attachEvent && div.fireEvent ) {
+		div.attachEvent( "onclick", clickFn = function() {
+			// Cloning a node shouldn't copy over any
+			// bound event handlers (IE does this)
+			support.noCloneEvent = false;
+		});
+		div.cloneNode( true ).fireEvent("onclick");
+		div.detachEvent( "onclick", clickFn );
+	}
+
+	// Check if a radio maintains its value
+	// after being appended to the DOM
+	input = document.createElement("input");
+	input.value = "t";
+	input.setAttribute( "type", "radio" );
+	support.radioValue = input.value === "t";
+
+	input.setAttribute( "checked", "checked" );
+
+	// #11217 - WebKit loses check when the name is after the checked attribute
+	input.setAttribute( "name", "t" );
+
+	div.appendChild( input );
+	fragment = document.createDocumentFragment();
+	fragment.appendChild( div.lastChild );
+
+	// WebKit doesn't clone checked state correctly in fragments
+	support.checkClone = fragment.cloneNode( true ).cloneNode( true ).lastChild.checked;
+
+	// Check if a disconnected checkbox will retain its checked
+	// value of true after appended to the DOM (IE6/7)
+	support.appendChecked = input.checked;
+
+	fragment.removeChild( input );
+	fragment.appendChild( div );
+
+	// Technique from Juriy Zaytsev
+	// http://perfectionkills.com/detecting-event-support-without-browser-sniffing/
+	// We only care about the case where non-standard event systems
+	// are used, namely in IE. Short-circuiting here helps us to
+	// avoid an eval call (in setAttribute) which can cause CSP
+	// to go haywire. See: https://developer.mozilla.org/en/Security/CSP
+	if ( !div.addEventListener ) {
+		for ( i in {
+			submit: true,
+			change: true,
+			focusin: true
+		}) {
+			eventName = "on" + i;
+			isSupported = ( eventName in div );
+			if ( !isSupported ) {
+				div.setAttribute( eventName, "return;" );
+				isSupported = ( typeof div[ eventName ] === "function" );
+			}
+			support[ i + "Bubbles" ] = isSupported;
+		}
+	}
+
+	// Run tests that need a body at doc ready
+	domready(function() {
+		var container, div, tds, marginDiv,
+			divReset = "padding:0;margin:0;border:0;display:block;overflow:hidden;box-sizing:content-box;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;",
+			body = document.getElementsByTagName("body")[0];
+
+		if ( !body ) {
+			// Return for frameset docs that don't have a body
+			return;
+		}
+
+		container = document.createElement("div");
+		container.style.cssText = "visibility:hidden;border:0;width:0;height:0;position:static;top:0;margin-top:1px";
+		body.insertBefore( container, body.firstChild );
+
+		// Construct the test element
+		div = document.createElement("div");
+		container.appendChild( div );
+
+    //Check if table cells still have offsetWidth/Height when they are set
+    //to display:none and there are still other visible table cells in a
+    //table row; if so, offsetWidth/Height are not reliable for use when
+    //determining if an element has been hidden directly using
+    //display:none (it is still safe to use offsets if a parent element is
+    //hidden; don safety goggles and see bug #4512 for more information).
+    //(only IE 8 fails this test)
+		div.innerHTML = "<table><tr><td></td><td>t</td></tr></table>";
+		tds = div.getElementsByTagName("td");
+		tds[ 0 ].style.cssText = "padding:0;margin:0;border:0;display:none";
+		isSupported = ( tds[ 0 ].offsetHeight === 0 );
+
+		tds[ 0 ].style.display = "";
+		tds[ 1 ].style.display = "none";
+
+		// Check if empty table cells still have offsetWidth/Height
+		// (IE <= 8 fail this test)
+		support.reliableHiddenOffsets = isSupported && ( tds[ 0 ].offsetHeight === 0 );
+
+		// Check box-sizing and margin behavior
+		div.innerHTML = "";
+		div.style.cssText = "box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:1px;border:1px;display:block;width:4px;margin-top:1%;position:absolute;top:1%;";
+		support.boxSizing = ( div.offsetWidth === 4 );
+		support.doesNotIncludeMarginInBodyOffset = ( body.offsetTop !== 1 );
+
+		// NOTE: To any future maintainer, we've window.getComputedStyle
+		// because jsdom on node.js will break without it.
+		if ( window.getComputedStyle ) {
+			support.pixelPosition = ( window.getComputedStyle( div, null ) || {} ).top !== "1%";
+			support.boxSizingReliable = ( window.getComputedStyle( div, null ) || { width: "4px" } ).width === "4px";
+
+			// Check if div with explicit width and no margin-right incorrectly
+			// gets computed margin-right based on width of container. For more
+			// info see bug #3333
+			// Fails in WebKit before Feb 2011 nightlies
+			// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+			marginDiv = document.createElement("div");
+			marginDiv.style.cssText = div.style.cssText = divReset;
+			marginDiv.style.marginRight = marginDiv.style.width = "0";
+			div.style.width = "1px";
+			div.appendChild( marginDiv );
+			support.reliableMarginRight =
+				!parseFloat( ( window.getComputedStyle( marginDiv, null ) || {} ).marginRight );
+		}
+
+		if ( typeof div.style.zoom !== "undefined" ) {
+			// Check if natively block-level elements act like inline-block
+			// elements when setting their display to 'inline' and giving
+			// them layout
+			// (IE < 8 does this)
+			div.innerHTML = "";
+			div.style.cssText = divReset + "width:1px;padding:1px;display:inline;zoom:1";
+			support.inlineBlockNeedsLayout = ( div.offsetWidth === 3 );
+
+			// Check if elements with layout shrink-wrap their children
+			// (IE 6 does this)
+			div.style.display = "block";
+			div.style.overflow = "visible";
+			div.innerHTML = "<div></div>";
+			div.firstChild.style.width = "5px";
+			support.shrinkWrapBlocks = ( div.offsetWidth !== 3 );
+
+			container.style.zoom = 1;
+		}
+
+		// Null elements to avoid leaks in IE
+		body.removeChild( container );
+		container = div = tds = marginDiv = null;
+	});
+
+	// Null elements to avoid leaks in IE
+	fragment.removeChild( div );
+	all = a = select = opt = input = fragment = div = null;
+
+	return support;
+})();
+
+},{"domready":30}],30:[function(_dereq_,module,exports){
+/*!
+  * domready (c) Dustin Diaz 2014 - License MIT
+  */
+!function (name, definition) {
+
+  if (typeof module != 'undefined') module.exports = definition()
+  else if (typeof define == 'function' && typeof define.amd == 'object') define(definition)
+  else this[name] = definition()
+
+}('domready', function () {
+
+  var fns = [], listener
+    , doc = document
+    , hack = doc.documentElement.doScroll
+    , domContentLoaded = 'DOMContentLoaded'
+    , loaded = (hack ? /^loaded|^c/ : /^loaded|^i|^c/).test(doc.readyState)
+
+
+  if (!loaded)
+  doc.addEventListener(domContentLoaded, listener = function () {
+    doc.removeEventListener(domContentLoaded, listener)
+    loaded = 1
+    while (listener = fns.shift()) listener()
+  })
+
+  return function (fn) {
+    loaded ? setTimeout(fn, 0) : fns.push(fn)
+  }
+
+});
+
+},{}],31:[function(_dereq_,module,exports){
+
+/**
+ * Module exports.
+ */
+
+module.exports = getDocument;
+
+// defined by w3c
+var DOCUMENT_NODE = 9;
+
+/**
+ * Returns `true` if `w` is a Document object, or `false` otherwise.
+ *
+ * @param {?} d - Document object, maybe
+ * @return {Boolean}
+ * @private
+ */
+
+function isDocument (d) {
+  return d && d.nodeType === DOCUMENT_NODE;
+}
+
+/**
+ * Returns the `document` object associated with the given `node`, which may be
+ * a DOM element, the Window object, a Selection, a Range. Basically any DOM
+ * object that references the Document in some way, this function will find it.
+ *
+ * @param {Mixed} node - DOM node, selection, or range in which to find the `document` object
+ * @return {Document} the `document` object associated with `node`
+ * @public
+ */
+
+function getDocument(node) {
+  if (isDocument(node)) {
+    return node;
+
+  } else if (isDocument(node.ownerDocument)) {
+    return node.ownerDocument;
+
+  } else if (isDocument(node.document)) {
+    return node.document;
+
+  } else if (node.parentNode) {
+    return getDocument(node.parentNode);
+
+  // Range support
+  } else if (node.commonAncestorContainer) {
+    return getDocument(node.commonAncestorContainer);
+
+  } else if (node.startContainer) {
+    return getDocument(node.startContainer);
+
+  // Selection support
+  } else if (node.anchorNode) {
+    return getDocument(node.anchorNode);
+  }
+}
+
+},{}],32:[function(_dereq_,module,exports){
+
+/**
+ * Check if the DOM element `child` is within the given `parent` DOM element.
+ *
+ * @param {DOMElement|Range} child - the DOM element or Range to check if it's within `parent`
+ * @param {DOMElement} parent  - the parent node that `child` could be inside of
+ * @return {Boolean} True if `child` is within `parent`. False otherwise.
+ * @public
+ */
+
+module.exports = function within (child, parent) {
+  // don't throw if `child` is null
+  if (!child) return false;
+
+  // Range support
+  if (child.commonAncestorContainer) child = child.commonAncestorContainer;
+  else if (child.endContainer) child = child.endContainer;
+
+  // traverse up the `parentNode` properties until `parent` is found
+  var node = child;
+  while (node = node.parentNode) {
+    if (node == parent) return true;
+  }
+
+  return false;
+};
+
+},{}],33:[function(_dereq_,module,exports){
+/**
+ * 获取 DOM 元素相对于 document 的边距
+ * @method offset
+ * @see https://github.com/timoxley/offset
+ * @param {Object} node 要计算 offset 的 dom 对象
+ * @return {Object} offset 对象
+ * @example
+ * var offset = require('document-offset')
+ * var target = document.getElementById('target')
+ * console.log(offset(target))
+ * // {top: 69, left: 108}
+ */
+
+var offset = _dereq_('document-offset');
+
+module.exports = offset;
+
+},{"document-offset":28}],34:[function(_dereq_,module,exports){
 module.exports=_dereq_(4)
-},{"./uaMatch":36,"spore-kit-obj/assign":33}],29:[function(_dereq_,module,exports){
+},{"./uaMatch":42,"spore-kit-obj/assign":39}],35:[function(_dereq_,module,exports){
 /**
  * 检测浏览器核心
  *
@@ -1097,7 +1581,7 @@ core.detect = detect;
 
 module.exports = core;
 
-},{"./uaMatch":36,"spore-kit-obj/assign":33}],30:[function(_dereq_,module,exports){
+},{"./uaMatch":42,"spore-kit-obj/assign":39}],36:[function(_dereq_,module,exports){
 /**
  * 检测设备类型
  *
@@ -1148,7 +1632,7 @@ device.detect = detect;
 
 module.exports = device;
 
-},{"./uaMatch":36,"spore-kit-obj/assign":33}],31:[function(_dereq_,module,exports){
+},{"./uaMatch":42,"spore-kit-obj/assign":39}],37:[function(_dereq_,module,exports){
 /**
  * # 环境检测与判断工具
  * @module spore-kit-env
@@ -1175,7 +1659,7 @@ exports.touchable = _dereq_('./touchable');
 exports.uaMatch = _dereq_('./uaMatch');
 exports.webp = _dereq_('./webp');
 
-},{"./browser":28,"./core":29,"./device":30,"./network":32,"./os":34,"./touchable":35,"./uaMatch":36,"./webp":37}],32:[function(_dereq_,module,exports){
+},{"./browser":34,"./core":35,"./device":36,"./network":38,"./os":40,"./touchable":41,"./uaMatch":42,"./webp":43}],38:[function(_dereq_,module,exports){
 /**
  * 网络环境检测
  * @module network
@@ -1213,9 +1697,9 @@ function onLine() {
 exports.support = support;
 exports.onLine = onLine;
 
-},{}],33:[function(_dereq_,module,exports){
+},{}],39:[function(_dereq_,module,exports){
 module.exports=_dereq_(5)
-},{}],34:[function(_dereq_,module,exports){
+},{}],40:[function(_dereq_,module,exports){
 /**
  * 检测操作系统类型
  *
@@ -1260,7 +1744,7 @@ os.detect = detect;
 
 module.exports = os;
 
-},{"./uaMatch":36,"spore-kit-obj/assign":33}],35:[function(_dereq_,module,exports){
+},{"./uaMatch":42,"spore-kit-obj/assign":39}],41:[function(_dereq_,module,exports){
 /**
  * 判断浏览器是否支持触摸屏
  * @method touchable
@@ -1283,9 +1767,9 @@ function touchable() {
 
 module.exports = touchable;
 
-},{}],36:[function(_dereq_,module,exports){
+},{}],42:[function(_dereq_,module,exports){
 module.exports=_dereq_(6)
-},{}],37:[function(_dereq_,module,exports){
+},{}],43:[function(_dereq_,module,exports){
 var isSupportWebp = null;
 
 /**
@@ -1317,7 +1801,7 @@ webp.support = support;
 
 module.exports = webp;
 
-},{}],38:[function(_dereq_,module,exports){
+},{}],44:[function(_dereq_,module,exports){
 /**
  * A module that can be mixed in to *any object* in order to provide it
  * with custom events. You may bind with `on` or remove with `off` callback
@@ -1588,7 +2072,7 @@ Events.mixTo = function(receiver) {
 
 module.exports = Events;
 
-},{}],39:[function(_dereq_,module,exports){
+},{}],45:[function(_dereq_,module,exports){
 /**
  * # 处理事件与广播
  * @module spore-kit-evt
@@ -1611,7 +2095,7 @@ exports.Listener = _dereq_('./listener');
 exports.occurInside = _dereq_('./occurInside');
 exports.tapStop = _dereq_('./tapStop');
 
-},{"./events":38,"./listener":40,"./occurInside":41,"./tapStop":42}],40:[function(_dereq_,module,exports){
+},{"./events":44,"./listener":46,"./occurInside":47,"./tapStop":48}],46:[function(_dereq_,module,exports){
 /**
  * 广播组件
  * - 构造实例时，需要传入事件白名单列表。
@@ -1718,7 +2202,7 @@ Listener.prototype = {
 
 module.exports = Listener;
 
-},{"./events":38}],41:[function(_dereq_,module,exports){
+},{"./events":44}],47:[function(_dereq_,module,exports){
 /**
  * 判断事件是否发生在一个 Dom 元素内。
  * - require jQuery/Zepto
@@ -1756,7 +2240,7 @@ function occurInside(event, node) {
 
 module.exports = occurInside;
 
-},{}],42:[function(_dereq_,module,exports){
+},{}],48:[function(_dereq_,module,exports){
 /**
  * 用遮罩的方式阻止 tap 事件穿透引发表单元素获取焦点。
  * - 推荐用 fastclick 来解决触屏事件穿透问题。
@@ -1824,7 +2308,7 @@ var tapStop = function(options) {
 
 module.exports = tapStop;
 
-},{}],43:[function(_dereq_,module,exports){
+},{}],49:[function(_dereq_,module,exports){
 /**
  * 包装为延迟触发的函数
  * - 用于处理密集事件，延迟时间内同时触发的函数调用。
@@ -1866,7 +2350,7 @@ function delay (fn, duration, bind) {
 
 module.exports = delay;
 
-},{}],44:[function(_dereq_,module,exports){
+},{}],50:[function(_dereq_,module,exports){
 /**
  * # 函数包装，获取特殊执行方式
  * @module spore-kit-fn
@@ -1891,7 +2375,7 @@ exports.queue = _dereq_('./queue');
 exports.prepare = _dereq_('./prepare');
 exports.regular = _dereq_('./regular');
 
-},{"./delay":43,"./lock":45,"./once":46,"./prepare":47,"./queue":48,"./regular":49}],45:[function(_dereq_,module,exports){
+},{"./delay":49,"./lock":51,"./once":52,"./prepare":53,"./queue":54,"./regular":55}],51:[function(_dereq_,module,exports){
 /**
  * 包装为触发一次后，预置时间内不能再次触发的函数
  * - 类似于技能冷却。
@@ -1928,7 +2412,7 @@ function lock (fn, delay, bind) {
 
 module.exports = lock;
 
-},{}],46:[function(_dereq_,module,exports){
+},{}],52:[function(_dereq_,module,exports){
 /**
  * 包装为仅触发一次的函数
  * - 被包装的函数智能执行一次，之后不会再执行
@@ -1957,7 +2441,7 @@ function once (fn, bind) {
 
 module.exports = once;
 
-},{}],47:[function(_dereq_,module,exports){
+},{}],53:[function(_dereq_,module,exports){
 /**
  * 包装为一个条件触发管理器
  * - 调用管理器的 ready 函数来激活条件。
@@ -2033,7 +2517,7 @@ function prepare () {
 
 module.exports = prepare;
 
-},{}],48:[function(_dereq_,module,exports){
+},{}],54:[function(_dereq_,module,exports){
 /**
  * 包装为一个队列，按设置的时间间隔触发任务函数
  * - 插入队列的所有函数都会执行，但每次执行之间都会有一个固定的时间间隔。
@@ -2079,7 +2563,7 @@ function queue (fn, delay, bind) {
 
 module.exports = queue;
 
-},{}],49:[function(_dereq_,module,exports){
+},{}],55:[function(_dereq_,module,exports){
 /**
  * 包装为规律触发的函数，用于降低密集事件的处理频率
  * - 在疯狂操作期间，按照规律时间间隔，来调用任务函数
@@ -2125,7 +2609,7 @@ function reqular (fn, delay, bind) {
 
 module.exports = reqular;
 
-},{}],50:[function(_dereq_,module,exports){
+},{}],56:[function(_dereq_,module,exports){
 /**
  * 加载 script 文件
  * @method getScript
@@ -2177,7 +2661,7 @@ function getScript(options) {
 
 module.exports = getScript;
 
-},{}],51:[function(_dereq_,module,exports){
+},{}],57:[function(_dereq_,module,exports){
 /**
  * 封装 iframe post 模式
  * - requires jQuery/Zepto
@@ -2385,7 +2869,7 @@ function iframePost (spec) {
 
 module.exports = iframePost;
 
-},{}],52:[function(_dereq_,module,exports){
+},{}],58:[function(_dereq_,module,exports){
 /**
  * # 处理网络交互
  * @module spore-kit-io
@@ -2406,7 +2890,7 @@ module.exports = iframePost;
 exports.iframePost = _dereq_('./iframePost');
 exports.getScript = _dereq_('./getScript');
 
-},{"./getScript":50,"./iframePost":51}],53:[function(_dereq_,module,exports){
+},{"./getScript":56,"./iframePost":57}],59:[function(_dereq_,module,exports){
 /**
  * 解析 location.search 为一个JSON对象
  * - 或者获取其中某个参数
@@ -2455,7 +2939,7 @@ function getQuery(url, name) {
 
 module.exports = getQuery;
 
-},{}],54:[function(_dereq_,module,exports){
+},{}],60:[function(_dereq_,module,exports){
 /**
  * # 处理地址字符串
  * @module spore-kit-location
@@ -2477,7 +2961,7 @@ exports.getQuery = _dereq_('./getQuery');
 exports.setQuery = _dereq_('./setQuery');
 exports.parse = _dereq_('./parse');
 
-},{"./getQuery":53,"./parse":55,"./setQuery":56}],55:[function(_dereq_,module,exports){
+},{"./getQuery":59,"./parse":61,"./setQuery":62}],61:[function(_dereq_,module,exports){
 /**
  * 解析URL为一个JSON对象
  * @method parse
@@ -2512,7 +2996,7 @@ function parse (url) {
 
 module.exports = parse;
 
-},{}],56:[function(_dereq_,module,exports){
+},{}],62:[function(_dereq_,module,exports){
 /**
  * 将参数设置到 location.search 上
  * @method setQuery
@@ -2573,7 +3057,7 @@ function setQuery (url, query) {
 
 module.exports = setQuery;
 
-},{}],57:[function(_dereq_,module,exports){
+},{}],63:[function(_dereq_,module,exports){
 /**
  * 基础工厂元件类
  * - 该类混合了 spore-kit-evt/events 的方法。
@@ -2717,7 +3201,7 @@ Base.methods($events.prototype);
 
 module.exports = Base;
 
-},{"./klass":60,"lodash/isFunction":182,"lodash/isPlainObject":187,"lodash/merge":192,"lodash/noop":193,"spore-kit-evt/events":197}],58:[function(_dereq_,module,exports){
+},{"./klass":66,"lodash/isFunction":188,"lodash/isPlainObject":193,"lodash/merge":198,"lodash/noop":199,"spore-kit-evt/events":203}],64:[function(_dereq_,module,exports){
 /**
  * 事件对象绑定，将events中包含的键值对映射为代理的事件。
  * - 事件键值对格式可以为：
@@ -2786,7 +3270,7 @@ function delegate(action, root, events, bind) {
 
 module.exports = delegate;
 
-},{"lodash/assign":171,"lodash/forEach":175,"lodash/isFunction":182}],59:[function(_dereq_,module,exports){
+},{"lodash/assign":177,"lodash/forEach":181,"lodash/isFunction":188}],65:[function(_dereq_,module,exports){
 /**
  * # 兼容 IE8 的 MVC 简单实现
  * @module spore-kit-mvc
@@ -2810,7 +3294,7 @@ exports.Base = _dereq_('./base');
 exports.Model = _dereq_('./model');
 exports.View = _dereq_('./view');
 
-},{"./base":57,"./delegate":58,"./klass":60,"./model":61,"./view":198}],60:[function(_dereq_,module,exports){
+},{"./base":63,"./delegate":64,"./klass":66,"./model":67,"./view":204}],66:[function(_dereq_,module,exports){
 /**
  * class 的 ES5 实现
  * - 为代码通过 eslint 检查做了些修改
@@ -2904,7 +3388,7 @@ function klass(o) {
 
 module.exports = klass;
 
-},{}],61:[function(_dereq_,module,exports){
+},{}],67:[function(_dereq_,module,exports){
 /**
  * 模型类: 基础工厂元件类，用于做数据包装，提供可观察的数据对象
  * - 继承自 spore-kit-mvc/base
@@ -3200,7 +3684,7 @@ var Model = $base.extend({
 
 module.exports = Model;
 
-},{"./base":57,"./delegate":58,"lodash/assign":171,"lodash/cloneDeep":172,"lodash/forEach":175,"lodash/isArray":178,"lodash/isFunction":182,"lodash/isPlainObject":187}],62:[function(_dereq_,module,exports){
+},{"./base":63,"./delegate":64,"lodash/assign":177,"lodash/cloneDeep":178,"lodash/forEach":181,"lodash/isArray":184,"lodash/isFunction":188,"lodash/isPlainObject":193}],68:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative'),
     root = _dereq_('./_root');
 
@@ -3209,7 +3693,7 @@ var DataView = getNative(root, 'DataView');
 
 module.exports = DataView;
 
-},{"./_getNative":124,"./_root":161}],63:[function(_dereq_,module,exports){
+},{"./_getNative":130,"./_root":167}],69:[function(_dereq_,module,exports){
 var hashClear = _dereq_('./_hashClear'),
     hashDelete = _dereq_('./_hashDelete'),
     hashGet = _dereq_('./_hashGet'),
@@ -3243,7 +3727,7 @@ Hash.prototype.set = hashSet;
 
 module.exports = Hash;
 
-},{"./_hashClear":131,"./_hashDelete":132,"./_hashGet":133,"./_hashHas":134,"./_hashSet":135}],64:[function(_dereq_,module,exports){
+},{"./_hashClear":137,"./_hashDelete":138,"./_hashGet":139,"./_hashHas":140,"./_hashSet":141}],70:[function(_dereq_,module,exports){
 var listCacheClear = _dereq_('./_listCacheClear'),
     listCacheDelete = _dereq_('./_listCacheDelete'),
     listCacheGet = _dereq_('./_listCacheGet'),
@@ -3277,7 +3761,7 @@ ListCache.prototype.set = listCacheSet;
 
 module.exports = ListCache;
 
-},{"./_listCacheClear":144,"./_listCacheDelete":145,"./_listCacheGet":146,"./_listCacheHas":147,"./_listCacheSet":148}],65:[function(_dereq_,module,exports){
+},{"./_listCacheClear":150,"./_listCacheDelete":151,"./_listCacheGet":152,"./_listCacheHas":153,"./_listCacheSet":154}],71:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative'),
     root = _dereq_('./_root');
 
@@ -3286,7 +3770,7 @@ var Map = getNative(root, 'Map');
 
 module.exports = Map;
 
-},{"./_getNative":124,"./_root":161}],66:[function(_dereq_,module,exports){
+},{"./_getNative":130,"./_root":167}],72:[function(_dereq_,module,exports){
 var mapCacheClear = _dereq_('./_mapCacheClear'),
     mapCacheDelete = _dereq_('./_mapCacheDelete'),
     mapCacheGet = _dereq_('./_mapCacheGet'),
@@ -3320,7 +3804,7 @@ MapCache.prototype.set = mapCacheSet;
 
 module.exports = MapCache;
 
-},{"./_mapCacheClear":149,"./_mapCacheDelete":150,"./_mapCacheGet":151,"./_mapCacheHas":152,"./_mapCacheSet":153}],67:[function(_dereq_,module,exports){
+},{"./_mapCacheClear":155,"./_mapCacheDelete":156,"./_mapCacheGet":157,"./_mapCacheHas":158,"./_mapCacheSet":159}],73:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative'),
     root = _dereq_('./_root');
 
@@ -3329,7 +3813,7 @@ var Promise = getNative(root, 'Promise');
 
 module.exports = Promise;
 
-},{"./_getNative":124,"./_root":161}],68:[function(_dereq_,module,exports){
+},{"./_getNative":130,"./_root":167}],74:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative'),
     root = _dereq_('./_root');
 
@@ -3338,7 +3822,7 @@ var Set = getNative(root, 'Set');
 
 module.exports = Set;
 
-},{"./_getNative":124,"./_root":161}],69:[function(_dereq_,module,exports){
+},{"./_getNative":130,"./_root":167}],75:[function(_dereq_,module,exports){
 var ListCache = _dereq_('./_ListCache'),
     stackClear = _dereq_('./_stackClear'),
     stackDelete = _dereq_('./_stackDelete'),
@@ -3367,7 +3851,7 @@ Stack.prototype.set = stackSet;
 
 module.exports = Stack;
 
-},{"./_ListCache":64,"./_stackClear":165,"./_stackDelete":166,"./_stackGet":167,"./_stackHas":168,"./_stackSet":169}],70:[function(_dereq_,module,exports){
+},{"./_ListCache":70,"./_stackClear":171,"./_stackDelete":172,"./_stackGet":173,"./_stackHas":174,"./_stackSet":175}],76:[function(_dereq_,module,exports){
 var root = _dereq_('./_root');
 
 /** Built-in value references. */
@@ -3375,7 +3859,7 @@ var Symbol = root.Symbol;
 
 module.exports = Symbol;
 
-},{"./_root":161}],71:[function(_dereq_,module,exports){
+},{"./_root":167}],77:[function(_dereq_,module,exports){
 var root = _dereq_('./_root');
 
 /** Built-in value references. */
@@ -3383,7 +3867,7 @@ var Uint8Array = root.Uint8Array;
 
 module.exports = Uint8Array;
 
-},{"./_root":161}],72:[function(_dereq_,module,exports){
+},{"./_root":167}],78:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative'),
     root = _dereq_('./_root');
 
@@ -3392,7 +3876,7 @@ var WeakMap = getNative(root, 'WeakMap');
 
 module.exports = WeakMap;
 
-},{"./_getNative":124,"./_root":161}],73:[function(_dereq_,module,exports){
+},{"./_getNative":130,"./_root":167}],79:[function(_dereq_,module,exports){
 /**
  * A faster alternative to `Function#apply`, this function invokes `func`
  * with the `this` binding of `thisArg` and the arguments of `args`.
@@ -3415,7 +3899,7 @@ function apply(func, thisArg, args) {
 
 module.exports = apply;
 
-},{}],74:[function(_dereq_,module,exports){
+},{}],80:[function(_dereq_,module,exports){
 /**
  * A specialized version of `_.forEach` for arrays without support for
  * iteratee shorthands.
@@ -3439,7 +3923,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],75:[function(_dereq_,module,exports){
+},{}],81:[function(_dereq_,module,exports){
 /**
  * A specialized version of `_.filter` for arrays without support for
  * iteratee shorthands.
@@ -3466,7 +3950,7 @@ function arrayFilter(array, predicate) {
 
 module.exports = arrayFilter;
 
-},{}],76:[function(_dereq_,module,exports){
+},{}],82:[function(_dereq_,module,exports){
 var baseTimes = _dereq_('./_baseTimes'),
     isArguments = _dereq_('./isArguments'),
     isArray = _dereq_('./isArray'),
@@ -3517,7 +4001,7 @@ function arrayLikeKeys(value, inherited) {
 
 module.exports = arrayLikeKeys;
 
-},{"./_baseTimes":102,"./_isIndex":139,"./isArguments":177,"./isArray":178,"./isBuffer":181,"./isTypedArray":189}],77:[function(_dereq_,module,exports){
+},{"./_baseTimes":108,"./_isIndex":145,"./isArguments":183,"./isArray":184,"./isBuffer":187,"./isTypedArray":195}],83:[function(_dereq_,module,exports){
 /**
  * Appends the elements of `values` to `array`.
  *
@@ -3539,7 +4023,7 @@ function arrayPush(array, values) {
 
 module.exports = arrayPush;
 
-},{}],78:[function(_dereq_,module,exports){
+},{}],84:[function(_dereq_,module,exports){
 var baseAssignValue = _dereq_('./_baseAssignValue'),
     eq = _dereq_('./eq');
 
@@ -3561,7 +4045,7 @@ function assignMergeValue(object, key, value) {
 
 module.exports = assignMergeValue;
 
-},{"./_baseAssignValue":83,"./eq":174}],79:[function(_dereq_,module,exports){
+},{"./_baseAssignValue":89,"./eq":180}],85:[function(_dereq_,module,exports){
 var baseAssignValue = _dereq_('./_baseAssignValue'),
     eq = _dereq_('./eq');
 
@@ -3591,7 +4075,7 @@ function assignValue(object, key, value) {
 
 module.exports = assignValue;
 
-},{"./_baseAssignValue":83,"./eq":174}],80:[function(_dereq_,module,exports){
+},{"./_baseAssignValue":89,"./eq":180}],86:[function(_dereq_,module,exports){
 var eq = _dereq_('./eq');
 
 /**
@@ -3614,7 +4098,7 @@ function assocIndexOf(array, key) {
 
 module.exports = assocIndexOf;
 
-},{"./eq":174}],81:[function(_dereq_,module,exports){
+},{"./eq":180}],87:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     keys = _dereq_('./keys');
 
@@ -3633,7 +4117,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"./_copyObject":112,"./keys":190}],82:[function(_dereq_,module,exports){
+},{"./_copyObject":118,"./keys":196}],88:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     keysIn = _dereq_('./keysIn');
 
@@ -3652,7 +4136,7 @@ function baseAssignIn(object, source) {
 
 module.exports = baseAssignIn;
 
-},{"./_copyObject":112,"./keysIn":191}],83:[function(_dereq_,module,exports){
+},{"./_copyObject":118,"./keysIn":197}],89:[function(_dereq_,module,exports){
 var defineProperty = _dereq_('./_defineProperty');
 
 /**
@@ -3679,7 +4163,7 @@ function baseAssignValue(object, key, value) {
 
 module.exports = baseAssignValue;
 
-},{"./_defineProperty":119}],84:[function(_dereq_,module,exports){
+},{"./_defineProperty":125}],90:[function(_dereq_,module,exports){
 var Stack = _dereq_('./_Stack'),
     arrayEach = _dereq_('./_arrayEach'),
     assignValue = _dereq_('./_assignValue'),
@@ -3852,7 +4336,7 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
 
 module.exports = baseClone;
 
-},{"./_Stack":69,"./_arrayEach":74,"./_assignValue":79,"./_baseAssign":81,"./_baseAssignIn":82,"./_cloneBuffer":106,"./_copyArray":111,"./_copySymbols":113,"./_copySymbolsIn":114,"./_getAllKeys":121,"./_getAllKeysIn":122,"./_getTag":129,"./_initCloneArray":136,"./_initCloneByTag":137,"./_initCloneObject":138,"./isArray":178,"./isBuffer":181,"./isMap":184,"./isObject":185,"./isSet":188,"./keys":190}],85:[function(_dereq_,module,exports){
+},{"./_Stack":75,"./_arrayEach":80,"./_assignValue":85,"./_baseAssign":87,"./_baseAssignIn":88,"./_cloneBuffer":112,"./_copyArray":117,"./_copySymbols":119,"./_copySymbolsIn":120,"./_getAllKeys":127,"./_getAllKeysIn":128,"./_getTag":135,"./_initCloneArray":142,"./_initCloneByTag":143,"./_initCloneObject":144,"./isArray":184,"./isBuffer":187,"./isMap":190,"./isObject":191,"./isSet":194,"./keys":196}],91:[function(_dereq_,module,exports){
 var isObject = _dereq_('./isObject');
 
 /** Built-in value references. */
@@ -3884,7 +4368,7 @@ var baseCreate = (function() {
 
 module.exports = baseCreate;
 
-},{"./isObject":185}],86:[function(_dereq_,module,exports){
+},{"./isObject":191}],92:[function(_dereq_,module,exports){
 var baseForOwn = _dereq_('./_baseForOwn'),
     createBaseEach = _dereq_('./_createBaseEach');
 
@@ -3900,7 +4384,7 @@ var baseEach = createBaseEach(baseForOwn);
 
 module.exports = baseEach;
 
-},{"./_baseForOwn":88,"./_createBaseEach":117}],87:[function(_dereq_,module,exports){
+},{"./_baseForOwn":94,"./_createBaseEach":123}],93:[function(_dereq_,module,exports){
 var createBaseFor = _dereq_('./_createBaseFor');
 
 /**
@@ -3918,7 +4402,7 @@ var baseFor = createBaseFor();
 
 module.exports = baseFor;
 
-},{"./_createBaseFor":118}],88:[function(_dereq_,module,exports){
+},{"./_createBaseFor":124}],94:[function(_dereq_,module,exports){
 var baseFor = _dereq_('./_baseFor'),
     keys = _dereq_('./keys');
 
@@ -3936,7 +4420,7 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"./_baseFor":87,"./keys":190}],89:[function(_dereq_,module,exports){
+},{"./_baseFor":93,"./keys":196}],95:[function(_dereq_,module,exports){
 var arrayPush = _dereq_('./_arrayPush'),
     isArray = _dereq_('./isArray');
 
@@ -3958,7 +4442,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 
 module.exports = baseGetAllKeys;
 
-},{"./_arrayPush":77,"./isArray":178}],90:[function(_dereq_,module,exports){
+},{"./_arrayPush":83,"./isArray":184}],96:[function(_dereq_,module,exports){
 var Symbol = _dereq_('./_Symbol'),
     getRawTag = _dereq_('./_getRawTag'),
     objectToString = _dereq_('./_objectToString');
@@ -3988,7 +4472,7 @@ function baseGetTag(value) {
 
 module.exports = baseGetTag;
 
-},{"./_Symbol":70,"./_getRawTag":126,"./_objectToString":158}],91:[function(_dereq_,module,exports){
+},{"./_Symbol":76,"./_getRawTag":132,"./_objectToString":164}],97:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -4008,7 +4492,7 @@ function baseIsArguments(value) {
 
 module.exports = baseIsArguments;
 
-},{"./_baseGetTag":90,"./isObjectLike":186}],92:[function(_dereq_,module,exports){
+},{"./_baseGetTag":96,"./isObjectLike":192}],98:[function(_dereq_,module,exports){
 var getTag = _dereq_('./_getTag'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -4028,7 +4512,7 @@ function baseIsMap(value) {
 
 module.exports = baseIsMap;
 
-},{"./_getTag":129,"./isObjectLike":186}],93:[function(_dereq_,module,exports){
+},{"./_getTag":135,"./isObjectLike":192}],99:[function(_dereq_,module,exports){
 var isFunction = _dereq_('./isFunction'),
     isMasked = _dereq_('./_isMasked'),
     isObject = _dereq_('./isObject'),
@@ -4077,7 +4561,7 @@ function baseIsNative(value) {
 
 module.exports = baseIsNative;
 
-},{"./_isMasked":142,"./_toSource":170,"./isFunction":182,"./isObject":185}],94:[function(_dereq_,module,exports){
+},{"./_isMasked":148,"./_toSource":176,"./isFunction":188,"./isObject":191}],100:[function(_dereq_,module,exports){
 var getTag = _dereq_('./_getTag'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -4097,7 +4581,7 @@ function baseIsSet(value) {
 
 module.exports = baseIsSet;
 
-},{"./_getTag":129,"./isObjectLike":186}],95:[function(_dereq_,module,exports){
+},{"./_getTag":135,"./isObjectLike":192}],101:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     isLength = _dereq_('./isLength'),
     isObjectLike = _dereq_('./isObjectLike');
@@ -4159,7 +4643,7 @@ function baseIsTypedArray(value) {
 
 module.exports = baseIsTypedArray;
 
-},{"./_baseGetTag":90,"./isLength":183,"./isObjectLike":186}],96:[function(_dereq_,module,exports){
+},{"./_baseGetTag":96,"./isLength":189,"./isObjectLike":192}],102:[function(_dereq_,module,exports){
 var isPrototype = _dereq_('./_isPrototype'),
     nativeKeys = _dereq_('./_nativeKeys');
 
@@ -4191,7 +4675,7 @@ function baseKeys(object) {
 
 module.exports = baseKeys;
 
-},{"./_isPrototype":143,"./_nativeKeys":155}],97:[function(_dereq_,module,exports){
+},{"./_isPrototype":149,"./_nativeKeys":161}],103:[function(_dereq_,module,exports){
 var isObject = _dereq_('./isObject'),
     isPrototype = _dereq_('./_isPrototype'),
     nativeKeysIn = _dereq_('./_nativeKeysIn');
@@ -4226,7 +4710,7 @@ function baseKeysIn(object) {
 
 module.exports = baseKeysIn;
 
-},{"./_isPrototype":143,"./_nativeKeysIn":156,"./isObject":185}],98:[function(_dereq_,module,exports){
+},{"./_isPrototype":149,"./_nativeKeysIn":162,"./isObject":191}],104:[function(_dereq_,module,exports){
 var Stack = _dereq_('./_Stack'),
     assignMergeValue = _dereq_('./_assignMergeValue'),
     baseFor = _dereq_('./_baseFor'),
@@ -4270,7 +4754,7 @@ function baseMerge(object, source, srcIndex, customizer, stack) {
 
 module.exports = baseMerge;
 
-},{"./_Stack":69,"./_assignMergeValue":78,"./_baseFor":87,"./_baseMergeDeep":99,"./_safeGet":162,"./isObject":185,"./keysIn":191}],99:[function(_dereq_,module,exports){
+},{"./_Stack":75,"./_assignMergeValue":84,"./_baseFor":93,"./_baseMergeDeep":105,"./_safeGet":168,"./isObject":191,"./keysIn":197}],105:[function(_dereq_,module,exports){
 var assignMergeValue = _dereq_('./_assignMergeValue'),
     cloneBuffer = _dereq_('./_cloneBuffer'),
     cloneTypedArray = _dereq_('./_cloneTypedArray'),
@@ -4366,7 +4850,7 @@ function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, sta
 
 module.exports = baseMergeDeep;
 
-},{"./_assignMergeValue":78,"./_cloneBuffer":106,"./_cloneTypedArray":110,"./_copyArray":111,"./_initCloneObject":138,"./_safeGet":162,"./isArguments":177,"./isArray":178,"./isArrayLikeObject":180,"./isBuffer":181,"./isFunction":182,"./isObject":185,"./isPlainObject":187,"./isTypedArray":189,"./toPlainObject":196}],100:[function(_dereq_,module,exports){
+},{"./_assignMergeValue":84,"./_cloneBuffer":112,"./_cloneTypedArray":116,"./_copyArray":117,"./_initCloneObject":144,"./_safeGet":168,"./isArguments":183,"./isArray":184,"./isArrayLikeObject":186,"./isBuffer":187,"./isFunction":188,"./isObject":191,"./isPlainObject":193,"./isTypedArray":195,"./toPlainObject":202}],106:[function(_dereq_,module,exports){
 var identity = _dereq_('./identity'),
     overRest = _dereq_('./_overRest'),
     setToString = _dereq_('./_setToString');
@@ -4385,7 +4869,7 @@ function baseRest(func, start) {
 
 module.exports = baseRest;
 
-},{"./_overRest":160,"./_setToString":163,"./identity":176}],101:[function(_dereq_,module,exports){
+},{"./_overRest":166,"./_setToString":169,"./identity":182}],107:[function(_dereq_,module,exports){
 var constant = _dereq_('./constant'),
     defineProperty = _dereq_('./_defineProperty'),
     identity = _dereq_('./identity');
@@ -4409,7 +4893,7 @@ var baseSetToString = !defineProperty ? identity : function(func, string) {
 
 module.exports = baseSetToString;
 
-},{"./_defineProperty":119,"./constant":173,"./identity":176}],102:[function(_dereq_,module,exports){
+},{"./_defineProperty":125,"./constant":179,"./identity":182}],108:[function(_dereq_,module,exports){
 /**
  * The base implementation of `_.times` without support for iteratee shorthands
  * or max array length checks.
@@ -4431,7 +4915,7 @@ function baseTimes(n, iteratee) {
 
 module.exports = baseTimes;
 
-},{}],103:[function(_dereq_,module,exports){
+},{}],109:[function(_dereq_,module,exports){
 /**
  * The base implementation of `_.unary` without support for storing metadata.
  *
@@ -4447,7 +4931,7 @@ function baseUnary(func) {
 
 module.exports = baseUnary;
 
-},{}],104:[function(_dereq_,module,exports){
+},{}],110:[function(_dereq_,module,exports){
 var identity = _dereq_('./identity');
 
 /**
@@ -4463,7 +4947,7 @@ function castFunction(value) {
 
 module.exports = castFunction;
 
-},{"./identity":176}],105:[function(_dereq_,module,exports){
+},{"./identity":182}],111:[function(_dereq_,module,exports){
 var Uint8Array = _dereq_('./_Uint8Array');
 
 /**
@@ -4481,7 +4965,7 @@ function cloneArrayBuffer(arrayBuffer) {
 
 module.exports = cloneArrayBuffer;
 
-},{"./_Uint8Array":71}],106:[function(_dereq_,module,exports){
+},{"./_Uint8Array":77}],112:[function(_dereq_,module,exports){
 var root = _dereq_('./_root');
 
 /** Detect free variable `exports`. */
@@ -4518,7 +5002,7 @@ function cloneBuffer(buffer, isDeep) {
 
 module.exports = cloneBuffer;
 
-},{"./_root":161}],107:[function(_dereq_,module,exports){
+},{"./_root":167}],113:[function(_dereq_,module,exports){
 var cloneArrayBuffer = _dereq_('./_cloneArrayBuffer');
 
 /**
@@ -4536,7 +5020,7 @@ function cloneDataView(dataView, isDeep) {
 
 module.exports = cloneDataView;
 
-},{"./_cloneArrayBuffer":105}],108:[function(_dereq_,module,exports){
+},{"./_cloneArrayBuffer":111}],114:[function(_dereq_,module,exports){
 /** Used to match `RegExp` flags from their coerced string values. */
 var reFlags = /\w*$/;
 
@@ -4555,7 +5039,7 @@ function cloneRegExp(regexp) {
 
 module.exports = cloneRegExp;
 
-},{}],109:[function(_dereq_,module,exports){
+},{}],115:[function(_dereq_,module,exports){
 var Symbol = _dereq_('./_Symbol');
 
 /** Used to convert symbols to primitives and strings. */
@@ -4575,7 +5059,7 @@ function cloneSymbol(symbol) {
 
 module.exports = cloneSymbol;
 
-},{"./_Symbol":70}],110:[function(_dereq_,module,exports){
+},{"./_Symbol":76}],116:[function(_dereq_,module,exports){
 var cloneArrayBuffer = _dereq_('./_cloneArrayBuffer');
 
 /**
@@ -4593,7 +5077,7 @@ function cloneTypedArray(typedArray, isDeep) {
 
 module.exports = cloneTypedArray;
 
-},{"./_cloneArrayBuffer":105}],111:[function(_dereq_,module,exports){
+},{"./_cloneArrayBuffer":111}],117:[function(_dereq_,module,exports){
 /**
  * Copies the values of `source` to `array`.
  *
@@ -4615,7 +5099,7 @@ function copyArray(source, array) {
 
 module.exports = copyArray;
 
-},{}],112:[function(_dereq_,module,exports){
+},{}],118:[function(_dereq_,module,exports){
 var assignValue = _dereq_('./_assignValue'),
     baseAssignValue = _dereq_('./_baseAssignValue');
 
@@ -4657,7 +5141,7 @@ function copyObject(source, props, object, customizer) {
 
 module.exports = copyObject;
 
-},{"./_assignValue":79,"./_baseAssignValue":83}],113:[function(_dereq_,module,exports){
+},{"./_assignValue":85,"./_baseAssignValue":89}],119:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     getSymbols = _dereq_('./_getSymbols');
 
@@ -4675,7 +5159,7 @@ function copySymbols(source, object) {
 
 module.exports = copySymbols;
 
-},{"./_copyObject":112,"./_getSymbols":127}],114:[function(_dereq_,module,exports){
+},{"./_copyObject":118,"./_getSymbols":133}],120:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     getSymbolsIn = _dereq_('./_getSymbolsIn');
 
@@ -4693,7 +5177,7 @@ function copySymbolsIn(source, object) {
 
 module.exports = copySymbolsIn;
 
-},{"./_copyObject":112,"./_getSymbolsIn":128}],115:[function(_dereq_,module,exports){
+},{"./_copyObject":118,"./_getSymbolsIn":134}],121:[function(_dereq_,module,exports){
 var root = _dereq_('./_root');
 
 /** Used to detect overreaching core-js shims. */
@@ -4701,7 +5185,7 @@ var coreJsData = root['__core-js_shared__'];
 
 module.exports = coreJsData;
 
-},{"./_root":161}],116:[function(_dereq_,module,exports){
+},{"./_root":167}],122:[function(_dereq_,module,exports){
 var baseRest = _dereq_('./_baseRest'),
     isIterateeCall = _dereq_('./_isIterateeCall');
 
@@ -4740,7 +5224,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"./_baseRest":100,"./_isIterateeCall":140}],117:[function(_dereq_,module,exports){
+},{"./_baseRest":106,"./_isIterateeCall":146}],123:[function(_dereq_,module,exports){
 var isArrayLike = _dereq_('./isArrayLike');
 
 /**
@@ -4774,7 +5258,7 @@ function createBaseEach(eachFunc, fromRight) {
 
 module.exports = createBaseEach;
 
-},{"./isArrayLike":179}],118:[function(_dereq_,module,exports){
+},{"./isArrayLike":185}],124:[function(_dereq_,module,exports){
 /**
  * Creates a base function for methods like `_.forIn` and `_.forOwn`.
  *
@@ -4801,7 +5285,7 @@ function createBaseFor(fromRight) {
 
 module.exports = createBaseFor;
 
-},{}],119:[function(_dereq_,module,exports){
+},{}],125:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative');
 
 var defineProperty = (function() {
@@ -4814,7 +5298,7 @@ var defineProperty = (function() {
 
 module.exports = defineProperty;
 
-},{"./_getNative":124}],120:[function(_dereq_,module,exports){
+},{"./_getNative":130}],126:[function(_dereq_,module,exports){
 (function (global){
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -4822,7 +5306,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 module.exports = freeGlobal;
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],121:[function(_dereq_,module,exports){
+},{}],127:[function(_dereq_,module,exports){
 var baseGetAllKeys = _dereq_('./_baseGetAllKeys'),
     getSymbols = _dereq_('./_getSymbols'),
     keys = _dereq_('./keys');
@@ -4840,7 +5324,7 @@ function getAllKeys(object) {
 
 module.exports = getAllKeys;
 
-},{"./_baseGetAllKeys":89,"./_getSymbols":127,"./keys":190}],122:[function(_dereq_,module,exports){
+},{"./_baseGetAllKeys":95,"./_getSymbols":133,"./keys":196}],128:[function(_dereq_,module,exports){
 var baseGetAllKeys = _dereq_('./_baseGetAllKeys'),
     getSymbolsIn = _dereq_('./_getSymbolsIn'),
     keysIn = _dereq_('./keysIn');
@@ -4859,7 +5343,7 @@ function getAllKeysIn(object) {
 
 module.exports = getAllKeysIn;
 
-},{"./_baseGetAllKeys":89,"./_getSymbolsIn":128,"./keysIn":191}],123:[function(_dereq_,module,exports){
+},{"./_baseGetAllKeys":95,"./_getSymbolsIn":134,"./keysIn":197}],129:[function(_dereq_,module,exports){
 var isKeyable = _dereq_('./_isKeyable');
 
 /**
@@ -4879,7 +5363,7 @@ function getMapData(map, key) {
 
 module.exports = getMapData;
 
-},{"./_isKeyable":141}],124:[function(_dereq_,module,exports){
+},{"./_isKeyable":147}],130:[function(_dereq_,module,exports){
 var baseIsNative = _dereq_('./_baseIsNative'),
     getValue = _dereq_('./_getValue');
 
@@ -4898,7 +5382,7 @@ function getNative(object, key) {
 
 module.exports = getNative;
 
-},{"./_baseIsNative":93,"./_getValue":130}],125:[function(_dereq_,module,exports){
+},{"./_baseIsNative":99,"./_getValue":136}],131:[function(_dereq_,module,exports){
 var overArg = _dereq_('./_overArg');
 
 /** Built-in value references. */
@@ -4906,7 +5390,7 @@ var getPrototype = overArg(Object.getPrototypeOf, Object);
 
 module.exports = getPrototype;
 
-},{"./_overArg":159}],126:[function(_dereq_,module,exports){
+},{"./_overArg":165}],132:[function(_dereq_,module,exports){
 var Symbol = _dereq_('./_Symbol');
 
 /** Used for built-in method references. */
@@ -4954,7 +5438,7 @@ function getRawTag(value) {
 
 module.exports = getRawTag;
 
-},{"./_Symbol":70}],127:[function(_dereq_,module,exports){
+},{"./_Symbol":76}],133:[function(_dereq_,module,exports){
 var arrayFilter = _dereq_('./_arrayFilter'),
     stubArray = _dereq_('./stubArray');
 
@@ -4986,7 +5470,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function(object) {
 
 module.exports = getSymbols;
 
-},{"./_arrayFilter":75,"./stubArray":194}],128:[function(_dereq_,module,exports){
+},{"./_arrayFilter":81,"./stubArray":200}],134:[function(_dereq_,module,exports){
 var arrayPush = _dereq_('./_arrayPush'),
     getPrototype = _dereq_('./_getPrototype'),
     getSymbols = _dereq_('./_getSymbols'),
@@ -5013,7 +5497,7 @@ var getSymbolsIn = !nativeGetSymbols ? stubArray : function(object) {
 
 module.exports = getSymbolsIn;
 
-},{"./_arrayPush":77,"./_getPrototype":125,"./_getSymbols":127,"./stubArray":194}],129:[function(_dereq_,module,exports){
+},{"./_arrayPush":83,"./_getPrototype":131,"./_getSymbols":133,"./stubArray":200}],135:[function(_dereq_,module,exports){
 var DataView = _dereq_('./_DataView'),
     Map = _dereq_('./_Map'),
     Promise = _dereq_('./_Promise'),
@@ -5073,7 +5557,7 @@ if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
 
 module.exports = getTag;
 
-},{"./_DataView":62,"./_Map":65,"./_Promise":67,"./_Set":68,"./_WeakMap":72,"./_baseGetTag":90,"./_toSource":170}],130:[function(_dereq_,module,exports){
+},{"./_DataView":68,"./_Map":71,"./_Promise":73,"./_Set":74,"./_WeakMap":78,"./_baseGetTag":96,"./_toSource":176}],136:[function(_dereq_,module,exports){
 /**
  * Gets the value at `key` of `object`.
  *
@@ -5088,7 +5572,7 @@ function getValue(object, key) {
 
 module.exports = getValue;
 
-},{}],131:[function(_dereq_,module,exports){
+},{}],137:[function(_dereq_,module,exports){
 var nativeCreate = _dereq_('./_nativeCreate');
 
 /**
@@ -5105,7 +5589,7 @@ function hashClear() {
 
 module.exports = hashClear;
 
-},{"./_nativeCreate":154}],132:[function(_dereq_,module,exports){
+},{"./_nativeCreate":160}],138:[function(_dereq_,module,exports){
 /**
  * Removes `key` and its value from the hash.
  *
@@ -5124,7 +5608,7 @@ function hashDelete(key) {
 
 module.exports = hashDelete;
 
-},{}],133:[function(_dereq_,module,exports){
+},{}],139:[function(_dereq_,module,exports){
 var nativeCreate = _dereq_('./_nativeCreate');
 
 /** Used to stand-in for `undefined` hash values. */
@@ -5156,7 +5640,7 @@ function hashGet(key) {
 
 module.exports = hashGet;
 
-},{"./_nativeCreate":154}],134:[function(_dereq_,module,exports){
+},{"./_nativeCreate":160}],140:[function(_dereq_,module,exports){
 var nativeCreate = _dereq_('./_nativeCreate');
 
 /** Used for built-in method references. */
@@ -5181,7 +5665,7 @@ function hashHas(key) {
 
 module.exports = hashHas;
 
-},{"./_nativeCreate":154}],135:[function(_dereq_,module,exports){
+},{"./_nativeCreate":160}],141:[function(_dereq_,module,exports){
 var nativeCreate = _dereq_('./_nativeCreate');
 
 /** Used to stand-in for `undefined` hash values. */
@@ -5206,7 +5690,7 @@ function hashSet(key, value) {
 
 module.exports = hashSet;
 
-},{"./_nativeCreate":154}],136:[function(_dereq_,module,exports){
+},{"./_nativeCreate":160}],142:[function(_dereq_,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -5234,7 +5718,7 @@ function initCloneArray(array) {
 
 module.exports = initCloneArray;
 
-},{}],137:[function(_dereq_,module,exports){
+},{}],143:[function(_dereq_,module,exports){
 var cloneArrayBuffer = _dereq_('./_cloneArrayBuffer'),
     cloneDataView = _dereq_('./_cloneDataView'),
     cloneRegExp = _dereq_('./_cloneRegExp'),
@@ -5313,7 +5797,7 @@ function initCloneByTag(object, tag, isDeep) {
 
 module.exports = initCloneByTag;
 
-},{"./_cloneArrayBuffer":105,"./_cloneDataView":107,"./_cloneRegExp":108,"./_cloneSymbol":109,"./_cloneTypedArray":110}],138:[function(_dereq_,module,exports){
+},{"./_cloneArrayBuffer":111,"./_cloneDataView":113,"./_cloneRegExp":114,"./_cloneSymbol":115,"./_cloneTypedArray":116}],144:[function(_dereq_,module,exports){
 var baseCreate = _dereq_('./_baseCreate'),
     getPrototype = _dereq_('./_getPrototype'),
     isPrototype = _dereq_('./_isPrototype');
@@ -5333,7 +5817,7 @@ function initCloneObject(object) {
 
 module.exports = initCloneObject;
 
-},{"./_baseCreate":85,"./_getPrototype":125,"./_isPrototype":143}],139:[function(_dereq_,module,exports){
+},{"./_baseCreate":91,"./_getPrototype":131,"./_isPrototype":149}],145:[function(_dereq_,module,exports){
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -5360,7 +5844,7 @@ function isIndex(value, length) {
 
 module.exports = isIndex;
 
-},{}],140:[function(_dereq_,module,exports){
+},{}],146:[function(_dereq_,module,exports){
 var eq = _dereq_('./eq'),
     isArrayLike = _dereq_('./isArrayLike'),
     isIndex = _dereq_('./_isIndex'),
@@ -5392,7 +5876,7 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
-},{"./_isIndex":139,"./eq":174,"./isArrayLike":179,"./isObject":185}],141:[function(_dereq_,module,exports){
+},{"./_isIndex":145,"./eq":180,"./isArrayLike":185,"./isObject":191}],147:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is suitable for use as unique object key.
  *
@@ -5409,7 +5893,7 @@ function isKeyable(value) {
 
 module.exports = isKeyable;
 
-},{}],142:[function(_dereq_,module,exports){
+},{}],148:[function(_dereq_,module,exports){
 var coreJsData = _dereq_('./_coreJsData');
 
 /** Used to detect methods masquerading as native. */
@@ -5431,7 +5915,7 @@ function isMasked(func) {
 
 module.exports = isMasked;
 
-},{"./_coreJsData":115}],143:[function(_dereq_,module,exports){
+},{"./_coreJsData":121}],149:[function(_dereq_,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -5451,7 +5935,7 @@ function isPrototype(value) {
 
 module.exports = isPrototype;
 
-},{}],144:[function(_dereq_,module,exports){
+},{}],150:[function(_dereq_,module,exports){
 /**
  * Removes all key-value entries from the list cache.
  *
@@ -5466,7 +5950,7 @@ function listCacheClear() {
 
 module.exports = listCacheClear;
 
-},{}],145:[function(_dereq_,module,exports){
+},{}],151:[function(_dereq_,module,exports){
 var assocIndexOf = _dereq_('./_assocIndexOf');
 
 /** Used for built-in method references. */
@@ -5503,7 +5987,7 @@ function listCacheDelete(key) {
 
 module.exports = listCacheDelete;
 
-},{"./_assocIndexOf":80}],146:[function(_dereq_,module,exports){
+},{"./_assocIndexOf":86}],152:[function(_dereq_,module,exports){
 var assocIndexOf = _dereq_('./_assocIndexOf');
 
 /**
@@ -5524,7 +6008,7 @@ function listCacheGet(key) {
 
 module.exports = listCacheGet;
 
-},{"./_assocIndexOf":80}],147:[function(_dereq_,module,exports){
+},{"./_assocIndexOf":86}],153:[function(_dereq_,module,exports){
 var assocIndexOf = _dereq_('./_assocIndexOf');
 
 /**
@@ -5542,7 +6026,7 @@ function listCacheHas(key) {
 
 module.exports = listCacheHas;
 
-},{"./_assocIndexOf":80}],148:[function(_dereq_,module,exports){
+},{"./_assocIndexOf":86}],154:[function(_dereq_,module,exports){
 var assocIndexOf = _dereq_('./_assocIndexOf');
 
 /**
@@ -5570,7 +6054,7 @@ function listCacheSet(key, value) {
 
 module.exports = listCacheSet;
 
-},{"./_assocIndexOf":80}],149:[function(_dereq_,module,exports){
+},{"./_assocIndexOf":86}],155:[function(_dereq_,module,exports){
 var Hash = _dereq_('./_Hash'),
     ListCache = _dereq_('./_ListCache'),
     Map = _dereq_('./_Map');
@@ -5593,7 +6077,7 @@ function mapCacheClear() {
 
 module.exports = mapCacheClear;
 
-},{"./_Hash":63,"./_ListCache":64,"./_Map":65}],150:[function(_dereq_,module,exports){
+},{"./_Hash":69,"./_ListCache":70,"./_Map":71}],156:[function(_dereq_,module,exports){
 var getMapData = _dereq_('./_getMapData');
 
 /**
@@ -5613,7 +6097,7 @@ function mapCacheDelete(key) {
 
 module.exports = mapCacheDelete;
 
-},{"./_getMapData":123}],151:[function(_dereq_,module,exports){
+},{"./_getMapData":129}],157:[function(_dereq_,module,exports){
 var getMapData = _dereq_('./_getMapData');
 
 /**
@@ -5631,7 +6115,7 @@ function mapCacheGet(key) {
 
 module.exports = mapCacheGet;
 
-},{"./_getMapData":123}],152:[function(_dereq_,module,exports){
+},{"./_getMapData":129}],158:[function(_dereq_,module,exports){
 var getMapData = _dereq_('./_getMapData');
 
 /**
@@ -5649,7 +6133,7 @@ function mapCacheHas(key) {
 
 module.exports = mapCacheHas;
 
-},{"./_getMapData":123}],153:[function(_dereq_,module,exports){
+},{"./_getMapData":129}],159:[function(_dereq_,module,exports){
 var getMapData = _dereq_('./_getMapData');
 
 /**
@@ -5673,7 +6157,7 @@ function mapCacheSet(key, value) {
 
 module.exports = mapCacheSet;
 
-},{"./_getMapData":123}],154:[function(_dereq_,module,exports){
+},{"./_getMapData":129}],160:[function(_dereq_,module,exports){
 var getNative = _dereq_('./_getNative');
 
 /* Built-in method references that are verified to be native. */
@@ -5681,7 +6165,7 @@ var nativeCreate = getNative(Object, 'create');
 
 module.exports = nativeCreate;
 
-},{"./_getNative":124}],155:[function(_dereq_,module,exports){
+},{"./_getNative":130}],161:[function(_dereq_,module,exports){
 var overArg = _dereq_('./_overArg');
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -5689,7 +6173,7 @@ var nativeKeys = overArg(Object.keys, Object);
 
 module.exports = nativeKeys;
 
-},{"./_overArg":159}],156:[function(_dereq_,module,exports){
+},{"./_overArg":165}],162:[function(_dereq_,module,exports){
 /**
  * This function is like
  * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
@@ -5711,7 +6195,7 @@ function nativeKeysIn(object) {
 
 module.exports = nativeKeysIn;
 
-},{}],157:[function(_dereq_,module,exports){
+},{}],163:[function(_dereq_,module,exports){
 var freeGlobal = _dereq_('./_freeGlobal');
 
 /** Detect free variable `exports`. */
@@ -5743,7 +6227,7 @@ var nodeUtil = (function() {
 
 module.exports = nodeUtil;
 
-},{"./_freeGlobal":120}],158:[function(_dereq_,module,exports){
+},{"./_freeGlobal":126}],164:[function(_dereq_,module,exports){
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -5767,7 +6251,7 @@ function objectToString(value) {
 
 module.exports = objectToString;
 
-},{}],159:[function(_dereq_,module,exports){
+},{}],165:[function(_dereq_,module,exports){
 /**
  * Creates a unary function that invokes `func` with its argument transformed.
  *
@@ -5784,7 +6268,7 @@ function overArg(func, transform) {
 
 module.exports = overArg;
 
-},{}],160:[function(_dereq_,module,exports){
+},{}],166:[function(_dereq_,module,exports){
 var apply = _dereq_('./_apply');
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -5822,7 +6306,7 @@ function overRest(func, start, transform) {
 
 module.exports = overRest;
 
-},{"./_apply":73}],161:[function(_dereq_,module,exports){
+},{"./_apply":79}],167:[function(_dereq_,module,exports){
 var freeGlobal = _dereq_('./_freeGlobal');
 
 /** Detect free variable `self`. */
@@ -5833,7 +6317,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 
 module.exports = root;
 
-},{"./_freeGlobal":120}],162:[function(_dereq_,module,exports){
+},{"./_freeGlobal":126}],168:[function(_dereq_,module,exports){
 /**
  * Gets the value at `key`, unless `key` is "__proto__".
  *
@@ -5852,7 +6336,7 @@ function safeGet(object, key) {
 
 module.exports = safeGet;
 
-},{}],163:[function(_dereq_,module,exports){
+},{}],169:[function(_dereq_,module,exports){
 var baseSetToString = _dereq_('./_baseSetToString'),
     shortOut = _dereq_('./_shortOut');
 
@@ -5868,7 +6352,7 @@ var setToString = shortOut(baseSetToString);
 
 module.exports = setToString;
 
-},{"./_baseSetToString":101,"./_shortOut":164}],164:[function(_dereq_,module,exports){
+},{"./_baseSetToString":107,"./_shortOut":170}],170:[function(_dereq_,module,exports){
 /** Used to detect hot functions by number of calls within a span of milliseconds. */
 var HOT_COUNT = 800,
     HOT_SPAN = 16;
@@ -5907,7 +6391,7 @@ function shortOut(func) {
 
 module.exports = shortOut;
 
-},{}],165:[function(_dereq_,module,exports){
+},{}],171:[function(_dereq_,module,exports){
 var ListCache = _dereq_('./_ListCache');
 
 /**
@@ -5924,7 +6408,7 @@ function stackClear() {
 
 module.exports = stackClear;
 
-},{"./_ListCache":64}],166:[function(_dereq_,module,exports){
+},{"./_ListCache":70}],172:[function(_dereq_,module,exports){
 /**
  * Removes `key` and its value from the stack.
  *
@@ -5944,7 +6428,7 @@ function stackDelete(key) {
 
 module.exports = stackDelete;
 
-},{}],167:[function(_dereq_,module,exports){
+},{}],173:[function(_dereq_,module,exports){
 /**
  * Gets the stack value for `key`.
  *
@@ -5960,7 +6444,7 @@ function stackGet(key) {
 
 module.exports = stackGet;
 
-},{}],168:[function(_dereq_,module,exports){
+},{}],174:[function(_dereq_,module,exports){
 /**
  * Checks if a stack value for `key` exists.
  *
@@ -5976,7 +6460,7 @@ function stackHas(key) {
 
 module.exports = stackHas;
 
-},{}],169:[function(_dereq_,module,exports){
+},{}],175:[function(_dereq_,module,exports){
 var ListCache = _dereq_('./_ListCache'),
     Map = _dereq_('./_Map'),
     MapCache = _dereq_('./_MapCache');
@@ -6012,7 +6496,7 @@ function stackSet(key, value) {
 
 module.exports = stackSet;
 
-},{"./_ListCache":64,"./_Map":65,"./_MapCache":66}],170:[function(_dereq_,module,exports){
+},{"./_ListCache":70,"./_Map":71,"./_MapCache":72}],176:[function(_dereq_,module,exports){
 /** Used for built-in method references. */
 var funcProto = Function.prototype;
 
@@ -6040,7 +6524,7 @@ function toSource(func) {
 
 module.exports = toSource;
 
-},{}],171:[function(_dereq_,module,exports){
+},{}],177:[function(_dereq_,module,exports){
 var assignValue = _dereq_('./_assignValue'),
     copyObject = _dereq_('./_copyObject'),
     createAssigner = _dereq_('./_createAssigner'),
@@ -6100,7 +6584,7 @@ var assign = createAssigner(function(object, source) {
 
 module.exports = assign;
 
-},{"./_assignValue":79,"./_copyObject":112,"./_createAssigner":116,"./_isPrototype":143,"./isArrayLike":179,"./keys":190}],172:[function(_dereq_,module,exports){
+},{"./_assignValue":85,"./_copyObject":118,"./_createAssigner":122,"./_isPrototype":149,"./isArrayLike":185,"./keys":196}],178:[function(_dereq_,module,exports){
 var baseClone = _dereq_('./_baseClone');
 
 /** Used to compose bitmasks for cloning. */
@@ -6131,7 +6615,7 @@ function cloneDeep(value) {
 
 module.exports = cloneDeep;
 
-},{"./_baseClone":84}],173:[function(_dereq_,module,exports){
+},{"./_baseClone":90}],179:[function(_dereq_,module,exports){
 /**
  * Creates a function that returns `value`.
  *
@@ -6159,7 +6643,7 @@ function constant(value) {
 
 module.exports = constant;
 
-},{}],174:[function(_dereq_,module,exports){
+},{}],180:[function(_dereq_,module,exports){
 /**
  * Performs a
  * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
@@ -6198,7 +6682,7 @@ function eq(value, other) {
 
 module.exports = eq;
 
-},{}],175:[function(_dereq_,module,exports){
+},{}],181:[function(_dereq_,module,exports){
 var arrayEach = _dereq_('./_arrayEach'),
     baseEach = _dereq_('./_baseEach'),
     castFunction = _dereq_('./_castFunction'),
@@ -6241,7 +6725,7 @@ function forEach(collection, iteratee) {
 
 module.exports = forEach;
 
-},{"./_arrayEach":74,"./_baseEach":86,"./_castFunction":104,"./isArray":178}],176:[function(_dereq_,module,exports){
+},{"./_arrayEach":80,"./_baseEach":92,"./_castFunction":110,"./isArray":184}],182:[function(_dereq_,module,exports){
 /**
  * This method returns the first argument it receives.
  *
@@ -6264,7 +6748,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],177:[function(_dereq_,module,exports){
+},{}],183:[function(_dereq_,module,exports){
 var baseIsArguments = _dereq_('./_baseIsArguments'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -6302,7 +6786,7 @@ var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsAr
 
 module.exports = isArguments;
 
-},{"./_baseIsArguments":91,"./isObjectLike":186}],178:[function(_dereq_,module,exports){
+},{"./_baseIsArguments":97,"./isObjectLike":192}],184:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is classified as an `Array` object.
  *
@@ -6330,7 +6814,7 @@ var isArray = Array.isArray;
 
 module.exports = isArray;
 
-},{}],179:[function(_dereq_,module,exports){
+},{}],185:[function(_dereq_,module,exports){
 var isFunction = _dereq_('./isFunction'),
     isLength = _dereq_('./isLength');
 
@@ -6365,7 +6849,7 @@ function isArrayLike(value) {
 
 module.exports = isArrayLike;
 
-},{"./isFunction":182,"./isLength":183}],180:[function(_dereq_,module,exports){
+},{"./isFunction":188,"./isLength":189}],186:[function(_dereq_,module,exports){
 var isArrayLike = _dereq_('./isArrayLike'),
     isObjectLike = _dereq_('./isObjectLike');
 
@@ -6400,7 +6884,7 @@ function isArrayLikeObject(value) {
 
 module.exports = isArrayLikeObject;
 
-},{"./isArrayLike":179,"./isObjectLike":186}],181:[function(_dereq_,module,exports){
+},{"./isArrayLike":185,"./isObjectLike":192}],187:[function(_dereq_,module,exports){
 var root = _dereq_('./_root'),
     stubFalse = _dereq_('./stubFalse');
 
@@ -6440,7 +6924,7 @@ var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
 
-},{"./_root":161,"./stubFalse":195}],182:[function(_dereq_,module,exports){
+},{"./_root":167,"./stubFalse":201}],188:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     isObject = _dereq_('./isObject');
 
@@ -6479,7 +6963,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{"./_baseGetTag":90,"./isObject":185}],183:[function(_dereq_,module,exports){
+},{"./_baseGetTag":96,"./isObject":191}],189:[function(_dereq_,module,exports){
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
@@ -6516,7 +7000,7 @@ function isLength(value) {
 
 module.exports = isLength;
 
-},{}],184:[function(_dereq_,module,exports){
+},{}],190:[function(_dereq_,module,exports){
 var baseIsMap = _dereq_('./_baseIsMap'),
     baseUnary = _dereq_('./_baseUnary'),
     nodeUtil = _dereq_('./_nodeUtil');
@@ -6545,7 +7029,7 @@ var isMap = nodeIsMap ? baseUnary(nodeIsMap) : baseIsMap;
 
 module.exports = isMap;
 
-},{"./_baseIsMap":92,"./_baseUnary":103,"./_nodeUtil":157}],185:[function(_dereq_,module,exports){
+},{"./_baseIsMap":98,"./_baseUnary":109,"./_nodeUtil":163}],191:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is the
  * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
@@ -6578,7 +7062,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],186:[function(_dereq_,module,exports){
+},{}],192:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -6609,7 +7093,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],187:[function(_dereq_,module,exports){
+},{}],193:[function(_dereq_,module,exports){
 var baseGetTag = _dereq_('./_baseGetTag'),
     getPrototype = _dereq_('./_getPrototype'),
     isObjectLike = _dereq_('./isObjectLike');
@@ -6673,7 +7157,7 @@ function isPlainObject(value) {
 
 module.exports = isPlainObject;
 
-},{"./_baseGetTag":90,"./_getPrototype":125,"./isObjectLike":186}],188:[function(_dereq_,module,exports){
+},{"./_baseGetTag":96,"./_getPrototype":131,"./isObjectLike":192}],194:[function(_dereq_,module,exports){
 var baseIsSet = _dereq_('./_baseIsSet'),
     baseUnary = _dereq_('./_baseUnary'),
     nodeUtil = _dereq_('./_nodeUtil');
@@ -6702,7 +7186,7 @@ var isSet = nodeIsSet ? baseUnary(nodeIsSet) : baseIsSet;
 
 module.exports = isSet;
 
-},{"./_baseIsSet":94,"./_baseUnary":103,"./_nodeUtil":157}],189:[function(_dereq_,module,exports){
+},{"./_baseIsSet":100,"./_baseUnary":109,"./_nodeUtil":163}],195:[function(_dereq_,module,exports){
 var baseIsTypedArray = _dereq_('./_baseIsTypedArray'),
     baseUnary = _dereq_('./_baseUnary'),
     nodeUtil = _dereq_('./_nodeUtil');
@@ -6731,7 +7215,7 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 
 module.exports = isTypedArray;
 
-},{"./_baseIsTypedArray":95,"./_baseUnary":103,"./_nodeUtil":157}],190:[function(_dereq_,module,exports){
+},{"./_baseIsTypedArray":101,"./_baseUnary":109,"./_nodeUtil":163}],196:[function(_dereq_,module,exports){
 var arrayLikeKeys = _dereq_('./_arrayLikeKeys'),
     baseKeys = _dereq_('./_baseKeys'),
     isArrayLike = _dereq_('./isArrayLike');
@@ -6770,7 +7254,7 @@ function keys(object) {
 
 module.exports = keys;
 
-},{"./_arrayLikeKeys":76,"./_baseKeys":96,"./isArrayLike":179}],191:[function(_dereq_,module,exports){
+},{"./_arrayLikeKeys":82,"./_baseKeys":102,"./isArrayLike":185}],197:[function(_dereq_,module,exports){
 var arrayLikeKeys = _dereq_('./_arrayLikeKeys'),
     baseKeysIn = _dereq_('./_baseKeysIn'),
     isArrayLike = _dereq_('./isArrayLike');
@@ -6804,7 +7288,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"./_arrayLikeKeys":76,"./_baseKeysIn":97,"./isArrayLike":179}],192:[function(_dereq_,module,exports){
+},{"./_arrayLikeKeys":82,"./_baseKeysIn":103,"./isArrayLike":185}],198:[function(_dereq_,module,exports){
 var baseMerge = _dereq_('./_baseMerge'),
     createAssigner = _dereq_('./_createAssigner');
 
@@ -6845,7 +7329,7 @@ var merge = createAssigner(function(object, source, srcIndex) {
 
 module.exports = merge;
 
-},{"./_baseMerge":98,"./_createAssigner":116}],193:[function(_dereq_,module,exports){
+},{"./_baseMerge":104,"./_createAssigner":122}],199:[function(_dereq_,module,exports){
 /**
  * This method returns `undefined`.
  *
@@ -6864,7 +7348,7 @@ function noop() {
 
 module.exports = noop;
 
-},{}],194:[function(_dereq_,module,exports){
+},{}],200:[function(_dereq_,module,exports){
 /**
  * This method returns a new empty array.
  *
@@ -6889,7 +7373,7 @@ function stubArray() {
 
 module.exports = stubArray;
 
-},{}],195:[function(_dereq_,module,exports){
+},{}],201:[function(_dereq_,module,exports){
 /**
  * This method returns `false`.
  *
@@ -6909,7 +7393,7 @@ function stubFalse() {
 
 module.exports = stubFalse;
 
-},{}],196:[function(_dereq_,module,exports){
+},{}],202:[function(_dereq_,module,exports){
 var copyObject = _dereq_('./_copyObject'),
     keysIn = _dereq_('./keysIn');
 
@@ -6943,9 +7427,9 @@ function toPlainObject(value) {
 
 module.exports = toPlainObject;
 
-},{"./_copyObject":112,"./keysIn":191}],197:[function(_dereq_,module,exports){
-module.exports=_dereq_(38)
-},{}],198:[function(_dereq_,module,exports){
+},{"./_copyObject":118,"./keysIn":197}],203:[function(_dereq_,module,exports){
+module.exports=_dereq_(44)
+},{}],204:[function(_dereq_,module,exports){
 /**
  * 视图类: 基础工厂元件类，用于对视图组件的包装
  * - 依赖 jQuery/Zepto
@@ -7156,7 +7640,7 @@ var View = $base.extend({
 
 module.exports = View;
 
-},{"./base":57,"./delegate":58}],199:[function(_dereq_,module,exports){
+},{"./base":63,"./delegate":64}],205:[function(_dereq_,module,exports){
 /**
  * 数字的千分位逗号分隔表示法
  * - IE8 的 toLocalString 给出了小数点后2位: N.00
@@ -7176,9 +7660,9 @@ function comma (num) {
 
 module.exports = comma;
 
-},{}],200:[function(_dereq_,module,exports){
+},{}],206:[function(_dereq_,module,exports){
 module.exports=_dereq_(23)
-},{}],201:[function(_dereq_,module,exports){
+},{}],207:[function(_dereq_,module,exports){
 /**
  * # 处理数字，数据转换
  * @module spore-kit-num
@@ -7201,7 +7685,7 @@ exports.fixTo = _dereq_('./fixTo');
 exports.limit = _dereq_('./limit');
 exports.numerical = _dereq_('./numerical');
 
-},{"./comma":199,"./fixTo":200,"./limit":202,"./numerical":203}],202:[function(_dereq_,module,exports){
+},{"./comma":205,"./fixTo":206,"./limit":208,"./numerical":209}],208:[function(_dereq_,module,exports){
 /**
  * 限制数字在一个范围内
  * @method limit
@@ -7221,7 +7705,7 @@ function limit (num, min, max) {
 
 module.exports = limit;
 
-},{}],203:[function(_dereq_,module,exports){
+},{}],209:[function(_dereq_,module,exports){
 /**
  * 将数据类型转为整数数字，转换失败则返回一个默认值
  * @method numerical
@@ -7242,9 +7726,9 @@ function numerical (str, def, sys) {
 
 module.exports = numerical;
 
-},{}],204:[function(_dereq_,module,exports){
+},{}],210:[function(_dereq_,module,exports){
 module.exports=_dereq_(5)
-},{}],205:[function(_dereq_,module,exports){
+},{}],211:[function(_dereq_,module,exports){
 /**
  * 覆盖对象，不添加新的键
  * @method cover
@@ -7279,7 +7763,7 @@ function cover() {
 
 module.exports = cover;
 
-},{}],206:[function(_dereq_,module,exports){
+},{}],212:[function(_dereq_,module,exports){
 /**
  * 查找对象路径上的值
  * @method find
@@ -7319,7 +7803,7 @@ function find(object, path) {
 
 module.exports = find;
 
-},{}],207:[function(_dereq_,module,exports){
+},{}],213:[function(_dereq_,module,exports){
 /**
  * # 对象处理与判断
  * @module spore-kit-obj
@@ -7342,9 +7826,9 @@ exports.cover = _dereq_('./cover');
 exports.find = _dereq_('./find');
 exports.type = _dereq_('./type');
 
-},{"./assign":204,"./cover":205,"./find":206,"./type":208}],208:[function(_dereq_,module,exports){
+},{"./assign":210,"./cover":211,"./find":212,"./type":214}],214:[function(_dereq_,module,exports){
 module.exports=_dereq_(14)
-},{}],209:[function(_dereq_,module,exports){
+},{}],215:[function(_dereq_,module,exports){
 /**
  * 获取字符串长度，一个中文算2个字符
  * @method bLength
@@ -7365,7 +7849,7 @@ function bLength (str) {
 
 module.exports = bLength;
 
-},{}],210:[function(_dereq_,module,exports){
+},{}],216:[function(_dereq_,module,exports){
 /**
  * 全角字符转半角字符
  * @method dbcToSbc
@@ -7383,7 +7867,7 @@ function dbcToSbc (str) {
 
 module.exports = dbcToSbc;
 
-},{}],211:[function(_dereq_,module,exports){
+},{}],217:[function(_dereq_,module,exports){
 /**
  * 解码HTML，将实体字符转换为HTML字符
  * @method decodeHTML
@@ -7408,7 +7892,7 @@ function decodeHTML (str) {
 
 module.exports = decodeHTML;
 
-},{}],212:[function(_dereq_,module,exports){
+},{}],218:[function(_dereq_,module,exports){
 /**
  * 编码HTML，将HTML字符转为实体字符
  * @method encodeHTML
@@ -7433,7 +7917,7 @@ function encodeHTML (str) {
 
 module.exports = encodeHTML;
 
-},{}],213:[function(_dereq_,module,exports){
+},{}],219:[function(_dereq_,module,exports){
 /**
  * 生成一个不与之前重复的随机字符串
  * @method getUniqueKey
@@ -7451,7 +7935,7 @@ function getUniqueKey () {
 
 module.exports = getUniqueKey;
 
-},{}],214:[function(_dereq_,module,exports){
+},{}],220:[function(_dereq_,module,exports){
 /**
  * 将驼峰格式变为连字符格式
  * @method hyphenate
@@ -7469,7 +7953,7 @@ function hyphenate (str) {
 
 module.exports = hyphenate;
 
-},{}],215:[function(_dereq_,module,exports){
+},{}],221:[function(_dereq_,module,exports){
 /**
  * # 字符串处理与判断
  * @module spore-kit-str
@@ -7498,7 +7982,7 @@ exports.leftB = _dereq_('./leftB');
 exports.sizeOfUTF8String = _dereq_('./sizeOfUTF8String');
 exports.substitute = _dereq_('./substitute');
 
-},{"./bLength":209,"./dbcToSbc":210,"./decodeHTML":211,"./encodeHTML":212,"./getUniqueKey":213,"./hyphenate":214,"./ipToHex":216,"./leftB":217,"./sizeOfUTF8String":218,"./substitute":219}],216:[function(_dereq_,module,exports){
+},{"./bLength":215,"./dbcToSbc":216,"./decodeHTML":217,"./encodeHTML":218,"./getUniqueKey":219,"./hyphenate":220,"./ipToHex":222,"./leftB":223,"./sizeOfUTF8String":224,"./substitute":225}],222:[function(_dereq_,module,exports){
 /**
  * 十进制IP地址转十六进制
  * @method ipToHex
@@ -7521,7 +8005,7 @@ function ipToHex (ip) {
 
 module.exports = ipToHex;
 
-},{}],217:[function(_dereq_,module,exports){
+},{}],223:[function(_dereq_,module,exports){
 /**
  * 从左到右取字符串，中文算两个字符
  * @method leftB
@@ -7546,7 +8030,7 @@ function leftB (str, lens) {
 
 module.exports = leftB;
 
-},{"./bLength":209}],218:[function(_dereq_,module,exports){
+},{"./bLength":215}],224:[function(_dereq_,module,exports){
 /**
  * 取字符串 utf8 编码长度，from 王集鹄
  * @method sizeOfUTF8String
@@ -7566,9 +8050,9 @@ function sizeOfUTF8String (str) {
 
 module.exports = sizeOfUTF8String;
 
-},{}],219:[function(_dereq_,module,exports){
+},{}],225:[function(_dereq_,module,exports){
 module.exports=_dereq_(25)
-},{}],220:[function(_dereq_,module,exports){
+},{}],226:[function(_dereq_,module,exports){
 /**
  * 提供倒计时器统一封装
  * @method countDown
@@ -7720,7 +8204,7 @@ function countDown (spec) {
 
 module.exports = countDown;
 
-},{"spore-kit-arr/erase":222,"spore-kit-obj/assign":224}],221:[function(_dereq_,module,exports){
+},{"spore-kit-arr/erase":228,"spore-kit-obj/assign":230}],227:[function(_dereq_,module,exports){
 /**
  * # 时间处理与交互工具
  * @module spore-kit-time
@@ -7741,13 +8225,13 @@ module.exports = countDown;
 exports.countDown = _dereq_('./countDown');
 exports.parseUnit = _dereq_('./parseUnit');
 
-},{"./countDown":220,"./parseUnit":225}],222:[function(_dereq_,module,exports){
+},{"./countDown":226,"./parseUnit":231}],228:[function(_dereq_,module,exports){
 module.exports=_dereq_(9)
-},{}],223:[function(_dereq_,module,exports){
-module.exports=_dereq_(203)
-},{}],224:[function(_dereq_,module,exports){
+},{}],229:[function(_dereq_,module,exports){
+module.exports=_dereq_(209)
+},{}],230:[function(_dereq_,module,exports){
 module.exports=_dereq_(5)
-},{}],225:[function(_dereq_,module,exports){
+},{}],231:[function(_dereq_,module,exports){
 /**
  * 时间数字拆分为天时分秒
  * @method parseUnit
@@ -7811,6 +8295,6 @@ function parseUnit(time, spec) {
 
 module.exports = parseUnit;
 
-},{"spore-kit-num/numerical":223,"spore-kit-obj/assign":224}]},{},[1])
+},{"spore-kit-num/numerical":229,"spore-kit-obj/assign":230}]},{},[1])
 (1)
 });
