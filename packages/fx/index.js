@@ -15,6 +15,7 @@
  * var $smoothScrollTo = require('spore-kit-fx/smoothScrollTo');
  */
 
+exports.easing = require('./easing');
 exports.flashAction = require('./flashAction');
 exports.Fx = require('./fx');
 exports.smoothScrollTo = require('./smoothScrollTo');
