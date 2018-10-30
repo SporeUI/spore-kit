@@ -4,6 +4,6 @@ describe('mvc-ui-test', () => {
 	});
 
 	it('title is mvc-test', async () => {
-		await expect(page).toMatch('mvc-test');
+		await expect(page).toMatch('spore-kit-mvc test');
 	});
 });

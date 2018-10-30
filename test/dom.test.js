@@ -4,6 +4,6 @@ describe('dom-ui-test', () => {
 	});
 
 	it('title is dom-test', async () => {
-		await expect(page).toMatch('dom-test');
+		await expect(page).toMatch('spore-kit-dom test');
 	});
 });
