@@ -6,7 +6,7 @@
 
 ## 参考文档
 
-[https://sporeui.github.io/spore-kit/](https://sporeui.github.io/spore-kit/)
+[https://sporeui.github.io/spore-kit/docs/](https://sporeui.github.io/spore-kit/docs/)
 
 ## 何时使用
 
