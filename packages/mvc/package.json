@@ -1,6 +1,6 @@
 {
 	"name": "spore-kit-mvc",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"description": "兼容 IE8 的 MVC 简单实现",
 	"main": "index.js",
 	"repository": {
