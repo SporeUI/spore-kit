@@ -14,7 +14,7 @@ $gulp.task('build-js', function() {
 		}))
 		.pipe($gulpRename('spore-kit.js'))
 		.pipe($gulpUglify())
-		.pipe($gulpRename('spore-kit.min.js'))
+		.pipe($gulpRename('spore-kit-min.js'))
 		.pipe($gulp.dest('./dist'))
 		.pipe($gulp.dest('./docs/assets'));
 });
