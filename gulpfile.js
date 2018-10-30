@@ -1,17 +1,20 @@
 const $gulp = require('gulp');
-const $runSequence = require('run-sequence');
+// const $runSequence = require('run-sequence');
+const $gulpBrowserify = require('gulp-browserify');
 
-$gulp.task('docs-build', () => {
-	console.log('task:docs-build');
-	// documentation 8.x api has bug:
-	// https://github.com/documentationjs/documentation/issues/869
-	// So use shell instead
+$gulp.task('build-js', function() {
+	$gulp.src([
+		'./index.js'
+	]).pipe(
+		$gulpBrowserify({
+			standalone: 'spore-kit',
+			debug: false
+		})
+	).pipe(
+		$gulp.dest('./dist')
+	);
 });
 
-$gulp.task('docs-default', () => $runSequence(
-	'docs-build'
-));
-
 $gulp.task('default', [
-	'docs-default'
+	'build-js'
 ]);

@@ -41,7 +41,7 @@ function getLastStart(time, type, count) {
 		year = Math.floor(allMonths / 12);
 		month = allMonths - year * 12;
 		month += 1;
-		stamp = new Date(`${year}/${month}/1`);
+		stamp = new Date([year, month, 1].join('/'));
 	} else {
 		unit = HOUR;
 		if (type === 'day') {
