@@ -35,6 +35,10 @@ console.info($arr.contains); //function
 var $contains = require('spore-kit-arr/contains');
 ```
 
+## 示例
+
+- [spore-kit-fx](https://sporeui.github.io/spore-kit/demo/fx/)
+
 ## 测试
 
 - [测试覆盖率](https://sporeui.github.io/spore-kit/coverage/lcov-report/index.html)
