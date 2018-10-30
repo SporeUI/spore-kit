@@ -1,24 +1,23 @@
 /**
  * 基础工厂元件类
- * - 该类混合了 spore-kit-evt/src/events 的方法。
- * @see spore-kit-evt/events
+ * - 该类混合了 spore-kit-evt/events 的方法。
  * @param {Object} [options] 选项
  * @module Base
  * @example
- *	var $base = require('spore-kit-mvc/src/base');
+ *	var Base = require('spore-kit-mvc/base');
  *
- *	var ChildClass = $base.extend({
+ *	var ChildClass = Base.extend({
  *		defaults : {
  *			node : null
  *		},
- *		build : function(){
+ *		build : function() {
  *			this.node = $(this.conf.node);
  *		},
- *		setEvents : function(action){
+ *		setEvents : function(action) {
  *			var proxy = this.proxy();
  *			this.node[action]('click', proxy('onclick'));
  *		},
- *		onclick : function(){
+ *		onclick : function() {
  *			console.info('clicked');
  *			this.trigger('click');
  *		}
@@ -28,7 +27,7 @@
  *		node : document.body
  *	});
  *
- *	obj.on('click', function(){
+ *	obj.on('click', function() {
  *		console.info('obj is clicked');
  *	});
  */
@@ -44,26 +43,23 @@ var AP = Array.prototype;
 var Base = $klass({
 	/**
 	 * 类的默认选项对象，绑定在原型上，不要在实例中直接修改这个对象
+	 * @name Base#defaults
 	 * @type {Object}
-	 * @name defaults
-	 * @inner
 	 * @memberof Base
 	 */
 	defaults: {},
 
 	/**
-	 * 类的实际选项，setOptions方法会修改这个对象
-	 * @name conf
+	 * 类的实际选项，setOptions 方法会修改这个对象
+	 * @name Base#conf
 	 * @type {Object}
-	 * @inner
 	 * @memberof Base
 	 */
 
 	/**
 	 * 存放代理函数的集合
-	 * @name bound
+	 * @name Base#bound
 	 * @type {Object}
-	 * @inner
 	 * @memberof Base
 	 */
 
@@ -75,7 +71,7 @@ var Base = $klass({
 
 	/**
 	 * 深度混合传入的选项与默认选项，混合完成的选项对象可通过 this.conf 属性访问
-	 * @method setOptions
+	 * @method Base#setOptions
 	 * @memberof Base
 	 * @param {Object} [options] 选项
 	 */
@@ -90,14 +86,14 @@ var Base = $klass({
 	/**
 	 * 元件初始化接口函数，实例化元件时会自动首先调用
 	 * @abstract
-	 * @method build
+	 * @method Base#build
 	 * @memberof Base
 	 */
 	build: $noop,
 
 	/**
 	 * 元件事件绑定接口函数，实例化元件时会自动在 build 之后调用
-	 * @method setEvents
+	 * @method Base#setEvents
 	 * @memberof Base
 	 * @param {String} [action='on'] 绑定或者移除事件的标记，可选值有：['on', 'off']
 	 */
@@ -108,7 +104,7 @@ var Base = $klass({
 	 * 这些用于绑定事件的代理函数都放在属性 this.bound 上。
 	 * 功能类似 Function.prototype.bind 。
 	 * 可以传递额外参数作为函数执行的默认参数，追加在实际参数之后。
-	 * @method proxy
+	 * @method Base#proxy
 	 * @memberof Base
 	 * @param {string} [name='proxy'] 函数名称
 	 */
@@ -131,7 +127,7 @@ var Base = $klass({
 
 	/**
 	 * 移除所有绑定事件，清除用于绑定事件的代理函数
-	 * @method destroy
+	 * @method Base#destroy
 	 * @memberof Base
 	 */
 	destroy: function() {

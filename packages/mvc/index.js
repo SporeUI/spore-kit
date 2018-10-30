@@ -15,7 +15,8 @@
  * var $Model = require('spore-kit-mvc/Model');
  */
 
-exports.klass = require('./src/klass');
-exports.Base = require('./src/base');
-exports.Model = require('./src/model');
-exports.View = require('./src/view');
+exports.klass = require('./klass');
+exports.delegate = require('./delegate');
+exports.Base = require('./base');
+exports.Model = require('./model');
+exports.View = require('./view');

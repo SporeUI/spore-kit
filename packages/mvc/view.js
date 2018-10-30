@@ -1,7 +1,7 @@
 /**
- * 视图类
+ * 视图类: 基础工厂元件类，用于对视图组件的包装
  * - 依赖 jQuery/Zepto
- * - 该类继承自 spore-kit-mvc/base
+ * - 继承自 spore-kit-mvc/base
  * @module View
  * @param {Object} [options] 选项
  * @param {String|Object} [options.node] 选择器字符串，或者DOM元素，或者jquery对象，用于指定视图的根节点。
@@ -43,8 +43,8 @@
  *		}
  *	});
  *
- *	obj1.role('button').trigger('click');	//1
- *	obj2.role('button').trigger('click');	//2
+ *	obj1.role('button').trigger('click');	// 1
+ *	obj2.role('button').trigger('click');	// 2
  */
 
 var $base = require('./base');
@@ -79,8 +79,8 @@ var getRoot = function() {
 var View = $base.extend({
 	/**
 	 * 类的默认选项对象，绑定在原型上，不要在实例中直接修改这个对象。
-	 * @name defaults
-	 * @type Object
+	 * @name View#defaults
+	 * @type {Object}
 	 * @memberof View
 	 */
 	defaults: {
@@ -95,8 +95,8 @@ var View = $base.extend({
 	 * - 事件绑定格式可以为：
 	 * - {'selector event':'method'}
 	 * - {'selector event':'method1 method2'}
-	 * @name events
-	 * @type Object
+	 * @name View#events
+	 * @type {Object}
 	 * @memberof View
 	 */
 	events: {},
@@ -143,13 +143,13 @@ var View = $base.extend({
 	},
 
 	/**
-	 * 获取 / 设置角色对象指定的jquery对象。
-	 * - 注意：获取到角色元素后，该jquery对象会缓存在视图对象中
+	 * 获取 / 设置角色对象指定的 jQuery 对象。
+	 * - 注意：获取到角色元素后，该 jQuery 对象会缓存在视图对象中
 	 * @method View#role
 	 * @memberof View
 	 * @param {String} name 角色对象名称
-	 * @param {Object} [element] 角色对象指定的dom元素或者jquery对象。
-	 * @returns {Object} 角色名对应的jquery对象。
+	 * @param {Object} [element] 角色对象指定的dom元素或者 jQuery 对象。
+	 * @returns {Object} 角色名对应的 jQuery 对象。
 	 */
 	role: function(name, element) {
 		var $ = get$();
@@ -179,7 +179,7 @@ var View = $base.extend({
 
 	/**
 	 * 清除视图缓存的角色对象
-	 * @method resetRoles
+	 * @method View#resetRoles
 	 * @memberof View
 	 */
 	resetRoles: function() {
@@ -195,7 +195,7 @@ var View = $base.extend({
 
 	/**
 	 * 销毁视图，释放内存
-	 * @method destroy
+	 * @method View#destroy
 	 * @memberof View
 	 */
 	destroy: function() {

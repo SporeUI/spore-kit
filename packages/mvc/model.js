@@ -1,6 +1,6 @@
 /**
- * 模型: 基础工厂元件类，用于做数据包装，提供可观察的数据对象
- * - 集成自 spore-kit-mvc/base
+ * 模型类: 基础工厂元件类，用于做数据包装，提供可观察的数据对象
+ * - 继承自 spore-kit-mvc/base
  * @module Model
  * @param {Object} [options] 初始数据
  * @example
@@ -10,7 +10,7 @@
  *		a : 1
  *	});
  *	m1.on('change:a', function(prevA){
- *		console.info(prevA);	//1
+ *		console.info(prevA);	// 1
  *	});
  *	m1.on('change', function(){
  *		console.info('model changed');
@@ -31,13 +31,13 @@
  *	});
  *
  *	var m2 = new MyModel();
- *	console.info(m2.get('b'));	//2
+ *	console.info(m2.get('b'));	// 2
  *
  *	m2.set('a', 3);
- *	console.info(m2.get('b'));	//4
+ *	console.info(m2.get('b'));	// 4
  *
  *	m2.set('b', 5);
- *	console.info(m2.get('b'));	//5
+ *	console.info(m2.get('b'));	// 5
  */
 
 var $assign = require('lodash/assign');
@@ -279,7 +279,7 @@ var Model = $base.extend({
 	/**
 	 * 销毁模型，不会触发任何change事件。
 	 * - 模型销毁后，无法再设置任何数据。
-	 * @method destroy
+	 * @method Model#destroy
 	 * @memberof Model
 	 */
 	destroy: function() {

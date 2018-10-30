@@ -1,7 +1,6 @@
 /**
  * class 的 ES5 实现
- * - modify from https://github.com/ded/klass
- * - 主要修改是为了让代码通过 eslint 检查
+ * - 为代码通过 eslint 检查做了些修改
  * @module klass
  * @see https://github.com/ded/klass
  */
