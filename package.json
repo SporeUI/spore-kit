@@ -10,6 +10,7 @@
 		"vuepress-dev": "vuepress dev docs-src",
 		"vuepress-build": "vuepress build docs-src",
 		"doc-build": "sh ./task/doc-build.sh ./packages",
+		"prepublish": "npm run vuepress-build && gulp",
 		"precommit": "lint-staged"
 	},
 	"files": [
