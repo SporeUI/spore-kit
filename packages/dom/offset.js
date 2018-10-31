@@ -11,6 +11,10 @@
  * // {top: 69, left: 108}
  */
 
-var offset = require('document-offset');
+var offset = null;
+
+if (typeof window !== 'undefined') {
+	offset = require('document-offset');
+}
 
 module.exports = offset;
