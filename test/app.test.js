@@ -7,7 +7,7 @@ describe('app-ui-test', () => {
 		await page.goto('http://localhost:3000/test/app.test.html');
 	});
 
-	it('title is app-test', async () => {
+	it('title is spore-kit-app test', async () => {
 		await expect(page).toMatch('spore-kit-app test');
 	});
 });

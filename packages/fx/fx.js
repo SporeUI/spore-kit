@@ -29,7 +29,7 @@
  *	fx.start(0, 600);  // 1秒内数字从0增加到600
  */
 
-var $class = require('klass');
+var $klass = require('klass');
 var $events = require('spore-kit-evt/events');
 var $erase = require('spore-kit-arr/erase');
 var $contains = require('spore-kit-arr/contains');
@@ -73,7 +73,7 @@ var pullInstance = function (fps) {
 	}
 };
 
-var Fx = $class({
+var Fx = $klass({
 	initialize: function (options) {
 		this.options = $assign(
 			{

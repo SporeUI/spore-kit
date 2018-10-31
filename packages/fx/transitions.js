@@ -115,7 +115,7 @@ Transitions.extend({
 	});
 });
 
-$fx.implement({
+$fx.statics({
 	getTransition: function() {
 		var trans = this.options.transition || Transitions.Sine.easeInOut;
 		if (typeof trans === 'string') {
