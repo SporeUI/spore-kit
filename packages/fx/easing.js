@@ -1,11 +1,28 @@
-/*
+/**
  * 简单的 Easing Functions
  * - 值域变化范围，从 [0, 1] 到 [0, 1]
  * - 即输入值范围从 0 到 1
  * - 输出也为从 0 到 1
  * - 适合进行百分比动画运算
- * @see https://gist.github.com/gre/1650294
+ *
+ * 动画函数
+ * - linear
+ * - easeInQuad
+ * - easeOutQuad
+ * - easeInOutQuad
+ * - easeInCubic
+ * - easeInQuart
+ * - easeOutQuart
+ * - easeInOutQuart
+ * - easeInQuint
+ * - easeOutQuint
+ * - easeInOutQuint
  * @module easing
+ * @see https://gist.github.com/gre/1650294
+ * @example
+ * easing.linear(0.5); // 0.5
+ * easing.easeInQuad(0.5); // 0.25
+ * easing.easeInCubic(0.5); // 0.125
  */
 var easing = {
 	// no easing, no acceleration

@@ -6,6 +6,7 @@ exports.dom = require('./packages/dom');
 exports.env = require('./packages/env');
 exports.evt = require('./packages/evt');
 exports.fn = require('./packages/fn');
+exports.fx = require('./packages/fx');
 exports.io = require('./packages/io');
 exports.location = require('./packages/location');
 exports.mvc = require('./packages/mvc');

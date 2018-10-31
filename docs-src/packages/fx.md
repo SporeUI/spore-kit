@@ -21,18 +21,51 @@ console.info($fx.smoothScrollTo);
 var $smoothScrollTo = require('spore-kit-fx/smoothScrollTo');
 ```
 
+## easing
+
+-   **See: [https://gist.github.com/gre/1650294][2]**
+
+简单的 Easing Functions
+
+-   值域变化范围，从 [0, 1] 到 [0, 1]
+-   即输入值范围从 0 到 1
+-   输出也为从 0 到 1
+-   适合进行百分比动画运算
+
+动画函数
+
+-   linear
+-   easeInQuad
+-   easeOutQuad
+-   easeInOutQuad
+-   easeInCubic
+-   easeInQuart
+-   easeOutQuart
+-   easeInOutQuart
+-   easeInQuint
+-   easeOutQuint
+-   easeInOutQuint
+
+### Examples
+
+```javascript
+easing.linear(0.5); // 0.5
+easing.easeInQuad(0.5); // 0.25
+easing.easeInCubic(0.5); // 0.125
+```
+
 ## flashAction
 
 封装闪烁动作
 
 ### Parameters
 
--   `options` **[object][2]** 选项
-    -   `options.times` **[number][3]** 闪烁次数，默认3次 (optional, default `3`)
-    -   `options.delay` **[number][3]** 闪烁间隔时间(ms) (optional, default `100`)
-    -   `options.actionOdd` **[function][4]?** 奇数回调
-    -   `options.actionEven` **[function][4]?** 偶数回调
-    -   `options.recover` **[function][4]?** 状态恢复回调
+-   `options` **[object][3]** 选项
+    -   `options.times` **[number][4]** 闪烁次数，默认3次 (optional, default `3`)
+    -   `options.delay` **[number][4]** 闪烁间隔时间(ms) (optional, default `100`)
+    -   `options.actionOdd` **[function][5]?** 奇数回调
+    -   `options.actionEven` **[function][5]?** 偶数回调
+    -   `options.recover` **[function][5]?** 状态恢复回调
 
 ### Examples
 
@@ -54,7 +87,7 @@ $flashAction({
 
 ## Fx
 
--   **See: [https://mootools.net/core/docs/1.6.0/Fx/Fx][5]**
+-   **See: [https://mootools.net/core/docs/1.6.0/Fx/Fx][6]**
 
 动画类 - 用于处理不适合使用 transition 的动画场景
 
@@ -67,13 +100,13 @@ $flashAction({
 
 ### Parameters
 
--   `options` **[Object][2]?** 动画选项
-    -   `options.fps` **[Number][3]** 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率 (optional, default `60`)
-    -   `options.duration` **[Number][3]** 动画持续时间(ms) (optional, default `500`)
-    -   `options.transition` **([String][6] \| [Function][4])?** 动画执行方式，参见 spore-kit-fx/transitions
-    -   `options.frames` **[Number][3]?** 从哪一帧开始执行
-    -   `options.frameSkip` **[Boolean][7]** 是否跳帧 (optional, default `true`)
-    -   `options.link` **[String][6]** 动画衔接方式，可选：['ignore', 'cancel'] (optional, default `'ignore'`)
+-   `options` **[Object][3]?** 动画选项
+    -   `options.fps` **[Number][4]** 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率 (optional, default `60`)
+    -   `options.duration` **[Number][4]** 动画持续时间(ms) (optional, default `500`)
+    -   `options.transition` **([String][7] \| [Function][5])?** 动画执行方式，参见 spore-kit-fx/transitions
+    -   `options.frames` **[Number][4]?** 从哪一帧开始执行
+    -   `options.frameSkip` **[Boolean][8]** 是否跳帧 (optional, default `true`)
+    -   `options.link` **[String][7]** 动画衔接方式，可选：['ignore', 'cancel'] (optional, default `'ignore'`)
 
 ### Examples
 
@@ -96,7 +129,7 @@ fx.start(0, 600);  // 1秒内数字从0增加到600
 
 #### Parameters
 
--   `options` **[Object][2]** 动画选项
+-   `options` **[Object][3]** 动画选项
 
 ### Fx#getTransition
 
@@ -119,7 +152,7 @@ fx.getTransition = function () {
 
 #### Parameters
 
--   `now` **[Number][3]** 当前动画帧的过渡数值
+-   `now` **[Number][4]** 当前动画帧的过渡数值
 
 #### Examples
 
@@ -136,8 +169,8 @@ fx.set = function (now) {
 
 #### Parameters
 
--   `from` **[Number][3]** 动画开始数值
--   `to` **[Number][3]** 动画结束数值
+-   `from` **[Number][4]** 动画开始数值
+-   `to` **[Number][4]** 动画结束数值
 
 #### Examples
 
@@ -208,7 +241,7 @@ fx.pause();
 fx.isRunning(); // false
 ```
 
-Returns **[Boolean][7]** 动画是否正在运行
+Returns **[Boolean][8]** 动画是否正在运行
 
 ## smoothScrollTo
 
@@ -218,10 +251,10 @@ Returns **[Boolean][7]** 动画是否正在运行
 
 ### Parameters
 
--   `node` **[Object][2]** 目标DOM元素
--   `spec` **[Object][2]** 选项
-    -   `spec.delta` **[Number][3]** 目标滚动位置与目标元素顶部的间距，可以为负值 (optional, default `0`)
-    -   `spec.maxDelay` **[Number][3]** 动画执行时间限制(ms)，动画执行超过此时间则直接停止，立刻滚动到目标位置 (optional, default `3000`)
+-   `node` **[Object][3]** 目标DOM元素
+-   `spec` **[Object][3]** 选项
+    -   `spec.delta` **[Number][4]** 目标滚动位置与目标元素顶部的间距，可以为负值 (optional, default `0`)
+    -   `spec.maxDelay` **[Number][4]** 动画执行时间限制(ms)，动画执行超过此时间则直接停止，立刻滚动到目标位置 (optional, default `3000`)
 
 ### Examples
 
@@ -238,13 +271,13 @@ IOS sticky 效果 polyfill
 
 ### Parameters
 
--   `node` **[Object][2]** 目标DOM元素
--   `options` **[Object][2]** 选项
-    -   `options.clone` **[Boolean][7]** 是否创建一个 clone 元素 (optional, default `true`)
-    -   `options.placeholder` **[Object][2]** sticky 效果启动时的占位 dom 元素 (optional, default `null`)
-    -   `options.disableAndroid` **[Boolean][7]** 是否在 Android 下停用 sticky 效果 (optional, default `false`)
-    -   `options.offsetParent` **[Object][2]** 提供一个相对定位元素来匹配浮动时的定位样式 (optional, default `null`)
-    -   `options.styles` **[Object][2]** 进入 sticky 状态时的样式 (optional, default `{}`)
+-   `node` **[Object][3]** 目标DOM元素
+-   `options` **[Object][3]** 选项
+    -   `options.clone` **[Boolean][8]** 是否创建一个 clone 元素 (optional, default `true`)
+    -   `options.placeholder` **[Object][3]** sticky 效果启动时的占位 dom 元素 (optional, default `null`)
+    -   `options.disableAndroid` **[Boolean][8]** 是否在 Android 下停用 sticky 效果 (optional, default `false`)
+    -   `options.offsetParent` **[Object][3]** 提供一个相对定位元素来匹配浮动时的定位样式 (optional, default `null`)
+    -   `options.styles` **[Object][3]** 进入 sticky 状态时的样式 (optional, default `{}`)
 
 ### Examples
 
@@ -273,10 +306,10 @@ timer.setTimeout(function () {
 
 #### Parameters
 
--   `fn` **[Function][4]** 定时重复调用的函数
--   `delay` **[Number][3]** 重复调用的间隔时间(ms) (optional, default `0`)
+-   `fn` **[Function][5]** 定时重复调用的函数
+-   `delay` **[Number][4]** 重复调用的间隔时间(ms) (optional, default `0`)
 
-Returns **[Object][2]** 定时器对象，可传入 clearInterval 方法来终止这个定时器
+Returns **[Object][3]** 定时器对象，可传入 clearInterval 方法来终止这个定时器
 
 ### timer.clearInterval
 
@@ -284,7 +317,7 @@ Returns **[Object][2]** 定时器对象，可传入 clearInterval 方法来终�
 
 #### Parameters
 
--   `obj` **[Object][2]** 定时器对象
+-   `obj` **[Object][3]** 定时器对象
 
 ### timer.setTimeout
 
@@ -292,10 +325,10 @@ Returns **[Object][2]** 定时器对象，可传入 clearInterval 方法来终�
 
 #### Parameters
 
--   `fn` **[Function][4]** 延时调用的函数
--   `delay` **[Number][3]** 延时调用的间隔时间(ms) (optional, default `0`)
+-   `fn` **[Function][5]** 延时调用的函数
+-   `delay` **[Number][4]** 延时调用的间隔时间(ms) (optional, default `0`)
 
-Returns **[Object][2]** 定时器对象，可传入 clearTimeout 方法来终止这个定时器
+Returns **[Object][3]** 定时器对象，可传入 clearTimeout 方法来终止这个定时器
 
 ### timer.clearTimeout
 
@@ -303,11 +336,11 @@ Returns **[Object][2]** 定时器对象，可传入 clearTimeout 方法来终止
 
 #### Parameters
 
--   `obj` **[Object][2]** 定时器对象
+-   `obj` **[Object][3]** 定时器对象
 
 ## transitions
 
--   **See: [https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions][8]**
+-   **See: [https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions][9]**
 
 动画运行方式库
 
@@ -341,16 +374,18 @@ new Fx({
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/fx
 
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[2]: https://gist.github.com/gre/1650294
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[5]: https://mootools.net/core/docs/1.6.0/Fx/Fx
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[6]: https://mootools.net/core/docs/1.6.0/Fx/Fx
 
-[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[8]: https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions
+[8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[9]: https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions
