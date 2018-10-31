@@ -1,6 +1,10 @@
 const $app = require('spore-kit-app');
 
-console.log($app);
+console.log(
+	Object.keys($app).map(
+		name => ('spore-kit-app/' + name)
+	).join('\n')
+);
 
 describe('app-ui-test', () => {
 	beforeEach(async () => {

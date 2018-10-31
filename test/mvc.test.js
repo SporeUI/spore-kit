@@ -1,6 +1,10 @@
 const $mvc = require('spore-kit-mvc');
 
-console.log($mvc);
+console.log(
+	Object.keys($mvc).map(
+		name => ('spore-kit-mvc/' + name)
+	).join('\n')
+);
 
 describe('mvc-ui-test', () => {
 	beforeEach(async () => {

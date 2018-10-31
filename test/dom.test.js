@@ -1,6 +1,10 @@
 const $dom = require('spore-kit-dom');
 
-console.log($dom);
+console.log(
+	Object.keys($dom).map(
+		name => ('spore-kit-dom/' + name)
+	).join('\n')
+);
 
 describe('dom-ui-test', () => {
 	beforeEach(async () => {
