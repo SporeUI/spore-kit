@@ -4,6 +4,7 @@
 
 ## Release History
 
+* 2018-10-31 v0.2.9 timer 方法构造器优化，兼容 node 环境。修正 Fx 附加 transitions 对象的方式。
 * 2018-10-29 v0.2.8 添加 easing 模块，完善文档
 * 2018-09-25 v0.2.0 改为使用 lerna 管理
 * 2017-07-26 v0.1.5 完善 sticky 选项
