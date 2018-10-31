@@ -1,3 +1,7 @@
+const $mvc = require('spore-kit-mvc');
+
+console.log($mvc);
+
 describe('mvc-ui-test', () => {
 	beforeEach(async () => {
 		await page.goto('http://localhost:3000/test/mvc.test.html');
