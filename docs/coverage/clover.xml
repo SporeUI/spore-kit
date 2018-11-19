@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1540959673172" clover="3.2.0">
-  <project timestamp="1540959673173" name="All files">
-    <metrics statements="1429" coveredstatements="408" conditionals="724" coveredconditionals="52" methods="237" coveredmethods="29" elements="2390" coveredelements="489" complexity="0" loc="1429" ncloc="1429" packages="16" files="84" classes="84">
+<coverage generated="1542626818009" clover="3.2.0">
+  <project timestamp="1542626818009" name="All files">
+    <metrics statements="1471" coveredstatements="422" conditionals="748" coveredconditionals="53" methods="240" coveredmethods="30" elements="2459" coveredelements="505" complexity="0" loc="1471" ncloc="1471" packages="17" files="87" classes="87">
       <package name="app">
         <metrics statements="30" coveredstatements="4" conditionals="18" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <file name="callUp.js" path="/Users/tony/work/github/spore/spore-kit/packages/app/callUp.js">
@@ -1729,6 +1729,60 @@
           <line num="57" count="1" type="stmt"/>
           <line num="59" count="1" type="stmt"/>
           <line num="62" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="util">
+        <metrics statements="42" coveredstatements="14" conditionals="24" coveredconditionals="1" methods="3" coveredmethods="1"/>
+        <file name="hslToRgb.js" path="/Users/tony/work/github/spore/spore-kit/packages/util/hslToRgb.js">
+          <metrics statements="18" coveredstatements="1" conditionals="14" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+        </file>
+        <file name="index.js" path="/Users/tony/work/github/spore/spore-kit/packages/util/index.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+        </file>
+        <file name="rgbToHsl.js" path="/Users/tony/work/github/spore/spore-kit/packages/util/rgbToHsl.js">
+          <metrics statements="22" coveredstatements="11" conditionals="10" coveredconditionals="1" methods="1" coveredmethods="1"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="22" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="29" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="45" count="1" type="stmt"/>
+          <line num="48" count="1" type="stmt"/>
         </file>
       </package>
     </metrics>

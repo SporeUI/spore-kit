@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for env/core.js</title>
+    <title>Code coverage report for util/rgbToHsl.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,35 +16,35 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">All files</a> / <a href="index.html">env</a> core.js
+      <a href="../index.html">All files</a> / <a href="index.html">util</a> rgbToHsl.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">46.15% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/13</span>
+        <span class='fraction'>11/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">10% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>1/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">46.15% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/13</span>
+        <span class='fraction'>11/22</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -106,90 +106,90 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * 检测浏览器核心
- *
- * 支持的类型检测
- * - trident
- * - presto
- * - webkit
- * - gecko
- * @method core
- * @returns {Object} UA 检查结果
- * @example
- * console.info(core().webkit);
+ * RGB 颜色值转换为 HSL.
+ * - 转换公式参考自 http://en.wikipedia.org/wiki/HSL_color_space.
+ * - r, g, 和 b 需要在 [0, 255] 范围内
+ * - 返回的 h, s, 和 l 在 [0, 1] 之间
+ * @param {Number} r 红色色值
+ * @param {Number} g 绿色色值
+ * @param {Number} b 蓝色色值
+ * @return {Array} HSL各值数组
  */
 &nbsp;
-var $assign = require('spore-kit-obj/assign');
-var $uaMatch = require('./uaMatch');
+function rgbToHsl(r, g, b) {
+	r /= 255;
+	g /= 255;
+	b /= 255;
+	var max = Math.max(r, g, b);
+	var	min = Math.min(r, g, b);
+	var h;
+	var s;
+	var l = (max + min) / 2;
 &nbsp;
-var testers = {
-	trident: (/trident/i),
-	presto: (/presto/i),
-	webkit: (/webkit/i),
-	gecko: <span class="fstat-no" title="function not covered" >fu</span>nction(ua) {
-<span class="cstat-no" title="statement not covered" >		return ua.indexOf('gecko') &gt; -1 &amp;&amp; ua.indexOf('khtml') === -1;</span>
+	<span class="missing-if-branch" title="else path not taken" >E</span>if (max === min) {
+		// achromatic
+		h = 0;
+		s = 0;
+	} else {
+		var d = <span class="cstat-no" title="statement not covered" >max - min;</span>
+<span class="cstat-no" title="statement not covered" >		s = l &gt; 0.5 ? d / (2 - max - min) : d / (max + min);</span>
+<span class="cstat-no" title="statement not covered" >		switch (max) {</span>
+			case r:
+<span class="cstat-no" title="statement not covered" >				h = (g - b) / d + (g &lt; b ? 6 : 0);</span>
+<span class="cstat-no" title="statement not covered" >				break;</span>
+			case g:
+<span class="cstat-no" title="statement not covered" >				h = (b - r) / d + 2;</span>
+<span class="cstat-no" title="statement not covered" >				break;</span>
+			case b:
+<span class="cstat-no" title="statement not covered" >				h = (r - g) / d + 4;</span>
+<span class="cstat-no" title="statement not covered" >				break;</span>
+			default:
+<span class="cstat-no" title="statement not covered" >				break;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		h /= 6;</span>
 	}
-};
 &nbsp;
-function <span class="fstat-no" title="function not covered" >detect(</span>options, checkers) {
-	var conf = <span class="cstat-no" title="statement not covered" >$assign({</span>
-		ua: ''
-	}, options);
-&nbsp;
-<span class="cstat-no" title="statement not covered" >	$assign(testers, checkers);</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >	return $uaMatch(testers, conf.ua, conf);</span>
+	return [h, s, l];
 }
 &nbsp;
-var result = null;
-&nbsp;
-function <span class="fstat-no" title="function not covered" >core(</span>) {
-<span class="cstat-no" title="statement not covered" >	if (!result) {</span>
-<span class="cstat-no" title="statement not covered" >		result = detect();</span>
-	}
-<span class="cstat-no" title="statement not covered" >	return result;</span>
-}
-&nbsp;
-core.detect = detect;
-&nbsp;
-module.exports = core;
+module.exports = rgbToHsl;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
