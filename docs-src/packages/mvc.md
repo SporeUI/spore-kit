@@ -65,14 +65,14 @@ var ChildClass = Base.extend({
 	defaults : {
 		node : null
 	},
-	build : function(){
+	build : function() {
 		this.node = $(this.conf.node);
 	},
-	setEvents : function(action){
+	setEvents : function(action) {
 		var proxy = this.proxy();
 		this.node[action]('click', proxy('onclick'));
 	},
-	onclick : function(){
+	onclick : function() {
 		console.info('clicked');
 		this.trigger('click');
 	}
@@ -82,7 +82,7 @@ var obj = new ChildClass({
 	node : document.body
 });
 
-obj.on('click', function(){
+obj.on('click', function() {
 	console.info('obj is clicked');
 });
 ```
@@ -95,7 +95,7 @@ Type: [Object][4]
 
 ### Base#conf
 
-类的实际选项，setOptions方法会修改这个对象
+类的实际选项，setOptions 方法会修改这个对象
 
 Type: [Object][4]
 
@@ -159,7 +159,7 @@ var m1 = new Model({
 	a : 1
 });
 m1.on('change:a', function(prevA){
-	console.info(prevA);	//1
+	console.info(prevA);	// 1
 });
 m1.on('change', function(){
 	console.info('model changed');
@@ -180,13 +180,13 @@ var MyModel = Model.extend({
 });
 
 var m2 = new MyModel();
-console.info(m2.get('b'));	//2
+console.info(m2.get('b'));	// 2
 
 m2.set('a', 3);
-console.info(m2.get('b'));	//4
+console.info(m2.get('b'));	// 4
 
 m2.set('b', 5);
-console.info(m2.get('b'));	//5
+console.info(m2.get('b'));	// 5
 ```
 
 ### Model#defaults
@@ -356,8 +356,8 @@ var obj2 = new TestView({
 	}
 });
 
-obj1.role('button').trigger('click');	//1
-obj2.role('button').trigger('click');	//2
+obj1.role('button').trigger('click');	// 1
+obj2.role('button').trigger('click');	// 2
 ```
 
 ### View#defaults
