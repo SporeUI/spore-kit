@@ -14,3 +14,4 @@ exports.num = require('./packages/num');
 exports.obj = require('./packages/obj');
 exports.str = require('./packages/str');
 exports.time = require('./packages/time');
+exports.util = require('./packages/util');
