@@ -24,7 +24,7 @@ function rgbToHsl(r, g, b) {
 		h = 0;
 		s = 0;
 	} else {
-		let d = max - min;
+		var d = max - min;
 		s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
 		switch (max) {
 			case r:
