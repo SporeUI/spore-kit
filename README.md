@@ -43,6 +43,7 @@ var $contains = require('spore-kit-arr/contains');
 
 ## Release History
 
+* 2018-11-19 v0.1.8 添加模块 spore-kit-util
 * 2018-10-31 v0.1.7 修正主文件引入 Fx 模块带来的环境兼容性问题
 * 2018-10-31 v0.1.6 dom 添加 offset 方法，fx 添加 easing 模块，完善文档
 * 2018-10-30 v0.1.2 添加 mvc 模块，修正部分代码使用了 es6 语法的问题
