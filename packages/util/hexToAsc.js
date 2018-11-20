@@ -3,6 +3,9 @@
  * @method hexToAsc
  * @param {String} str 需要转换的16进制字符串
  * @returns {String} ASCII字符串
+ * @example
+ * hexToAsc(); // => ''
+ * hexToAsc('2a2b'); // => '*+'
  */
 
 function hexToAsc(hex) {

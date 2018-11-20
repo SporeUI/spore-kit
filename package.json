@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "jest",
-		"cover": "jest --coverage",
+		"test-package": "jest util",
+		"cover": "gulp clean-cover && jest --coverage",
+		"cover-package": "gulp clean-cover && jest --coverage util",
 		"publish-packages": "lerna publish",
 		"vuepress-dev": "vuepress dev docs-src",
 		"vuepress-build": "vuepress build docs-src",
@@ -35,6 +37,7 @@
 		"babel-core": "6.26.3",
 		"babel-eslint": "9.0.0",
 		"chai": "4.2.0",
+		"del": "3.0.0",
 		"documentation": "8.1.2",
 		"eslint": "5.4.0",
 		"eslint-config-airbnb-base": "13.1.0",

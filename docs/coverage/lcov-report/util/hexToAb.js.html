@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for ipToHex.js</title>
+    <title>Code coverage report for util/hexToAb.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="index.html">All files</a> ipToHex.js
+      <a href="../index.html">All files</a> / <a href="index.html">util</a> hexToAb.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">14.29% </span>
+        <span class="strong">8.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/7</span>
+        <span class='fraction'>1/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">14.29% </span>
+        <span class="strong">8.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/7</span>
+        <span class='fraction'>1/12</span>
       </div>
     </div>
     <p class="quiet">
@@ -67,9 +67,11 @@
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -79,46 +81,56 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * 十进制IP地址转十六进制
- * @method ipToHex
- * @param {String} ip 十进制数字的IPV4地址
- * @return {String} 16进制数字IPV4地址
- * @example
- * ipToHex('255.255.255.255'); //return 'ffffffff'
+ * 16进制字符串转ArrayBuffer
+ * @method hexToAb
+ * @param {String} str 需要转换的16进制字符串
+ * @returns {ArrayBuffer} 被转换后的 ArrayBuffer 对象
  */
 &nbsp;
-function <span class="fstat-no" title="function not covered" >ipToHex </span>(ip) {
-<span class="cstat-no" title="statement not covered" >	return ip.replace(/(\d+)\.*/g, <span class="fstat-no" title="function not covered" >fu</span>nction (match, num) {</span>
-<span class="cstat-no" title="statement not covered" >		num = parseInt(num, 10) || 0;</span>
-<span class="cstat-no" title="statement not covered" >		num = num.toString(16);</span>
-<span class="cstat-no" title="statement not covered" >		if (num.length &lt; 2) {</span>
-<span class="cstat-no" title="statement not covered" >			num = '0' + num;</span>
-		}
-<span class="cstat-no" title="statement not covered" >		return num;</span>
-	});
+function <span class="fstat-no" title="function not covered" >hexToAb(</span>str) {
+<span class="cstat-no" title="statement not covered" >	if (!str) {</span>
+<span class="cstat-no" title="statement not covered" >		return new ArrayBuffer(0);</span>
+	}
+	var buffer = <span class="cstat-no" title="statement not covered" >new ArrayBuffer(Math.ceil(str.length / 2));</span>
+	var dataView = <span class="cstat-no" title="statement not covered" >new DataView(buffer);</span>
+	var index = <span class="cstat-no" title="statement not covered" >0;</span>
+	var i;
+	var len = <span class="cstat-no" title="statement not covered" >str.length;</span>
+<span class="cstat-no" title="statement not covered" >	for (i = 0; i &lt; len; i += 2) {</span>
+		var code = <span class="cstat-no" title="statement not covered" >parseInt(str.substr(i, 2), 16);</span>
+<span class="cstat-no" title="statement not covered" >		dataView.setUint8(index, code);</span>
+<span class="cstat-no" title="statement not covered" >		index++;</span>
+	}
+<span class="cstat-no" title="statement not covered" >	return buffer;</span>
 }
 &nbsp;
-module.exports = ipToHex;
+module.exports = hexToAb;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Oct 30 2018 17:50:41 GMT+0800 (CST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 20 2018 11:17:43 GMT+0800 (GMT+08:00)
 </div>
 </div>
-<script src="prettify.js"></script>
+<script src="../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -126,7 +138,7 @@ window.onload = function () {
         }
 };
 </script>
-<script src="sorter.js"></script>
-<script src="block-navigation.js"></script>
+<script src="../sorter.js"></script>
+<script src="../block-navigation.js"></script>
 </body>
 </html>

@@ -1,8 +1,11 @@
 const $gulp = require('gulp');
 // const $runSequence = require('run-sequence');
+const $del = require('del');
 const $gulpRename = require('gulp-rename');
 const $gulpBrowserify = require('gulp-browserify');
 const $gulpUglify = require('gulp-uglify');
+
+$gulp.task('clean-cover', () => $del(['./docs/coverage']));
 
 $gulp.task('build-js', function() {
 	$gulp.src([
