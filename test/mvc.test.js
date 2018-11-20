@@ -1,5 +1,7 @@
 const $mvc = require('spore-kit-mvc');
 
+const timeout = 5000;
+
 console.log(
 	Object.keys($mvc).map(
 		name => ('spore-kit-mvc/' + name)
@@ -9,7 +11,7 @@ console.log(
 describe('mvc-ui-test', () => {
 	beforeEach(async () => {
 		await page.goto('http://localhost:3000/test/mvc.test.html');
-	});
+	}, timeout);
 	it('title is spore-kit-mvc test', async () => {
 		await expect(page).toMatch('spore-kit-mvc test');
 	});
