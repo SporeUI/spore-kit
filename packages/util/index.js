@@ -15,5 +15,9 @@
  * var $hslToRgb = require('spore-kit-util/hslToRgb');
  */
 
+exports.abToHex = require('./abToHex');
+exports.ascToHex = require('./ascToHex');
+exports.hexToAb = require('./hexToAb');
+exports.hexToAsc = require('./hexToAsc');
 exports.hslToRgb = require('./hslToRgb');
 exports.rgbToHsl = require('./rgbToHsl');
