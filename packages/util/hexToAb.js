@@ -1,8 +1,17 @@
 /**
  * 16进制字符串转ArrayBuffer
  * @method hexToAb
+ * @see https://caniuse.com/#search=ArrayBuffer
  * @param {String} str 需要转换的16进制字符串
  * @returns {ArrayBuffer} 被转换后的 ArrayBuffer 对象
+ * @example
+ * var ab = hexToAb();
+ * ab.byteLength; // => 0
+ * ab = hexToAb('abcd');
+ * var dv = new DataView(ab);
+ * ab.byteLength; // => 2
+ * dv.getUint8(0); // => 171
+ * dv.getUint8(1); // => 205
  */
 
 function hexToAb(str) {

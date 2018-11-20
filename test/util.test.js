@@ -6,6 +6,47 @@ console.log(
 	).join('\n')
 );
 
+describe('util.abToHex', () => {
+	test("abToHex() => ''", () => {
+		expect($util.abToHex()).toBe('');
+	});
+
+	test('abToHex(buffer)', () => {
+		let ab = new ArrayBuffer(2);
+		let dv = new DataView(ab);
+		dv.setUint8(0, 171);
+		dv.setUint8(1, 205);
+		expect($util.abToHex(ab)).toBe('abcd');
+	});
+});
+
+describe('util.ascToHex', () => {
+	test("ascToHex() => ''", () => {
+		expect($util.ascToHex()).toBe('');
+	});
+
+	test("ascToHex('*+') => '2a2b'", () => {
+		expect($util.ascToHex('*+')).toBe('2a2b');
+	});
+});
+
+describe('util.hexToAb', () => {
+	test('hexToAb() => ArrayBuffer(0)', () => {
+		let ab = $util.hexToAb();
+		expect(ab.toString()).toBe('[object ArrayBuffer]');
+		expect(ab.byteLength).toBe(0);
+	});
+
+	test("hexToAb('abcd')", () => {
+		let ab = $util.hexToAb('abcd');
+		let dv = new DataView(ab);
+		expect(ab.toString()).toBe('[object ArrayBuffer]');
+		expect(ab.byteLength).toBe(2);
+		expect(dv.getUint8(0)).toBe(171);
+		expect(dv.getUint8(1)).toBe(205);
+	});
+});
+
 describe('util.hexToAsc', () => {
 	test("hexToAsc() => ''", () => {
 		expect(

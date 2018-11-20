@@ -3,6 +3,9 @@
  * @method ascToHex
  * @param {String} str 需要转换的ASCII字符串
  * @returns {String} 16进制字符串
+ * @example
+ * ascToHex(); // => ''
+ * ascToHex('*+'); // => '2a2b'
  */
 
 function ascToHex(str) {
