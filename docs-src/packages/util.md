@@ -21,42 +21,142 @@ console.info($util.hslToRgb);
 var $hslToRgb = require('spore-kit-util/hslToRgb');
 ```
 
+## abToHex
+
+ArrayBuffer转16进制字符串
+
+### Parameters
+
+-   `buffer` **[ArrayBuffer][2]** 需要转换的 ArrayBuffer
+
+### Examples
+
+```javascript
+var ab = new ArrayBuffer(2);
+var dv = new DataView(ab);
+dv.setUint8(0, 171);
+dv.setUint8(1, 205);
+abToHex(ab); // => 'abcd'
+```
+
+Returns **[String][3]** 16进制字符串
+
+## ascToHex
+
+ASCII字符串转16进制字符串
+
+### Parameters
+
+-   `str` **[String][3]** 需要转换的ASCII字符串
+
+### Examples
+
+```javascript
+ascToHex(); // => ''
+ascToHex('*+'); // => '2a2b'
+```
+
+Returns **[String][3]** 16进制字符串
+
+## hexToAb
+
+-   **See: [https://caniuse.com/#search=ArrayBuffer][4]**
+
+16进制字符串转ArrayBuffer
+
+### Parameters
+
+-   `str` **[String][3]** 需要转换的16进制字符串
+
+### Examples
+
+```javascript
+var ab = hexToAb();
+ab.byteLength; // => 0
+ab = hexToAb('abcd');
+var dv = new DataView(ab);
+ab.byteLength; // => 2
+dv.getUint8(0); // => 171
+dv.getUint8(1); // => 205
+```
+
+Returns **[ArrayBuffer][2]** 被转换后的 ArrayBuffer 对象
+
+## hexToAsc
+
+16进制字符串转ASCII字符串
+
+### Parameters
+
+-   `str` **[String][3]** 需要转换的16进制字符串
+
+### Examples
+
+```javascript
+hexToAsc(); // => ''
+hexToAsc('2a2b'); // => '*+'
+```
+
+Returns **[String][3]** ASCII字符串
+
 ## hslToRgb
 
 HSL颜色值转换为RGB
 
--   换算公式改编自 [http://en.wikipedia.org/wiki/HSL_color_space][2].
+-   换算公式改编自 [http://en.wikipedia.org/wiki/HSL_color_space][5].
 -   h, s, 和 l 设定在 [0, 1] 之间
 -   返回的 r, g, 和 b 在 [0, 255]之间
 
 ### Parameters
 
--   `h` **[Number][3]** 色相
--   `s` **[Number][3]** 饱和度
--   `l` **[Number][3]** 亮度
+-   `h` **[Number][6]** 色相
+-   `s` **[Number][6]** 饱和度
+-   `l` **[Number][6]** 亮度
 
-Returns **[Array][4]** RGB色值数值
+### Examples
+
+```javascript
+hslToRgb(0, 0, 0); // => [0,0,0]
+hslToRgb(0, 0, 1); // => [255,255,255]
+hslToRgb(0.5555555555555555, 0.9374999999999999, 0.6862745098039216); // => [100,200,250]
+```
+
+Returns **[Array][7]** RGB色值数值
 
 ## rgbToHsl
 
 RGB 颜色值转换为 HSL.
 
--   转换公式参考自 [http://en.wikipedia.org/wiki/HSL_color_space][2].
+-   转换公式参考自 [http://en.wikipedia.org/wiki/HSL_color_space][5].
 -   r, g, 和 b 需要在 [0, 255] 范围内
 -   返回的 h, s, 和 l 在 [0, 1] 之间
 
 ### Parameters
 
--   `r` **[Number][3]** 红色色值
--   `g` **[Number][3]** 绿色色值
--   `b` **[Number][3]** 蓝色色值
+-   `r` **[Number][6]** 红色色值
+-   `g` **[Number][6]** 绿色色值
+-   `b` **[Number][6]** 蓝色色值
 
-Returns **[Array][4]** HSL各值数组
+### Examples
+
+```javascript
+rgbToHsl(100, 200, 250); // => [0.5555555555555555,0.9374999999999999,0.6862745098039216]
+rgbToHsl(0, 0, 0); // => [0,0,0]
+rgbToHsl(255, 255, 255); // => [0,0,1]
+```
+
+Returns **[Array][7]** HSL各值数组
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/util
 
-[2]: http://en.wikipedia.org/wiki/HSL_color_space
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[4]: https://caniuse.com/#search=ArrayBuffer
+
+[5]: http://en.wikipedia.org/wiki/HSL_color_space
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
