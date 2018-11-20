@@ -1,6 +1,6 @@
 {
 	"name": "spore-kit",
-	"version": "0.1.8",
+	"version": "0.1.9",
 	"description": "原子化工具函数库",
 	"main": "index.js",
 	"scripts": {
