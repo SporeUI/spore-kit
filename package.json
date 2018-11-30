@@ -13,17 +13,21 @@
 		"vuepress-build": "vuepress build docs-src",
 		"doc": "npm run doc-build && npm run cover && npm run vuepress-build",
 		"doc-build": "sh ./task/doc-build.sh ./packages",
-		"prepublish": "npm test && gulp",
-		"precommit": "lint-staged"
+		"prepublish": "npm test && gulp"
+	},
+	"lint-staged": {
+		"packages/**/*.js": "eslint"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
 	},
 	"files": [
 		"dist",
 		"packages",
 		"index.js"
 	],
-	"lint-staged": {
-		"packages/**/*.js": "eslint"
-	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/SporeUI/spore-kit.git"
