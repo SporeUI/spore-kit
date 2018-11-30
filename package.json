@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test-package": "jest mvc",
+    "test-package": "jest num",
     "cover": "gulp clean-cover && jest --coverage",
-    "cover-package": "gulp clean-cover && jest --coverage mvc",
+    "cover-package": "gulp clean-cover && jest --coverage num",
     "publish-packages": "lerna publish",
     "vuepress-dev": "vuepress dev docs-src",
     "vuepress-build": "vuepress build docs-src",
