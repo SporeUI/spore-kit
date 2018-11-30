@@ -1,69 +1,69 @@
 {
-	"name": "spore-kit",
-	"version": "0.1.9",
-	"description": "原子化工具函数库",
-	"main": "index.js",
-	"scripts": {
-		"test": "jest",
-		"test-package": "jest mvc",
-		"cover": "gulp clean-cover && jest --coverage",
-		"cover-package": "gulp clean-cover && jest --coverage mvc",
-		"publish-packages": "lerna publish",
-		"vuepress-dev": "vuepress dev docs-src",
-		"vuepress-build": "vuepress build docs-src",
-		"doc": "npm run doc-build && npm run cover && npm run vuepress-build",
-		"doc-build": "sh ./task/doc-build.sh ./packages",
-		"prepublish": "npm test && gulp"
-	},
-	"lint-staged": {
-		"packages/**/*.js": "eslint"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"files": [
-		"dist",
-		"packages",
-		"index.js"
-	],
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/SporeUI/spore-kit.git"
-	},
-	"author": "pillar0514@gmail.com",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/SporeUI/spore-kit/issues"
-	},
-	"homepage": "https://github.com/SporeUI/spore-kit#readme",
-	"devDependencies": {
-		"babel-core": "6.26.3",
-		"babel-eslint": "9.0.0",
-		"chai": "4.2.0",
-		"del": "3.0.0",
-		"documentation": "8.1.2",
-		"eslint": "5.4.0",
-		"eslint-config-airbnb-base": "13.1.0",
-		"eslint-friendly-formatter": "4.0.1",
-		"eslint-plugin-html": "4.0.5",
-		"eslint-plugin-import": "2.14.0",
-		"eslint-plugin-jest": "21.22.0",
-		"eslint-plugin-no-for-of-loops": "1.0.0",
-		"express": "4.16.3",
-		"gulp": "3.9.1",
-		"gulp-browserify": "0.5.1",
-		"gulp-rename": "1.4.0",
-		"gulp-uglify": "3.0.1",
-		"husky": "0.14.3",
-		"jest": "23.5.0",
-		"jest-puppeteer": "3.3.1",
-		"lerna": "^3.2.1",
-		"lint-staged": "7.2.2",
-		"mocha": "5.2.0",
-		"puppeteer": "1.7.0",
-		"run-sequence": "2.2.1",
-		"vuepress": "0.14.4"
-	}
+  "name": "spore-kit",
+  "version": "0.1.9",
+  "description": "原子化工具函数库",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test-package": "jest mvc",
+    "cover": "gulp clean-cover && jest --coverage",
+    "cover-package": "gulp clean-cover && jest --coverage mvc",
+    "publish-packages": "lerna publish",
+    "vuepress-dev": "vuepress dev docs-src",
+    "vuepress-build": "vuepress build docs-src",
+    "doc": "npm run doc-build && npm run cover && npm run vuepress-build",
+    "doc-build": "sh ./task/doc-build.sh ./packages",
+    "prepublish": "npm test && gulp"
+  },
+  "lint-staged": {
+    "packages/**/*.js": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "files": [
+    "dist",
+    "packages",
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SporeUI/spore-kit.git"
+  },
+  "author": "pillar0514@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SporeUI/spore-kit/issues"
+  },
+  "homepage": "https://github.com/SporeUI/spore-kit#readme",
+  "devDependencies": {
+    "babel-core": "6.26.3",
+    "babel-eslint": "9.0.0",
+    "chai": "4.2.0",
+    "del": "3.0.0",
+    "documentation": "8.1.2",
+    "eslint": "5.4.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-friendly-formatter": "4.0.1",
+    "eslint-plugin-html": "4.0.5",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jest": "21.22.0",
+    "eslint-plugin-no-for-of-loops": "1.0.0",
+    "express": "4.16.3",
+    "gulp": "3.9.1",
+    "gulp-browserify": "0.5.1",
+    "gulp-rename": "1.4.0",
+    "gulp-uglify": "3.0.1",
+    "husky": "0.14.3",
+    "jest": "23.5.0",
+    "jest-puppeteer": "3.3.1",
+    "lerna": "^3.2.1",
+    "lint-staged": "7.2.2",
+    "mocha": "5.2.0",
+    "puppeteer": "1.7.0",
+    "run-sequence": "2.2.1",
+    "vuepress": "0.14.4"
+  }
 }
