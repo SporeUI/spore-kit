@@ -250,7 +250,6 @@ channelGlobal.trigger('event2');
 
 判断事件是否发生在一个 Dom 元素内。
 
--   require jQuery/Zepto
 -   常用于判断点击事件发生在浮层外时关闭浮层。
 
 ### Parameters
@@ -262,7 +261,7 @@ channelGlobal.trigger('event2');
 
 ```javascript
 $('.layer').on('click', function(evt){
-	if(occurInside(evt, $(this).find('close'))){
+	if(occurInside(evt, $(this).find('close').get(0))){
 		$(this).hide();
 	}
 });

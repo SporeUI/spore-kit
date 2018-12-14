@@ -123,6 +123,30 @@ hslToRgb(0.5555555555555555, 0.9374999999999999, 0.6862745098039216); // => [100
 
 Returns **[Array][7]** RGB色值数值
 
+## job
+
+任务分时执行
+
+-   一方面避免单次reflow流程执行太多js任务导致浏览器卡死
+-   另一方面单个任务的报错不会影响后续任务的执行
+
+### Parameters
+
+-   `任务函数` **[Function][8]** 
+
+### Examples
+
+```javascript
+job(function() {
+	//task1 start
+});
+job(function() {
+	//task2 start
+});
+```
+
+Returns **[Object][9]** 任务队列对象
+
 ## rgbToHsl
 
 RGB 颜色值转换为 HSL.
@@ -160,3 +184,7 @@ Returns **[Array][7]** HSL各值数组
 [6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
 [7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[9]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
