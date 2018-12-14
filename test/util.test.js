@@ -99,6 +99,46 @@ describe('util.hslToRgb', () => {
 	});
 });
 
+describe('util.job', () => {
+	let num = 0;
+	let step = 0;
+	test('job(() => {}) => manager', () => {
+		let jobM = $util.job(() => {
+			num = 10;
+			step++;
+		});
+		$util.job(() => {
+			num = 20;
+			step++;
+		});
+		expect(
+			typeof jobM.add
+		).toBe('function');
+	});
+
+	test('job will not execute at now', () => {
+		expect(num).toBe(0);
+	});
+
+	test('job can be anything', () => {
+		let hasError = false;
+		try {
+			$util.job(1);
+		} catch (err) {
+			hasError = true;
+		}
+		expect(hasError).toBe(false);
+	});
+
+	test('job work later', done => {
+		setTimeout(() => {
+			expect(num).toBe(20);
+			expect(step).toBe(2);
+			done();
+		}, 50);
+	});
+});
+
 describe('util.rgbToHsl', () => {
 	test('rgbToHsl(0, 0, 0) => [0,0,0]', () => {
 		expect(

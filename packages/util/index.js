@@ -20,4 +20,5 @@ exports.ascToHex = require('./ascToHex');
 exports.hexToAb = require('./hexToAb');
 exports.hexToAsc = require('./hexToAsc');
 exports.hslToRgb = require('./hslToRgb');
+exports.job = require('./job');
 exports.rgbToHsl = require('./rgbToHsl');
