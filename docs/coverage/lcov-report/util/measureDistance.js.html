@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>8/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>8/8</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -76,11 +76,7 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -94,23 +90,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -123,28 +115,24 @@
  * @param {Number} lng2 坐标2纬度
  * @returns {Number} 2个坐标之间的距离（千米）
  * @example
- * var distance = measureDistance(
- *   SQUARELOCATION.latitude,
- *   SQUARELOCATION.longitude,
- *   coords.latitude,
- *   coords.longitude,
- * );
+ * var distance = measureDistance(0, 0, 100, 100);
+ * // 9826.40065109978
  */
 &nbsp;
-function <span class="fstat-no" title="function not covered" >measureDistance </span>(lat1, lng1, lat2, lng2) {
-	var radLat1 = <span class="cstat-no" title="statement not covered" >(lat1 * Math.PI) / 180.0;</span>
-	var radLat2 = <span class="cstat-no" title="statement not covered" >(lat2 * Math.PI) / 180.0;</span>
-	var a = <span class="cstat-no" title="statement not covered" >radLat1 - radLat2;</span>
-	var b = <span class="cstat-no" title="statement not covered" >(lng1 * Math.PI) / 180.0 - (lng2 * Math.PI) / 180.0;</span>
-	var s = <span class="cstat-no" title="statement not covered" >2 * Math.asin(</span>
+function measureDistance (lat1, lng1, lat2, lng2) {
+	var radLat1 = (lat1 * Math.PI) / 180.0;
+	var radLat2 = (lat2 * Math.PI) / 180.0;
+	var a = radLat1 - radLat2;
+	var b = (lng1 * Math.PI) / 180.0 - (lng2 * Math.PI) / 180.0;
+	var s = 2 * Math.asin(
 		Math.sqrt(
-			(Math.sin(a / 2) ** 2)
+			Math.pow(Math.sin(a / 2), 2)
 			+ Math.cos(radLat1) * Math.cos(radLat2) * (Math.sin(b / 2) ** 2)
 		)
 	);
 	// 地球半径
-<span class="cstat-no" title="statement not covered" >	s *= 6378.137;</span>
-<span class="cstat-no" title="statement not covered" >	return s;</span>
+	s *= 6378.137;
+	return s;
 }
 &nbsp;
 module.exports = measureDistance;
@@ -154,7 +142,7 @@ module.exports = measureDistance;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Oct 12 2019 14:48:50 GMT+0800 (GMT+08:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Oct 12 2019 15:14:34 GMT+0800 (GMT+08:00)
 </div>
 </div>
 <script src="../prettify.js"></script>

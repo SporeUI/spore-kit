@@ -161,12 +161,8 @@ Returns **[Object][9]** 任务队列对象
 ### Examples
 
 ```javascript
-var distance = measureDistance(
-  SQUARELOCATION.latitude,
-  SQUARELOCATION.longitude,
-  coords.latitude,
-  coords.longitude,
-);
+var distance = measureDistance(0, 0, 100, 100);
+// 9826.40065109978
 ```
 
 Returns **[Number][6]** 2个坐标之间的距离（千米）
