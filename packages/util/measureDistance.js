@@ -19,7 +19,7 @@ function measureDistance (lat1, lng1, lat2, lng2) {
 	var s = 2 * Math.asin(
 		Math.sqrt(
 			Math.pow(Math.sin(a / 2), 2)
-			+ Math.cos(radLat1) * Math.cos(radLat2) * (Math.sin(b / 2) ** 2)
+			+ Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)
 		)
 	);
 	// 地球半径
