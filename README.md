@@ -43,6 +43,7 @@ var $contains = require('spore-kit-arr/contains');
 
 ## Release History
 
+* 2019-10-12 v0.1.10 spore-kit-util 添加 measureDistance 方法
 * 2018-11-20 v0.1.9 添加模块 spore-kit-util
 * 2018-10-31 v0.1.7 修正主文件引入 Fx 模块带来的环境兼容性问题
 * 2018-10-31 v0.1.6 dom 添加 offset 方法，fx 添加 easing 模块，完善文档
