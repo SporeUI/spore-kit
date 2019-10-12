@@ -176,3 +176,9 @@ describe('util.rgbToHsl', () => {
 		).toBe('0.11111111111111112,0.9374999999999999,0.6862745098039216');
 	});
 });
+
+describe('util.measureDistance', () => {
+	test('measureDistance(0, 0, 100, 100) => 9826.40065109978', () => {
+		expect($util.measureDistance(0, 0, 100, 100)).toBe(9826.40065109978);
+	});
+});

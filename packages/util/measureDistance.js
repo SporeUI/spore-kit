@@ -7,12 +7,8 @@
  * @param {Number} lng2 坐标2纬度
  * @returns {Number} 2个坐标之间的距离（千米）
  * @example
- * var distance = measureDistance(
- *   SQUARELOCATION.latitude,
- *   SQUARELOCATION.longitude,
- *   coords.latitude,
- *   coords.longitude,
- * );
+ * var distance = measureDistance(0, 0, 100, 100);
+ * // 9826.40065109978
  */
 
 function measureDistance (lat1, lng1, lat2, lng2) {
@@ -22,7 +18,7 @@ function measureDistance (lat1, lng1, lat2, lng2) {
 	var b = (lng1 * Math.PI) / 180.0 - (lng2 * Math.PI) / 180.0;
 	var s = 2 * Math.asin(
 		Math.sqrt(
-			(Math.sin(a / 2) ** 2)
+			Math.pow(Math.sin(a / 2), 2)
 			+ Math.cos(radLat1) * Math.cos(radLat2) * (Math.sin(b / 2) ** 2)
 		)
 	);
