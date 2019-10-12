@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1544762112969" clover="3.2.0">
-  <project timestamp="1544762112969" name="All files">
-    <metrics statements="1520" coveredstatements="505" conditionals="765" coveredconditionals="97" methods="250" coveredmethods="43" elements="2535" coveredelements="645" complexity="0" loc="1520" ncloc="1520" packages="17" files="92" classes="92">
+<coverage generated="1570862931141" clover="3.2.0">
+  <project timestamp="1570862931141" name="All files">
+    <metrics statements="1529" coveredstatements="507" conditionals="765" coveredconditionals="97" methods="251" coveredmethods="43" elements="2545" coveredelements="647" complexity="0" loc="1529" ncloc="1529" packages="17" files="93" classes="93">
       <package name="app">
         <metrics statements="30" coveredstatements="4" conditionals="18" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <file name="callUp.js" path="/Users/tony/work/github/spore/spore-kit/packages/app/callUp.js">
@@ -1729,7 +1729,7 @@
         </file>
       </package>
       <package name="util">
-        <metrics statements="94" coveredstatements="94" conditionals="44" coveredconditionals="43" methods="13" coveredmethods="13"/>
+        <metrics statements="103" coveredstatements="96" conditionals="44" coveredconditionals="43" methods="14" coveredmethods="13"/>
         <file name="abToHex.js" path="/Users/tony/work/github/spore/spore-kit/packages/util/abToHex.js">
           <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
           <line num="15" count="2" type="cond" truecount="2" falsecount="0"/>
@@ -1796,7 +1796,7 @@
           <line num="46" count="1" type="stmt"/>
         </file>
         <file name="index.js" path="/Users/tony/work/github/spore/spore-kit/packages/util/index.js">
-          <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="18" count="1" type="stmt"/>
           <line num="19" count="1" type="stmt"/>
           <line num="20" count="1" type="stmt"/>
@@ -1804,6 +1804,7 @@
           <line num="22" count="1" type="stmt"/>
           <line num="23" count="1" type="stmt"/>
           <line num="24" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
         </file>
         <file name="job.js" path="/Users/tony/work/github/spore/spore-kit/packages/util/job.js">
           <metrics statements="18" coveredstatements="18" conditionals="12" coveredconditionals="11" methods="4" coveredmethods="4"/>
@@ -1825,6 +1826,17 @@
           <line num="45" count="3" type="stmt"/>
           <line num="46" count="3" type="stmt"/>
           <line num="49" count="1" type="stmt"/>
+        </file>
+        <file name="measureDistance.js" path="/Users/tony/work/github/spore/spore-kit/packages/util/measureDistance.js">
+          <metrics statements="8" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
         </file>
         <file name="rgbToHsl.js" path="/Users/tony/work/github/spore/spore-kit/packages/util/rgbToHsl.js">
           <metrics statements="19" coveredstatements="19" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>

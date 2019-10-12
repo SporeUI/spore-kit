@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for str/sizeOfUTF8String.js</title>
+    <title>Code coverage report for util/measureDistance.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,18 +16,18 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">All files</a> / <a href="index.html">str</a> sizeOfUTF8String.js
+      <a href="../index.html">All files</a> / <a href="index.html">util</a> measureDistance.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">12.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>1/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,16 +35,16 @@
         <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">12.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>1/8</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -64,7 +64,31 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -75,31 +99,55 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * 取字符串 utf8 编码长度，from 王集鹄
- * @method sizeOfUTF8String
- * @param {String} str
- * @returns {Number} 字符串长度
+ * 测量地理坐标的距离
+ * @method measureDistance
+ * @param {Number} lat1 坐标1精度
+ * @param {Number} lng1 坐标1纬度
+ * @param {Number} lat2 坐标2精度
+ * @param {Number} lng2 坐标2纬度
+ * @returns {Number} 2个坐标之间的距离（千米）
  * @example
- * sizeOfUTF8String('中文cc'); //return 8
-*/
+ * var distance = measureDistance(
+ *   SQUARELOCATION.latitude,
+ *   SQUARELOCATION.longitude,
+ *   coords.latitude,
+ *   coords.longitude,
+ * );
+ */
 &nbsp;
-function <span class="fstat-no" title="function not covered" >sizeOfUTF8String </span>(str) {
-<span class="cstat-no" title="statement not covered" >	return (</span>
-		typeof unescape !== 'undefined'
-			? unescape(encodeURIComponent(str)).length
-			: new ArrayBuffer(str, 'utf8').length
+function <span class="fstat-no" title="function not covered" >measureDistance </span>(lat1, lng1, lat2, lng2) {
+	var radLat1 = <span class="cstat-no" title="statement not covered" >(lat1 * Math.PI) / 180.0;</span>
+	var radLat2 = <span class="cstat-no" title="statement not covered" >(lat2 * Math.PI) / 180.0;</span>
+	var a = <span class="cstat-no" title="statement not covered" >radLat1 - radLat2;</span>
+	var b = <span class="cstat-no" title="statement not covered" >(lng1 * Math.PI) / 180.0 - (lng2 * Math.PI) / 180.0;</span>
+	var s = <span class="cstat-no" title="statement not covered" >2 * Math.asin(</span>
+		Math.sqrt(
+			(Math.sin(a / 2) ** 2)
+			+ Math.cos(radLat1) * Math.cos(radLat2) * (Math.sin(b / 2) ** 2)
+		)
 	);
+	// 地球半径
+<span class="cstat-no" title="statement not covered" >	s *= 6378.137;</span>
+<span class="cstat-no" title="statement not covered" >	return s;</span>
 }
 &nbsp;
-module.exports = sizeOfUTF8String;
+module.exports = measureDistance;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

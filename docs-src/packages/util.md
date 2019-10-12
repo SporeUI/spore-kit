@@ -132,7 +132,7 @@ Returns **[Array][7]** RGB色值数值
 
 ### Parameters
 
--   `任务函数` **[Function][8]** 
+-   `fn` **[Function][8]** 任务函数
 
 ### Examples
 
@@ -146,6 +146,30 @@ job(function() {
 ```
 
 Returns **[Object][9]** 任务队列对象
+
+## measureDistance
+
+测量地理坐标的距离
+
+### Parameters
+
+-   `lat1` **[Number][6]** 坐标1精度
+-   `lng1` **[Number][6]** 坐标1纬度
+-   `lat2` **[Number][6]** 坐标2精度
+-   `lng2` **[Number][6]** 坐标2纬度
+
+### Examples
+
+```javascript
+var distance = measureDistance(
+  SQUARELOCATION.latitude,
+  SQUARELOCATION.longitude,
+  coords.latitude,
+  coords.longitude,
+);
+```
+
+Returns **[Number][6]** 2个坐标之间的距离（千米）
 
 ## rgbToHsl
 
