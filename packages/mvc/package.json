@@ -14,7 +14,7 @@
 	},
 	"homepage": "https://github.com/SporeUI/spore-kit#readme",
 	"dependencies": {
-		"lodash": "^4.17.11",
+		"lodash": "^4.17.15",
 		"spore-kit-evt": "^0.3.1"
 	}
 }
