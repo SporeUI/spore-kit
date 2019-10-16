@@ -11,6 +11,7 @@ console.log(
 describe('mvc-ui-test', () => {
 	beforeEach(async () => {
 		await page.goto('http://localhost:3000/test/mvc.test.html');
+		await page.waitFor(1000);
 	}, timeout);
 	it('title is spore-kit-mvc', async () => {
 		await expect(page).toMatch('spore-kit-mvc');
