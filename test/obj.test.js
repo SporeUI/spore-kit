@@ -1,4 +1,5 @@
 const $obj = require('spore-kit-obj');
+const assert = require('assert');
 
 console.log(
 	Object.keys($obj).map(
@@ -8,8 +9,6 @@ console.log(
 
 describe('obj.type', () => {
 	test('type(null) => null', () => {
-		expect(
-			$obj.type(null)
-		).toBe('null');
+		assert($obj.type(null) === 'null');
 	});
 });

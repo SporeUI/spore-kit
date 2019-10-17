@@ -1,4 +1,5 @@
 const $location = require('spore-kit-location');
+const assert = require('assert');
 
 console.log(
 	Object.keys($location).map(
@@ -8,11 +9,9 @@ console.log(
 
 describe('location.getQuery', () => {
 	test('getQuery(url, param) => value', () => {
-		expect(
-			$location.getQuery(
-				'http://localhost/profile?beijing=huanyingni',
-				'beijing'
-			)
-		).toBe('huanyingni');
+		assert($location.getQuery(
+			'http://localhost/profile?beijing=huanyingni',
+			'beijing'
+		) === 'huanyingni');
 	});
 });
