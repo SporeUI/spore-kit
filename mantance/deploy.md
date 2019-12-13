@@ -5,7 +5,7 @@
 - 提交代码
 - 修改组件对应模块的文档 README.md
 - 执行 gulp 验证打包是否有异常
-- 执行 lerna publish 发布子模块
+- 执行 npx lerna publish 发布子模块
 - 修改 package.json 的 spore-kit 版本号
 - 修改 README.md 添加更新说明
 - 再次提交代码，将构建好的文档提交
