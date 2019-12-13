@@ -19,7 +19,6 @@
 var $type = require('spore-kit-obj/type')
 
 var jsonpID = 0,
-    document = window.document,
     key,
     name,
     rscript = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
