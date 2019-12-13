@@ -16,7 +16,7 @@
  *	});
  */
 
-var $type = require('spore-kit-obj/type')
+var type = require('spore-kit-obj/type')
 
 var jsonpID = 0,
     key,
