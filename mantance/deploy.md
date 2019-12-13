@@ -8,7 +8,7 @@
 - 执行 lerna publish 发布子模块
 - 修改 package.json 的 spore-kit 版本号
 - 修改 README.md 添加更新说明
-- 再次提交代码，将构件好的文档提交
+- 再次提交代码，将构建好的文档提交
 - 执行 npm publish 发布组件
 - 执行 npm run doc 生成文档
 - 提交生成的文档
