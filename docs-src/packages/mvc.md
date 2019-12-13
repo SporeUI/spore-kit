@@ -93,15 +93,15 @@ obj.on('click', function() {
 
 Type: [Object][4]
 
-### Base#conf
-
-类的实际选项，setOptions 方法会修改这个对象
-
-Type: [Object][4]
-
 ### Base#bound
 
 存放代理函数的集合
+
+Type: [Object][4]
+
+### Base#conf
+
+类的实际选项，setOptions 方法会修改这个对象
 
 Type: [Object][4]
 
