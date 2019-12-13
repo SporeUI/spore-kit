@@ -3,3 +3,4 @@ ignore
 temp
 dist
 docs
+packages/io/ajax.js
