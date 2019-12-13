@@ -15,5 +15,6 @@
  * var $getScript = require('spore-kit-io/getScript');
  */
 
+exports.ajax = require('./ajax');
 exports.iframePost = require('./iframePost');
 exports.getScript = require('./getScript');
