@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">9.09% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/11</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.11% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/9</span>
+        <span class='fraction'>3/3</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -78,8 +78,7 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -99,49 +98,47 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * 解析URL为一个JSON对象
+ * 解析URL为一个对象
  * @method parse
  * @param {String} str URL字符串
- * @returns {Object} JSON对象
+ * @returns {Object} URL对象
+ * @see https://github.com/unshiftio/url-parse
  * @example
- * console.info( parse('http://t.sina.com.cn/profile?beijing=huanyingni') );
- * //	{
- * //		hash : ''
- * //		host : 't.sina.com.cn'
- * //		path : 'profile'
- * //		port : ''
- * //		query : 'beijing=huanyingni'
- * //		scheme : http
- * //		slash : '//'
- * //		url : 'http://t.sina.com.cn/profile?beijing=huanyingni'
- * //	}
+ * parse('http://localhost/profile?beijing=huanyingni#123')
+ * {
+ *   slashes: true,
+ *   protocol: 'http:',
+ *   hash: '#123',
+ *   query: '?beijing=huanyingni',
+ *   pathname: '/profile',
+ *   auth: 'username:password',
+ *   host: 'localhost:8080',
+ *   port: '8080',
+ *   hostname: 'localhost',
+ *   password: 'password',
+ *   username: 'username',
+ *   origin: 'http://localhost:8080',
+ *   href: 'http://username:password@localhost:8080/profile?beijing=huanyingni#123'
+ * }
  */
 &nbsp;
-function <span class="fstat-no" title="function not covered" >parse </span>(url) {
-	var regUrlParse = <span class="cstat-no" title="statement not covered" >/^(?:([A-Za-z]+):(\/{0,3}))?([0-9.\-A-Za-z]+\.[0-9A-Za-z]+)?(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;</span>
-	var names = <span class="cstat-no" title="statement not covered" >['url', 'scheme', 'slash', 'host', 'port', 'path', 'query', 'hash'];</span>
-	var results = <span class="cstat-no" title="statement not covered" >regUrlParse.exec(url);</span>
-	var that = <span class="cstat-no" title="statement not covered" >{};</span>
-<span class="cstat-no" title="statement not covered" >	if (results) {</span>
-<span class="cstat-no" title="statement not covered" >		for (var i = <span class="cstat-no" title="statement not covered" >0,</span> len = <span class="cstat-no" title="statement not covered" >names.length;</span> i &lt; len; i += 1) {</span>
-<span class="cstat-no" title="statement not covered" >			that[names[i]] = results[i] || '';</span>
-		}
-	}
-<span class="cstat-no" title="statement not covered" >	return that;</span>
+var Url = require('url-parse');
+&nbsp;
+function parse (url) {
+	return new Url(url);
 }
 &nbsp;
 module.exports = parse;
@@ -151,7 +148,7 @@ module.exports = parse;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Dec 13 2019 13:10:55 GMT+0800 (GMT+08:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Mar 05 2020 21:10:43 GMT+0800 (GMT+08:00)
 </div>
 </div>
 <script src="../prettify.js"></script>

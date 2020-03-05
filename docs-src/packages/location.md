@@ -72,7 +72,9 @@ Returns **[String][2]** 拼接好参数的URL字符串
 
 ## parse
 
-解析URL为一个JSON对象
+-   **See: [https://github.com/unshiftio/url-parse][4]**
+
+解析URL为一个对象
 
 ### Parameters
 
@@ -81,23 +83,30 @@ Returns **[String][2]** 拼接好参数的URL字符串
 ### Examples
 
 ```javascript
-console.info( parse('http://t.sina.com.cn/profile?beijing=huanyingni') );
-//	{
-//		hash : ''
-//		host : 't.sina.com.cn'
-//		path : 'profile'
-//		port : ''
-//		query : 'beijing=huanyingni'
-//		scheme : http
-//		slash : '//'
-//		url : 'http://t.sina.com.cn/profile?beijing=huanyingni'
-//	}
+parse('http://localhost/profile?beijing=huanyingni#123')
+{
+  slashes: true,
+  protocol: 'http:',
+  hash: '#123',
+  query: '?beijing=huanyingni',
+  pathname: '/profile',
+  auth: 'username:password',
+  host: 'localhost:8080',
+  port: '8080',
+  hostname: 'localhost',
+  password: 'password',
+  username: 'username',
+  origin: 'http://localhost:8080',
+  href: 'http://username:password@localhost:8080/profile?beijing=huanyingni#123'
+}
 ```
 
-Returns **[Object][3]** JSON对象
+Returns **[Object][3]** URL对象
 
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/location
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[4]: https://github.com/unshiftio/url-parse
