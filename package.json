@@ -13,7 +13,7 @@
     "vuepress-build": "vuepress build docs-src",
     "doc": "npm run doc-build && npm run cover && npm run vuepress-build",
     "doc-build": "sh ./task/doc-build.sh ./packages",
-    "prepublish": "npm test && gulp"
+    "prepublishOnly": "npm test && gulp"
   },
   "lint-staged": {
     "packages/**/*.js": "eslint"
