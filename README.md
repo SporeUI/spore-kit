@@ -43,6 +43,7 @@ var $contains = require('spore-kit-arr/contains');
 
 ## Release History
 
-* 2018-11-20 v0.1.9 添加模块 spore-kit-util
+* 2020-03-05 v0.2.0 location/parse 方法返回结构变更
+* 2018-11-20 v0.1.9 添加模块 util
 * 2018-10-30 v0.1.2 添加 mvc 模块，修正部分代码使用了 es6 语法的问题
 * 2018-10-26 v0.1.0 发布第一版
