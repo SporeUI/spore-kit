@@ -74,3 +74,36 @@ describe('str.getUniqueKey', () => {
 		assert(key1 !== key2);
 	});
 });
+
+describe('str.hyphenate', () => {
+	test('hyphenate: base', () => {
+		assert($str.hyphenate('libKitStrHyphenate') === 'lib-kit-str-hyphenate');
+	});
+});
+
+describe('str.ipToHex', () => {
+	test('ipToHex: base', () => {
+		assert($str.ipToHex('255.255.255.255') === 'ffffffff');
+	});
+});
+
+describe('str.leftB', () => {
+	test('leftB: base', () => {
+		assert($str.leftB('世界真和谐', 6) === '世界真');
+	});
+});
+
+describe('str.sizeOfUTF8String', () => {
+	test('sizeOfUTF8String: base', () => {
+		assert($str.sizeOfUTF8String('中文cc') === 8);
+	});
+});
+
+describe('str.substitute', () => {
+	test('substitute: base', () => {
+		assert($str.substitute('{{city}}欢迎您', { city: '北京' }) === '北京欢迎您');
+	});
+	test('substitute: custom', () => {
+		assert($str.substitute('[city]欢迎您', { city: '北京' }, (/\\?\[([^[\]]+)\]/g)) === '北京欢迎您');
+	});
+});
