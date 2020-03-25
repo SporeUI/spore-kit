@@ -4,7 +4,7 @@
  * @param {String} str 含有实体字符的字符串
  * @returns {String} HTML字符串
  * @example
- * decodeHTML('&amp;&lt;&gt;$nbsp;&quot;'); // '&<> "'
+ * decodeHTML('&amp;&lt;&gt;&quot;&#39;&#32;'); // '&<>"\' '
  */
 
 function decodeHTML (str) {

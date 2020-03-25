@@ -4,7 +4,7 @@
  * @param {String} str 含有HTML字符的字符串
  * @returns {String} 经过转换的字符串
  * @example
- * encodeHTML('&<>" '); // '&amp;&lt;&gt;&quot;$nbsp;'
+ * encodeHTML(`&<>"\' `); // '&amp;&lt;&gt;&quot;&#39;&#32;'
  */
 
 function encodeHTML (str) {
