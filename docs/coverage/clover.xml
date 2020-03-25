@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1583413844047" clover="3.2.0">
-  <project timestamp="1583413844047" name="All files">
-    <metrics statements="1658" coveredstatements="551" conditionals="889" coveredconditionals="105" methods="280" coveredmethods="50" elements="2827" coveredelements="706" complexity="0" loc="1658" ncloc="1658" packages="17" files="94" classes="94"/>
+<coverage generated="1585107852848" clover="3.2.0">
+  <project timestamp="1585107852848" name="All files">
+    <metrics statements="1666" coveredstatements="578" conditionals="893" coveredconditionals="116" methods="282" coveredmethods="63" elements="2841" coveredelements="757" complexity="0" loc="1666" ncloc="1666" packages="17" files="96" classes="96"/>
     <package name="app">
       <metrics statements="30" coveredstatements="4" conditionals="18" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="callUp.js" path="/Users/tony/work/github/spore/spore-kit/packages/app/callUp.js">
@@ -1678,50 +1678,62 @@
       </file>
     </package>
     <package name="str">
-      <metrics statements="54" coveredstatements="30" conditionals="24" coveredconditionals="8" methods="14" coveredmethods="3"/>
+      <metrics statements="62" coveredstatements="57" conditionals="28" coveredconditionals="19" methods="16" coveredmethods="16"/>
       <file name="bLength.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/bLength.js">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
-        <line num="12" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="16" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="19" count="1" type="stmt"/>
       </file>
       <file name="dbcToSbc.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/dbcToSbc.js">
-        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
       </file>
       <file name="decodeHTML.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/decodeHTML.js">
-        <metrics statements="4" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
       </file>
       <file name="encodeHTML.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/encodeHTML.js">
-        <metrics statements="4" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
       </file>
+      <file name="getRnd36.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/getRnd36.js">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="11" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="getTime36.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/getTime36.js">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="11" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
       <file name="getUniqueKey.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/getUniqueKey.js">
-        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
       </file>
       <file name="hyphenate.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/hyphenate.js">
-        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
       </file>
       <file name="index.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/index.js">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
@@ -1732,38 +1744,40 @@
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
       </file>
       <file name="ipToHex.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/ipToHex.js">
-        <metrics statements="7" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <metrics statements="7" coveredstatements="6" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="cond" truecount="1" falsecount="1"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
       </file>
       <file name="leftB.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/leftB.js">
-        <metrics statements="7" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="7" coveredstatements="6" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="2" falsecount="2"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
       </file>
       <file name="sizeOfUTF8String.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/sizeOfUTF8String.js">
-        <metrics statements="2" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="11" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
       </file>
       <file name="substitute.js" path="/Users/tony/work/github/spore/spore-kit/packages/str/substitute.js">
         <metrics statements="5" coveredstatements="4" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <line num="13" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="14" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="7" type="cond" truecount="1" falsecount="1"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="18" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="7" type="cond" truecount="1" falsecount="1"/>
         <line num="22" count="2" type="stmt"/>
       </file>
     </package>

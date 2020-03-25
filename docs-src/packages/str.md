@@ -64,7 +64,7 @@ Returns **[String][2]** 经过转换的字符串
 ### Examples
 
 ```javascript
-decodeHTML('&amp;&lt;&gt;$nbsp;&quot;'); // '&<> "'
+decodeHTML('&amp;&lt;&gt;&quot;&#39;&#32;'); // '&<>"\' '
 ```
 
 Returns **[String][2]** HTML字符串
@@ -80,10 +80,42 @@ Returns **[String][2]** HTML字符串
 ### Examples
 
 ```javascript
-encodeHTML('&<>" '); // '&amp;&lt;&gt;&quot;$nbsp;'
+encodeHTML(`&<>"\' `); // '&amp;&lt;&gt;&quot;&#39;&#32;'
 ```
 
 Returns **[String][2]** 经过转换的字符串
+
+## getRnd36
+
+获取36进制随机字符串
+
+### Parameters
+
+-   `rnd` **Float?** 随机数，不传则生成一个随机数
+
+### Examples
+
+```javascript
+getRnd36(0.5810766832590446); // 'kx2pozz9rgf'
+```
+
+Returns **[String][2]** 转成为36进制的字符串
+
+## getTime36
+
+获取36进制日期字符串
+
+### Parameters
+
+-   `date` **[Date][4]?** 符合规范的日期字符串或者数字，不传参数则使用当前客户端时间
+
+### Examples
+
+```javascript
+getTime36('2020'); // 'k4ujaio0'
+```
+
+Returns **[String][2]** 转成为36进制的字符串
 
 ## getUniqueKey
 
@@ -170,13 +202,13 @@ Returns **[Number][3]** 字符串长度
 ### Parameters
 
 -   `str` **[String][2]** 要替换模板的字符串
--   `obj` **[Object][4]** 模板对应的数据对象
--   `reg` **[RegExp][5]** 解析模板的正则表达式 (optional, default `/\\?\{\{([^{}]+)\}\}/g`)
+-   `obj` **[Object][5]** 模板对应的数据对象
+-   `reg` **[RegExp][6]** 解析模板的正则表达式 (optional, default `/\\?\{\{([^{}]+)\}\}/g`)
 
 ### Examples
 
 ```javascript
-substitute('{{city}}欢迎您', {{city:'北京'}}); // '北京欢迎您'
+substitute('{{city}}欢迎您', {city:'北京'}); // '北京欢迎您'
 ```
 
 Returns **[String][2]** 替换了模板的字符串
@@ -187,6 +219,8 @@ Returns **[String][2]** 替换了模板的字符串
 
 [3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp
