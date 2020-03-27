@@ -91,15 +91,17 @@ function countDown (spec) {
 	 * @memberof countDown
 	 * @example
 	 * var cd = countDown();
-	 * var serverTime = '2019';
-	 * var localTime = '2020';
+	 * var serverTime = '2019/01/01';
+	 * var localTime = '2020/01/01';
 	 * cd.correct(serverTime);
 	 * cd.correct(serverTime, localTime);
 	 */
 	that.correct = function(serverTime, localTime) {
 		var now = localTime ? new Date(localTime) : +new Date();
-		var serverDate = new Date(serverTime);
-		timeDiff = serverDate - now;
+		var serverDate = serverTime ? new Date(serverTime) : 0;
+		if (serverDate) {
+			timeDiff = serverDate - now;
+		}
 	};
 
 	if (conf.base) {
