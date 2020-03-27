@@ -56,19 +56,19 @@ function countDown (spec) {
 		onStop: null
 	}, spec);
 
-	var base = +new Date(conf.base);
+	var timeDiff = 0;
 	var target = +new Date(conf.target);
 	var interval = parseInt(conf.interval, 10) || 0;
 
 	// 使倒计时触发时间精确化
 	// 使用固定的触发频率，减少需要创建的定时器
-	var delay = interval;
-	if (delay < 500) {
-		delay = 10;
-	} else if (delay < 5000) {
-		delay = 100;
+	var timeInterval = interval;
+	if (timeInterval < 500) {
+		timeInterval = 10;
+	} else if (timeInterval < 5000) {
+		timeInterval = 100;
 	} else {
-		delay = 1000;
+		timeInterval = 1000;
 	}
 
 	var delta;
@@ -85,8 +85,29 @@ function countDown (spec) {
 		}
 	};
 
+	/**
+	 * 纠正时间差
+	 * @method countDown#correct
+	 * @memberof countDown
+	 * @example
+	 * var cd = countDown();
+	 * var serverTime = '2019';
+	 * var localTime = '2020';
+	 * cd.correct(serverTime);
+	 * cd.correct(serverTime, localTime);
+	 */
+	that.correct = function(serverTime, localTime) {
+		var now = localTime ? new Date(localTime) : +new Date();
+		var serverDate = new Date(serverTime);
+		timeDiff = serverDate - now;
+	};
+
+	if (conf.base) {
+		that.correct(conf.base);
+	}
+
 	var check = function(localDelta) {
-		var now = conf.base ? base + localDelta : localBaseTime + localDelta;
+		var now = localBaseTime + timeDiff + localDelta;
 		update(now);
 		if (delta <= 0) {
 			that.stop(now);
@@ -102,7 +123,7 @@ function countDown (spec) {
 	 * cd.stop();
 	 */
 	that.stop = function() {
-		var mobj = allMonitors[delay];
+		var mobj = allMonitors[timeInterval];
 		if (mobj && mobj.queue) {
 			$erase(mobj.queue, check);
 		}
@@ -113,14 +134,14 @@ function countDown (spec) {
 		}
 	};
 
-	var monitor = allMonitors[delay];
+	var monitor = allMonitors[timeInterval];
 
 	if (!monitor) {
 		monitor = {};
 		monitor.queue = [];
 		monitor.inspect = function() {
 			var now = Date.now();
-			var mobj = allMonitors[delay];
+			var mobj = allMonitors[timeInterval];
 			var localDelta = now - localBaseTime;
 			if (mobj.queue.length) {
 				// 循环当中会删除数组元素，因此需要先复制一下数组
@@ -129,17 +150,17 @@ function countDown (spec) {
 				});
 			} else {
 				clearInterval(mobj.timer);
-				allMonitors[delay] = null;
+				allMonitors[timeInterval] = null;
 				delete mobj.timer;
 			}
 		};
-		allMonitors[delay] = monitor;
+		allMonitors[timeInterval] = monitor;
 	}
 
 	monitor.queue.push(check);
 
 	if (!monitor.timer) {
-		monitor.timer = setInterval(monitor.inspect, delay);
+		monitor.timer = setInterval(monitor.inspect, timeInterval);
 	}
 
 	monitor.inspect();
