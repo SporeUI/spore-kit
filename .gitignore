@@ -1,5 +1,6 @@
 *.lock
 package-lock.json
+ignore
 
 # Logs
 logs
