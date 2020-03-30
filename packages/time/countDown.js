@@ -59,6 +59,8 @@ function countDown (spec) {
 	var timeDiff = 0;
 	var target = +new Date(conf.target);
 	var interval = parseInt(conf.interval, 10) || 0;
+	var onChange = conf.onChange;
+	var onStop = conf.onStop;
 
 	// 使倒计时触发时间精确化
 	// 使用固定的触发频率，减少需要创建的定时器
@@ -79,8 +81,8 @@ function countDown (spec) {
 		var unit = Math.ceil(delta / interval);
 		if (unit !== curUnit) {
 			curUnit = unit;
-			if (typeof conf.onChange === 'function') {
-				conf.onChange(delta);
+			if (typeof onChange === 'function') {
+				onChange(delta);
 			}
 		}
 	};
@@ -144,9 +146,23 @@ function countDown (spec) {
 		}
 		// onStop事件触发必须在从队列移除回调之后
 		// 否则循环接替的定时器会引发死循环
-		if (typeof conf.onStop === 'function') {
-			conf.onStop(delta);
+		if (typeof onStop === 'function') {
+			onStop(delta);
 		}
+	};
+
+	/**
+	 * 销毁倒计时
+	 * @method countDown#destroy
+	 * @memberof countDown
+	 * @example
+	 * var cd = countDown();
+	 * cd.destroy();
+	 */
+	that.destroy = function() {
+		onChange = null;
+		onStop = null;
+		that.stop();
 	};
 
 	var monitor = allMonitors[timeInterval];
