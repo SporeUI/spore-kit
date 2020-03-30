@@ -86,6 +86,19 @@ function countDown (spec) {
 	};
 
 	/**
+	 * 重设目标时间
+	 * @method countDown#setTarget
+	 * @memberof countDown
+	 * @example
+	 * var cd = countDown();
+	 * var localTime = '2019/01/01';
+	 * cd.setTarget(serverTime);
+	 */
+	that.setTarget = function (time) {
+		target = +new Date(time);
+	};
+
+	/**
 	 * 纠正时间差
 	 * @method countDown#correct
 	 * @memberof countDown
