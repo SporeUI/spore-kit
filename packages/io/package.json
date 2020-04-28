@@ -1,6 +1,6 @@
 {
   "name": "spore-kit-io",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "接口请求相关工具函数",
   "main": "index.js",
   "repository": {
