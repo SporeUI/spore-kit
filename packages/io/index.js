@@ -18,3 +18,4 @@
 exports.ajax = require('./ajax');
 exports.iframePost = require('./iframePost');
 exports.getScript = require('./getScript');
+exports.loadSdk = require('./loadSdk');
