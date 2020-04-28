@@ -3,10 +3,16 @@ var $get = require('lodash/get');
 var $getScript = require('./getScript');
 
 var propName = 'SPORE_SDK_PROMISE';
-var cache = window[propName];
-if (!cache) {
+var cache = null;
+
+if (typeof window !== 'undefined') {
+	cache = window[propName];
+	if (!cache) {
+		cache = {};
+		window[propName] = cache;
+	}
+} else {
 	cache = {};
-	window[propName] = cache;
 }
 
 /**

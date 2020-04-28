@@ -16,5 +16,6 @@
   "dependencies": {
     "lodash": "^4.17.15",
     "spore-kit-obj": "^0.2.4"
-  }
+  },
+  "gitHead": "2f0640b517beb495928d093b34f5f3e6655d712c"
 }
