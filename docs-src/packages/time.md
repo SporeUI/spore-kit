@@ -65,6 +65,32 @@ var cd2 = countDown({
 
 Returns **[Object][2]** 倒计时对象实例
 
+### countDown#setTarget
+
+重设目标时间
+
+#### Examples
+
+```javascript
+var cd = countDown();
+var localTime = '2019/01/01';
+cd.setTarget(serverTime);
+```
+
+### countDown#correct
+
+纠正时间差
+
+#### Examples
+
+```javascript
+var cd = countDown();
+var serverTime = '2019/01/01';
+var localTime = '2020/01/01';
+cd.correct(serverTime);
+cd.correct(serverTime, localTime);
+```
+
 ### countDown#stop
 
 停止倒计时
@@ -74,6 +100,17 @@ Returns **[Object][2]** 倒计时对象实例
 ```javascript
 var cd = countDown();
 cd.stop();
+```
+
+### countDown#destroy
+
+销毁倒计时
+
+#### Examples
+
+```javascript
+var cd = countDown();
+cd.destroy();
 ```
 
 ## parseUnit

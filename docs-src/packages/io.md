@@ -103,6 +103,29 @@ getScript({
 });
 ```
 
+## loadSdk
+
+# sdk 加载统一封装
+
+-   多次调用不会发起重复请求
+
+### Parameters
+
+-   `options` **[Object][3]** 选项
+    -   `options.name` **[String][4]** sdk 全局变量名称
+    -   `options.url` **[String][4]** script 地址
+    -   `options.charset` **[String][4]** script 编码 (optional, default `'utf-8'`)
+    -   `options.onLoad` **[Function][6]?** script 加载完成的回调函数
+
+### Examples
+
+```javascript
+loadSdk({
+	name: 'TencentCaptcha',
+	url: 'https://ssl.captcha.qq.com/TCaptcha.js'
+}).then(TencentCaptcha => {})
+```
+
 [1]: https://github.com/SporeUI/spore-kit/tree/master/packages/io
 
 [2]: https://github.com/ForbesLindesay/ajax
