@@ -16,7 +16,7 @@ if (typeof window !== 'undefined') {
 }
 
 /**
- * # sdk 加载统一封装
+ * sdk 加载统一封装
  * - 多次调用不会发起重复请求
  * @param {Object} options 选项
  * @param {String} options.name sdk 全局变量名称
