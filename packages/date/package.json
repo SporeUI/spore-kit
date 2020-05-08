@@ -17,5 +17,6 @@
 		"spore-kit-num": "^0.2.2",
 		"spore-kit-obj": "^0.2.4",
 		"spore-kit-str": "^0.3.8"
-	}
+	},
+	"gitHead": "78d983de03b37134ad62281922209588ab4a5b9b"
 }
