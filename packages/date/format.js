@@ -93,7 +93,7 @@ function format(dobj, spec) {
 	data.ss = $fixTo(data.seconds, 2);
 	data.s = data.seconds;
 
-	data.mss = $fixTo(data.milliSeconds, 2);
+	data.mss = $fixTo(data.milliSeconds, 3);
 	data.ms = data.milliSeconds;
 
 	output = $substitute(conf.template, data);
