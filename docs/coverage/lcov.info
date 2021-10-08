@@ -1,5 +1,5 @@
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/app/callUp.js
+SF:/Users/tab/work/github/spore-kit/packages/app/callUp.js
 FN:40,callUp
 FN:48,(anonymous_1)
 FN:65,(anonymous_2)
@@ -63,7 +63,7 @@ BRF:18
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/app/index.js
+SF:/Users/tab/work/github/spore-kit/packages/app/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -73,7 +73,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/arr/contains.js
+SF:/Users/tab/work/github/spore-kit/packages/arr/contains.js
 FN:11,contains
 FNF:1
 FNH:1
@@ -87,7 +87,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/arr/erase.js
+SF:/Users/tab/work/github/spore-kit/packages/arr/erase.js
 FN:11,erase
 FNF:1
 FNH:1
@@ -105,7 +105,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/arr/find.js
+SF:/Users/tab/work/github/spore-kit/packages/arr/find.js
 FN:14,find
 FN:16,(anonymous_1)
 FNF:2
@@ -126,7 +126,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/arr/flatten.js
+SF:/Users/tab/work/github/spore-kit/packages/arr/flatten.js
 FN:12,flatten
 FNF:1
 FNH:1
@@ -150,7 +150,7 @@ BRF:4
 BRH:3
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/arr/include.js
+SF:/Users/tab/work/github/spore-kit/packages/arr/include.js
 FN:14,include
 FNF:1
 FNH:1
@@ -168,7 +168,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/arr/index.js
+SF:/Users/tab/work/github/spore-kit/packages/arr/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -182,7 +182,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/cookie/cookie.js
+SF:/Users/tab/work/github/spore-kit/packages/cookie/cookie.js
 FN:17,(anonymous_0)
 FN:20,(anonymous_1)
 FNF:2
@@ -200,7 +200,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/cookie/index.js
+SF:/Users/tab/work/github/spore-kit/packages/cookie/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -211,7 +211,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/cookie/origin.js
+SF:/Users/tab/work/github/spore-kit/packages/cookie/origin.js
 FNF:0
 FNH:0
 DA:12,1
@@ -221,7 +221,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/date/format.js
+SF:/Users/tab/work/github/spore-kit/packages/date/format.js
 FN:48,(anonymous_0)
 FN:54,format
 FNF:2
@@ -274,7 +274,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/date/getLastStart.js
+SF:/Users/tab/work/github/spore-kit/packages/date/getLastStart.js
 FN:22,getLastStart
 FNF:1
 FNH:0
@@ -326,7 +326,7 @@ BRF:12
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/date/getTimeSplit.js
+SF:/Users/tab/work/github/spore-kit/packages/date/getTimeSplit.js
 FN:35,getTimeSplit
 FNF:1
 FNH:0
@@ -377,7 +377,7 @@ BRF:14
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/date/index.js
+SF:/Users/tab/work/github/spore-kit/packages/date/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -389,7 +389,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/dom/index.js
+SF:/Users/tab/work/github/spore-kit/packages/dom/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -400,7 +400,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/dom/isNode.js
+SF:/Users/tab/work/github/spore-kit/packages/dom/isNode.js
 FN:6,isNode
 FNF:1
 FNH:0
@@ -416,7 +416,7 @@ BRF:3
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/dom/offset.js
+SF:/Users/tab/work/github/spore-kit/packages/dom/offset.js
 FNF:0
 FNH:0
 DA:14,1
@@ -431,7 +431,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/env/browser.js
+SF:/Users/tab/work/github/spore-kit/packages/env/browser.js
 FN:36,detect
 FN:48,browser
 FNF:2
@@ -458,7 +458,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/env/core.js
+SF:/Users/tab/work/github/spore-kit/packages/env/core.js
 FN:22,(anonymous_0)
 FN:27,detect
 FN:39,core
@@ -490,7 +490,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/env/device.js
+SF:/Users/tab/work/github/spore-kit/packages/env/device.js
 FN:28,detect
 FN:40,device
 FNF:2
@@ -517,7 +517,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/env/index.js
+SF:/Users/tab/work/github/spore-kit/packages/env/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -534,7 +534,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/env/network.js
+SF:/Users/tab/work/github/spore-kit/packages/env/network.js
 FN:16,support
 FN:31,onLine
 FNF:2
@@ -558,7 +558,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/env/os.js
+SF:/Users/tab/work/github/spore-kit/packages/env/os.js
 FN:17,(anonymous_0)
 FN:22,detect
 FN:34,os
@@ -590,7 +590,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/env/touchable.js
+SF:/Users/tab/work/github/spore-kit/packages/env/touchable.js
 FN:13,touchable
 FNF:1
 FNH:0
@@ -611,7 +611,7 @@ BRF:5
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/env/uaMatch.js
+SF:/Users/tab/work/github/spore-kit/packages/env/uaMatch.js
 FN:19,uaMatch
 FN:30,(anonymous_1)
 FNF:2
@@ -670,7 +670,7 @@ BRF:22
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/env/webp.js
+SF:/Users/tab/work/github/spore-kit/packages/env/webp.js
 FN:16,support
 FNF:1
 FNH:0
@@ -692,7 +692,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/evt/events.js
+SF:/Users/tab/work/github/spore-kit/packages/evt/events.js
 FN:26,(anonymous_0)
 FN:38,(anonymous_1)
 FN:63,(anonymous_2)
@@ -707,17 +707,17 @@ FNDA:0,(anonymous_2)
 FNDA:0,(anonymous_3)
 FNDA:0,(anonymous_4)
 FNDA:1,(anonymous_5)
-DA:21,2
-DA:23,2
-DA:25,2
+DA:21,3
+DA:23,3
+DA:25,3
 DA:26,0
 DA:27,0
 DA:29,0
 DA:30,0
 DA:31,0
 DA:34,0
-DA:38,2
-DA:63,2
+DA:38,3
+DA:63,3
 DA:67,0
 DA:68,0
 DA:71,0
@@ -728,7 +728,7 @@ DA:76,0
 DA:77,0
 DA:78,0
 DA:81,0
-DA:111,2
+DA:111,3
 DA:118,0
 DA:119,0
 DA:120,0
@@ -747,7 +747,7 @@ DA:141,0
 DA:142,0
 DA:148,0
 DA:153,0
-DA:182,2
+DA:182,3
 DA:189,0
 DA:192,0
 DA:193,0
@@ -770,17 +770,17 @@ DA:228,0
 DA:229,0
 DA:230,0
 DA:235,0
-DA:255,2
+DA:255,3
 DA:256,1
 DA:257,1
 DA:259,1
 DA:260,3
 DA:261,3
-DA:266,2
+DA:266,3
 LF:70
 LH:14
 BRDA:25,0,0,0
-BRDA:25,0,1,2
+BRDA:25,0,1,3
 BRDA:30,1,0,0
 BRDA:30,1,1,0
 BRDA:67,2,0,0
@@ -832,7 +832,7 @@ BRF:49
 BRH:3
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/evt/index.js
+SF:/Users/tab/work/github/spore-kit/packages/evt/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -845,7 +845,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/evt/listener.js
+SF:/Users/tab/work/github/spore-kit/packages/evt/listener.js
 FN:32,(anonymous_0)
 FN:48,(anonymous_1)
 FN:57,(anonymous_2)
@@ -889,7 +889,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/evt/occurInside.js
+SF:/Users/tab/work/github/spore-kit/packages/evt/occurInside.js
 FN:16,occurInside
 FNF:1
 FNH:0
@@ -915,7 +915,7 @@ BRF:7
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/evt/tapStop.js
+SF:/Users/tab/work/github/spore-kit/packages/evt/tapStop.js
 FN:19,(anonymous_0)
 FN:44,(anonymous_1)
 FN:61,(anonymous_2)
@@ -968,7 +968,7 @@ BRF:14
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fn/delay.js
+SF:/Users/tab/work/github/spore-kit/packages/fn/delay.js
 FN:24,delay
 FN:26,(anonymous_1)
 FN:32,(anonymous_2)
@@ -999,7 +999,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fn/index.js
+SF:/Users/tab/work/github/spore-kit/packages/fn/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -1014,7 +1014,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fn/lock.js
+SF:/Users/tab/work/github/spore-kit/packages/fn/lock.js
 FN:18,lock
 FN:20,(anonymous_1)
 FN:26,(anonymous_2)
@@ -1046,7 +1046,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fn/once.js
+SF:/Users/tab/work/github/spore-kit/packages/fn/once.js
 FN:16,once
 FN:17,(anonymous_1)
 FNF:2
@@ -1070,7 +1070,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fn/prepare.js
+SF:/Users/tab/work/github/spore-kit/packages/fn/prepare.js
 FN:45,prepare
 FN:50,(anonymous_1)
 FN:60,(anonymous_2)
@@ -1107,7 +1107,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fn/queue.js
+SF:/Users/tab/work/github/spore-kit/packages/fn/queue.js
 FN:20,queue
 FN:23,(anonymous_1)
 FN:26,(anonymous_2)
@@ -1147,7 +1147,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fn/regular.js
+SF:/Users/tab/work/github/spore-kit/packages/fn/regular.js
 FN:22,reqular
 FN:25,(anonymous_1)
 FN:30,(anonymous_2)
@@ -1185,7 +1185,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fx/easing.js
+SF:/Users/tab/work/github/spore-kit/packages/fx/easing.js
 FN:29,(anonymous_0)
 FN:33,(anonymous_1)
 FN:37,(anonymous_2)
@@ -1243,7 +1243,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fx/flashAction.js
+SF:/Users/tab/work/github/spore-kit/packages/fx/flashAction.js
 FN:27,flashAction
 FN:44,(anonymous_1)
 FN:45,(anonymous_2)
@@ -1284,7 +1284,7 @@ BRF:10
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fx/fx.js
+SF:/Users/tab/work/github/spore-kit/packages/fx/fx.js
 FN:44,(anonymous_0)
 FN:54,(anonymous_1)
 FN:65,(anonymous_2)
@@ -1468,7 +1468,7 @@ BRF:45
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fx/index.js
+SF:/Users/tab/work/github/spore-kit/packages/fx/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -1484,7 +1484,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fx/smoothScrollTo.js
+SF:/Users/tab/work/github/spore-kit/packages/fx/smoothScrollTo.js
 FN:17,smoothScrollTo
 FN:38,(anonymous_1)
 FN:49,(anonymous_2)
@@ -1550,7 +1550,7 @@ BRF:17
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fx/sticky.js
+SF:/Users/tab/work/github/spore-kit/packages/fx/sticky.js
 FN:15,sticky
 FN:70,(anonymous_1)
 FN:79,(anonymous_2)
@@ -1676,7 +1676,7 @@ BRF:37
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fx/timer.js
+SF:/Users/tab/work/github/spore-kit/packages/fx/timer.js
 FN:14,factory
 FN:32,(anonymous_1)
 FN:46,(anonymous_2)
@@ -1798,7 +1798,7 @@ BRF:41
 BRH:6
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/fx/transitions.js
+SF:/Users/tab/work/github/spore-kit/packages/fx/transitions.js
 FN:35,(anonymous_0)
 FN:39,(anonymous_1)
 FN:44,(anonymous_2)
@@ -1909,7 +1909,7 @@ BRF:23
 BRH:1
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/io/ajax.js
+SF:/Users/tab/work/github/spore-kit/packages/io/ajax.js
 FN:31,(anonymous_0)
 FN:64,(anonymous_1)
 FN:96,(anonymous_2)
@@ -2238,7 +2238,7 @@ BRF:128
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/io/getScript.js
+SF:/Users/tab/work/github/spore-kit/packages/io/getScript.js
 FN:17,getScript
 FN:22,(anonymous_1)
 FN:31,(anonymous_2)
@@ -2290,7 +2290,7 @@ BRF:17
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/io/iframePost.js
+SF:/Users/tab/work/github/spore-kit/packages/io/iframePost.js
 FN:34,get$
 FN:45,getHiddenBox
 FN:54,getForm
@@ -2447,7 +2447,7 @@ BRF:47
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/io/index.js
+SF:/Users/tab/work/github/spore-kit/packages/io/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -2460,7 +2460,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/io/loadSdk.js
+SF:/Users/tab/work/github/spore-kit/packages/io/loadSdk.js
 FN:32,(anonymous_0)
 FN:55,(anonymous_1)
 FN:59,(anonymous_2)
@@ -2518,7 +2518,7 @@ BRF:12
 BRH:1
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/location/getQuery.js
+SF:/Users/tab/work/github/spore-kit/packages/location/getQuery.js
 FN:18,getQuery
 FN:28,(anonymous_1)
 FNF:2
@@ -2562,7 +2562,7 @@ BRF:12
 BRH:7
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/location/index.js
+SF:/Users/tab/work/github/spore-kit/packages/location/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -2574,7 +2574,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/location/parse.js
+SF:/Users/tab/work/github/spore-kit/packages/location/parse.js
 FN:28,parse
 FNF:1
 FNH:1
@@ -2588,7 +2588,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/location/setQuery.js
+SF:/Users/tab/work/github/spore-kit/packages/location/setQuery.js
 FN:20,setQuery
 FN:25,(anonymous_1)
 FN:29,(anonymous_2)
@@ -2644,7 +2644,7 @@ BRF:14
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/mvc/base.js
+SF:/Users/tab/work/github/spore-kit/packages/mvc/base.js
 FN:66,(anonymous_0)
 FN:78,(anonymous_1)
 FN:111,(anonymous_2)
@@ -2706,7 +2706,7 @@ BRF:12
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/mvc/delegate.js
+SF:/Users/tab/work/github/spore-kit/packages/mvc/delegate.js
 FN:19,delegate
 FN:34,(anonymous_1)
 FN:41,(anonymous_2)
@@ -2775,7 +2775,7 @@ BRF:20
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/mvc/index.js
+SF:/Users/tab/work/github/spore-kit/packages/mvc/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -2789,7 +2789,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/mvc/klass.js
+SF:/Users/tab/work/github/spore-kit/packages/mvc/klass.js
 FN:8,(anonymous_0)
 FN:11,isFn
 FN:15,wrap
@@ -2891,7 +2891,7 @@ BRF:23
 BRH:10
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/mvc/model.js
+SF:/Users/tab/work/github/spore-kit/packages/mvc/model.js
 FN:55,(anonymous_0)
 FN:78,(anonymous_1)
 FN:94,(anonymous_2)
@@ -3061,7 +3061,7 @@ BRF:40
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/mvc/view.js
+SF:/Users/tab/work/github/spore-kit/packages/mvc/view.js
 FN:53,get$
 FN:58,(anonymous_1)
 FN:104,(anonymous_2)
@@ -3192,7 +3192,7 @@ BRF:41
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/num/comma.js
+SF:/Users/tab/work/github/spore-kit/packages/num/comma.js
 FN:12,comma
 FNF:1
 FNH:1
@@ -3207,7 +3207,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/num/fixTo.js
+SF:/Users/tab/work/github/spore-kit/packages/num/fixTo.js
 FN:11,fixTo
 FNF:1
 FNH:1
@@ -3224,7 +3224,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/num/index.js
+SF:/Users/tab/work/github/spore-kit/packages/num/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -3237,7 +3237,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/num/limit.js
+SF:/Users/tab/work/github/spore-kit/packages/num/limit.js
 FN:14,limit
 FNF:1
 FNH:1
@@ -3250,7 +3250,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/num/numerical.js
+SF:/Users/tab/work/github/spore-kit/packages/num/numerical.js
 FN:13,numerical
 FNF:1
 FNH:1
@@ -3271,7 +3271,7 @@ BRF:6
 BRH:6
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/obj/assign.js
+SF:/Users/tab/work/github/spore-kit/packages/obj/assign.js
 FN:13,assign
 FN:15,(anonymous_1)
 FNF:2
@@ -3298,7 +3298,7 @@ BRF:6
 BRH:4
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/obj/cover.js
+SF:/Users/tab/work/github/spore-kit/packages/obj/cover.js
 FN:12,cover
 FN:17,(anonymous_1)
 FN:19,(anonymous_2)
@@ -3335,7 +3335,7 @@ BRF:10
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/obj/find.js
+SF:/Users/tab/work/github/spore-kit/packages/obj/find.js
 FN:13,find
 FNF:1
 FNH:0
@@ -3368,7 +3368,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/obj/index.js
+SF:/Users/tab/work/github/spore-kit/packages/obj/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -3381,20 +3381,20 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/obj/type.js
+SF:/Users/tab/work/github/spore-kit/packages/obj/type.js
 FN:24,type
 FNF:1
 FNH:1
 FNDA:19,type
 DA:25,19
-DA:31,3
+DA:31,4
 LF:2
 LH:2
 BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/bLength.js
+SF:/Users/tab/work/github/spore-kit/packages/str/bLength.js
 FN:10,bLength
 FNF:1
 FNH:1
@@ -3414,7 +3414,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/dbcToSbc.js
+SF:/Users/tab/work/github/spore-kit/packages/str/dbcToSbc.js
 FN:10,dbcToSbc
 FN:11,(anonymous_1)
 FNF:2
@@ -3430,7 +3430,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/decodeHTML.js
+SF:/Users/tab/work/github/spore-kit/packages/str/decodeHTML.js
 FN:10,decodeHTML
 FNF:1
 FNH:1
@@ -3447,7 +3447,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/encodeHTML.js
+SF:/Users/tab/work/github/spore-kit/packages/str/encodeHTML.js
 FN:10,encodeHTML
 FNF:1
 FNH:1
@@ -3464,7 +3464,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/getRnd36.js
+SF:/Users/tab/work/github/spore-kit/packages/str/getRnd36.js
 FN:10,getRnd36
 FNF:1
 FNH:1
@@ -3480,7 +3480,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/getTime36.js
+SF:/Users/tab/work/github/spore-kit/packages/str/getTime36.js
 FN:10,getTime36
 FNF:1
 FNH:1
@@ -3496,7 +3496,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/getUniqueKey.js
+SF:/Users/tab/work/github/spore-kit/packages/str/getUniqueKey.js
 FN:12,getUniqueKey
 FNF:1
 FNH:1
@@ -3511,7 +3511,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/hyphenate.js
+SF:/Users/tab/work/github/spore-kit/packages/str/hyphenate.js
 FN:10,hyphenate
 FN:11,(anonymous_1)
 FNF:2
@@ -3527,7 +3527,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/index.js
+SF:/Users/tab/work/github/spore-kit/packages/str/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -3548,7 +3548,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/ipToHex.js
+SF:/Users/tab/work/github/spore-kit/packages/str/ipToHex.js
 FN:10,ipToHex
 FN:11,(anonymous_1)
 FNF:2
@@ -3572,7 +3572,7 @@ BRF:4
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/leftB.js
+SF:/Users/tab/work/github/spore-kit/packages/str/leftB.js
 FN:14,leftB
 FNF:1
 FNH:1
@@ -3594,7 +3594,7 @@ BRF:4
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/sizeOfUTF8String.js
+SF:/Users/tab/work/github/spore-kit/packages/str/sizeOfUTF8String.js
 FN:10,sizeOfUTF8String
 FNF:1
 FNH:1
@@ -3609,7 +3609,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/str/substitute.js
+SF:/Users/tab/work/github/spore-kit/packages/str/substitute.js
 FN:12,substitute
 FN:13,(anonymous_1)
 FNF:2
@@ -3633,7 +3633,7 @@ BRF:6
 BRH:4
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/time/countDown.js
+SF:/Users/tab/work/github/spore-kit/packages/time/countDown.js
 FN:44,countDown
 FN:79,(anonymous_1)
 FN:99,(anonymous_2)
@@ -3761,7 +3761,7 @@ BRF:32
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/time/index.js
+SF:/Users/tab/work/github/spore-kit/packages/time/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -3772,7 +3772,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/time/parseUnit.js
+SF:/Users/tab/work/github/spore-kit/packages/time/parseUnit.js
 FN:25,parseUnit
 FNF:1
 FNH:1
@@ -3816,7 +3816,7 @@ BRF:8
 BRH:4
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/util/abToHex.js
+SF:/Users/tab/work/github/spore-kit/packages/util/abToHex.js
 FN:14,abToHex
 FN:20,(anonymous_1)
 FNF:2
@@ -3836,7 +3836,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/util/ascToHex.js
+SF:/Users/tab/work/github/spore-kit/packages/util/ascToHex.js
 FN:11,ascToHex
 FNF:1
 FNH:1
@@ -3859,7 +3859,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/util/hexToAb.js
+SF:/Users/tab/work/github/spore-kit/packages/util/hexToAb.js
 FN:17,hexToAb
 FNF:1
 FNH:1
@@ -3884,7 +3884,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/util/hexToAsc.js
+SF:/Users/tab/work/github/spore-kit/packages/util/hexToAsc.js
 FN:11,hexToAsc
 FN:15,(anonymous_1)
 FNF:2
@@ -3905,7 +3905,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/util/hslToRgb.js
+SF:/Users/tab/work/github/spore-kit/packages/util/hslToRgb.js
 FN:17,hueToRgb
 FN:26,hslToRgb
 FNF:2
@@ -3949,7 +3949,7 @@ BRF:14
 BRH:14
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/util/index.js
+SF:/Users/tab/work/github/spore-kit/packages/util/index.js
 FNF:0
 FNH:0
 DA:18,1
@@ -3966,7 +3966,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/util/job.js
+SF:/Users/tab/work/github/spore-kit/packages/util/job.js
 FN:21,(anonymous_0)
 FN:30,(anonymous_1)
 FN:32,(anonymous_2)
@@ -4013,7 +4013,7 @@ BRF:12
 BRH:11
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/util/measureDistance.js
+SF:/Users/tab/work/github/spore-kit/packages/util/measureDistance.js
 FN:14,measureDistance
 FNF:1
 FNH:1
@@ -4032,7 +4032,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/tony/work/github/spore/spore-kit/packages/util/rgbToHsl.js
+SF:/Users/tab/work/github/spore-kit/packages/util/rgbToHsl.js
 FN:16,rgbToHsl
 FNF:1
 FNH:1

@@ -2,7 +2,7 @@
 
 ## spore-kit-arr
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/arr][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/arr][1]
 
 # 类数组对象相关工具函数
 
@@ -27,8 +27,8 @@ var $contains = require('spore-kit-arr/contains');
 
 ### Parameters
 
--   `arr` **[Array][2]** 要操作的数组
--   `item` **any** 要搜索的对象
+*   `arr` **[Array][2]** 要操作的数组
+*   `item` **any** 要搜索的对象
 
 ### Examples
 
@@ -44,8 +44,8 @@ Returns **[Boolean][3]** 如果对象在数组中，返回 true
 
 ### Parameters
 
--   `arr` **[Array][2]** 要操作的数组
--   `item` **any** 要清除的对象
+*   `arr` **[Array][2]** 要操作的数组
+*   `item` **any** 要清除的对象
 
 ### Examples
 
@@ -61,9 +61,9 @@ Returns **[Number][4]** 对象原本所在位置
 
 ### Parameters
 
--   `arr` **[Array][2]** 要操作的数组
--   `fn` **[Function][5]** 条件函数
--   `context` **[Object][6]?** 函数的this指向
+*   `arr` **[Array][2]** 要操作的数组
+*   `fn` **[Function][5]** 条件函数
+*   `context` **[Object][6]?** 函数的this指向
 
 ### Examples
 
@@ -81,7 +81,7 @@ Returns **[Array][2]** 符合条件的元素在数组中的位置
 
 ### Parameters
 
--   `arr` **[array][2]** 要操作的数组
+*   `arr` **[array][2]** 要操作的数组
 
 ### Examples
 
@@ -97,8 +97,8 @@ Returns **[array][2]** 经过扁平化处理的数组
 
 ### Parameters
 
--   `arr` **[Array][2]** 要操作的数组
--   `item` **any** 要插入的对象
+*   `arr` **[Array][2]** 要操作的数组
+*   `item` **any** 要插入的对象
 
 ### Examples
 

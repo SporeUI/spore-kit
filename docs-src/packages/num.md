@@ -2,7 +2,7 @@
 
 ## spore-kit-num
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/num][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/num][1]
 
 # 处理数字，数据转换
 
@@ -23,15 +23,15 @@ var $limit = require('spore-kit-num/limit');
 
 ## comma
 
--   **See: [http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript][2]**
+*   **See**: [http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript][2]
 
 数字的千分位逗号分隔表示法
 
--   IE8 的 toLocalString 给出了小数点后2位: N.00
+*   IE8 的 toLocalString 给出了小数点后2位: N.00
 
 ### Parameters
 
--   `num` **[Number][3]** 数字
+*   `num` **[Number][3]** 数字
 
 ### Examples
 
@@ -47,8 +47,8 @@ Returns **[String][4]** 千分位表示的数字
 
 ### Parameters
 
--   `num` **([Number][3] \| [String][4])** 要补位的数字
--   `w` **[Number][3]** w 补位数量 (optional, default `2`)
+*   `num` **([Number][3] | [String][4])** 要补位的数字
+*   `w` **[Number][3]** w 补位数量 (optional, default `2`)
 
 ### Examples
 
@@ -64,9 +64,9 @@ Returns **[String][4]** 经过补位的字符串
 
 ### Parameters
 
--   `num` **[Number][3]** 要限制的数字
--   `min` **[Number][3]** 最小边界数值
--   `max` **[Number][3]** 最大边界数值
+*   `num` **[Number][3]** 要限制的数字
+*   `min` **[Number][3]** 最小边界数值
+*   `max` **[Number][3]** 最大边界数值
 
 ### Examples
 
@@ -84,9 +84,9 @@ Returns **[Number][3]** 经过限制的数值
 
 ### Parameters
 
--   `str` **any** 要转换的数据
--   `def` **[Number][3]** 转换失败时的默认值 (optional, default `0`)
--   `sys` **[Number][3]** 进制 (optional, default `10`)
+*   `str` **any** 要转换的数据
+*   `def` **[Number][3]** 转换失败时的默认值 (optional, default `0`)
+*   `sys` **[Number][3]** 进制 (optional, default `10`)
 
 ### Examples
 

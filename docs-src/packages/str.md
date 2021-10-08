@@ -2,7 +2,7 @@
 
 ## spore-kit-str
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/str][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/str][1]
 
 # 字符串处理与判断
 
@@ -27,7 +27,7 @@ var $substitute = require('spore-kit-str/substitute');
 
 ### Parameters
 
--   `str` **[String][2]** 要计算长度的字符串
+*   `str` **[String][2]** 要计算长度的字符串
 
 ### Examples
 
@@ -43,7 +43,7 @@ Returns **[Number][3]** 字符串长度
 
 ### Parameters
 
--   `str` **[String][2]** 包含了全角字符的字符串
+*   `str` **[String][2]** 包含了全角字符的字符串
 
 ### Examples
 
@@ -59,7 +59,7 @@ Returns **[String][2]** 经过转换的字符串
 
 ### Parameters
 
--   `str` **[String][2]** 含有实体字符的字符串
+*   `str` **[String][2]** 含有实体字符的字符串
 
 ### Examples
 
@@ -75,7 +75,7 @@ Returns **[String][2]** HTML字符串
 
 ### Parameters
 
--   `str` **[String][2]** 含有HTML字符的字符串
+*   `str` **[String][2]** 含有HTML字符的字符串
 
 ### Examples
 
@@ -91,7 +91,7 @@ Returns **[String][2]** 经过转换的字符串
 
 ### Parameters
 
--   `rnd` **Float?** 随机数，不传则生成一个随机数
+*   `rnd` **Float?** 随机数，不传则生成一个随机数
 
 ### Examples
 
@@ -107,7 +107,7 @@ Returns **[String][2]** 转成为36进制的字符串
 
 ### Parameters
 
--   `date` **[Date][4]?** 符合规范的日期字符串或者数字，不传参数则使用当前客户端时间
+*   `date` **[Date][4]?** 符合规范的日期字符串或者数字，不传参数则使用当前客户端时间
 
 ### Examples
 
@@ -135,7 +135,7 @@ Returns **[String][2]** 随机字符串
 
 ### Parameters
 
--   `str` **[String][2]** 驼峰格式的字符串
+*   `str` **[String][2]** 驼峰格式的字符串
 
 ### Examples
 
@@ -151,7 +151,7 @@ Returns **[String][2]** 连字符格式的字符串
 
 ### Parameters
 
--   `ip` **[String][2]** 十进制数字的IPV4地址
+*   `ip` **[String][2]** 十进制数字的IPV4地址
 
 ### Examples
 
@@ -167,8 +167,8 @@ Returns **[String][2]** 16进制数字IPV4地址
 
 ### Parameters
 
--   `str` **[String][2]** 
--   `lens` **[Number][3]** 
+*   `str` **[String][2]** 
+*   `lens` **[Number][3]** 
 
 ### Examples
 
@@ -185,7 +185,7 @@ Returns **[String][2]** str
 
 ### Parameters
 
--   `str` **[String][2]** 
+*   `str` **[String][2]** 
 
 ### Examples
 
@@ -201,9 +201,9 @@ Returns **[Number][3]** 字符串长度
 
 ### Parameters
 
--   `str` **[String][2]** 要替换模板的字符串
--   `obj` **[Object][5]** 模板对应的数据对象
--   `reg` **[RegExp][6]** 解析模板的正则表达式 (optional, default `/\\?\{\{([^{}]+)\}\}/g`)
+*   `str` **[String][2]** 要替换模板的字符串
+*   `obj` **[Object][5]** 模板对应的数据对象
+*   `reg` **[RegExp][6]** 解析模板的正则表达式 (optional, default `/\\?\{\{([^{}]+)\}\}/g`)
 
 ### Examples
 

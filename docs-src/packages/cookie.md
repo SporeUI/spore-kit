@@ -2,7 +2,7 @@
 
 ## spore-kit-cookie
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/cookie][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/cookie][1]
 
 # 本地存储相关工具函数
 
@@ -23,12 +23,12 @@ var $cookie = require('spore-kit-cookie/cookie');
 
 ## cookie
 
--   **See: [https://www.npmjs.com/package/js-cookie][2]**
+*   **See**: [https://www.npmjs.com/package/js-cookie][2]
 
 提供对 cookie 的读写能力
 
--   写入时自动用 encodeURIComponent 编码
--   读取时自动用 decodeURIComponent 解码
+*   写入时自动用 encodeURIComponent 编码
+*   读取时自动用 decodeURIComponent 解码
 
 ### Examples
 
@@ -41,11 +41,11 @@ cookie.read('name')	// 'value'
 
 ## origin
 
--   **See: [https://www.npmjs.com/package/js-cookie][2]**
+*   **See**: [https://www.npmjs.com/package/js-cookie][2]
 
 提供对 cookie 的读写能力
 
--   此模块直接提供 js-cookie 的原生能力，不做任何自动编解码
+*   此模块直接提供 js-cookie 的原生能力，不做任何自动编解码
 
 ### Examples
 

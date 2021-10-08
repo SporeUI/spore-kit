@@ -2,7 +2,7 @@
 
 ## spore-kit-fn
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/fn][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/fn][1]
 
 # 函数包装，获取特殊执行方式
 
@@ -25,14 +25,14 @@ var $delay = require('spore-kit-fn/delay');
 
 包装为延迟触发的函数
 
--   用于处理密集事件，延迟时间内同时触发的函数调用。
--   最终只在最后一次调用延迟后，执行一次。
+*   用于处理密集事件，延迟时间内同时触发的函数调用。
+*   最终只在最后一次调用延迟后，执行一次。
 
 ### Parameters
 
--   `fn` **[Function][2]** 要延迟触发的函数
--   `duration` **[Number][3]** 延迟时间(ms)
--   `bind` **[Object][4]?** 函数的this指向
+*   `fn` **[Function][2]** 要延迟触发的函数
+*   `duration` **[Number][3]** 延迟时间(ms)
+*   `bind` **[Object][4]?** 函数的this指向
 
 ### Examples
 
@@ -56,13 +56,13 @@ Returns **[Function][2]** 经过包装的延迟触发函数
 
 包装为触发一次后，预置时间内不能再次触发的函数
 
--   类似于技能冷却。
+*   类似于技能冷却。
 
 ### Parameters
 
--   `fn` **[Function][2]** 要延迟触发的函数
--   `delay` **[Number][3]** 延迟时间(ms)
--   `bind` **[Object][4]?** 函数的 this 指向
+*   `fn` **[Function][2]** 要延迟触发的函数
+*   `delay` **[Number][3]** 延迟时间(ms)
+*   `bind` **[Object][4]?** 函数的 this 指向
 
 ### Examples
 
@@ -81,12 +81,12 @@ Returns **[Function][2]** 经过包装的冷却触发函数
 
 包装为仅触发一次的函数
 
--   被包装的函数智能执行一次，之后不会再执行
+*   被包装的函数智能执行一次，之后不会再执行
 
 ### Parameters
 
--   `fn` **[Function][2]** 要延迟触发的函数
--   `bind` **[Object][4]?** 函数的 this 指向
+*   `fn` **[Function][2]** 要延迟触发的函数
+*   `bind` **[Object][4]?** 函数的 this 指向
 
 ### Examples
 
@@ -104,13 +104,13 @@ Returns **[Function][2]** 该函数仅能触发执行一次
 
 包装为一个队列，按设置的时间间隔触发任务函数
 
--   插入队列的所有函数都会执行，但每次执行之间都会有一个固定的时间间隔。
+*   插入队列的所有函数都会执行，但每次执行之间都会有一个固定的时间间隔。
 
 ### Parameters
 
--   `fn` **[Function][2]** 要延迟触发的函数
--   `delay` **[Number][3]** 延迟时间(ms)
--   `bind` **[Object][4]?** 函数的 this 指向
+*   `fn` **[Function][2]** 要延迟触发的函数
+*   `delay` **[Number][3]** 延迟时间(ms)
+*   `bind` **[Object][4]?** 函数的 this 指向
 
 ### Examples
 
@@ -131,10 +131,10 @@ Returns **[Function][2]** 经过包装的队列触发函数
 
 包装为一个条件触发管理器
 
--   调用管理器的 ready 函数来激活条件。
--   之前插入管理器的函数按队列顺序执行。
--   之后插入管理器的函数立即执行。
--   作用机制类似 jQuery.ready, 可以设置任何条件。
+*   调用管理器的 ready 函数来激活条件。
+*   之前插入管理器的函数按队列顺序执行。
+*   之后插入管理器的函数立即执行。
+*   作用机制类似 jQuery.ready, 可以设置任何条件。
 
 ### Examples
 
@@ -179,13 +179,13 @@ Returns **[Function][2]** 条件触发管理器函数，传入一个 function �
 
 包装为规律触发的函数，用于降低密集事件的处理频率
 
--   在疯狂操作期间，按照规律时间间隔，来调用任务函数
+*   在疯狂操作期间，按照规律时间间隔，来调用任务函数
 
 ### Parameters
 
--   `fn` **[Function][2]** 要延迟触发的函数
--   `delay` **[Number][3]** 延迟时间(ms)
--   `bind` **[Object][4]?** 函数的 this 指向
+*   `fn` **[Function][2]** 要延迟触发的函数
+*   `delay` **[Number][3]** 延迟时间(ms)
+*   `bind` **[Object][4]?** 函数的 this 指向
 
 ### Examples
 

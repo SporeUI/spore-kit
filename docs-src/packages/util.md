@@ -2,7 +2,7 @@
 
 ## spore-kit-util
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/util][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/util][1]
 
 # 其他工具函数
 
@@ -27,7 +27,7 @@ ArrayBuffer转16进制字符串
 
 ### Parameters
 
--   `buffer` **[ArrayBuffer][2]** 需要转换的 ArrayBuffer
+*   `buffer` **[ArrayBuffer][2]** 需要转换的 ArrayBuffer
 
 ### Examples
 
@@ -47,7 +47,7 @@ ASCII字符串转16进制字符串
 
 ### Parameters
 
--   `str` **[String][3]** 需要转换的ASCII字符串
+*   `str` **[String][3]** 需要转换的ASCII字符串
 
 ### Examples
 
@@ -60,13 +60,13 @@ Returns **[String][3]** 16进制字符串
 
 ## hexToAb
 
--   **See: [https://caniuse.com/#search=ArrayBuffer][4]**
+*   **See**: [https://caniuse.com/#search=ArrayBuffer][4]
 
 16进制字符串转ArrayBuffer
 
 ### Parameters
 
--   `str` **[String][3]** 需要转换的16进制字符串
+*   `str` **[String][3]** 需要转换的16进制字符串
 
 ### Examples
 
@@ -88,7 +88,7 @@ Returns **[ArrayBuffer][2]** 被转换后的 ArrayBuffer 对象
 
 ### Parameters
 
--   `str` **[String][3]** 需要转换的16进制字符串
+*   `str` **[String][3]** 需要转换的16进制字符串
 
 ### Examples
 
@@ -103,15 +103,15 @@ Returns **[String][3]** ASCII字符串
 
 HSL颜色值转换为RGB
 
--   换算公式改编自 [http://en.wikipedia.org/wiki/HSL_color_space][5].
--   h, s, 和 l 设定在 [0, 1] 之间
--   返回的 r, g, 和 b 在 [0, 255]之间
+*   换算公式改编自 [http://en.wikipedia.org/wiki/HSL_color_space][5].
+*   h, s, 和 l 设定在 \[0, 1] 之间
+*   返回的 r, g, 和 b 在 \[0, 255]之间
 
 ### Parameters
 
--   `h` **[Number][6]** 色相
--   `s` **[Number][6]** 饱和度
--   `l` **[Number][6]** 亮度
+*   `h` **[Number][6]** 色相
+*   `s` **[Number][6]** 饱和度
+*   `l` **[Number][6]** 亮度
 
 ### Examples
 
@@ -127,12 +127,12 @@ Returns **[Array][7]** RGB色值数值
 
 任务分时执行
 
--   一方面避免单次reflow流程执行太多js任务导致浏览器卡死
--   另一方面单个任务的报错不会影响后续任务的执行
+*   一方面避免单次reflow流程执行太多js任务导致浏览器卡死
+*   另一方面单个任务的报错不会影响后续任务的执行
 
 ### Parameters
 
--   `fn` **[Function][8]** 任务函数
+*   `fn` **[Function][8]** 任务函数
 
 ### Examples
 
@@ -153,10 +153,10 @@ Returns **[Object][9]** 任务队列对象
 
 ### Parameters
 
--   `lat1` **[Number][6]** 坐标1精度
--   `lng1` **[Number][6]** 坐标1纬度
--   `lat2` **[Number][6]** 坐标2精度
--   `lng2` **[Number][6]** 坐标2纬度
+*   `lat1` **[Number][6]** 坐标1精度
+*   `lng1` **[Number][6]** 坐标1纬度
+*   `lat2` **[Number][6]** 坐标2精度
+*   `lng2` **[Number][6]** 坐标2纬度
 
 ### Examples
 
@@ -171,15 +171,15 @@ Returns **[Number][6]** 2个坐标之间的距离（千米）
 
 RGB 颜色值转换为 HSL.
 
--   转换公式参考自 [http://en.wikipedia.org/wiki/HSL_color_space][5].
--   r, g, 和 b 需要在 [0, 255] 范围内
--   返回的 h, s, 和 l 在 [0, 1] 之间
+*   转换公式参考自 [http://en.wikipedia.org/wiki/HSL_color_space][5].
+*   r, g, 和 b 需要在 \[0, 255] 范围内
+*   返回的 h, s, 和 l 在 \[0, 1] 之间
 
 ### Parameters
 
--   `r` **[Number][6]** 红色色值
--   `g` **[Number][6]** 绿色色值
--   `b` **[Number][6]** 蓝色色值
+*   `r` **[Number][6]** 红色色值
+*   `g` **[Number][6]** 绿色色值
+*   `b` **[Number][6]** 蓝色色值
 
 ### Examples
 

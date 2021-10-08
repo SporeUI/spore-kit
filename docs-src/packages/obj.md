@@ -2,7 +2,7 @@
 
 ## spore-kit-obj
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/obj][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/obj][1]
 
 # 对象处理与判断
 
@@ -27,8 +27,8 @@ var $type = require('spore-kit-obj/type');
 
 ### Parameters
 
--   `obj` **[Object][2]** 要扩展的对象
--   `item` **[Object][2]** 要扩展的属性键值对
+*   `obj` **[Object][2]** 要扩展的对象
+*   `item` **[Object][2]** 要扩展的属性键值对
 
 ### Examples
 
@@ -46,8 +46,8 @@ Returns **[Object][2]** 扩展后的源对象
 
 ### Parameters
 
--   `object` **[Object][2]** 要覆盖的对象
--   `item` **[Object][2]** 要覆盖的属性键值对
+*   `object` **[Object][2]** 要覆盖的对象
+*   `item` **[Object][2]** 要覆盖的属性键值对
 
 ### Examples
 
@@ -64,8 +64,8 @@ Returns **[Object][2]** 覆盖后的源对象
 
 ### Parameters
 
--   `object` **[Object][2]** 要查找的对象
--   `path` **[String][3]** 要查找的路径
+*   `object` **[Object][2]** 要查找的对象
+*   `path` **[String][3]** 要查找的路径
 
 ### Examples
 
@@ -83,7 +83,7 @@ Returns **any** 对象路径上的值
 
 ### Parameters
 
--   `item` **any** 任何类型数据
+*   `item` **any** 任何类型数据
 
 ### Examples
 

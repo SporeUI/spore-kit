@@ -2,7 +2,7 @@
 
 ## spore-kit-env
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/env][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/env][1]
 
 # 环境检测与判断工具
 
@@ -27,16 +27,16 @@ var $touchable = require('spore-kit-env/touchable');
 
 支持的类型检测
 
--   qq
--   uc
--   baidu
--   miui
--   weixin
--   qzone
--   qqnews
--   qqhouse
--   qqbrowser
--   chrome
+*   qq
+*   uc
+*   baidu
+*   miui
+*   weixin
+*   qzone
+*   qqnews
+*   qqhouse
+*   qqbrowser
+*   chrome
 
 ### Examples
 
@@ -52,10 +52,10 @@ Returns **[Object][2]** UA 检查结果
 
 支持的类型检测
 
--   trident
--   presto
--   webkit
--   gecko
+*   trident
+*   presto
+*   webkit
+*   gecko
 
 ### Examples
 
@@ -71,12 +71,12 @@ Returns **[Object][2]** UA 检查结果
 
 支持的类型检测
 
--   huawei
--   oppo
--   vivo
--   xiaomi
--   samsong
--   iphone
+*   huawei
+*   oppo
+*   vivo
+*   xiaomi
+*   samsong
+*   iphone
 
 ### Examples
 
@@ -120,8 +120,8 @@ Returns **[Boolean][3]** 是否联网
 
 支持的类型检测
 
--   ios
--   android
+*   ios
+*   android
 
 ### Examples
 
@@ -151,9 +151,9 @@ UA字符串匹配列表
 
 ### Parameters
 
--   `list` **[Object][2]** 检测 Hash 列表
--   `ua` **[String][4]** 用于检测的 UA 字符串
--   `conf` **[Object][2]** 检测器选项，传递给检测函数
+*   `list` **[Object][2]** 检测 Hash 列表
+*   `ua` **[String][4]** 用于检测的 UA 字符串
+*   `conf` **[Object][2]** 检测器选项，传递给检测函数
 
 ### Examples
 

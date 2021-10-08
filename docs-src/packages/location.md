@@ -2,7 +2,7 @@
 
 ## spore-kit-location
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/location][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/location][1]
 
 # 处理地址字符串
 
@@ -25,12 +25,12 @@ var $getQuery = require('spore-kit-location/getQuery');
 
 解析 location.search 为一个JSON对象
 
--   或者获取其中某个参数
+*   或者获取其中某个参数
 
 ### Parameters
 
--   `url` **[String][2]** URL字符串
--   `name` **[String][2]** 参数名称
+*   `url` **[String][2]** URL字符串
+*   `name` **[String][2]** 参数名称
 
 ### Examples
 
@@ -42,7 +42,7 @@ console.info( getQuery(url, 'beijing') );
 // 'huanyingni'
 ```
 
-Returns **([Object][3] \| [String][2])** query对象 | 参数值
+Returns **([Object][3] | [String][2])** query对象 | 参数值
 
 ## setQuery
 
@@ -50,8 +50,8 @@ Returns **([Object][3] \| [String][2])** query对象 | 参数值
 
 ### Parameters
 
--   `url` **[String][2]** URL字符串
--   `query` **[Object][3]** 参数对象
+*   `url` **[String][2]** URL字符串
+*   `query` **[Object][3]** 参数对象
 
 ### Examples
 
@@ -72,13 +72,13 @@ Returns **[String][2]** 拼接好参数的URL字符串
 
 ## parse
 
--   **See: [https://github.com/unshiftio/url-parse][4]**
+*   **See**: [https://github.com/unshiftio/url-parse][4]
 
 解析URL为一个对象
 
 ### Parameters
 
--   `str` **[String][2]** URL字符串
+*   `str` **[String][2]** URL字符串
 
 ### Examples
 

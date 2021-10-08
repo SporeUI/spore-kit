@@ -2,7 +2,7 @@
 
 ## spore-kit-time
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/time][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/time][1]
 
 # 时间处理与交互工具
 
@@ -27,12 +27,13 @@ var $parseUnit = require('spore-kit-time/parseUnit');
 
 ### Parameters
 
--   `spec` **[Object][2]** 选项
-    -   `spec.base` **[Date][3]?** 矫正时间，如果需要用服务端时间矫正倒计时，使用此参数
-    -   `spec.target` **[Date][3]** 目标时间 (optional, default `Date.now()+3000`)
-    -   `spec.interval` **[Number][4]** 倒计时触发间隔 (optional, default `1000`)
-    -   `spec.onChange` **[Function][5]?** 倒计时触发变更的事件回调
-    -   `spec.onStop` **[Function][5]?** 倒计时结束的回调
+*   `spec` **[Object][2]** 选项
+
+    *   `spec.base` **[Date][3]?** 矫正时间，如果需要用服务端时间矫正倒计时，使用此参数
+    *   `spec.target` **[Date][3]** 目标时间 (optional, default `Date.now()+3000`)
+    *   `spec.interval` **[Number][4]** 倒计时触发间隔 (optional, default `1000`)
+    *   `spec.onChange` **[Function][5]?** 倒计时触发变更的事件回调
+    *   `spec.onStop` **[Function][5]?** 倒计时结束的回调
 
 ### Examples
 
@@ -119,9 +120,10 @@ cd.destroy();
 
 ### Parameters
 
--   `time` **[Number][4]** 毫秒数
--   `spec` **[Object][2]** 选项
-    -   `spec.maxUnit` **[String][6]** 拆分时间的最大单位，可选 ['day', 'hour', 'minute', 'second'] (optional, default `'day'`)
+*   `time` **[Number][4]** 毫秒数
+*   `spec` **[Object][2]** 选项
+
+    *   `spec.maxUnit` **[String][6]** 拆分时间的最大单位，可选 \['day', 'hour', 'minute', 'second'] (optional, default `'day'`)
 
 ### Examples
 

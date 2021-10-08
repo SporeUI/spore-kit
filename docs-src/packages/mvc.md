@@ -2,7 +2,7 @@
 
 ## spore-kit-mvc
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/mvc][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/mvc][1]
 
 # 兼容 IE8 的 MVC 简单实现
 
@@ -23,38 +23,38 @@ var $Model = require('spore-kit-mvc/Model');
 
 ## klass
 
--   **See: [https://github.com/ded/klass][2]**
+*   **See**: [https://github.com/ded/klass][2]
 
 class 的 ES5 实现
 
--   为代码通过 eslint 检查做了些修改
+*   为代码通过 eslint 检查做了些修改
 
 ## delegate
 
 事件对象绑定，将events中包含的键值对映射为代理的事件。
 
--   事件键值对格式可以为：
--   {'selector event':'method'}
--   {'event':'method'}
--   {'selector event':'method1 method2'}
--   {'event':'method1 method2'}
+*   事件键值对格式可以为：
+*   {'selector event':'method'}
+*   {'event':'method'}
+*   {'selector event':'method1 method2'}
+*   {'event':'method1 method2'}
 
 ### Parameters
 
--   `action` **[Boolean][3]** 开/关代理，可选：['on', 'off']。
--   `root` **[Object][4]** 设置代理的根节点，可以是一个jquery对象，或者是混合了 spore-kit-evt/events 方法的对象。
--   `events` **[Object][4]** 事件键值对
--   `bind` **[Object][4]** 指定事件函数绑定的对象，必须为MVC类的实例。
+*   `action` **[Boolean][3]** 开/关代理，可选：\['on', 'off']。
+*   `root` **[Object][4]** 设置代理的根节点，可以是一个jquery对象，或者是混合了 spore-kit-evt/events 方法的对象。
+*   `events` **[Object][4]** 事件键值对
+*   `bind` **[Object][4]** 指定事件函数绑定的对象，必须为MVC类的实例。
 
 ## Base
 
 基础工厂元件类
 
--   该类混合了 spore-kit-evt/events 的方法。
+*   该类混合了 spore-kit-evt/events 的方法。
 
 ### Parameters
 
--   `options` **[Object][4]?** 选项
+*   `options` **[Object][4]?** 选项
 
 ### Examples
 
@@ -111,7 +111,7 @@ Type: [Object][4]
 
 #### Parameters
 
--   `options` **[Object][4]?** 选项
+*   `options` **[Object][4]?** 选项
 
 ### Base#build
 
@@ -123,7 +123,7 @@ Type: [Object][4]
 
 #### Parameters
 
--   `action` **[String][5]** 绑定或者移除事件的标记，可选值有：['on', 'off'] (optional, default `'on'`)
+*   `action` **[String][5]** 绑定或者移除事件的标记，可选值有：\['on', 'off'] (optional, default `'on'`)
 
 ### Base#proxy
 
@@ -134,7 +134,7 @@ Type: [Object][4]
 
 #### Parameters
 
--   `name` **[string][5]** 函数名称 (optional, default `'proxy'`)
+*   `name` **[string][5]** 函数名称 (optional, default `'proxy'`)
 
 ### Base#destroy
 
@@ -144,11 +144,11 @@ Type: [Object][4]
 
 模型类: 基础工厂元件类，用于做数据包装，提供可观察的数据对象
 
--   继承自 spore-kit-mvc/base
+*   继承自 spore-kit-mvc/base
 
 ### Parameters
 
--   `options` **[Object][4]?** 初始数据
+*   `options` **[Object][4]?** 初始数据
 
 ### Examples
 
@@ -193,7 +193,7 @@ console.info(m2.get('b'));	// 5
 
 模型的默认数据
 
--   绑定在原型上，不要在实例中直接修改这个对象。
+*   绑定在原型上，不要在实例中直接修改这个对象。
 
 Type: [Object][4]
 
@@ -201,12 +201,12 @@ Type: [Object][4]
 
 模型的事件绑定列表。
 
--   绑定在原型上，不要在实例中直接修改这个对象。
--   尽量在 events 对象定义属性关联事件。
--   事件应当仅用于自身属性的关联运算。
--   事件绑定格式可以为：
--   {'event':'method'}
--   {'event':'method1 method2'}
+*   绑定在原型上，不要在实例中直接修改这个对象。
+*   尽量在 events 对象定义属性关联事件。
+*   事件应当仅用于自身属性的关联运算。
+*   事件绑定格式可以为：
+*   {'event':'method'}
+*   {'event':'method1 method2'}
 
 Type: [Object][4]
 
@@ -214,7 +214,7 @@ Type: [Object][4]
 
 模型数据的预处理器。
 
--   绑定在原型上，不要在实例中直接修改这个对象。
+*   绑定在原型上，不要在实例中直接修改这个对象。
 
 Type: [Object][4]
 
@@ -239,7 +239,7 @@ processors : {
 
 #### Parameters
 
--   `options` **[Object][4]?** 选项
+*   `options` **[Object][4]?** 选项
 
 ### Model#delegate
 
@@ -247,7 +247,7 @@ processors : {
 
 #### Parameters
 
--   `action` **[String][5]** 绑定动作标记。可选：['on', 'off'] (optional, default `'on'`)
+*   `action` **[String][5]** 绑定动作标记。可选：\['on', 'off'] (optional, default `'on'`)
 
 ### Model#process
 
@@ -255,8 +255,8 @@ processors : {
 
 #### Parameters
 
--   `key` **[String][5]** 模型属性名称。或者JSON数据。
--   `val` **any?** 数据
+*   `key` **[String][5]** 模型属性名称。或者JSON数据。
+*   `val` **any?** 数据
 
 ### Model#set
 
@@ -264,19 +264,19 @@ processors : {
 
 #### Parameters
 
--   `key` **([String][5] \| [Object][4])** 模型属性名称。或者JSON数据。
--   `val` **any?** 数据
+*   `key` **([String][5] | [Object][4])** 模型属性名称。或者JSON数据。
+*   `val` **any?** 数据
 
 ### Model#get
 
 获取模型对应属性的值的拷贝
 
--   如果不传参数，则直接获取整个模型数据。
--   如果值是一个对象，则该对象会被深拷贝。
+*   如果不传参数，则直接获取整个模型数据。
+*   如果值是一个对象，则该对象会被深拷贝。
 
 #### Parameters
 
--   `key` **[String][5]?** 模型属性名称。
+*   `key` **[String][5]?** 模型属性名称。
 
 Returns **any** 属性名称对应的值
 
@@ -292,7 +292,7 @@ Returns **[Array][6]** 属性名称列表
 
 #### Parameters
 
--   `key` **[String][5]** 属性名称。
+*   `key` **[String][5]** 属性名称。
 
 ### Model#clear
 
@@ -302,22 +302,23 @@ Returns **[Array][6]** 属性名称列表
 
 销毁模型，不会触发任何change事件。
 
--   模型销毁后，无法再设置任何数据。
+*   模型销毁后，无法再设置任何数据。
 
 ## View
 
 视图类: 基础工厂元件类，用于对视图组件的包装
 
--   依赖 jQuery/Zepto
--   继承自 spore-kit-mvc/base
+*   依赖 jQuery/Zepto
+*   继承自 spore-kit-mvc/base
 
 ### Parameters
 
--   `options` **[Object][4]?** 选项
-    -   `options.node` **([String][5] \| [Object][4])?** 选择器字符串，或者DOM元素，或者jquery对象，用于指定视图的根节点。
-    -   `options.template` **[String][5]?** 视图的模板字符串，也可以是个字符串数组，创建视图DOM时会自动join为字符串处理。
-    -   `options.events` **[Object][4]?** 用于覆盖代理事件列表。
-    -   `options.role` **[Object][4]?** 角色对象映射表，可指定role方法返回的jquery对象。
+*   `options` **[Object][4]?** 选项
+
+    *   `options.node` **([String][5] | [Object][4])?** 选择器字符串，或者DOM元素，或者jquery对象，用于指定视图的根节点。
+    *   `options.template` **[String][5]?** 视图的模板字符串，也可以是个字符串数组，创建视图DOM时会自动join为字符串处理。
+    *   `options.events` **[Object][4]?** 用于覆盖代理事件列表。
+    *   `options.role` **[Object][4]?** 角色对象映射表，可指定role方法返回的jquery对象。
 
 ### Examples
 
@@ -370,9 +371,9 @@ Type: [Object][4]
 
 视图的代理事件绑定列表，绑定在原型上，不要在实例中直接修改这个对象。
 
--   事件绑定格式可以为：
--   {'selector event':'method'}
--   {'selector event':'method1 method2'}
+*   事件绑定格式可以为：
+*   {'selector event':'method'}
+*   {'selector event':'method1 method2'}
 
 Type: [Object][4]
 
@@ -382,30 +383,30 @@ Type: [Object][4]
 
 #### Parameters
 
--   `options` **[Object][4]?** 选项
+*   `options` **[Object][4]?** 选项
 
 ### View#delegate
 
--   **See: spore-kit-mvc/delegate**
+*   **See**: spore-kit-mvc/delegate
 
 绑定 events 对象列举的事件。
 
--   在初始化时自动执行了 this.delegate('on')。
+*   在初始化时自动执行了 this.delegate('on')。
 
 #### Parameters
 
--   `action` **[String][5]** 绑定动作标记。可选：['on', 'off'] (optional, default `'on'`)
+*   `action` **[String][5]** 绑定动作标记。可选：\['on', 'off'] (optional, default `'on'`)
 
 ### View#role
 
 获取 / 设置角色对象指定的 jQuery 对象。
 
--   注意：获取到角色元素后，该 jQuery 对象会缓存在视图对象中
+*   注意：获取到角色元素后，该 jQuery 对象会缓存在视图对象中
 
 #### Parameters
 
--   `name` **[String][5]** 角色对象名称
--   `element` **[Object][4]?** 角色对象指定的dom元素或者 jQuery 对象。
+*   `name` **[String][5]** 角色对象名称
+*   `element` **[Object][4]?** 角色对象指定的dom元素或者 jQuery 对象。
 
 Returns **[Object][4]** 角色名对应的 jQuery 对象。
 

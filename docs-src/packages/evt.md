@@ -2,7 +2,7 @@
 
 ## spore-kit-evt
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/evt][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/evt][1]
 
 # 处理事件与广播
 
@@ -23,18 +23,18 @@ var $occurInside = require('spore-kit-evt/occurInside');
 
 ## Events
 
--   **See: [http://aralejs.org/][2]**
--   **See: [https://github.com/documentcloud/backbone/blob/master/backbone.js][3]**
--   **See: [https://github.com/joyent/node/blob/master/lib/events.js][4]**
+*   **See**: [http://aralejs.org/][2]
+*   **See**: [https://github.com/documentcloud/backbone/blob/master/backbone.js][3]
+*   **See**: [https://github.com/joyent/node/blob/master/lib/events.js][4]
 
-A module that can be mixed in to _any object_ in order to provide it
+A module that can be mixed in to *any object* in order to provide it
 with custom events. You may bind with `on` or remove with `off` callback
 functions to an event; `trigger`-ing an event fires all callbacks in
 succession.
 
--   一个可以被混合到任何对象的模块，用于提供自定义事件。
--   可以用 on, off 方法来绑定移除事件。
--   用 trigger 来触发事件通知。
+*   一个可以被混合到任何对象的模块，用于提供自定义事件。
+*   可以用 on, off 方法来绑定移除事件。
+*   用 trigger 来触发事件通知。
 
 ### Examples
 
@@ -50,14 +50,14 @@ var Events = $kit.evt.Events;
 Bind one or more space separated events, `events`, to a `callback`
 function. Passing `"all"` will bind the callback to all events fired.
 
--   绑定一个事件回调函数，或者用多个空格分隔来绑定多个事件回调函数。
--   传入参数 `'all'` 会在所有事件发生时被触发。
+*   绑定一个事件回调函数，或者用多个空格分隔来绑定多个事件回调函数。
+*   传入参数 `'all'` 会在所有事件发生时被触发。
 
 #### Parameters
 
--   `events` **[String][5]** 事件名称
--   `callback` **[Function][6]** 事件回调函数
--   `context` **[Object][7]?** 回调函数的执行环境对象
+*   `events` **[String][5]** 事件名称
+*   `callback` **[Function][6]** 事件回调函数
+*   `context` **[Object][7]?** 回调函数的执行环境对象
 
 #### Examples
 
@@ -80,15 +80,15 @@ Remove one or many callbacks. If `context` is null, removes all callbacks
 with that function. If `callback` is null, removes all callbacks for the
 event. If `events` is null, removes all bound callbacks for all events.
 
--   移除一个或者多个事件回调函数。
--   如果不传递 callback 参数，会移除所有该时间名称的事件回调函数。
--   如果不指定事件名称，移除所有自定义事件回调函数。
+*   移除一个或者多个事件回调函数。
+*   如果不传递 callback 参数，会移除所有该时间名称的事件回调函数。
+*   如果不指定事件名称，移除所有自定义事件回调函数。
 
 #### Parameters
 
--   `events` **[String][5]?** 事件名称
--   `callback` **[Function][6]?** 要移除的事件回调函数
--   `context` **[Object][7]?** 要移除的回调函数的执行环境对象
+*   `events` **[String][5]?** 事件名称
+*   `callback` **[Function][6]?** 要移除的事件回调函数
+*   `context` **[Object][7]?** 要移除的回调函数的执行环境对象
 
 #### Examples
 
@@ -114,13 +114,13 @@ passed the same arguments as `trigger` is, apart from the event name
 (unless you're listening on `"all"`, which will cause your callback to
 receive the true name of the event as the first argument).
 
--   派发一个或者多个事件，会触发对应事件名称绑定的所有事件函数。
--   第一个参数是事件名称，剩下其他参数将作为事件回调的参数。
+*   派发一个或者多个事件，会触发对应事件名称绑定的所有事件函数。
+*   第一个参数是事件名称，剩下其他参数将作为事件回调的参数。
 
 #### Parameters
 
--   `events` **[string][5]** 事件名称
--   `arg` **...any?** 事件参数
+*   `events` **[string][5]** 事件名称
+*   `arg` **...any?** 事件参数
 
 #### Examples
 
@@ -144,11 +144,11 @@ evt.trigger('event-x', 1, 2);
 
 Mix `Events` to object instance or Class function.
 
--   将自定事件对象，混合到一个类的实例。
+*   将自定事件对象，混合到一个类的实例。
 
 #### Parameters
 
--   `receiver` **[Object][7]** 要混合事件函数的对象
+*   `receiver` **[Object][7]** 要混合事件函数的对象
 
 #### Examples
 
@@ -166,13 +166,13 @@ o1.on('event', function () {});
 
 ## Listener
 
--   **See: spore-kit-evt/events**
+*   **See**: spore-kit-evt/events
 
 广播组件
 
--   构造实例时，需要传入事件白名单列表。
--   只有在白名单列表上的事件才可以被触发。
--   事件添加，移除，激发的调用方法参考 Events。
+*   构造实例时，需要传入事件白名单列表。
+*   只有在白名单列表上的事件才可以被触发。
+*   事件添加，移除，激发的调用方法参考 Events。
 
 ### Examples
 
@@ -203,7 +203,7 @@ channelGlobal.trigger('event2');
 
 #### Parameters
 
--   `eventName` **[String][5]** 
+*   `eventName` **[String][5]** 
 
 ### Listener.prototype.undefine
 
@@ -211,51 +211,51 @@ channelGlobal.trigger('event2');
 
 #### Parameters
 
--   `eventName` **[String][5]** 
+*   `eventName` **[String][5]** 
 
 ### Listener.prototype.on
 
--   **See: <a href="#events-prototype-on">events.prototype.on</a>**
+*   **See**: <a href="#events-prototype-on">events.prototype.on</a>
 
 广播组件绑定事件
 
 #### Parameters
 
--   `eventName` **[String][5]** 要绑定的事件名称
--   `fn` **[Function][6]** 要绑定的事件回调函数
+*   `eventName` **[String][5]** 要绑定的事件名称
+*   `fn` **[Function][6]** 要绑定的事件回调函数
 
 ### Listener.prototype.off
 
--   **See: <a href="#events-prototype-off">events.prototype.off</a>**
+*   **See**: <a href="#events-prototype-off">events.prototype.off</a>
 
 广播组件移除事件
 
 #### Parameters
 
--   `eventName` **[String][5]** 要移除绑定的事件名称
--   `fn` **[Function][6]** 要移除绑定的事件回调函数
+*   `eventName` **[String][5]** 要移除绑定的事件名称
+*   `fn` **[Function][6]** 要移除绑定的事件回调函数
 
 ### Listener.prototype.trigger
 
--   **See: <a href="#events-prototype-trigger">events.prototype.trigger</a>**
+*   **See**: <a href="#events-prototype-trigger">events.prototype.trigger</a>
 
 广播组件派发事件
 
 #### Parameters
 
--   `eventName` **[String][5]** 要触发的事件名称
--   `arg` **...any?** 事件参数
+*   `eventName` **[String][5]** 要触发的事件名称
+*   `arg` **...any?** 事件参数
 
 ## occurInside
 
 判断事件是否发生在一个 Dom 元素内。
 
--   常用于判断点击事件发生在浮层外时关闭浮层。
+*   常用于判断点击事件发生在浮层外时关闭浮层。
 
 ### Parameters
 
--   `event` **[Object][7]** 浏览器事件对象
--   `node` **[Object][7]** 用于比较事件发生区域的 Dom 对象
+*   `event` **[Object][7]** 浏览器事件对象
+*   `node` **[Object][7]** 用于比较事件发生区域的 Dom 对象
 
 ### Examples
 
@@ -273,13 +273,14 @@ Returns **[Boolean][8]** 事件是否发生在 node 内
 
 用遮罩的方式阻止 tap 事件穿透引发表单元素获取焦点。
 
--   推荐用 fastclick 来解决触屏事件穿透问题。
--   此组件用在 fastclick 未能解决问题时。或者不方便使用 fastclick 时。
+*   推荐用 fastclick 来解决触屏事件穿透问题。
+*   此组件用在 fastclick 未能解决问题时。或者不方便使用 fastclick 时。
 
 ### Parameters
 
--   `options` **[Object][7]** 点击选项
-    -   `options.delay` **[Number][9]** 临时浮层在这个延迟时间(ms)之后关闭
+*   `options` **[Object][7]** 点击选项
+
+    *   `options.delay` **[Number][9]** 临时浮层在这个延迟时间(ms)之后关闭
 
 ### Examples
 

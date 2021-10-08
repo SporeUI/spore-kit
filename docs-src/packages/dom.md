@@ -2,7 +2,7 @@
 
 ## spore-kit-dom
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/dom][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/dom][1]
 
 # DOM 操作相关工具函数
 
@@ -27,19 +27,19 @@ var $isNode = require('spore-kit-dom/isNode');
 
 ### Parameters
 
--   `node` **[Object][2]** 要判断的对象
+*   `node` **[Object][2]** 要判断的对象
 
 Returns **[Boolean][3]** 是否为dom元素
 
 ## offset
 
--   **See: [https://github.com/timoxley/offset][4]**
+*   **See**: [https://github.com/timoxley/offset][4]
 
 获取 DOM 元素相对于 document 的边距
 
 ### Parameters
 
--   `node` **[Object][2]** 要计算 offset 的 dom 对象
+*   `node` **[Object][2]** 要计算 offset 的 dom 对象
 
 ### Examples
 

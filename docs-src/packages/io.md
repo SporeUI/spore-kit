@@ -2,7 +2,7 @@
 
 ## spore-kit-io
 
--   **See: [https://github.com/SporeUI/spore-kit/tree/master/packages/io][1]**
+*   **See**: [https://github.com/SporeUI/spore-kit/tree/master/packages/io][1]
 
 # 处理网络交互
 
@@ -23,7 +23,7 @@ var $getScript = require('spore-kit-io/getScript');
 
 ## ajax
 
--   **See: [https://github.com/ForbesLindesay/ajax][2]**
+*   **See**: [https://github.com/ForbesLindesay/ajax][2]
 
 ajax 请求方法，使用方式与 jQuery, Zepto 类似，对 jQuery, Zepto 无依赖
 
@@ -43,27 +43,51 @@ ajax({
 });
 ```
 
+## getScript
+
+加载 script 文件
+
+### Parameters
+
+*   `options` **[Object][3]** 选项
+
+    *   `options.src` **[String][4]** script 地址
+    *   `options.charset` **[String][4]** script 编码 (optional, default `'utf-8'`)
+    *   `options.onLoad` **[Function][5]?** script 加载完成的回调函数
+
+### Examples
+
+```javascript
+getScript({
+	src: 'https://code.jquery.com/jquery-3.3.1.min.js',
+	onLoad: function () {
+		console.info(window.jQuery);
+	}
+});
+```
+
 ## iframePost
 
 封装 iframe post 模式
 
--   requires jQuery/Zepto
+*   requires jQuery/Zepto
 
 ### Parameters
 
--   `spec` **[Object][3]** 请求选项
-    -   `spec.form` **[Object][3]** 要请求的表单 (optional, default `null`)
-    -   `spec.url` **[String][4]** 请求地址
-    -   `spec.data` **([Array][5] \| [Object][3])** 请求数据
-    -   `spec.target` **[String][4]** 目标 iframe 名称 (optional, default `''`)
-    -   `spec.method` **[String][4]** 请求方式 (optional, default `'post'`)
-    -   `spec.acceptCharset` **[String][4]** 请求目标的编码 (optional, default `''`)
-    -   `spec.jsonp` **[String][4]** 传递给接口的回调参数名称 (optional, default `'callback'`)
-    -   `spec.jsonpMethod` **[String][4]** 传递给接口的回调参数的传递方式，可选['post', 'get'] (optional, default `''`)
-    -   `spec.jsonpCallback` **[String][4]** 传递给接口的回调函数名称，默认自动生成 (optional, default `''`)
-    -   `spec.jsonpAddParent` **[String][4]** 传递给接口的回调函数名称需要附带的前缀调用路径 (optional, default `''`)
-    -   `spec.complete` **[Function][6]?** 获得数据的回调函数
-    -   `spec.success` **[Function][6]?** 成功获得数据的回调函数
+*   `spec` **[Object][3]** 请求选项
+
+    *   `spec.form` **[Object][3]** 要请求的表单 (optional, default `null`)
+    *   `spec.url` **[String][4]** 请求地址
+    *   `spec.data` **([Array][6] | [Object][3])** 请求数据
+    *   `spec.target` **[String][4]** 目标 iframe 名称 (optional, default `''`)
+    *   `spec.method` **[String][4]** 请求方式 (optional, default `'post'`)
+    *   `spec.acceptCharset` **[String][4]** 请求目标的编码 (optional, default `''`)
+    *   `spec.jsonp` **[String][4]** 传递给接口的回调参数名称 (optional, default `'callback'`)
+    *   `spec.jsonpMethod` **[String][4]** 传递给接口的回调参数的传递方式，可选\['post', 'get'] (optional, default `''`)
+    *   `spec.jsonpCallback` **[String][4]** 传递给接口的回调函数名称，默认自动生成 (optional, default `''`)
+    *   `spec.jsonpAddParent` **[String][4]** 传递给接口的回调函数名称需要附带的前缀调用路径 (optional, default `''`)
+    *   `spec.complete` **[Function][5]?** 获得数据的回调函数
+    *   `spec.success` **[Function][5]?** 成功获得数据的回调函数
 
 ### Examples
 
@@ -81,41 +105,20 @@ iframePost({
 });
 ```
 
-## getScript
-
-加载 script 文件
-
-### Parameters
-
--   `options` **[Object][3]** 选项
-    -   `options.src` **[String][4]** script 地址
-    -   `options.charset` **[String][4]** script 编码 (optional, default `'utf-8'`)
-    -   `options.onLoad` **[Function][6]?** script 加载完成的回调函数
-
-### Examples
-
-```javascript
-getScript({
-	src: 'https://code.jquery.com/jquery-3.3.1.min.js',
-	onLoad: function () {
-		console.info(window.jQuery);
-	}
-});
-```
-
 ## loadSdk
 
-# sdk 加载统一封装
+sdk 加载统一封装
 
--   多次调用不会发起重复请求
+*   多次调用不会发起重复请求
 
 ### Parameters
 
--   `options` **[Object][3]** 选项
-    -   `options.name` **[String][4]** sdk 全局变量名称
-    -   `options.url` **[String][4]** script 地址
-    -   `options.charset` **[String][4]** script 编码 (optional, default `'utf-8'`)
-    -   `options.onLoad` **[Function][6]?** script 加载完成的回调函数
+*   `options` **[Object][3]** 选项
+
+    *   `options.name` **[String][4]** sdk 全局变量名称
+    *   `options.url` **[String][4]** script 地址
+    *   `options.charset` **[String][4]** script 编码 (optional, default `'utf-8'`)
+    *   `options.onLoad` **[Function][5]?** script 加载完成的回调函数
 
 ### Examples
 
@@ -134,6 +137,6 @@ loadSdk({
 
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
