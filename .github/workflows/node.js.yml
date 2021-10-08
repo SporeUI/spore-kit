@@ -6,7 +6,7 @@ name: GitHub Pages Actions
 on:
 	push:
 		branches:
-			- main
+			- master
 jobs:
 	build-and-deploy:
 		runs-on: ubuntu-latest
