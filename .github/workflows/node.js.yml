@@ -16,7 +16,7 @@ jobs:
       - name: node-version
         uses: actions/setup-node@main
         with:
-          node-version: '14'
+          node-version: '12'
       - name: npm-install
         run: npm install
       - name: lerna-bootstrap
