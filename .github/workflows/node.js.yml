@@ -20,7 +20,7 @@ jobs:
       - name: npm-install
         run: npm install
       - name: lerna-bootstrap
-        run: npm run bootstrap
+        run: npx lerna bootstrap --no-ci
       - name: test-coverage
         run: npm run cover
       - name: md-build
