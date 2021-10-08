@@ -10,7 +10,7 @@ let childrenFiles = packagesFiles.map(file => {
 
 module.exports = {
 	base: '/spore-kit/docs/',
-	dest: 'docs/docs',
+	dest: 'docs-dist/docs',
 	title: 'SPORE-KIT',
 	serviceWorker: false,
 	head: [
@@ -20,7 +20,7 @@ module.exports = {
 		}]
 	],
 	themeConfig: {
-		docsDir: 'docs-src',
+		docsDir: 'docs',
 		nav: [
 			{
 				text: '首页',

@@ -1,6 +1,7 @@
 *.lock
 package-lock.json
 ignore
+docs-dist
 
 # Logs
 logs

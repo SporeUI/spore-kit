@@ -9,8 +9,8 @@
     "cover": "gulp clean-cover && jest --coverage",
     "cover-package": "gulp clean-cover && jest --coverage num",
     "publish-packages": "lerna publish",
-    "vuepress-dev": "vuepress dev docs-src",
-    "vuepress-build": "vuepress build docs-src",
+    "vuepress-dev": "vuepress dev docs",
+    "vuepress-build": "vuepress build docs",
     "doc": "npm run doc-build && npm run vuepress-build",
     "doc-build": "sh ./task/doc-build.sh ./packages",
     "prepublishOnly": "npm test && gulp"
