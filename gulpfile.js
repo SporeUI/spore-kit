@@ -4,6 +4,8 @@ const $gulpRename = require('gulp-rename');
 const $gulpBrowserify = require('gulp-browserify');
 const $gulpUglify = require('gulp-uglify');
 
+$gulp.task('clean-cover', () => $del(['./docs-dist/coverage']));
+
 $gulp.task(
 	'build-js',
 	() => $gulp.src([
