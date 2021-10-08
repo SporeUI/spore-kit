@@ -23,10 +23,12 @@ jobs:
 				run: npm run cover
 			- name: md-build
 				run: npm run doc-build
-			- name: vuepress-deploy
-				uses: jenkey2011/vuepress-deploy@master
+			- name: vuepress-build
+				run: npm run vuepress-build
+			- name: github-pages-deploy
+				uses: crazy-max/ghaction-github-pages@v2
+				with:
+					target_branch: gh-pages
+					build_dir: docs-dist
 				env:
-					ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-					TARGET_BRANCH: gh-pages
-					BUILD_SCRIPT: npm run vuepress-build
-					BUILD_DIR: docs-dist
+					GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
