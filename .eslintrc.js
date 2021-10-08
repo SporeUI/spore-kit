@@ -35,7 +35,6 @@ module.exports = {
 		describe: true,
 		page: true,
 		browser: true,
-		jestPuppeteer: true,
 		console: true
 	},
 	// add your custom rules here
