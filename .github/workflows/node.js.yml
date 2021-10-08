@@ -19,6 +19,8 @@ jobs:
           node-version: '14'
       - name: npm-install
         run: npm install
+      - name: lerna-bootstrap
+        run: npm run bootstrap
       - name: test-coverage
         run: npm run cover
       - name: md-build

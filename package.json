@@ -4,6 +4,7 @@
   "description": "原子化工具函数库",
   "main": "index.js",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "test": "jest",
     "test-package": "jest num",
     "cover": "jest --coverage",
