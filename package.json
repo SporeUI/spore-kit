@@ -44,6 +44,7 @@
     "babel-eslint": "^10.0.3",
     "babel-preset-power-assert": "^3.0.0",
     "chai": "^4.2.0",
+    "cz-conventional-changelog": "^3.3.0",
     "del": "^5.1.0",
     "documentation": "^12.1.4",
     "eslint": "^7.6.0",
@@ -51,6 +52,7 @@
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-html": "^6.0.2",
     "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.5.2",
     "eslint-plugin-no-for-of-loops": "^1.0.1",
     "express": "^4.17.1",
     "gulp": "^4.0.2",
@@ -66,5 +68,10 @@
     "power-assert": "^1.6.1",
     "vuepress": "^1.5.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

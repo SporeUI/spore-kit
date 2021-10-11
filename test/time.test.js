@@ -1,5 +1,4 @@
 const $time = require('spore-kit-time');
-const assert = require('assert');
 
 console.log(
 	Object.keys($time).map(
@@ -9,6 +8,7 @@ console.log(
 
 describe('time.parseUnit', () => {
 	test('parseUnit(12345 * 67890).day => 9', () => {
-		assert($time.parseUnit(12345 * 67890).day === 9);
+		const udate = $time.parseUnit(12345 * 67890);
+		expect(udate.day).toBe(9);
 	});
 });

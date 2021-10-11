@@ -1,5 +1,4 @@
 const $location = require('spore-kit-location');
-const assert = require('assert');
 
 console.log(
 	Object.keys($location).map(
@@ -9,10 +8,10 @@ console.log(
 
 describe('location.getQuery', () => {
 	test('getQuery(url, param) => value', () => {
-		assert($location.getQuery(
+		expect($location.getQuery(
 			'http://localhost/profile?beijing=huanyingni',
 			'beijing'
-		) === 'huanyingni');
+		)).toBe('huanyingni');
 	});
 });
 
@@ -20,18 +19,18 @@ describe('location.parse', () => {
 	test('parse(url) => json', () => {
 		let testUrl = 'http://username:password@localhost:8080/profile?beijing=huanyingni#123';
 		let loc = $location.parse(testUrl);
-		assert(loc.slashes === true);
-		assert(loc.protocol === 'http:');
-		assert(loc.hash === '#123');
-		assert(loc.query === '?beijing=huanyingni');
-		assert(loc.pathname === '/profile');
-		assert(loc.auth === 'username:password');
-		assert(loc.host === 'localhost:8080');
-		assert(loc.port === '8080');
-		assert(loc.hostname === 'localhost');
-		assert(loc.password === 'password');
-		assert(loc.username === 'username');
-		assert(loc.origin === 'http://localhost:8080');
-		assert(loc.href === 'http://username:password@localhost:8080/profile?beijing=huanyingni#123');
+		expect(loc.slashes).toBe(true);
+		expect(loc.protocol).toBe('http:');
+		expect(loc.hash).toBe('#123');
+		expect(loc.query).toBe('?beijing=huanyingni');
+		expect(loc.pathname).toBe('/profile');
+		expect(loc.auth).toBe('username:password');
+		expect(loc.host).toBe('localhost:8080');
+		expect(loc.port).toBe('8080');
+		expect(loc.hostname).toBe('localhost');
+		expect(loc.password).toBe('password');
+		expect(loc.username).toBe('username');
+		expect(loc.origin).toBe('http://localhost:8080');
+		expect(loc.href).toBe('http://username:password@localhost:8080/profile?beijing=huanyingni#123');
 	});
 });
