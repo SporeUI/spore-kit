@@ -7,6 +7,7 @@
  * - 可以用 on, off 方法来绑定移除事件。
  * - 用 trigger 来触发事件通知。
  * @class Events
+ * @see 类似工具: Mitt
  * @see http://aralejs.org/
  * @see https://github.com/documentcloud/backbone/blob/master/backbone.js
  * @see https://github.com/joyent/node/blob/master/lib/events.js
