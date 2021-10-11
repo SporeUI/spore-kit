@@ -19,6 +19,17 @@ describe('app.callUp', () => {
 		$browser.mockReturnValue({
 			node: true
 		});
+
+		const appendChildSpy = jest.spyOn(
+			document.body,
+			'appendChild'
+		);
+
+		const removeChildSpy = jest.spyOn(
+			document.body,
+			'removeChild'
+		);
+
 		$app.callUp({
 			protocol: 'scheme://',
 			fallbackUrl,
@@ -26,6 +37,8 @@ describe('app.callUp', () => {
 				expect(url).toBe(fallbackUrl);
 				expect(onTimeoutCalled).toBe(true);
 				expect(onFallbackCalled).toBe(true);
+				expect(appendChildSpy).toHaveBeenCalled();
+				expect(removeChildSpy).toHaveBeenCalled();
 				done();
 			},
 			onTimeout() {
