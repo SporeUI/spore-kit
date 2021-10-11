@@ -42,8 +42,6 @@
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "babel-eslint": "^10.0.3",
-    "babel-preset-power-assert": "^3.0.0",
-    "chai": "^4.2.0",
     "cz-conventional-changelog": "^3.3.0",
     "del": "^5.1.0",
     "documentation": "^12.1.4",
@@ -54,7 +52,6 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^24.5.2",
     "eslint-plugin-no-for-of-loops": "^1.0.1",
-    "express": "^4.17.1",
     "gulp": "^4.0.2",
     "gulp-browserify": "^0.5.1",
     "gulp-rename": "^2.0.0",
@@ -64,8 +61,6 @@
     "jest": "^24.9.0",
     "lerna": "^3.19.0",
     "lint-staged": "^10.2.11",
-    "mocha": "^8.1.0",
-    "power-assert": "^1.6.1",
     "vuepress": "^1.5.2"
   },
   "dependencies": {},
