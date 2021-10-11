@@ -26,6 +26,15 @@ describe('str.dbcToSbc', () => {
 });
 
 describe('str.decodeHTML', () => {
+	test('参数必须为字符串', () => {
+		let isError = false;
+		try {
+			$str.decodeHTML(0);
+		} catch (err) {
+			isError = true;
+		}
+		expect(isError).toBe(true);
+	});
 	test('decodeHTML: base', () => {
 		const str = $str.decodeHTML('&amp;&lt;&gt;&quot;&#39;&#32;');
 		expect(str).toBe('&<>"\' ');
@@ -33,6 +42,15 @@ describe('str.decodeHTML', () => {
 });
 
 describe('str.encodeHTML', () => {
+	test('参数必须为字符串', () => {
+		let isError = false;
+		try {
+			$str.encodeHTML(0);
+		} catch (err) {
+			isError = true;
+		}
+		expect(isError).toBe(true);
+	});
 	test('encodeHTML: base', () => {
 		const str = $str.encodeHTML('&<>"\' ');
 		expect(str).toBe('&amp;&lt;&gt;&quot;&#39;&#32;');
@@ -90,18 +108,26 @@ describe('str.hyphenate', () => {
 describe('str.ipToHex', () => {
 	test('ipToHex: base', () => {
 		expect($str.ipToHex('255.255.255.255')).toBe('ffffffff');
+		expect($str.ipToHex('10.10.10.10')).toBe('0a0a0a0a');
 	});
 });
 
 describe('str.leftB', () => {
 	test('leftB: base', () => {
+		expect($str.leftB('a世界真和谐', 5)).toBe('a世界');
+		expect($str.leftB('a世界真和谐', 6)).toBe('a世界');
+		expect($str.leftB('a世界真和谐', 7)).toBe('a世界真');
 		expect($str.leftB('世界真和谐', 6)).toBe('世界真');
+		expect($str.leftB('世界真和谐', 12)).toBe('世界真和谐');
+	});
+	test('正确处理全角字符', () => {
+		expect($str.leftB('aＳＡＡＳＤ', 5)).toBe('aＳＡ');
 	});
 });
 
 describe('str.sizeOfUTF8String', () => {
 	test('sizeOfUTF8String: base', () => {
-		expect($str.sizeOfUTF8String('中文cc')).toBe(8);
+		expect($str.sizeOfUTF8String('中文c')).toBe(7);
 	});
 });
 

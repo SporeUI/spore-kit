@@ -12,8 +12,11 @@
 var $bLength = require('./bLength');
 
 function leftB (str, lens) {
-	var s = str.replace(/\*/g, ' ').replace(/[^\x00-\xff]/g, '**');
-	str = str.slice(0, s.slice(0, lens).replace(/\*\*/g, ' ').replace(/\*/g, '').length);
+	var s = str.replace(/\*/g, ' ')
+		.replace(/[^\x00-\xff]/g, '**');
+	str = str.slice(0, s.slice(0, lens)
+		.replace(/\*\*/g, ' ')
+		.replace(/\*/g, '').length);
 	if ($bLength(str) > lens && lens > 0) {
 		str = str.slice(0, str.length - 1);
 	}

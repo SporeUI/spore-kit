@@ -7,7 +7,7 @@
     "bootstrap": "lerna bootstrap",
     "test": "jest ./test/unit",
     "test-package": "jest ./test/unit/num.test.js",
-    "cover": "jest ./test/unit --coverage",
+    "cover": "jest --coverage ./test/unit",
     "cover-package": "gulp clean-cover && jest --coverage ./test/unit/num.test.js",
     "publish-packages": "lerna publish",
     "vuepress-dev": "vuepress dev docs",
