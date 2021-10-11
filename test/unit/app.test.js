@@ -1,5 +1,4 @@
 const $app = require('spore-kit-app');
-// const $mockUa = require('jest-useragent-mock');
 const $browser = require('spore-kit-env/browser');
 
 jest.mock('spore-kit-env/browser');
