@@ -11,7 +11,7 @@
  * 	});	// [0, 1]
  */
 
-function find (arr, fn, context) {
+function findInArr (arr, fn, context) {
 	var positions = [];
 	arr.forEach(function (item, index) {
 		if (fn.call(context, item, index, arr)) {
@@ -21,4 +21,4 @@ function find (arr, fn, context) {
 	return positions;
 }
 
-module.exports = find;
+module.exports = findInArr;

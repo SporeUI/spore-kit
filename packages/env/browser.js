@@ -45,13 +45,13 @@ function detect(options, checkers) {
 
 var result = null;
 
-function browser() {
+function envBrowser() {
 	if (!result) {
 		result = detect();
 	}
 	return result;
 }
 
-browser.detect = detect;
+envBrowser.detect = detect;
 
-module.exports = browser;
+module.exports = envBrowser;
