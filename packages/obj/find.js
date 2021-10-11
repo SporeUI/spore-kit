@@ -1,5 +1,6 @@
 /**
- * 查找对象路径上的值
+ * 查找对象路径上的值(简易版)
+ * @see lodash.get
  * @method find
  * @param {Object} object 要查找的对象
  * @param {String} path 要查找的路径
@@ -10,7 +11,7 @@
  * console.info(find(obj,'a.c')); // undefined
  */
 
-function find(object, path) {
+function findPath(object, path) {
 	path = path || '';
 	if (!path) {
 		return object;
@@ -35,4 +36,4 @@ function find(object, path) {
 	return pos;
 }
 
-module.exports = find;
+module.exports = findPath;
