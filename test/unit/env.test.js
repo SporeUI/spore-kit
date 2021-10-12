@@ -93,6 +93,8 @@ describe('env.touchable', () => {
 	});
 });
 
+// 存留状态其实是糟糕的设计
+// ts 版应当实现函数仅作为过滤器实现
 describe('env.webp', () => {
 	test('默认 mock 环境支持支持 webp', () => {
 		expect($env.webp()).toBe(true);
