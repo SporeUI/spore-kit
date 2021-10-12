@@ -14,17 +14,21 @@ var isSupportWebp = null;
  * console.info(webp.support()); // true/false
  */
 function support() {
+	var rs = !![].map
+		&& document
+			.createElement('canvas')
+			.toDataURL('image/webp')
+			.indexOf('data:image/webp') === 0;
+	return rs;
+}
+
+function webp () {
 	if (isSupportWebp === null) {
-		isSupportWebp = !![].map
-			&& document
-				.createElement('canvas')
-				.toDataURL('image/webp')
-				.indexOf('data:image/webp') === 0;
+		isSupportWebp = support();
 	}
 	return isSupportWebp;
 }
 
-var webp = {};
 webp.support = support;
 
 module.exports = webp;

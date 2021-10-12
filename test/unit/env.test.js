@@ -66,3 +66,57 @@ describe('env.uaMatch', () => {
 		expect(rs3.trident).toBe(true);
 	});
 });
+
+describe('env.network', () => {
+	test('当前环境支持 onLine', () => {
+		let support = $env.network.support();
+		expect(support).toBe(true);
+	});
+	test('验证联网状态', () => {
+		let state = false;
+		Object.defineProperty(global.navigator, 'onLine', {
+			get() {
+				return state;
+			}
+		});
+		expect($env.network.onLine()).toBe(false);
+
+		state = true;
+		expect($env.network.onLine()).toBe(true);
+	});
+});
+
+describe('env.touchable', () => {
+	test('mock 环境不支持 touch', () => {
+		const touchable = $env.touchable();
+		expect(touchable).toBe(false);
+	});
+});
+
+describe('env.webp', () => {
+	test('默认 mock 环境支持支持 webp', () => {
+		expect($env.webp()).toBe(true);
+	});
+
+	test('检测方法可判断是否支持 webp', () => {
+		HTMLCanvasElement
+			.prototype
+			.toDataURL = jest
+				.fn()
+				.mockReturnValueOnce(
+					'data:image/png;base64'
+				);
+		expect($env.webp.support()).toBe(false);
+	});
+
+	test('webp 检测结果会被缓存', () => {
+		HTMLCanvasElement
+			.prototype
+			.toDataURL = jest
+				.fn()
+				.mockReturnValueOnce(
+					'data:image/png;base64'
+				);
+		expect($env.webp()).toBe(true);
+	});
+});
