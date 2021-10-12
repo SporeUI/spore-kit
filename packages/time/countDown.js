@@ -199,4 +199,5 @@ function countDown (spec) {
 	return that;
 }
 
+countDown.allMonitors = allMonitors;
 module.exports = countDown;
