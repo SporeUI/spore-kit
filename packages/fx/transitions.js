@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 /**
  * 动画运行方式库
  * - Pow
