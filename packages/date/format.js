@@ -44,6 +44,7 @@
 var $assign = require('spore-kit-obj/assign');
 var $substitute = require('spore-kit-str/substitute');
 var $fixTo = require('spore-kit-num/fixTo');
+var $getUTCDate = require('./getUTCDate');
 
 var rLimit = function(num, w) {
 	var str = $fixTo(num, w);
@@ -62,15 +63,17 @@ function format(dobj, spec) {
 		spec
 	);
 
-	dobj = new Date(dobj);
-	data.year = dobj.getFullYear();
-	data.month = dobj.getMonth() + 1;
-	data.date = dobj.getDate();
-	data.day = dobj.getDay();
-	data.hours = dobj.getHours();
-	data.miniutes = dobj.getMinutes();
-	data.seconds = dobj.getSeconds();
-	data.milliSeconds = dobj.getMilliseconds();
+	// 解决不同服务器时区不一致可能会导致日期初始化时间不一致的问题
+	// 传入数字以北京时区时间为准
+	var utcDate = $getUTCDate(dobj);
+	data.year = utcDate.getUTCFullYear();
+	data.month = utcDate.getUTCMonth() + 1;
+	data.date = utcDate.getUTCDate();
+	data.day = utcDate.getUTCDay();
+	data.hours = utcDate.getUTCHours();
+	data.miniutes = utcDate.getUTCMinutes();
+	data.seconds = utcDate.getUTCSeconds();
+	data.milliSeconds = utcDate.getUTCMilliseconds();
 
 	data.YYYY = rLimit(data.year, 4);
 	data.YY = rLimit(data.year, 2);
