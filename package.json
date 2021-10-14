@@ -15,7 +15,8 @@
     "doc-build": "sh ./task/doc-build.sh ./packages",
     "doc": "npm run cover && npm run doc-build && npm run vuepress-build",
     "prepublishOnly": "npm test && gulp",
-    "semantic-release": "semantic-release"
+    "tag": "corp-semantic-release --changelogpreset angular-bitbucket --branch develop",
+    "cz": "git add . && git cz"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,9 @@
     "@commitlint/config-conventional": "^13.2.0",
     "babel-eslint": "^10.0.3",
     "commitizen": "^4.2.4",
+    "conventional-changelog-angular-bitbucket": "^1.2.0",
     "conventional-changelog-cli": "^2.1.1",
+    "corp-semantic-release": "^7.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "del": "^5.1.0",
     "documentation": "^12.1.4",
@@ -55,7 +58,6 @@
     "jsdom": "^18.0.0",
     "lerna": "^3.19.0",
     "lint-staged": "^10.2.11",
-    "semantic-release": "^18.0.0",
     "vuepress": "^1.5.2"
   },
   "dependencies": {},
