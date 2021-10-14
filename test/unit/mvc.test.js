@@ -28,7 +28,7 @@ describe('mvc.delegate', () => {
 	const $proxy = $mvc.proxy;
 	const $delegate = $mvc.delegate;
 
-	test('使用 delegate 可以协助对象关联事件', () => {
+	test('可以协助对象关联事件', () => {
 		const obj = {
 			...$events.prototype,
 			count: 1,
@@ -39,11 +39,120 @@ describe('mvc.delegate', () => {
 				return $proxy(this, name);
 			}
 		};
+
 		$delegate('on', obj, {
 			change: 'update'
 		}, obj);
 		obj.trigger('change');
+
 		expect(obj.count).toBe(2);
+	});
+
+	test('错误传递根节点，不会绑定事件', () => {
+		const obj = {
+			...$events.prototype,
+			count: 1,
+			update() {
+				this.count += 1;
+			},
+			proxy(name) {
+				return $proxy(this, name);
+			}
+		};
+
+		$delegate('on', null, {
+			change: 'update'
+		}, obj);
+		obj.trigger('change');
+
+		expect(obj.count).toBe(1);
+	});
+
+	test('错误传递绑定对象，不会绑定事件', () => {
+		const obj = {
+			...$events.prototype,
+			count: 1,
+			update() {
+				this.count += 1;
+			},
+			proxy(name) {
+				return $proxy(this, name);
+			}
+		};
+
+		$delegate('on', obj, {
+			change: 'update'
+		});
+		obj.trigger('change');
+
+		expect(obj.count).toBe(1);
+	});
+
+	test('可以关联多个事件', () => {
+		const obj = {
+			...$events.prototype,
+			a: 1,
+			b: 1,
+			updateA() {
+				this.a += 1;
+			},
+			updateB() {
+				this.b += 1;
+			},
+			proxy(name) {
+				return $proxy(this, name);
+			}
+		};
+
+		$delegate('on', obj, {
+			change: 'updateA updateB'
+		}, obj);
+		obj.trigger('change');
+
+		expect(obj.a).toBe(2);
+		expect(obj.b).toBe(2);
+	});
+
+	test('可以直接绑定方法，空绑定会被忽略', () => {
+		const obj = {
+			...$events.prototype,
+			count: 1,
+			proxy(name) {
+				return $proxy(this, name);
+			}
+		};
+
+		$delegate('on', obj, {
+			empty: null,
+			change() {
+				this.count += 1;
+			}
+		}, obj);
+		obj.trigger('change');
+		obj.trigger('empty');
+
+		expect(obj.count).toBe(2);
+	});
+
+	test('对于 jquery 对象，以代理方式绑定事件', () => {
+		const jobj = $('<div><button/></div>');
+		const obj = {
+			...$events.prototype,
+			a: 1,
+			updateA() {
+				this.a += 1;
+			},
+			proxy(name) {
+				return $proxy(this, name);
+			}
+		};
+
+		$delegate('on', jobj, {
+			'button click': 'updateA'
+		}, obj);
+		jobj.find('button').trigger('click');
+
+		expect(obj.a).toBe(2);
 	});
 });
 
