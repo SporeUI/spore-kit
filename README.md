@@ -1,9 +1,11 @@
 # Spore-Kit
 
-原子化工具函数库
-
 [![GitHub Pages Actions](https://github.com/SporeUI/sporeui.github.io/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/SporeUI/sporeui.github.io/actions/workflows/node.js.yml)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
+
+原子化工具函数库
+
+[releases and changelog](https://github.com/SporeUI/spore-kit/releases)
 
 ## 参考文档
 
