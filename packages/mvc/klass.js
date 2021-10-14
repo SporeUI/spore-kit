@@ -27,7 +27,7 @@ function wrap(k, fn, supr) {
 	};
 }
 
-function process(what, o, supr) {
+function execProcess(what, o, supr) {
 	for (var k in o) {
 		if (o.hasOwnProperty(k)) {
 			what[k] = (
@@ -62,7 +62,7 @@ function extend(o, fromSub) {
 	}
 
 	fn.methods = function(obj) {
-		process(prototype, obj, supr);
+		execProcess(prototype, obj, supr);
 		fn[proto] = prototype;
 		return this;
 	};
@@ -76,7 +76,7 @@ function extend(o, fromSub) {
 			obj[spec] = optFn;
 			return obj;
 		}()) : spec;
-		process(this, spec, supr);
+		execProcess(this, spec, supr);
 		return this;
 	};
 

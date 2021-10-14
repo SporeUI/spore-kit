@@ -17,6 +17,7 @@
 
 exports.klass = require('./klass');
 exports.delegate = require('./delegate');
+exports.proxy = require('./proxy');
 exports.Base = require('./base');
 exports.Model = require('./model');
 exports.View = require('./view');
