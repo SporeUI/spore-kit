@@ -30,6 +30,7 @@ module.exports = {
 		]
 	},
 	globals: {
+		$: true,
 		page: true,
 		browser: true,
 		console: true
