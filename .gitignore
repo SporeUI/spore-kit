@@ -2,6 +2,7 @@
 package-lock.json
 ignore
 docs-dist
+docs/packages
 
 # Logs
 logs
