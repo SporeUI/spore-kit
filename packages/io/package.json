@@ -1,6 +1,6 @@
 {
   "name": "spore-kit-io",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "接口请求相关工具函数",
   "main": "index.js",
   "repository": {
@@ -15,7 +15,7 @@
   "homepage": "https://github.com/SporeUI/spore-kit#readme",
   "dependencies": {
     "lodash": "^4.17.15",
-    "spore-kit-obj": "^0.2.4"
+    "spore-kit-obj": "^0.2.5"
   },
   "gitHead": "78d983de03b37134ad62281922209588ab4a5b9b"
 }

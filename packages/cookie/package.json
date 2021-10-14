@@ -1,6 +1,6 @@
 {
 	"name": "spore-kit-cookie",
-	"version": "0.2.4",
+	"version": "0.2.5",
 	"description": "cookie 相关工具函数",
 	"main": "index.js",
 	"repository": {

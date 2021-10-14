@@ -1,6 +1,6 @@
 {
   "name": "spore-kit-util",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "其他工具函数",
   "main": "index.js",
   "repository": {
