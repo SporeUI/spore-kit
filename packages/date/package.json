@@ -1,6 +1,6 @@
 {
 	"name": "spore-kit-date",
-	"version": "0.2.7",
+	"version": "0.2.8",
 	"description": "日期相关工具函数",
 	"main": "index.js",
 	"repository": {
@@ -14,9 +14,9 @@
 	},
 	"homepage": "https://github.com/SporeUI/spore-kit#readme",
 	"dependencies": {
-		"spore-kit-num": "^0.2.3",
-		"spore-kit-obj": "^0.2.5",
-		"spore-kit-str": "^0.3.9"
+		"spore-kit-num": "^0.2.4",
+		"spore-kit-obj": "^0.2.6",
+		"spore-kit-str": "^0.3.10"
 	},
 	"gitHead": "78d983de03b37134ad62281922209588ab4a5b9b"
 }

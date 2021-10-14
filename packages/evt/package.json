@@ -1,6 +1,6 @@
 {
 	"name": "spore-kit-evt",
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"description": "事件处理相关函数",
 	"main": "index.js",
 	"repository": {
