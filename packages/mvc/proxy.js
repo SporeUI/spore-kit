@@ -11,9 +11,12 @@ var $isFunction = require('lodash/isFunction');
 
 var AP = Array.prototype;
 
-function proxy(instance, name) {
-	var bound = instance.bound ? instance.bound : instance.bound = {};
-	var proxyArgs = AP.slice.call(arguments);
+function proxy(instance, name, proxyArgs) {
+	if (!instance.bound) {
+		instance.bound = {};
+	}
+	var bound = instance.bound;
+	proxyArgs = proxyArgs || [];
 	proxyArgs.shift();
 	name = name || 'proxy';
 	if (!$isFunction(bound[name])) {

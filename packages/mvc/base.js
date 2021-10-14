@@ -106,7 +106,8 @@ var Base = $klass({
 	 * @param {string} [name='proxy'] 函数名称
 	 */
 	proxy: function(name) {
-		return $proxy(this, name);
+		var proxyArgs = Array.prototype.slice.call(arguments);
+		return $proxy(this, name, proxyArgs);
 	},
 
 	/**
