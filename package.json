@@ -1,6 +1,6 @@
 {
   "name": "spore-kit",
-  "version": "0.2.0",
+  "version": "0.0.0-development",
   "description": "原子化工具函数库",
   "main": "index.js",
   "scripts": {
@@ -14,34 +14,24 @@
     "vuepress-build": "vuepress build docs",
     "doc-build": "sh ./task/doc-build.sh ./packages",
     "doc": "npm run cover && npm run doc-build && npm run vuepress-build",
-    "prepublishOnly": "npm test && gulp"
+    "prepublishOnly": "npm test && gulp",
+    "semantic-release": "semantic-release"
   },
-  "lint-staged": {
-    "packages/**/*.js": "eslint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "files": [
-    "dist",
-    "packages",
-    "index.js"
-  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SporeUI/spore-kit.git"
+    "url": "https://github.com/SporeUI/spore-kit.git"
   },
-  "author": "pillar0514@gmail.com",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SporeUI/spore-kit/issues"
   },
   "homepage": "https://github.com/SporeUI/spore-kit#readme",
   "devDependencies": {
     "@babel/core": "^7.7.5",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "babel-eslint": "^10.0.3",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "del": "^5.1.0",
     "documentation": "^12.1.4",
@@ -65,12 +55,34 @@
     "jsdom": "^18.0.0",
     "lerna": "^3.19.0",
     "lint-staged": "^10.2.11",
+    "semantic-release": "^18.0.0",
     "vuepress": "^1.5.2"
   },
   "dependencies": {},
+  "lint-staged": {
+    "packages/**/*.js": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./hooks/pre-commit.sh && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "files": [
+    "dist",
+    "packages",
+    "index.js"
+  ],
+  "author": "pillar0514@gmail.com",
+  "license": "MIT"
 }
