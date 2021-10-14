@@ -15,13 +15,15 @@
  */
 
 var $getTimeSplit = require('./getTimeSplit');
+var $getUTCDate = require('./getUTCDate');
 
 var HOUR = 60 * 60 * 1000;
 var DAY = 24 * 60 * 60 * 1000;
 
 function getLastStart(time, type, count) {
-	var datetime = new Date(time);
-	var stamp = datetime;
+	var localTime = new Date(time);
+	var utcTime = $getUTCDate(time);
+	var stamp = utcTime;
 	var year;
 	var month;
 	var allMonths;
@@ -31,12 +33,12 @@ function getLastStart(time, type, count) {
 	}
 	count = count || 0;
 	if (type === 'year') {
-		year = datetime.getFullYear();
+		year = utcTime.getUTCFullYear();
 		year -= count;
 		stamp = new Date(year + '/1/1');
 	} else if (type === 'month') {
-		year = datetime.getFullYear();
-		month = datetime.getMonth();
+		year = utcTime.getUTCFullYear();
+		month = utcTime.getUTCMonth();
 		allMonths = year * 12 + month - count;
 		year = Math.floor(allMonths / 12);
 		month = allMonths - year * 12;
@@ -50,8 +52,8 @@ function getLastStart(time, type, count) {
 		if (type === 'week') {
 			unit = 7 * DAY;
 		}
-		datetime -= count * unit;
-		stamp = $getTimeSplit(datetime, type);
+		var newLocalTime = localTime - count * unit;
+		stamp = $getTimeSplit(newLocalTime, type);
 	}
 
 	return stamp;

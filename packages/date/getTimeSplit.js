@@ -21,6 +21,7 @@
  * ).toGMTString();
  * // Thu Sep 20 2018 19:00:00 GMT+0800 (中国标准时间)
  */
+var $getUTCDate = require('./getUTCDate');
 
 var DAY = 24 * 60 * 60 * 1000;
 
@@ -37,21 +38,22 @@ function getTimeSplit(time, type) {
 		throw new Error('required param type');
 	}
 
-	var datetime = new Date(time);
+	var localTime = new Date(time);
+	var utcTime = $getUTCDate(time);
 
 	// 以周一为起始时间
-	var day = datetime.getDay();
+	var day = utcTime.getDay();
 	day = day === 0 ? 6 : day - 1;
 
 	var index = TIME_UNITS.indexOf(type);
 	if (index === 2) {
-		datetime = new Date(datetime - day * DAY);
+		utcTime = new Date(localTime - day * DAY);
 	}
-	var year = datetime.getFullYear();
-	var month = datetime.getMonth() + 1;
-	var date = datetime.getDate();
-	var hour = datetime.getHours();
-	var minutes = datetime.getMinutes();
+	var year = utcTime.getUTCFullYear();
+	var month = utcTime.getUTCMonth() + 1;
+	var date = utcTime.getUTCDate();
+	var hour = utcTime.getUTCHours();
+	var minutes = utcTime.getUTCMinutes();
 
 	if (index >= 0) {
 		minutes = '00';
