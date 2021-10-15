@@ -17,32 +17,31 @@
 var cache = {};
 
 function getQuery(url, name) {
-	var query = cache[url] || {};
+  var query = cache[url] || {};
 
-	if (url) {
-		var searchIndex = url.indexOf('?');
-		if (searchIndex >= 0) {
-			var search = url.slice(searchIndex + 1, url.length);
-			search = search.replace(/#.*/, '');
+  if (url) {
+    var searchIndex = url.indexOf('?');
+    if (searchIndex >= 0) {
+      var search = url.slice(searchIndex + 1, url.length);
+      search = search.replace(/#.*/, '');
 
-			var params = search.split('&');
-			params.forEach(function(group) {
-				var equalIndex = group.indexOf('=');
-				if (equalIndex > 0) {
-					var key = group.slice(0, equalIndex);
-					var value = group.slice(equalIndex + 1, group.length);
-					query[key] = value;
-				}
-			});
-		}
-		cache[url] = query;
-	}
+      var params = search.split('&');
+      params.forEach(function (group) {
+        var equalIndex = group.indexOf('=');
+        if (equalIndex > 0) {
+          var key = group.slice(0, equalIndex);
+          var value = group.slice(equalIndex + 1, group.length);
+          query[key] = value;
+        }
+      });
+    }
+    cache[url] = query;
+  }
 
-	if (!name) {
-		return query;
-	} else {
-		return query[name] || '';
-	}
+  if (!name) {
+    return query;
+  }
+  return query[name] || '';
 }
 
 module.exports = getQuery;

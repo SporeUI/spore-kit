@@ -12,22 +12,22 @@ var $isFunction = require('lodash/isFunction');
 var AP = Array.prototype;
 
 function proxy(instance, name, proxyArgs) {
-	if (!instance.bound) {
-		instance.bound = {};
-	}
-	var bound = instance.bound;
-	proxyArgs = proxyArgs || [];
-	proxyArgs.shift();
-	name = name || 'proxy';
-	if (!$isFunction(bound[name])) {
-		bound[name] = function() {
-			if ($isFunction(instance[name])) {
-				var args = AP.slice.call(arguments);
-				return instance[name].apply(instance, args.concat(proxyArgs));
-			}
-		};
-	}
-	return bound[name];
+  if (!instance.bound) {
+    instance.bound = {};
+  }
+  var bound = instance.bound;
+  proxyArgs = proxyArgs || [];
+  proxyArgs.shift();
+  name = name || 'proxy';
+  if (!$isFunction(bound[name])) {
+    bound[name] = function () {
+      if ($isFunction(instance[name])) {
+        var args = AP.slice.call(arguments);
+        return instance[name].apply(instance, args.concat(proxyArgs));
+      }
+    };
+  }
+  return bound[name];
 }
 
 module.exports = proxy;

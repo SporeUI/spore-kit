@@ -6,13 +6,13 @@ var propName = 'SPORE_SDK_PROMISE';
 var cache = null;
 
 if (typeof window !== 'undefined') {
-	cache = window[propName];
-	if (!cache) {
-		cache = {};
-		window[propName] = cache;
-	}
+  cache = window[propName];
+  if (!cache) {
+    cache = {};
+    window[propName] = cache;
+  }
 } else {
-	cache = {};
+  cache = {};
 }
 
 /**
@@ -31,42 +31,42 @@ if (typeof window !== 'undefined') {
  * }).then(TencentCaptcha => {})
  */
 var loadSdk = function (options) {
-	var conf = $assign({
-		name: '',
-		url: '',
-		charset: 'utf-8'
-	}, options);
+  var conf = $assign({
+    name: '',
+    url: '',
+    charset: 'utf-8',
+  }, options);
 
-	var name = conf.name;
-	if (!name) {
-		return Promise.reject(new Error('Require parameter: options.name'));
-	}
-	if (!conf.url) {
-		return Promise.reject(new Error('Require parameter: options.url'));
-	}
+  var name = conf.name;
+  if (!name) {
+    return Promise.reject(new Error('Require parameter: options.name'));
+  }
+  if (!conf.url) {
+    return Promise.reject(new Error('Require parameter: options.url'));
+  }
 
-	var pm = cache[name];
-	if (pm) {
-		if (pm.sdk) {
-			return Promise.resolve(pm.sdk);
-		}
-		return pm;
-	}
+  var pm = cache[name];
+  if (pm) {
+    if (pm.sdk) {
+      return Promise.resolve(pm.sdk);
+    }
+    return pm;
+  }
 
-	pm = new Promise(function (resolve) {
-		$getScript({
-			src: conf.url,
-			charset: conf.charset,
-			onLoad: function () {
-				var sdk = $get(window, name);
-				pm.sdk = sdk;
-				resolve(sdk);
-			}
-		});
-	});
-	cache[name] = pm;
+  pm = new Promise(function (resolve) {
+    $getScript({
+      src: conf.url,
+      charset: conf.charset,
+      onLoad: function () {
+        var sdk = $get(window, name);
+        pm.sdk = sdk;
+        resolve(sdk);
+      },
+    });
+  });
+  cache[name] = pm;
 
-	return pm;
+  return pm;
 };
 
 module.exports = loadSdk;

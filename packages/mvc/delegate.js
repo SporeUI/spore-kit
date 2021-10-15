@@ -17,51 +17,51 @@ var $assign = require('lodash/assign');
 var $forEach = require('lodash/forEach');
 
 function delegate(action, root, events, bind) {
-	var proxy;
-	var dlg;
-	if (!root) {
-		return;
-	}
-	if (!bind || !$isFunction(bind.proxy)) {
-		return;
-	}
+  var proxy;
+  var dlg;
+  if (!root) {
+    return;
+  }
+  if (!bind || !$isFunction(bind.proxy)) {
+    return;
+  }
 
-	proxy = bind.proxy();
-	action = action === 'on' ? 'on' : 'off';
-	dlg = action === 'on' ? 'delegate' : 'undelegate';
-	events = $assign({}, events);
+  proxy = bind.proxy();
+  action = action === 'on' ? 'on' : 'off';
+  dlg = action === 'on' ? 'delegate' : 'undelegate';
+  events = $assign({}, events);
 
-	$forEach(events, function(method, handle) {
-		var selector;
-		var event;
-		var fns = [];
-		handle = handle.split(/\s+/);
+  $forEach(events, function (method, handle) {
+    var selector;
+    var event;
+    var fns = [];
+    handle = handle.split(/\s+/);
 
-		if (typeof method === 'string') {
-			fns = method.split(/\s+/).map(function(fname) {
-				return proxy(fname);
-			});
-		} else if ($isFunction(method)) {
-			fns = [method];
-		} else {
-			return;
-		}
+    if (typeof method === 'string') {
+      fns = method.split(/\s+/).map(function (fname) {
+        return proxy(fname);
+      });
+    } else if ($isFunction(method)) {
+      fns = [method];
+    } else {
+      return;
+    }
 
-		event = handle.pop();
+    event = handle.pop();
 
-		if (handle.length >= 1) {
-			selector = handle.join(' ');
-			if ($isFunction(root[dlg])) {
-				fns.forEach(function(fn) {
-					root[dlg](selector, event, fn);
-				});
-			}
-		} else if ($isFunction(root[action])) {
-			fns.forEach(function(fn) {
-				root[action](event, fn);
-			});
-		}
-	});
+    if (handle.length >= 1) {
+      selector = handle.join(' ');
+      if ($isFunction(root[dlg])) {
+        fns.forEach(function (fn) {
+          root[dlg](selector, event, fn);
+        });
+      }
+    } else if ($isFunction(root[action])) {
+      fns.forEach(function (fn) {
+        root[action](event, fn);
+      });
+    }
+  });
 }
 
 module.exports = delegate;

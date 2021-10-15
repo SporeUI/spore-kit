@@ -26,8 +26,8 @@
 
 var Url = require('url-parse');
 
-function parse (url) {
-	return new Url(url);
+function parse(url) {
+  return new Url(url);
 }
 
 module.exports = parse;
