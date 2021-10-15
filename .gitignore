@@ -3,6 +3,7 @@ package-lock.json
 ignore
 docs-dist
 docs/packages
+docs/public
 
 # Logs
 logs

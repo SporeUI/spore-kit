@@ -16,6 +16,19 @@ $gulp.task(
 			debug: true
 		}))
 		.pipe($gulpRename('spore-kit.js'))
+		.pipe($gulp.dest('./dist'))
+		.pipe($gulp.dest('./docs/public'))
+);
+
+$gulp.task(
+	'build-js-min',
+	() => $gulp.src([
+		'./index.js'
+	])
+		.pipe($gulpBrowserify({
+			standalone: 'spore-kit',
+			debug: true
+		}))
 		.pipe($gulpUglify())
 		.pipe($gulpRename('spore-kit.min.js'))
 		.pipe($gulp.dest('./dist'))
@@ -23,5 +36,6 @@ $gulp.task(
 );
 
 $gulp.task('default', $gulp.series([
-	'build-js'
+	'build-js',
+	'build-js-min'
 ]));

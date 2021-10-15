@@ -4,6 +4,7 @@
   "description": "原子化工具函数库",
   "main": "index.js",
   "scripts": {
+    "build": "gulp",
     "test": "jest  --coverage ./test/unit",
     "test-package": "jest ./test/unit/num.test.js",
     "cover-package": "gulp clean-cover && jest --coverage ./test/unit/num.test.js",
@@ -11,7 +12,7 @@
     "vuepress-build": "vuepress build docs",
     "doc-build": "sh ./task/doc-build.sh ./packages",
     "doc": "npm run cover && npm run doc-build && npm run vuepress-build",
-    "prepublishOnly": "npm test && gulp",
+    "prepublishOnly": "npm test && npm run build",
     "cz": "git add . && git cz"
   },
   "repository": {

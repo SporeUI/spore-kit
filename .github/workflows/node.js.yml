@@ -23,6 +23,8 @@ jobs:
         run: npx lerna bootstrap --no-ci
       - name: unit-test
         run: npm test
+      - name: build
+        run: npm run build
       - name: Coverage
         run: npx codecov -t ${{ secrets.CODECOV_TOKEN }}
       - name: Semantic Release

@@ -15,11 +15,7 @@
 ## 快速上手
 
 ```shell
-# 整体引入
 npm i spore-kit
-
-# 引入一个独立模块
-npm i spore-kit-arr
 ```
 
 ```javascript
@@ -27,17 +23,13 @@ npm i spore-kit-arr
 var $kit = require('spore-kit');
 console.info($kit.arr.contains); //function
 
-// 单独引入 spore-kit-arr
-var $arr = require('spore-kit-arr');
+// 单独引入 spore-kit/packages/arr
+var $arr = require('spore-kit/packages/arr');
 console.info($arr.contains); //function
 
 // 单独引入一个方法（推荐）
-var $contains = require('spore-kit-arr/contains');
+var $contains = require('spore-kit/packages/arr/contains');
 ```
-
-## 示例
-
-- [spore-kit-fx](https://sporeui.github.io/spore-kit/demo/fx/)
 
 ## 测试
 
