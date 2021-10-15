@@ -8,10 +8,11 @@
  */
 
 var time = +new Date();
-var index = 1;
+var index = 0;
 
-function getUniqueKey () {
-	return (time + (index++)).toString(16);
+function getUniqueKey() {
+  index += 1;
+  return (time + (index)).toString(16);
 }
 
 module.exports = getUniqueKey;

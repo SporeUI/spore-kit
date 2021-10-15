@@ -14,15 +14,15 @@
  * fn(); // will do nothing
  */
 
-function once (fn, bind) {
-	return function () {
-		bind = bind || this;
-		if (typeof fn === 'function') {
-			fn.apply(bind, arguments);
-			fn = null;
-			bind = null;
-		}
-	};
+function once(fn, bind) {
+  return function () {
+    bind = bind || this;
+    if (typeof fn === 'function') {
+      fn.apply(bind, arguments);
+      fn = null;
+      bind = null;
+    }
+  };
 }
 
 module.exports = once;

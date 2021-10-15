@@ -15,31 +15,31 @@
  * };
  * // 疯狂按键，每隔 200ms 才有一次按键有效
  * $('#input').keydown($regular(function(){
- * 	this.length = $('#input').val().length;
- * 	this.countWords();
+ *   this.length = $('#input').val().length;
+ *   this.countWords();
  * }, 200, comp));
  */
 
-function reqular (fn, delay, bind) {
-	var enable = true;
-	var timer = null;
-	return function () {
-		bind = bind || this;
-		enable = true;
-		var args = arguments;
-		if (!timer) {
-			timer = setInterval(function () {
-				if (typeof fn === 'function') {
-					fn.apply(bind, args);
-				}
-				if (!enable) {
-					clearInterval(timer);
-					timer = null;
-				}
-				enable = false;
-			}, delay);
-		}
-	};
+function reqular(fn, delay, bind) {
+  var enable = true;
+  var timer = null;
+  return function () {
+    bind = bind || this;
+    enable = true;
+    var args = arguments;
+    if (!timer) {
+      timer = setInterval(function () {
+        if (typeof fn === 'function') {
+          fn.apply(bind, args);
+        }
+        if (!enable) {
+          clearInterval(timer);
+          timer = null;
+        }
+        enable = false;
+      }, delay);
+    }
+  };
 }
 
 module.exports = reqular;

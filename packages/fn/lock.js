@@ -16,21 +16,21 @@
  * // 之后连续按键，仅在 500ms 结束后再次按键，才会再次触发 request 函数调用
  */
 
-function lock (fn, delay, bind) {
-	var timer = null;
-	return function() {
-		if (timer) {
-			return;
-		}
-		bind = bind || this;
-		var args = arguments;
-		timer = setTimeout(function () {
-			timer = null;
-		}, delay);
-		if (typeof fn === 'function') {
-			fn.apply(bind, args);
-		}
-	};
+function lock(fn, delay, bind) {
+  var timer = null;
+  return function () {
+    if (timer) {
+      return;
+    }
+    bind = bind || this;
+    var args = arguments;
+    timer = setTimeout(function () {
+      timer = null;
+    }, delay);
+    if (typeof fn === 'function') {
+      fn.apply(bind, args);
+    }
+  };
 }
 
 module.exports = lock;

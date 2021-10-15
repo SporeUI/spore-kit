@@ -18,28 +18,28 @@
  * }
  */
 
-function queue (fn, delay, bind) {
-	var timer = null;
-	var arr = [];
-	return function() {
-		bind = bind || this;
-		var args = arguments;
-		arr.push(function () {
-			if (typeof fn === 'function') {
-				fn.apply(bind, args);
-			}
-		});
-		if (!timer) {
-			timer = setInterval(function () {
-				if (!arr.length) {
-					clearInterval(timer);
-					timer = null;
-				} else {
-					arr.shift()();
-				}
-			}, delay);
-		}
-	};
+function queue(fn, delay, bind) {
+  var timer = null;
+  var arr = [];
+  return function () {
+    bind = bind || this;
+    var args = arguments;
+    arr.push(function () {
+      if (typeof fn === 'function') {
+        fn.apply(bind, args);
+      }
+    });
+    if (!timer) {
+      timer = setInterval(function () {
+        if (!arr.length) {
+          clearInterval(timer);
+          timer = null;
+        } else {
+          arr.shift()();
+        }
+      }, delay);
+    }
+  };
 }
 
 module.exports = queue;

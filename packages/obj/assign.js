@@ -11,18 +11,18 @@
  * console.info($assign({}, obj, {b: 3, c: 4})); // {a: 1, b: 3, c: 4}
  */
 
-function assign (obj) {
-	obj = obj || {};
-	Array.prototype.slice.call(arguments, 1).forEach(function(source) {
-		var prop;
-		source = source || {};
-		for (prop in source) {
-			if (source.hasOwnProperty(prop)) {
-				obj[prop] = source[prop];
-			}
-		}
-	});
-	return obj;
+function assign(obj) {
+  obj = obj || {};
+  Array.prototype.slice.call(arguments, 1).forEach(function (source) {
+    var prop;
+    source = source || {};
+    for (prop in source) {
+      if (source.hasOwnProperty(prop)) {
+        obj[prop] = source[prop];
+      }
+    }
+  });
+  return obj;
 }
 
 module.exports = assign;

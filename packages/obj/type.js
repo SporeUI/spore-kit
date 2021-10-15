@@ -22,11 +22,11 @@
  * $type(document.getElementsByTagName('div')[0]) // 'htmldivelement'
  */
 
-function type (item) {
-	return Object.prototype.toString
-		.call(item)
-		.toLowerCase()
-		.replace(/^\[object\s*|\]$/gi, '');
+function type(item) {
+  return Object.prototype.toString
+    .call(item)
+    .toLowerCase()
+    .replace(/^\[object\s*|\]$/gi, '');
 }
 
 module.exports = type;

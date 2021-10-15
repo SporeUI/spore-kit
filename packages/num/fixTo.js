@@ -6,13 +6,13 @@
  * @return {String} 经过补位的字符串
  * @example
  * var $fixTo = require('spore-kit/packages/num/fixTo');
- * $fixTo(0, 2);	//return '00'
+ * $fixTo(0, 2); //return '00'
  */
 
-function fixTo (num, w) {
-	var str = num.toString();
-	w = Math.max((w || 2) - str.length + 1, 0);
-	return new Array(w).join('0') + str;
+function fixTo(num, w) {
+  var str = num.toString();
+  w = Math.max((w || 2) - str.length + 1, 0);
+  return new Array(w).join('0') + str;
 }
 
 module.exports = fixTo;

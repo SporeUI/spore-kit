@@ -43,33 +43,33 @@
  * @method prepare#ready
  * @memberof prepare
  */
-function prepare () {
-	var queue = [];
-	var condition = false;
-	var model;
+function prepare() {
+  var queue = [];
+  var condition = false;
+  var model;
 
-	var attampt = function(fn) {
-		if (condition) {
-			if (typeof fn === 'function') {
-				fn(model);
-			}
-		} else {
-			queue.push(fn);
-		}
-	};
+  var attampt = function (fn) {
+    if (condition) {
+      if (typeof fn === 'function') {
+        fn(model);
+      }
+    } else {
+      queue.push(fn);
+    }
+  };
 
-	attampt.ready = function(data) {
-		condition = true;
-		model = data;
-		while (queue.length) {
-			var fn = queue.shift();
-			if (typeof fn === 'function') {
-				fn(model);
-			}
-		}
-	};
+  attampt.ready = function (data) {
+    condition = true;
+    model = data;
+    while (queue.length) {
+      var fn = queue.shift();
+      if (typeof fn === 'function') {
+        fn(model);
+      }
+    }
+  };
 
-	return attampt;
+  return attampt;
 }
 
 module.exports = prepare;

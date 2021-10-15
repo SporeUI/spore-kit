@@ -8,9 +8,9 @@
  * $getRnd36(0.5810766832590446); // 'kx2pozz9rgf'
  */
 
-function getRnd36 (rnd) {
-	rnd = rnd || Math.random();
-	return rnd.toString(36).replace(/^0./, '');
+function getRnd36(rnd) {
+  rnd = rnd || Math.random();
+  return rnd.toString(36).replace(/^0./, '');
 }
 
 module.exports = getRnd36;

@@ -13,28 +13,27 @@
  */
 
 function findPath(object, path) {
-	path = path || '';
-	if (!path) {
-		return object;
-	}
-	if (!object) {
-		return object;
-	}
+  path = path || '';
+  if (!path) {
+    return object;
+  }
+  if (!object) {
+    return object;
+  }
 
-	var queue = path.split('.');
-	var name;
-	var pos = object;
+  var queue = path.split('.');
+  var name;
+  var pos = object;
 
-	while (queue.length) {
-		name = queue.shift();
-		if (!pos[name]) {
-			return pos[name];
-		} else {
-			pos = pos[name];
-		}
-	}
+  while (queue.length) {
+    name = queue.shift();
+    if (!pos[name]) {
+      return pos[name];
+    }
+    pos = pos[name];
+  }
 
-	return pos;
+  return pos;
 }
 
 module.exports = findPath;

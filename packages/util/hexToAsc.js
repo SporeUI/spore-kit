@@ -10,13 +10,13 @@
  */
 
 function hexToAsc(hex) {
-	if (!hex) {
-		return '';
-	}
-	return hex.replace(/[\da-f]{2}/gi, function(match) {
-		var int = parseInt(match, 16);
-		return String.fromCharCode(int);
-	});
+  if (!hex) {
+    return '';
+  }
+  return hex.replace(/[\da-f]{2}/gi, function (match) {
+    var int = parseInt(match, 16);
+    return String.fromCharCode(int);
+  });
 }
 
 module.exports = hexToAsc;

@@ -8,9 +8,9 @@
  * $getTime36('2020'); // 'k4ujaio0'
  */
 
-function getTime36 (date) {
-	date = date ? new Date(date) : new Date();
-	return date.getTime().toString(36);
+function getTime36(date) {
+  date = date ? new Date(date) : new Date();
+  return date.getTime().toString(36);
 }
 
 module.exports = getTime36;

@@ -10,18 +10,18 @@
  */
 
 function ascToHex(str) {
-	if (!str) {
-		return '';
-	}
-	var hex = '';
-	var index;
-	var len = str.length;
-	for (index = 0; index < len; index++) {
-		var int = str.charCodeAt(index);
-		var code = (int).toString(16);
-		hex += code;
-	}
-	return hex;
+  if (!str) {
+    return '';
+  }
+  var hex = '';
+  var index;
+  var len = str.length;
+  for (index = 0; index < len; index += 1) {
+    var int = str.charCodeAt(index);
+    var code = (int).toString(16);
+    hex += code;
+  }
+  return hex;
 }
 
 module.exports = ascToHex;

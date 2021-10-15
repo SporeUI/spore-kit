@@ -10,14 +10,14 @@
  * $substitute('{{city}}欢迎您', {city:'北京'}); // '北京欢迎您'
  */
 
-function substitute (str, obj, reg) {
-	return str.replace(reg || (/\\?\{\{([^{}]+)\}\}/g), function (match, name) {
-		if (match.charAt(0) === '\\') {
-			return match.slice(1);
-		}
-		// 注意：obj[name] != null 等同于 obj[name] !== null && obj[name] !== undefined
-		return (obj[name] != null) ? obj[name] : '';
-	});
+function substitute(str, obj, reg) {
+  return str.replace(reg || (/\\?\{\{([^{}]+)\}\}/g), function (match, name) {
+    if (match.charAt(0) === '\\') {
+      return match.slice(1);
+    }
+    // 注意：obj[name] != null 等同于 obj[name] !== null && obj[name] !== undefined
+    return (obj[name] != null) ? obj[name] : '';
+  });
 }
 
 module.exports = substitute;

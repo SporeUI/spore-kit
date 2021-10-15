@@ -8,10 +8,10 @@
  * $hyphenate('libKitStrHyphenate'); // 'lib-kit-str-hyphenate'
  */
 
-function hyphenate (str) {
-	return str.replace(/[A-Z]/g, function ($0) {
-		return '-' + $0.toLowerCase();
-	});
+function hyphenate(str) {
+  return str.replace(/[A-Z]/g, function ($0) {
+    return '-' + $0.toLowerCase();
+  });
 }
 
 module.exports = hyphenate;

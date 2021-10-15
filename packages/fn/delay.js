@@ -22,20 +22,20 @@
  * }, 500, comp));
  */
 
-function delay (fn, duration, bind) {
-	var timer = null;
-	return function () {
-		bind = bind || this;
-		if (timer) {
-			clearTimeout(timer);
-		}
-		var args = arguments;
-		timer = setTimeout(function () {
-			if (typeof fn === 'function') {
-				fn.apply(bind, args);
-			}
-		}, duration);
-	};
+function delay(fn, duration, bind) {
+  var timer = null;
+  return function () {
+    bind = bind || this;
+    if (timer) {
+      clearTimeout(timer);
+    }
+    var args = arguments;
+    timer = setTimeout(function () {
+      if (typeof fn === 'function') {
+        fn.apply(bind, args);
+      }
+    }, duration);
+  };
 }
 
 module.exports = delay;

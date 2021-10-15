@@ -17,47 +17,47 @@ var $numerical = require('../num/numerical');
 var $assign = require('../obj/assign');
 
 var UNIT = {
-	day: 24 * 60 * 60 * 1000,
-	hour: 60 * 60 * 1000,
-	minute: 60 * 1000,
-	second: 1000
+  day: 24 * 60 * 60 * 1000,
+  hour: 60 * 60 * 1000,
+  minute: 60 * 1000,
+  second: 1000,
 };
 
 function parseUnit(time, spec) {
-	var conf = $assign({
-		maxUnit: 'day'
-	}, spec);
+  var conf = $assign({
+    maxUnit: 'day',
+  }, spec);
 
-	var data = {};
-	var maxUnit = $numerical(UNIT[conf.maxUnit]);
-	var uDay = UNIT.day;
-	var uHour = UNIT.hour;
-	var uMinute = UNIT.minute;
-	var uSecond = UNIT.second;
+  var data = {};
+  var maxUnit = $numerical(UNIT[conf.maxUnit]);
+  var uDay = UNIT.day;
+  var uHour = UNIT.hour;
+  var uMinute = UNIT.minute;
+  var uSecond = UNIT.second;
 
-	if (maxUnit >= uDay) {
-		time = $numerical(time);
-		data.day = Math.floor(time / uDay);
-	}
+  if (maxUnit >= uDay) {
+    time = $numerical(time);
+    data.day = Math.floor(time / uDay);
+  }
 
-	if (maxUnit >= uHour) {
-		time -= $numerical(data.day * uDay);
-		data.hour = Math.floor(time / uHour);
-	}
+  if (maxUnit >= uHour) {
+    time -= $numerical(data.day * uDay);
+    data.hour = Math.floor(time / uHour);
+  }
 
-	if (maxUnit >= uMinute) {
-		time -= $numerical(data.hour * uHour);
-		data.minute = Math.floor(time / uMinute);
-	}
+  if (maxUnit >= uMinute) {
+    time -= $numerical(data.hour * uHour);
+    data.minute = Math.floor(time / uMinute);
+  }
 
-	if (maxUnit >= uSecond) {
-		time -= $numerical(data.minute * uMinute);
-		data.second = Math.floor(time / uSecond);
-	}
+  if (maxUnit >= uSecond) {
+    time -= $numerical(data.minute * uMinute);
+    data.second = Math.floor(time / uSecond);
+  }
 
-	data.ms = time - data.second * uSecond;
+  data.ms = time - data.second * uSecond;
 
-	return data;
+  return data;
 }
 
 module.exports = parseUnit;

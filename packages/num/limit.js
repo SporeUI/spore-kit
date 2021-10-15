@@ -12,8 +12,8 @@
  * $limit(11, 5, 10); // 10
  */
 
-function limit (num, min, max) {
-	return Math.min(Math.max(num, min), max);
+function limit(num, min, max) {
+  return Math.min(Math.max(num, min), max);
 }
 
 module.exports = limit;

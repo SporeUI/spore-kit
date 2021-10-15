@@ -11,10 +11,10 @@
  * $numerical('x10'); // 0
  */
 
-function numerical (str, def, sys) {
-	def = def || 0;
-	sys = sys || 10;
-	return parseInt(str, sys) || def;
+function numerical(str, def, sys) {
+  def = def || 0;
+  sys = sys || 10;
+  return parseInt(str, sys) || def;
 }
 
 module.exports = numerical;

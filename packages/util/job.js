@@ -19,32 +19,32 @@ var manager = {};
 
 manager.queue = [];
 
-manager.add = function(fn, options) {
-	options = options || {};
-	manager.queue.push({
-		fn: fn,
-		conf: options
-	});
-	manager.step();
+manager.add = function (fn, options) {
+  options = options || {};
+  manager.queue.push({
+    fn: fn,
+    conf: options,
+  });
+  manager.step();
 };
 
-manager.step = function() {
-	if (!manager.queue.length || manager.timer) { return; }
-	manager.timer = setTimeout(function() {
-		var item = manager.queue.shift();
-		if (item) {
-			if (item.fn && typeof item.fn === 'function') {
-				item.fn.call(null);
-			}
-			manager.timer = null;
-			manager.step();
-		}
-	}, 1);
+manager.step = function () {
+  if (!manager.queue.length || manager.timer) { return; }
+  manager.timer = setTimeout(function () {
+    var item = manager.queue.shift();
+    if (item) {
+      if (item.fn && typeof item.fn === 'function') {
+        item.fn.call(null);
+      }
+      manager.timer = null;
+      manager.step();
+    }
+  }, 1);
 };
 
 function job(fn, options) {
-	manager.add(fn, options);
-	return manager;
+  manager.add(fn, options);
+  return manager;
 }
 
 module.exports = job;
