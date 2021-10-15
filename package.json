@@ -4,18 +4,15 @@
   "description": "原子化工具函数库",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
     "test": "jest ./test/unit",
     "test-package": "jest ./test/unit/num.test.js",
     "cover": "jest --coverage ./test/unit",
     "cover-package": "gulp clean-cover && jest --coverage ./test/unit/num.test.js",
-    "publish-packages": "lerna publish",
     "vuepress-dev": "vuepress dev docs",
     "vuepress-build": "vuepress build docs",
     "doc-build": "sh ./task/doc-build.sh ./packages",
     "doc": "npm run cover && npm run doc-build && npm run vuepress-build",
     "prepublishOnly": "npm test && gulp",
-    "tag": "corp-semantic-release --changelogpreset angular-bitbucket --branch develop",
     "cz": "git add . && git cz"
   },
   "repository": {
@@ -32,9 +29,7 @@
     "@commitlint/config-conventional": "^13.2.0",
     "babel-eslint": "^10.0.3",
     "commitizen": "^4.2.4",
-    "conventional-changelog-angular-bitbucket": "^1.2.0",
     "conventional-changelog-cli": "^2.1.1",
-    "corp-semantic-release": "^7.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "del": "^5.1.0",
     "documentation": "^12.1.4",
@@ -58,9 +53,15 @@
     "jsdom": "^18.0.0",
     "lerna": "^3.19.0",
     "lint-staged": "^10.2.11",
+    "semantic-release": "^18.0.0",
     "vuepress": "^1.5.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "document-offset": "^1.0.4",
+    "js-cookie": "^3.0.1",
+    "lodash": "^4.17.21",
+    "url-parse": "^1.5.3"
+  },
   "lint-staged": {
     "packages/**/*.js": "eslint"
   },
