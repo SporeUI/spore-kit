@@ -19,8 +19,6 @@ jobs:
           node-version: '12'
       - name: npm-install
         run: npm install
-      - name: lerna-bootstrap
-        run: npx lerna bootstrap --no-ci
       - name: unit-test
         run: npm test
       - name: build
