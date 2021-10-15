@@ -1,6 +1,7 @@
 *.lock
 package-lock.json
 ignore
+dist
 docs-dist
 docs/docs.md
 docs/.vuepress/public/js/spore-kit.js
