@@ -15,7 +15,7 @@ $gulp.task('build-js', () => {
   }))
     .pipe($gulpRename('spore-kit.js'))
     .pipe($gulp.dest('./dist'))
-    .pipe($gulp.dest('./docs/public'));
+    .pipe($gulp.dest('./docs/.vuepress/public/js'));
   return flow;
 });
 
@@ -30,7 +30,7 @@ $gulp.task('build-js-min', () => {
     .pipe($gulpUglify())
     .pipe($gulpRename('spore-kit.min.js'))
     .pipe($gulp.dest('./dist'))
-    .pipe($gulp.dest('./docs/public'));
+    .pipe($gulp.dest('./docs/.vuepress/public/js'));
   return flow;
 });
 

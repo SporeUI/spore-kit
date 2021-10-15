@@ -2,5 +2,5 @@ node_modules
 ignore
 temp
 dist
-docs
+docs/public
 packages/io/ajax.js

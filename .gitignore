@@ -2,8 +2,9 @@
 package-lock.json
 ignore
 docs-dist
-docs/packages
-docs/public
+docs/docs.md
+docs/.vuepress/public/js/spore-kit.js
+docs/.vuepress/public/js/spore-kit.min.js
 
 # Logs
 logs
