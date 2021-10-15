@@ -15,29 +15,29 @@ var $assign = require('../obj/assign');
 var $uaMatch = require('./uaMatch');
 
 var testers = {
-	ios: /like mac os x/i,
-	android: function(ua) {
-		return ua.indexOf('android') > -1 || ua.indexOf('linux') > -1;
-	}
+  ios: /like mac os x/i,
+  android: function (ua) {
+    return ua.indexOf('android') > -1 || ua.indexOf('linux') > -1;
+  },
 };
 
 function detect(options, checkers) {
-	var conf = $assign({
-		ua: ''
-	}, options);
+  var conf = $assign({
+    ua: '',
+  }, options);
 
-	$assign(testers, checkers);
+  $assign(testers, checkers);
 
-	return $uaMatch(testers, conf.ua, conf);
+  return $uaMatch(testers, conf.ua, conf);
 }
 
 var result = null;
 
 function os() {
-	if (!result) {
-		result = detect();
-	}
-	return result;
+  if (!result) {
+    result = detect();
+  }
+  return result;
 }
 
 os.detect = detect;

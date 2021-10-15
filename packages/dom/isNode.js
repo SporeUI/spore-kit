@@ -7,11 +7,11 @@
  * $isNode(document.body) // 1
  */
 function isNode(node) {
-	return (
-		node
-		&& node.nodeName
-		&& node.nodeType
-	);
+  return (
+    node
+    && node.nodeName
+    && node.nodeType
+  );
 }
 
 module.exports = isNode;

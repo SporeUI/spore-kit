@@ -12,11 +12,11 @@
 var isTouchable = null;
 
 function touchable() {
-	if (isTouchable === null) {
-		isTouchable = !!('ontouchstart' in window
-		|| (window.DocumentTouch && document instanceof window.DocumentTouch));
-	}
-	return isTouchable;
+  if (isTouchable === null) {
+    isTouchable = !!('ontouchstart' in window
+    || (window.DocumentTouch && document instanceof window.DocumentTouch));
+  }
+  return isTouchable;
 }
 
 module.exports = touchable;

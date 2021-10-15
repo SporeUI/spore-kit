@@ -19,31 +19,31 @@ var $assign = require('../obj/assign');
 var $uaMatch = require('./uaMatch');
 
 var testers = {
-	huawei: (/huawei/i),
-	oppo: (/oppo/i),
-	vivo: (/vivo/i),
-	xiaomi: (/xiaomi/i),
-	samsong: (/sm-/i),
-	iphone: (/iphone/i)
+  huawei: (/huawei/i),
+  oppo: (/oppo/i),
+  vivo: (/vivo/i),
+  xiaomi: (/xiaomi/i),
+  samsong: (/sm-/i),
+  iphone: (/iphone/i),
 };
 
 function detect(options, checkers) {
-	var conf = $assign({
-		ua: ''
-	}, options);
+  var conf = $assign({
+    ua: '',
+  }, options);
 
-	$assign(testers, checkers);
+  $assign(testers, checkers);
 
-	return $uaMatch(testers, conf.ua, conf);
+  return $uaMatch(testers, conf.ua, conf);
 }
 
 var result = null;
 
 function device() {
-	if (!result) {
-		result = detect();
-	}
-	return result;
+  if (!result) {
+    result = detect();
+  }
+  return result;
 }
 
 device.detect = detect;

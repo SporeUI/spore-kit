@@ -15,19 +15,19 @@ var isSupportWebp = null;
  * console.info($webp.support()); // true/false
  */
 function support() {
-	var rs = !![].map
-		&& document
-			.createElement('canvas')
-			.toDataURL('image/webp')
-			.indexOf('data:image/webp') === 0;
-	return rs;
+  var rs = !![].map
+    && document
+      .createElement('canvas')
+      .toDataURL('image/webp')
+      .indexOf('data:image/webp') === 0;
+  return rs;
 }
 
-function webp () {
-	if (isSupportWebp === null) {
-		isSupportWebp = support();
-	}
-	return isSupportWebp;
+function webp() {
+  if (isSupportWebp === null) {
+    isSupportWebp = support();
+  }
+  return isSupportWebp;
 }
 
 webp.support = support;

@@ -11,12 +11,13 @@
  * // {top: 69, left: 108}
  */
 
-var offset = function() {
-	return {};
+var offset = function () {
+  return {};
 };
 
 if (typeof window !== 'undefined') {
-	offset = require('document-offset');
+  // eslint-disable-next-line global-require
+  offset = require('document-offset');
 }
 
 module.exports = offset;

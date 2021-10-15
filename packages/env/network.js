@@ -15,10 +15,10 @@ var supportOnline = null;
  * $network.support(); // true/false
  */
 function support() {
-	if (supportOnline === null) {
-		supportOnline = !!('onLine' in window.navigator);
-	}
-	return supportOnline;
+  if (supportOnline === null) {
+    supportOnline = !!('onLine' in window.navigator);
+  }
+  return supportOnline;
 }
 
 /**
@@ -31,7 +31,7 @@ function support() {
  * $network.onLine(); // true/false
  */
 function onLine() {
-	return support() ? window.navigator.onLine : true;
+  return support() ? window.navigator.onLine : true;
 }
 
 exports.support = support;

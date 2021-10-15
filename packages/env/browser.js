@@ -23,35 +23,35 @@ var $assign = require('../obj/assign');
 var $uaMatch = require('./uaMatch');
 
 var testers = {
-	qq: (/qq\/([\d.]+)/i),
-	uc: (/ucbrowser/i),
-	baidu: (/baidubrowser/i),
-	miui: (/miuibrowser/i),
-	weixin: (/micromessenger/i),
-	qzone: (/qzone\//i),
-	qqnews: (/qqnews\/([\d.]+)/i),
-	qqhouse: (/qqhouse/i),
-	qqbrowser: (/qqbrowser/i),
-	chrome: (/chrome/i)
+  qq: (/qq\/([\d.]+)/i),
+  uc: (/ucbrowser/i),
+  baidu: (/baidubrowser/i),
+  miui: (/miuibrowser/i),
+  weixin: (/micromessenger/i),
+  qzone: (/qzone\//i),
+  qqnews: (/qqnews\/([\d.]+)/i),
+  qqhouse: (/qqhouse/i),
+  qqbrowser: (/qqbrowser/i),
+  chrome: (/chrome/i),
 };
 
 function detect(options, checkers) {
-	var conf = $assign({
-		ua: ''
-	}, options);
+  var conf = $assign({
+    ua: '',
+  }, options);
 
-	$assign(testers, checkers);
+  $assign(testers, checkers);
 
-	return $uaMatch(testers, conf.ua, conf);
+  return $uaMatch(testers, conf.ua, conf);
 }
 
 var result = null;
 
 function envBrowser() {
-	if (!result) {
-		result = detect();
-	}
-	return result;
+  if (!result) {
+    result = detect();
+  }
+  return result;
 }
 
 envBrowser.detect = detect;
