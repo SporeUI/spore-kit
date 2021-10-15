@@ -6,12 +6,12 @@
  * @returns {Boolean} 如果对象在数组中，返回 true
  * @example
  * var $contains = require('spore-kit/packages/arr/$contains');
- * console.info($contains([1,2,3,4,5], 3));	// true
+ * console.info($contains([1,2,3,4,5], 3)); // true
  */
 
-function contains (arr, item) {
-	var index = arr.indexOf(item);
-	return index >= 0;
+function contains(arr, item) {
+  var index = arr.indexOf(item);
+  return index >= 0;
 }
 
 module.exports = contains;

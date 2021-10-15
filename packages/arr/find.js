@@ -12,14 +12,14 @@
  * }); // [0, 1]
  */
 
-function findInArr (arr, fn, context) {
-	var positions = [];
-	arr.forEach(function (item, index) {
-		if (fn.call(context, item, index, arr)) {
-			positions.push(index);
-		}
-	});
-	return positions;
+function findInArr(arr, fn, context) {
+  var positions = [];
+  arr.forEach(function (item, index) {
+    if (fn.call(context, item, index, arr)) {
+      positions.push(index);
+    }
+  });
+  return positions;
 }
 
 module.exports = findInArr;

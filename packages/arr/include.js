@@ -6,17 +6,17 @@
  * @returns {Array} 经过处理的源数组
  * @example
  * var $include = require('spore-kit/packages/arr/include');
- * console.info($include([1,2,3],4));	// [1,2,3,4]
- * console.info($include([1,2,3],3));	// [1,2,3]
+ * console.info($include([1,2,3],4)); // [1,2,3,4]
+ * console.info($include([1,2,3],3)); // [1,2,3]
  */
 
 var $contains = require('./contains');
 
-function include (arr, item) {
-	if (!$contains(arr, item)) {
-		arr.push(item);
-	}
-	return arr;
+function include(arr, item) {
+  if (!$contains(arr, item)) {
+    arr.push(item);
+  }
+  return arr;
 }
 
 module.exports = include;

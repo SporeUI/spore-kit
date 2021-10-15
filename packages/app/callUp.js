@@ -38,69 +38,69 @@
 var $assign = require('../obj/assign');
 var $browser = require('../env/browser');
 
-function callUp (options) {
-	var conf = $assign({
-		protocol: '',
-		fallbackUrl: '',
-		action: null,
-		startTime: new Date().getTime(),
-		waiting: 800,
-		waitingLimit: 50,
-		fallback: function(fallbackUrl) {
-			// 在一定时间内无法唤起客户端，跳转下载地址或到中间页
-			window.location = fallbackUrl;
-		},
-		onFallback: null,
-		onTimeout: null
-	}, options);
+function callUp(options) {
+  var conf = $assign({
+    protocol: '',
+    fallbackUrl: '',
+    action: null,
+    startTime: new Date().getTime(),
+    waiting: 800,
+    waitingLimit: 50,
+    fallback: function (fallbackUrl) {
+      // 在一定时间内无法唤起客户端，跳转下载地址或到中间页
+      window.location = fallbackUrl;
+    },
+    onFallback: null,
+    onTimeout: null,
+  }, options);
 
-	var wId;
-	var iframe;
+  var wId;
+  var iframe;
 
-	if (typeof conf.action === 'function') {
-		conf.action();
-	} else if ($browser().chrome) {
-		// chrome下iframe无法唤起Android客户端，这里使用window.open
-		// 另一个方案参考 https://developers.google.com/chrome/mobile/docs/intents
-		var win = window.open(conf.protocol);
-		wId = setInterval(function() {
-			if (typeof win === 'object') {
-				clearInterval(wId);
-				win.close();
-			}
-		}, 10);
-	} else {
-		// 创建iframe
-		iframe = document.createElement('iframe');
-		iframe.style.display = 'none';
-		iframe.src = conf.protocol;
-		document.body.appendChild(iframe);
-	}
+  if (typeof conf.action === 'function') {
+    conf.action();
+  } else if ($browser().chrome) {
+    // chrome下iframe无法唤起Android客户端，这里使用window.open
+    // 另一个方案参考 https://developers.google.com/chrome/mobile/docs/intents
+    var win = window.open(conf.protocol);
+    wId = setInterval(function () {
+      if (typeof win === 'object') {
+        clearInterval(wId);
+        win.close();
+      }
+    }, 10);
+  } else {
+    // 创建iframe
+    iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = conf.protocol;
+    document.body.appendChild(iframe);
+  }
 
-	setTimeout(function() {
-		if (wId) {
-			clearInterval(wId);
-		}
+  setTimeout(function () {
+    if (wId) {
+      clearInterval(wId);
+    }
 
-		if (iframe) {
-			document.body.removeChild(iframe);
-		}
+    if (iframe) {
+      document.body.removeChild(iframe);
+    }
 
-		if (typeof conf.onTimeout === 'function') {
-			conf.onTimeout();
-		}
+    if (typeof conf.onTimeout === 'function') {
+      conf.onTimeout();
+    }
 
-		// ios下，跳转到APP，页面JS会被阻止执行。
-		// 因此如果超时时间大大超过了预期时间范围，可断定APP已被打开。
-		if (new Date().getTime() - conf.startTime < conf.waiting + conf.waitingLimit) {
-			if (typeof conf.onFallback === 'function') {
-				conf.onFallback();
-			}
-			if (typeof conf.fallback === 'function') {
-				conf.fallback(conf.fallbackUrl);
-			}
-		}
-	}, conf.waiting);
+    // ios下，跳转到APP，页面JS会被阻止执行。
+    // 因此如果超时时间大大超过了预期时间范围，可断定APP已被打开。
+    if (new Date().getTime() - conf.startTime < conf.waiting + conf.waitingLimit) {
+      if (typeof conf.onFallback === 'function') {
+        conf.onFallback();
+      }
+      if (typeof conf.fallback === 'function') {
+        conf.fallback(conf.fallbackUrl);
+      }
+    }
+  }, conf.waiting);
 }
 
 module.exports = callUp;
