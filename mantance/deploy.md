@@ -1,15 +1,10 @@
 # 项目维护
 
-## 发布流程
+## 维护流程
 
-- 提交代码
-- 修改组件对应模块的文档 README.md
-- 执行 gulp 验证打包是否有异常
-- 执行 npx lerna publish 发布子模块
-- 修改 package.json 的 spore-kit 版本号
-- 修改 README.md 添加更新说明
-- 再次提交代码，将构建好的文档提交
-- 执行 npm publish 发布组件
+- 在 develop 分支提交代码
+- 合并到 master 分支即可触发发布流程
+- 发布流程会进行测试，文档生成，版本发布
 
 ## 文档构建
 
