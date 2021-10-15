@@ -13,6 +13,7 @@
     "doc-build": "sh ./task/doc-build.sh ./packages",
     "doc": "npm run cover && npm run doc-build && npm run vuepress-build",
     "prepublishOnly": "npm test && npm run build",
+    "lint": "eslint ./packages",
     "cz": "git add . && git cz"
   },
   "repository": {
