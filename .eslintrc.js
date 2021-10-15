@@ -35,4 +35,8 @@ module.exports = {
     browser: true,
     console: true,
   },
+  // add your custom rules here
+  rules: {
+    'import/no-extraneous-dependencies': 0,
+  },
 };
