@@ -56,10 +56,9 @@ var pushInstance = function (fps) {
   var list = instances[fps] || (instances[fps] = []);
   list.push(this);
   if (!timers[fps]) {
-    timers[fps] = $timer.setInterval(
-      loop.bind(list),
-      Math.round(1000 / fps),
-    );
+    var loopMethod = loop.bind(list);
+    var loopDur = Math.round(1000 / fps);
+    timers[fps] = $timer.setInterval(loopMethod, loopDur);
   }
 };
 
@@ -76,17 +75,14 @@ var pullInstance = function (fps) {
 
 var Fx = $klass({
   initialize: function (options) {
-    this.options = $assign(
-      {
-        fps: 60,
-        duration: 500,
-        transition: null,
-        frames: null,
-        frameSkip: true,
-        link: 'ignore',
-      },
-      options,
-    );
+    this.options = $assign({
+      fps: 60,
+      duration: 500,
+      transition: null,
+      frames: null,
+      frameSkip: true,
+      link: 'ignore',
+    }, options);
   },
 
   /**

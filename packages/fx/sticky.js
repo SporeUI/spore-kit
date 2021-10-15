@@ -27,16 +27,13 @@ function sticky(node, options) {
   that.isIOS = isIOS;
   that.isAndroid = isAndroid;
 
-  var conf = $.extend(
-    {
-      clone: true,
-      placeholder: null,
-      disableAndroid: false,
-      offsetParent: null,
-      styles: {},
-    },
-    options,
-  );
+  var conf = $.extend({
+    clone: true,
+    placeholder: null,
+    disableAndroid: false,
+    offsetParent: null,
+    styles: {},
+  }, options);
 
   that.root = $(node);
 

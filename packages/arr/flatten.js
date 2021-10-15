@@ -17,9 +17,8 @@ function flatten(arr) {
     if (type === 'null') {
       continue;
     }
-    array = array.concat(
-      type === 'array' ? flatten(arr[i]) : arr[i],
-    );
+    var extraArr = type === 'array' ? flatten(arr[i]) : arr[i];
+    array = array.concat(extraArr);
   }
   return array;
 }

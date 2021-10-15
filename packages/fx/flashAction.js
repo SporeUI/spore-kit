@@ -26,16 +26,13 @@
 var $assign = require('../obj/assign');
 
 function flashAction(options) {
-  var conf = $assign(
-    {
-      times: 3,
-      delay: 100,
-      actionOdd: null,
-      actionEven: null,
-      recover: null,
-    },
-    options,
-  );
+  var conf = $assign({
+    times: 3,
+    delay: 100,
+    actionOdd: null,
+    actionEven: null,
+    recover: null,
+  }, options);
 
   var queue = [];
   for (var i = 0; i < conf.times * 2 + 1; i += 1) {

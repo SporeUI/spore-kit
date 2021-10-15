@@ -56,13 +56,10 @@ var rLimit = function (num, w) {
 function format(dobj, spec) {
   var output = '';
   var data = {};
-  var conf = $assign(
-    {
-      weekday: '日一二三四五六'.split(''),
-      template: '{{YYYY}}-{{MM}}-{{DD}} {{hh}}:{{mm}}',
-    },
-    spec,
-  );
+  var conf = $assign({
+    weekday: '日一二三四五六'.split(''),
+    template: '{{YYYY}}-{{MM}}-{{DD}} {{hh}}:{{mm}}',
+  }, spec);
 
   // 解决不同服务器时区不一致可能会导致日期初始化时间不一致的问题
   // 传入数字以北京时区时间为准

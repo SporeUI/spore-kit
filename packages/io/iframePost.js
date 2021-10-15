@@ -71,13 +71,14 @@ function getHiddenInput(form, name) {
 
 function getIframe(name) {
   var $ = get$();
-  var iframe = $(
-    '<iframe id="'
-    + name
-    + '" name="'
-    + name
-    + '" src="about:blank" style="display:none;"></iframe>',
-  );
+  var html = [
+    '<iframe',
+    'id="' + name + '" ',
+    'name="' + name + '"',
+    'src="about:blank"',
+    'style="display:none;"></iframe>',
+  ].join(' ');
+  var iframe = $(html);
   iframe.appendTo(getHiddenBox());
   return iframe;
 }
@@ -118,23 +119,23 @@ function iframePost(spec) {
         if (!item) {
           return;
         }
-        html.push(
-          '<input type="hidden" name="'
-          + item.name
-          + '" value="'
-          + item.value
-          + '">',
-        );
+        var inputHtml = [
+          '<input',
+          'type="hidden"',
+          'name="' + item.name + '"',
+          'value="' + item.value + '">',
+        ].join(' ');
+        html.push(inputHtml);
       });
     } else if ($.isPlainObject(conf.data)) {
       $.each(conf.data, function (name, value) {
-        html.push(
-          '<input type="hidden" name="'
-          + name
-          + '" value="'
-          + value
-          + '">',
-        );
+        var inputHtml = [
+          '<input',
+          'type="hidden"',
+          'name="' + name + '"',
+          'value="' + value + '">',
+        ].join(' ');
+        html.push(inputHtml);
       });
     }
     $(html.join('')).appendTo(form);

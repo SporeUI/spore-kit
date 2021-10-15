@@ -16,12 +16,11 @@ function abToHex(buffer) {
   if (Object.prototype.toString.call(buffer) !== '[object ArrayBuffer]') {
     return '';
   }
-  return Array.prototype.map.call(
-    new Uint8Array(buffer),
-    function (bit) {
-      return ('00' + bit.toString(16)).slice(-2);
-    },
-  ).join('');
+  var u8arr = new Uint8Array(buffer);
+  var fn = function (bit) {
+    return ('00' + bit.toString(16)).slice(-2);
+  };
+  return Array.prototype.map.call(u8arr, fn).join('');
 }
 
 module.exports = abToHex;

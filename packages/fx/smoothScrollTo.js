@@ -18,14 +18,11 @@ var $assign = require('../obj/assign');
 function smoothScrollTo(node, spec) {
   var $ = window.$ || window.Zepto || window.jQuery;
 
-  var conf = $assign(
-    {
-      delta: 0,
-      maxDelay: 3000,
-      callback: null,
-    },
-    spec,
-  );
+  var conf = $assign({
+    delta: 0,
+    maxDelay: 3000,
+    callback: null,
+  }, spec);
 
   var offset = $(node).offset();
   var target = offset.top + conf.delta;
