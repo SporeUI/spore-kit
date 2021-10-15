@@ -12,10 +12,12 @@
  * @see https://github.com/documentcloud/backbone/blob/master/backbone.js
  * @see https://github.com/joyent/node/blob/master/lib/events.js
  * @example
- * var Events = require('spore-kit-evt/events');
- *
- * var $kit = require('spore-kit');
- * var Events = $kit.evt.Events;
+ * var $events = require('spore-kit/packages/evt/events');
+ * var evt = new $events();
+ * evt.on('action', function() {
+ *   console.info('action triggered');
+ * });
+ * evt.trigger('action');
  */
 
 // Regular expression used to split event strings
@@ -49,7 +51,8 @@ var Events = function() {};
  * @param {Function} callback 事件回调函数
  * @param {Object} [context] 回调函数的执行环境对象
  * @example
- * var evt = new Events();
+ * var $events = require('spore-kit/packages/evt/events');
+ * var evt = new $events();
  *
  * // 绑定1个事件
  * evt.on('event-name', function () {});
@@ -95,7 +98,8 @@ Events.prototype.on = function(events, callback, context) {
  * @param {Function} [callback] 要移除的事件回调函数
  * @param {Object} [context] 要移除的回调函数的执行环境对象
  * @example
- * var evt = new Events();
+ * var $events = require('spore-kit/packages/evt/events');
+ * var evt = new $events();
  * var bound = {};
  * bound.test = function () {};
  *
@@ -166,7 +170,8 @@ Events.prototype.off = function(events, callback, context) {
  * @param {string} events 事件名称
  * @param {...*} [arg] 事件参数
  * @example
- * var evt = new Events();
+ * var $events = require('spore-kit/packages/evt/events');
+ * var evt = new $events();
  *
  * // 触发事件名为 'event-name' 的事件
  * evt.trigger('event-name');
@@ -176,7 +181,7 @@ Events.prototype.off = function(events, callback, context) {
  *
  * // 触发事件同时传递参数
  * evt.on('event-x', function (a, b) {
- * 	console.info(a, b); // 1, 2
+ *   console.info(a, b); // 1, 2
  * });
  * evt.trigger('event-x', 1, 2);
  */
@@ -243,9 +248,10 @@ Events.prototype.trigger = function(events) {
  * @memberof Events
  * @param {Object} receiver 要混合事件函数的对象
  * @example
+ * var $events = require('spore-kit/packages/evt/events');
  * // 给一个实例混合自定义事件方法
  * var obj = {};
- * Events.mixTo(obj);
+ * $events.mixTo(obj);
  *
  * // 生成一个实例
  * var o1 = Object.create(obj);

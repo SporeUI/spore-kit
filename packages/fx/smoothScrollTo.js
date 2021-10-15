@@ -8,11 +8,12 @@
  * @param {Number} [spec.maxDelay=3000] 动画执行时间限制(ms)，动画执行超过此时间则直接停止，立刻滚动到目标位置
  * @param {Function} [options.callback] 滚动完成的回调函数
  * @example
+ * var $smoothScrollTo = require('spore-kit/packages/fx/smoothScrollTo');
  * // 滚动到页面顶端
- * smoothScrollTo(document.body);
+ * $smoothScrollTo(document.body);
  */
 
-var $assign = require('spore-kit-obj/assign');
+var $assign = require('../obj/assign');
 
 function smoothScrollTo (node, spec) {
 	var $ = window.$ || window.Zepto || window.jQuery;

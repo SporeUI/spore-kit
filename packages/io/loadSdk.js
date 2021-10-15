@@ -24,9 +24,10 @@ if (typeof window !== 'undefined') {
  * @param {String} [options.charset='utf-8'] script 编码
  * @param {Function} [options.onLoad] script 加载完成的回调函数
  * @example
- * loadSdk({
- * 	name: 'TencentCaptcha',
- * 	url: 'https://ssl.captcha.qq.com/TCaptcha.js'
+ * var $loadSdk = require('spore-kit/packages/io/loadSdk');
+ * $loadSdk({
+ *   name: 'TencentCaptcha',
+ *   url: 'https://ssl.captcha.qq.com/TCaptcha.js'
  * }).then(TencentCaptcha => {})
  */
 var loadSdk = function (options) {

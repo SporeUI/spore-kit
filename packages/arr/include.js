@@ -5,8 +5,9 @@
  * @param {*} item 要插入的对象
  * @returns {Array} 经过处理的源数组
  * @example
- * console.info(include([1,2,3],4));	// [1,2,3,4]
- * console.info(include([1,2,3],3));	// [1,2,3]
+ * var $include = require('spore-kit/packages/arr/include');
+ * console.info($include([1,2,3],4));	// [1,2,3,4]
+ * console.info($include([1,2,3],3));	// [1,2,3]
  */
 
 var $contains = require('./contains');

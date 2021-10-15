@@ -1,18 +1,18 @@
 /**
  * # 对象处理与判断
- * @module spore-kit-obj
+ * @module spore-kit/packages/obj
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/obj
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');
  * console.info($kit.obj.type);
  *
- * // 单独引入 spore-kit-obj
- * var $obj = require('spore-kit-obj');
+ * // 单独引入 spore-kit/packages/obj
+ * var $obj = require('spore-kit/packages/obj');
  * console.info($obj.type);
  *
  * // 单独引入一个方法
- * var $type = require('spore-kit-obj/type');
+ * var $type = require('spore-kit/packages/obj/type');
  */
 
 exports.assign = require('./assign');

@@ -7,14 +7,15 @@
  * @param {Object} [bind] 函数的 this 指向
  * @returns {Function} 经过包装的队列触发函数
  * @example
- *	var t1 = Date.now();
- *	var doSomthing = queue(function (index) {
- *		console.info(index + ':' + (Date.now() - t1));
- *	}, 200);
- *	// 每隔200ms输出一个日志。
- *	for(var i = 0; i < 10; i++){
- *		doSomthing(i);
- *	}
+ * var $queue = require('spore-kit/packages/fn/queue');
+ * var t1 = Date.now();
+ * var doSomthing = $queue(function (index) {
+ *   console.info(index + ':' + (Date.now() - t1));
+ * }, 200);
+ * // 每隔200ms输出一个日志。
+ * for(var i = 0; i < 10; i++){
+ *   doSomthing(i);
+ * }
  */
 
 function queue (fn, delay, bind) {

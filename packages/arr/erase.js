@@ -5,7 +5,8 @@
  * @param {*} item 要清除的对象
  * @returns {Number} 对象原本所在位置
  * @example
- * console.info(erase([1,2,3,4,5],3));	// [1,2,4,5]
+ * var $erase = require('spore-kit/packages/arr/erase');
+ * console.info($erase([1,2,3,4,5],3));	// [1,2,4,5]
  */
 
 function erase (arr, item) {

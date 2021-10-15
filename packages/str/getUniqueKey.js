@@ -3,7 +3,8 @@
  * @method getUniqueKey
  * @returns {String} 随机字符串
  * @example
- * getUniqueKey(); // '166aae1fa9f'
+ * var $getUniqueKey = require('spore-kit/packages/str/getUniqueKey');
+ * $getUniqueKey(); // '166aae1fa9f'
  */
 
 var time = +new Date();

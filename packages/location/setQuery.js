@@ -5,16 +5,17 @@
  * @param {Object} query 参数对象
  * @returns {String} 拼接好参数的URL字符串
  * @example
- * setQuery('localhost'); // 'localhost'
- * setQuery('localhost', {a: 1}); // 'localhost?a=1'
- * setQuery('', {a: 1}); // '?a=1'
- * setQuery('localhost?a=1', {a: 2}); // 'localhost?a=2'
- * setQuery('localhost?a=1', {a: ''}); // 'localhost?a='
- * setQuery('localhost?a=1', {a: null}); // 'localhost'
- * setQuery('localhost?a=1', {b: 2}); // 'localhost?a=1&b=2'
- * setQuery('localhost?a=1&b=1', {a: 2, b: 3}); // 'localhost?a=2&b=3'
- * setQuery('localhost#a=1', {a: 2, b: 3}); // 'localhost?a=2&b=3#a=1'
- * setQuery('#a=1', {a: 2, b: 3}); // '?a=2&b=3#a=1'
+ * var $setQuery = require('spore-kit/packages/location/setQuery');
+ * $setQuery('localhost'); // 'localhost'
+ * $setQuery('localhost', {a: 1}); // 'localhost?a=1'
+ * $setQuery('', {a: 1}); // '?a=1'
+ * $setQuery('localhost?a=1', {a: 2}); // 'localhost?a=2'
+ * $setQuery('localhost?a=1', {a: ''}); // 'localhost?a='
+ * $setQuery('localhost?a=1', {a: null}); // 'localhost'
+ * $setQuery('localhost?a=1', {b: 2}); // 'localhost?a=1&b=2'
+ * $setQuery('localhost?a=1&b=1', {a: 2, b: 3}); // 'localhost?a=2&b=3'
+ * $setQuery('localhost#a=1', {a: 2, b: 3}); // 'localhost?a=2&b=3#a=1'
+ * $setQuery('#a=1', {a: 2, b: 3}); // '?a=2&b=3#a=1'
  */
 
 function setQuery (url, query) {

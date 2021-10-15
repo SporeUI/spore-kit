@@ -5,8 +5,9 @@
  * @param {Number} lens
  * @returns {String} str
  * @example
+ * var $leftB = require('spore-kit/packages/str/leftB');
  * //向汉编致敬
- * leftB('世界真和谐', 6); // '世界真'
+ * $leftB('世界真和谐', 6); // '世界真'
 */
 
 var $bLength = require('./bLength');

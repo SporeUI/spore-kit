@@ -11,9 +11,11 @@
  * @method device
  * @returns {Object} UA 检查结果
  * @example
- * console.info(device().huawei);
+ * var $device = require('spore-kit/packages/env/device');
+ * console.info($device().huawei);
+ * console.info($device.detect());
  */
-var $assign = require('spore-kit-obj/assign');
+var $assign = require('../obj/assign');
 var $uaMatch = require('./uaMatch');
 
 var testers = {

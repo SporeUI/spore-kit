@@ -12,28 +12,29 @@
  * @param {Object} [options] 动画选项
  * @param {Number} [options.fps=60] 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率
  * @param {Number} [options.duration=500] 动画持续时间(ms)
- * @param {String|Function} [options.transition] 动画执行方式，参见 spore-kit-fx/transitions
+ * @param {String|Function} [options.transition] 动画执行方式，参见 spore-kit/packages/fx/transitions
  * @param {Number} [options.frames] 从哪一帧开始执行
  * @param {Boolean} [options.frameSkip=true] 是否跳帧
  * @param {String} [options.link='ignore'] 动画衔接方式，可选：['ignore', 'cancel']
  * @example
- *	var fx = new Fx({
- *		duration : 1000
- *	});
- *	fx.set = function (now) {
- *		node.style.marginLeft = now + 'px';
- *	};
- *	fx.on('complete', function(){
- *		console.info('animation end');
- *	});
- *	fx.start(0, 600);  // 1秒内数字从0增加到600
+ * var $fx = require('spore-kit/packages/fx/fx');
+ * var fx = new $fx({
+ *   duration : 1000
+ * });
+ * fx.set = function (now) {
+ *   node.style.marginLeft = now + 'px';
+ * };
+ * fx.on('complete', function(){
+ *   console.info('animation end');
+ * });
+ * fx.start(0, 600); // 1秒内数字从0增加到600
  */
 
 var $klass = require('klass');
-var $events = require('spore-kit-evt/events');
-var $erase = require('spore-kit-arr/erase');
-var $contains = require('spore-kit-arr/contains');
-var $assign = require('spore-kit-obj/assign');
+var $events = require('../evt/events');
+var $erase = require('../arr/erase');
+var $contains = require('../arr/contains');
+var $assign = require('../obj/assign');
 var $timer = require('./timer');
 
 // global timers
@@ -103,12 +104,13 @@ var Fx = $klass({
 	 * @interface Fx#getTransition
 	 * @memberof Fx
 	 * @example
-	 *	var fx = new Fx();
-	 *	fx.getTransition = function () {
-	 *		return function (p) {
-	 *			return -(Math.cos(Math.PI * p) - 1) / 2;
-	 *		};
-	 *	};
+	 * var $fx = require('spore-kit/packages/fx/fx');
+	 * var fx = new $fx();
+	 * fx.getTransition = function () {
+	 *   return function (p) {
+	 *     return -(Math.cos(Math.PI * p) - 1) / 2;
+	 *   };
+	 * };
 	 */
 	getTransition: function () {
 		return function (p) {
@@ -142,10 +144,11 @@ var Fx = $klass({
 	 * @memberof Fx
 	 * @param {Number} now 当前动画帧的过渡数值
 	 * @example
-	 *	var fx = new Fx();
-	 *	fx.set = function (now) {
-	 *		node.style.marginLeft = now + 'px';
-	 *	};
+	 * var $fx = require('spore-kit/packages/fx/fx');
+	 * var fx = new $fx();
+	 * fx.set = function (now) {
+	 *   node.style.marginLeft = now + 'px';
+	 * };
 	 */
 	set: function (now) {
 		return now;
@@ -173,8 +176,9 @@ var Fx = $klass({
 	 * @param {Number} from 动画开始数值
 	 * @param {Number} to 动画结束数值
 	 * @example
-	 *	var fx = new Fx();
-	 *	fx.start(); // 开始动画
+	 * var $fx = require('spore-kit/packages/fx/fx');
+	 * var fx = new $fx();
+	 * fx.start(); // 开始动画
 	 */
 	start: function (from, to) {
 		if (!this.check(from, to)) {
@@ -201,9 +205,10 @@ var Fx = $klass({
 	 * @method Fx#stop
 	 * @memberof Fx
 	 * @example
-	 *	var fx = new Fx();
-	 *	fx.start();
-	 *	fx.stop(); // 立刻停止动画
+	 * var $fx = require('spore-kit/packages/fx/fx');
+	 * var fx = new $fx();
+	 * fx.start();
+	 * fx.stop(); // 立刻停止动画
 	 */
 	stop: function () {
 		if (this.isRunning()) {
@@ -223,9 +228,10 @@ var Fx = $klass({
 	 * @method Fx#cancel
 	 * @memberof Fx
 	 * @example
-	 *	var fx = new Fx();
-	 *	fx.start();
-	 *	fx.cancel(); // 立刻取消动画
+	 * var $fx = require('spore-kit/packages/fx/fx');
+	 * var fx = new $fx();
+	 * fx.start();
+	 * fx.cancel(); // 立刻取消动画
 	 */
 	cancel: function () {
 		if (this.isRunning()) {
@@ -242,9 +248,10 @@ var Fx = $klass({
 	 * @method Fx#pause
 	 * @memberof Fx
 	 * @example
-	 *	var fx = new Fx();
-	 *	fx.start();
-	 *	fx.pause(); // 立刻暂停动画
+	 * var $fx = require('spore-kit/packages/fx/fx');
+	 * var fx = new $fx();
+	 * fx.start();
+	 * fx.pause(); // 立刻暂停动画
 	 */
 	pause: function () {
 		if (this.isRunning()) {
@@ -259,10 +266,11 @@ var Fx = $klass({
 	 * @method Fx#resume
 	 * @memberof Fx
 	 * @example
-	 *	var fx = new Fx();
-	 *	fx.start();
-	 *	fx.pause();
-	 *	fx.resume(); // 立刻继续动画
+	 * var $fx = require('spore-kit/packages/fx/fx');
+	 * var fx = new $fx();
+	 * fx.start();
+	 * fx.pause();
+	 * fx.resume(); // 立刻继续动画
 	 */
 	resume: function () {
 		if (this.frame < this.frames && !this.isRunning()) {
@@ -277,10 +285,11 @@ var Fx = $klass({
 	 * @memberof Fx
 	 * @returns {Boolean} 动画是否正在运行
 	 * @example
-	 *	var fx = new Fx();
-	 *	fx.start();
-	 *	fx.pause();
-	 *	fx.isRunning(); // false
+	 * var $fx = require('spore-kit/packages/fx/fx');
+	 * var fx = new $fx();
+	 * fx.start();
+	 * fx.pause();
+	 * fx.isRunning(); // false
 	 */
 	isRunning: function () {
 		var list = instances[this.options.fps];

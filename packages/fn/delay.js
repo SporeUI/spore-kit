@@ -8,17 +8,18 @@
  * @param {Object} [bind] 函数的this指向
  * @returns {Function} 经过包装的延迟触发函数
  * @example
- *	var comp = {
- *		countWords : function(){
- *			console.info(this.length);
- *		}
- *	};
+ * var $delay = require('spore-kit/packages/fn/delay');
+ * var comp = {
+ *   countWords : function(){
+ *     console.info(this.length);
+ *   }
+ * };
  *
  *  // 疯狂点击 input ，停下来 500 ms 后，触发函数调用
- *	$('#input').keydown(delay(function(){
- *		this.length = $('#input').val().length;
- *		this.countWords();
- *	}, 500, comp));
+ * $('#input').keydown($delay(function(){
+ *   this.length = $('#input').val().length;
+ *   this.countWords();
+ * }, 500, comp));
  */
 
 function delay (fn, duration, bind) {

@@ -11,7 +11,8 @@ var isSupportWebp = null;
  * @memberof webp
  * @returns {Boolean} 是否支持webp
  * @example
- * console.info(webp.support()); // true/false
+ * var $webp = require('spore-kit/packages/env/webp');
+ * console.info($webp.support()); // true/false
  */
 function support() {
 	var rs = !![].map

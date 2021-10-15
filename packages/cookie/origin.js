@@ -4,9 +4,10 @@
  * @module origin
  * @see https://www.npmjs.com/package/js-cookie
  * @example
- * origin.set('name', 'value', {
- * 	expires: 1
+ * var $cookie = require('spore-kit/packages/cookie/origin');
+ * $cookie.set('name', 'value', {
+ *   expires: 1
  * });
- * origin.read('name')	// 'value'
+ * $cookie.read('name') // 'value'
  */
 module.exports = require('js-cookie');

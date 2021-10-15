@@ -1,18 +1,18 @@
 /**
  * # 类数组对象相关工具函数
- * @module spore-kit-arr
+ * @module spore-kit/packages/arr
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/arr
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');
  * console.info($kit.arr.contains);
  *
- * // 单独引入 spore-kit-arr
- * var $arr = require('spore-kit-arr');
+ * // 单独引入 spore-kit/packages/arr
+ * var $arr = require('spore-kit/packages/arr');
  * console.info($arr.contains);
  *
  * // 单独引入一个方法
- * var $contains = require('spore-kit-arr/contains');
+ * var $contains = require('spore-kit/packages/arr/contains');
  */
 
 exports.contains = require('./contains');

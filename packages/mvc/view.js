@@ -1,7 +1,7 @@
 /**
  * 视图类: 基础工厂元件类，用于对视图组件的包装
  * - 依赖 jQuery/Zepto
- * - 继承自 spore-kit-mvc/base
+ * - 继承自 spore-kit/packages/mvc/base
  * @module View
  * @param {Object} [options] 选项
  * @param {String|Object} [options.node] 选择器字符串，或者DOM元素，或者jquery对象，用于指定视图的根节点。
@@ -9,42 +9,43 @@
  * @param {Object} [options.events] 用于覆盖代理事件列表。
  * @param {Object} [options.role] 角色对象映射表，可指定role方法返回的jquery对象。
  * @example
- *	var View = require('spore-kit-mvc/view');
- *	var TPL = {
- *		box : [
- *			'<div>',
- *				'<button role="button"></button>',
- *			'</div>'
- *		]
- *	};
+ * var $view = require('spore-kit/packages/mvc/view');
  *
- *	var TestView = View.extend({
- *		defaults : {
- *			template : TPL.box
- *		},
- *		events : {
- *			'button click' : 'method1'
- *		},
- *		build : function(){
- *			this.role('root').appendTo(document.body);
- *		},
- *		method1 : function(evt){
- *			console.info(1);
- *		},
- *		method2 : function(evt){
- *			console.info(2);
- *		}
- *	});
+ * var TPL = {
+ *   box : [
+ *     '<div>',
+ *       '<button role="button"></button>',
+ *     '</div>'
+ *   ]
+ * };
  *
- *	var obj1 = new TestView();
- *	var obj2 = new TestView({
- *		events : {
- *			'button click' : 'method2'
- *		}
- *	});
+ * var TestView = $view.extend({
+ *   defaults : {
+ *     template : TPL.box
+ *   },
+ *   events : {
+ *     'button click' : 'method1'
+ *   },
+ *   build : function(){
+ *     this.role('root').appendTo(document.body);
+ *   },
+ *   method1 : function(evt){
+ *     console.info(1);
+ *   },
+ *   method2 : function(evt){
+ *     console.info(2);
+ *   }
+ * });
  *
- *	obj1.role('button').trigger('click');	// 1
- *	obj2.role('button').trigger('click');	// 2
+ * var obj1 = new TestView();
+ * var obj2 = new TestView({
+ *   events : {
+ *     'button click' : 'method2'
+ *   }
+ * });
+ *
+ * obj1.role('button').trigger('click');	// 1
+ * obj2.role('button').trigger('click');	// 2
  */
 
 var $base = require('./base');
@@ -131,7 +132,7 @@ var View = $base.extend({
 	 * - 在初始化时自动执行了 this.delegate('on')。
 	 * @method View#delegate
 	 * @memberof View
-	 * @see spore-kit-mvc/delegate
+	 * @see spore-kit/packages/mvc/delegate
 	 * @param {String} [action='on'] 绑定动作标记。可选：['on', 'off']
 	 */
 	delegate: function(action, root, events, bind) {

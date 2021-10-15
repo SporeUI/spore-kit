@@ -15,21 +15,21 @@
  * @module transitions
  * @see https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions
  * @example
- *	var Fx = require('spore-kit-fx/fx');
- *	var transitions = require('spore-kit-fx/transitions');
- *	new Fx({
- *		transition : transitions.Sine.easeInOut
- *	});
- *	new Fx({
- *		transition : 'Sine:In'
- *	});
- *	new Fx({
- *		transition : 'Sine:In:Out'
- *	});
+ * var $fx = require('spore-kit/packages/fx/fx');
+ * var $transitions = require('spore-kit/packages/fx/transitions');
+ * new $fx({
+ *   transition : $transitions.Sine.easeInOut
+ * });
+ * new $fx({
+ *   transition : 'Sine:In'
+ * });
+ * new $fx({
+ *   transition : 'Sine:In:Out'
+ * });
  */
 
-var $type = require('spore-kit-obj/type');
-var $assign = require('spore-kit-obj/assign');
+var $type = require('../obj/type');
+var $assign = require('../obj/assign');
 
 var $fx = require('./fx');
 

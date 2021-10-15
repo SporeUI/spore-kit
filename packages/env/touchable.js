@@ -3,8 +3,9 @@
  * @method touchable
  * @returns {Boolean} 是否支持触摸屏
  * @example
- * if (touchable()) {
- * 	//It is a touch device.
+ * var $touchable = require('spore-kit/packages/env/touchable');
+ * if ($touchable()) {
+ *   // It is a touch device.
  * }
  */
 

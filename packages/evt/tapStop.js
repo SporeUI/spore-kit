@@ -6,9 +6,10 @@
  * @param {Object} options 点击选项
  * @param {Number} options.delay 临时浮层在这个延迟时间(ms)之后关闭
  * @example
+ * var $tapStop = require('spore-kit/packages/evt/tapStop');
  * $('.mask').on('tap', function(){
- * 	tapStop();
- * 	$(this).hide();
+ *   $tapStop();
+ *   $(this).hide();
  * });
  */
 var miniMask = null;

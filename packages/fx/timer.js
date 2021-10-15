@@ -3,9 +3,10 @@
  * - 如果浏览器不支持 requestAnimationFrame API，则使用 BOM 原本的定时器API
  * @module timer
  * @example
- *	timer.setTimeout(function () {
- *		console.info('output this log after 1000ms');
- *	}, 1000);
+ * var $timer = require('spore-kit/packages/fx/timer');
+ * $timer.setTimeout(function () {
+ *   console.info('output this log after 1000ms');
+ * }, 1000);
  */
 
 var Timer = {};

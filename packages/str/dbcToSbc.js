@@ -4,7 +4,8 @@
  * @param {String} str 包含了全角字符的字符串
  * @returns {String} 经过转换的字符串
  * @example
- * dbcToSbc('ＳＡＡＳＤＦＳＡＤＦ'); // 'SAASDFSADF'
+ * var $dbcToSbc = require('spore-kit/packages/str/dbcToSbc');
+ * $dbcToSbc('ＳＡＡＳＤＦＳＡＤＦ'); // 'SAASDFSADF'
  */
 
 function dbcToSbc (str) {

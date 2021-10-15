@@ -9,10 +9,12 @@
  * @method core
  * @returns {Object} UA 检查结果
  * @example
- * console.info(core().webkit);
+ * var $core = require('spore-kit/packages/env/core');
+ * console.info($core().webkit);
+ * console.info($core.detect());
  */
 
-var $assign = require('spore-kit-obj/assign');
+var $assign = require('../obj/assign');
 var $uaMatch = require('./uaMatch');
 
 var testers = {

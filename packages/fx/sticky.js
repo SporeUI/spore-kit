@@ -9,7 +9,8 @@
  * @param {Object} [options.offsetParent=null] 提供一个相对定位元素来匹配浮动时的定位样式
  * @param {Object} [options.styles={}] 进入 sticky 状态时的样式
  * @example
- * sticky($('h1').get(0));
+ * var $sticky = require('spore-kit/packages/fx/sticky');
+ * $sticky($('h1').get(0));
  */
 
 function sticky(node, options) {

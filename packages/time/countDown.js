@@ -9,34 +9,35 @@
  * @param {Function} [spec.onStop] 倒计时结束的回调
  * @returns {Object} 倒计时对象实例
  * @example
- *	var target = Date.now() + 5000;
- *	var cd1 = countDown({
- *		target : target,
- *		onChange : function(delta){
- *			console.info('cd1 change', delta);
- *		},
- *		onStop : function(delta){
- *			console.info('cd1 stop', delta);
- *		}
- *	});
- *	setTimeout(function(){
- *		//trigger stop
- *		cd1.stop();
- *	}, 2000);
- *	var cd2 = countDown({
- *		target : target,
- *		interval : 2000,
- *		onChange : function(delta){
- *			console.info('cd2 change', delta);
- *		},
- *		onStop : function(delta){
- *			console.info('cd2 stop', delta);
- *		}
- *	});
+ * var $countDown = require('spore-kit/packages/time/countDown');
+ * var target = Date.now() + 5000;
+ * var cd1 = $countDown({
+ *   target : target,
+ *   onChange : function(delta){
+ *     console.info('cd1 change', delta);
+ *   },
+ *   onStop : function(delta){
+ *     console.info('cd1 stop', delta);
+ *   }
+ * });
+ * setTimeout(function(){
+ *   //trigger stop
+ *   cd1.stop();
+ * }, 2000);
+ * var cd2 = countDown({
+ *   target : target,
+ *   interval : 2000,
+ *   onChange : function(delta){
+ *     console.info('cd2 change', delta);
+ *   },
+ *   onStop : function(delta){
+ *     console.info('cd2 stop', delta);
+ *   }
+ * });
  */
 
-var $erase = require('spore-kit-arr/erase');
-var $assign = require('spore-kit-obj/assign');
+var $erase = require('../arr/erase');
+var $assign = require('../obj/assign');
 
 var allMonitors = {};
 var localBaseTime = Date.now();

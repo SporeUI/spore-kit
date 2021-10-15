@@ -5,7 +5,8 @@
  * @param {Number} [w=2] w 补位数量
  * @return {String} 经过补位的字符串
  * @example
- * fixTo(0, 2);	//return '00'
+ * var $fixTo = require('spore-kit/packages/num/fixTo');
+ * $fixTo(0, 2);	//return '00'
  */
 
 function fixTo (num, w) {

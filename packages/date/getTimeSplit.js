@@ -5,8 +5,9 @@
  * @param {String} type 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
  * @returns {Date} 时间整点对象
  * @example
+ * var $getTimeSplit = require('spore-kit/packages/date/getTimeSplit');
  * new Date(
- * 	getTimeSplit(
+ * 	$getTimeSplit(
  * 		'2018-09-20',
  * 		'month'
  * 	)
@@ -14,7 +15,7 @@
  * // Sat Sep 01 2018 00:00:00 GMT+0800 (中国标准时间)
  *
  * new Date(
- * 	getTimeSplit(
+ * 	$getTimeSplit(
  * 		'2018-09-20 19:23:36',
  * 		'hour'
  * 	)

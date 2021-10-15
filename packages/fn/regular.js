@@ -7,16 +7,17 @@
  * @param {Object} [bind] 函数的 this 指向
  * @return {Function} 经过包装的定时触发函数
  * @example
- *	var comp = {
- *		countWords : function(){
- *			console.info(this.length);
- *		}
- *	};
- *	// 疯狂按键，每隔 200ms 才有一次按键有效
- *	$('#input').keydown(regular(function(){
- *		this.length = $('#input').val().length;
- *		this.countWords();
- *	}, 200, comp));
+ * var $regular = require('spore-kit/packages/fn/regular');
+ * var comp = {
+ *   countWords : function(){
+ *     console.info(this.length);
+ *   }
+ * };
+ * // 疯狂按键，每隔 200ms 才有一次按键有效
+ * $('#input').keydown($regular(function(){
+ * 	this.length = $('#input').val().length;
+ * 	this.countWords();
+ * }, 200, comp));
  */
 
 function reqular (fn, delay, bind) {

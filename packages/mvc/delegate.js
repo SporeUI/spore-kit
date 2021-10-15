@@ -7,7 +7,7 @@
  * - {'event':'method1 method2'}
  * @method delegate
  * @param {Boolean} action 开/关代理，可选：['on', 'off']。
- * @param {Object} root 设置代理的根节点，可以是一个jquery对象，或者是混合了 spore-kit-evt/events 方法的对象。
+ * @param {Object} root 设置代理的根节点，可以是一个jquery对象，或者是混合了 spore-kit/packages/evt/events 方法的对象。
  * @param {Object} events 事件键值对
  * @param {Object} bind 指定事件函数绑定的对象，必须为MVC类的实例。
  */

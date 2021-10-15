@@ -4,7 +4,8 @@
  * @param {String} str
  * @returns {Number} 字符串长度
  * @example
- * sizeOfUTF8String('中文cc'); //return 8
+ * var $sizeOfUTF8String = require('spore-kit/packages/str/sizeOfUTF8String');
+ * $sizeOfUTF8String('中文cc'); //return 8
 */
 
 function sizeOfUTF8String (str) {

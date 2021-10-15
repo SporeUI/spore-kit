@@ -22,20 +22,21 @@
  * @param {Function} [options.onFallback=null] 呼起操作未能成功执行时触发的回调事件函数
  * @param {Function} [options.onTimeout=null] 呼起超时触发的回调事件函数
  * @example
- * callUp({
- * 	startTime: Date.now(),
- * 	waiting: 800,
- * 	waitingLimit: 50,
- * 	protocol : scheme,
- * 	fallbackUrl : download,
- * 	onFallback : function () {
- * 		// should download
- * 	}
+ * var $callUp = require('spore-kit/packages/app/callUp');
+ * $callUp({
+ *   startTime: Date.now(),
+ *   waiting: 800,
+ *   waitingLimit: 50,
+ *   protocol : scheme,
+ *   fallbackUrl : download,
+ *   onFallback : function () {
+ *     // should download
+ *   }
  * });
  */
 
-var $assign = require('spore-kit-obj/assign');
-var $browser = require('spore-kit-env/browser');
+var $assign = require('../obj/assign');
+var $browser = require('../env/browser');
 
 function callUp (options) {
 	var conf = $assign({

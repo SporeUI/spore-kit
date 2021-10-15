@@ -4,7 +4,8 @@
  * @param {String} str 驼峰格式的字符串
  * @returns {String} 连字符格式的字符串
  * @example
- * hyphenate('libKitStrHyphenate'); // 'lib-kit-str-hyphenate'
+ * var $hyphenate = require('spore-kit/packages/str/hyphenate');
+ * $hyphenate('libKitStrHyphenate'); // 'lib-kit-str-hyphenate'
  */
 
 function hyphenate (str) {

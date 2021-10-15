@@ -4,8 +4,9 @@
  * @param {String} str 需要转换的ASCII字符串
  * @returns {String} 16进制字符串
  * @example
- * ascToHex(); // => ''
- * ascToHex('*+'); // => '2a2b'
+ * var $ascToHex = require('spore-kit/packages/util/ascToHex');
+ * $ascToHex(); // => ''
+ * $ascToHex('*+'); // => '2a2b'
  */
 
 function ascToHex(str) {

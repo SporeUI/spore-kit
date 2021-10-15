@@ -3,20 +3,21 @@
  * @method ajax
  * @see https://github.com/ForbesLindesay/ajax
  * @example
- *	document.domain = 'qq.com';
- *	ajax({
- *		url: 'http://a.qq.com/form',
- *		data: [{
- *			n1: 'v1',
- *			n2: 'v2'
- *		}],
- *		success: function (rs) {
- *			console.info(rs);
- *		}
- *	});
+ * var $ajax = require('spore-kit/packages/io/ajax');
+ * document.domain = 'qq.com';
+ * $ajax({
+ *   url: 'http://a.qq.com/form',
+ *   data: [{
+ *     n1: 'v1',
+ *     n2: 'v2'
+ *   }],
+ *   success: function (rs) {
+ *     console.info(rs);
+ *   }
+ * });
  */
 
-var type = require('spore-kit-obj/type')
+var type = require('../obj/type')
 
 var jsonpID = 0,
     key,

@@ -6,11 +6,12 @@
  * @param {Function} fn 任务函数
  * @returns {Object} 任务队列对象
  * @example
- * job(function() {
- * 	//task1 start
+ * var $job = require('spore-kit/packages/util/job');
+ * $job(function() {
+ *   //task1 start
  * });
- * job(function() {
- * 	//task2 start
+ * $job(function() {
+ *   //task2 start
  * });
  */
 

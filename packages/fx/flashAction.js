@@ -8,21 +8,22 @@
  * @param {function} [options.actionEven] 偶数回调
  * @param {function} [options.recover] 状态恢复回调
  * @example
- * 	// 文字闪烁，奇数次呈现为红色，偶数次成纤维蓝色，动画结束呈现为黑色
- *	var text = $('#target span.txt');
- *	$flashAction({
- *		actionOdd : function (){
- *			text.css('color', '#f00');
- *		},
- *		actionEven : function (){
- *			text.css('color', '#00f');
- *		},
- *		recover : function (){
- *			text.css('color', '#000');
- *		}
- *	});
+ * var $flashAction = require('spore-kit/packages/fx/flashAction');
+ * // 文字闪烁，奇数次呈现为红色，偶数次成纤维蓝色，动画结束呈现为黑色
+ * var text = $('#target span.txt');
+ * $flashAction({
+ *   actionOdd : function (){
+ *     text.css('color', '#f00');
+ *   },
+ *   actionEven : function (){
+ *     text.css('color', '#00f');
+ *   },
+ *   recover : function (){
+ *     text.css('color', '#000');
+ *   }
+ * });
  */
-var $assign = require('spore-kit-obj/assign');
+var $assign = require('../obj/assign');
 
 function flashAction (options) {
 	var conf = $assign(

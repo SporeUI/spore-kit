@@ -7,34 +7,35 @@
  * @module prepare
  * @returns {Function} 条件触发管理器函数，传入一个 function 作为任务执行函数参数
  * @example
- *	// 生成一个管理器函数 timeReady
- *	var timeReady = prepare();
+ * var $prepare = require('spore-kit/packages/fn/prepare');
+ * // 生成一个管理器函数 timeReady
+ * var timeReady = $prepare();
  *
- *	// 设置条件为2秒后就绪
- *	setTimeout(function () {
- *		timeReady.ready();
- *	}, 2000);
+ * // 设置条件为2秒后就绪
+ * setTimeout(function () {
+ *   timeReady.ready();
+ * }, 2000);
  *
- *	// 调用管理器函数 timeReady，插入要执行的任务函数
- *	timeReady(function () {
- *		// 2 秒后输出 1
- *		console.info(1);
- *	});
+ * // 调用管理器函数 timeReady，插入要执行的任务函数
+ * timeReady(function () {
+ *   // 2 秒后输出 1
+ *   console.info(1);
+ * });
  *
- *	// 调用管理器函数 timeReady，插入要执行的任务函数
- *	timeReady(function () {
- *		// 2 秒后输出 2
- *		console.info(2);
- *	});
+ * // 调用管理器函数 timeReady，插入要执行的任务函数
+ * timeReady(function () {
+ *   // 2 秒后输出 2
+ *   console.info(2);
+ * });
  *
- *	// 2100ms 后执行
- *	setTimeout(function () {
- *		// 调用管理器函数 timeReady，插入要执行的任务函数
- *		timeReady(function () {
- *			// 立即执行，输出 3
- *			console.info(3);
- *		});
- *	}, 2100);
+ * // 2100ms 后执行
+ * setTimeout(function () {
+ *   // 调用管理器函数 timeReady，插入要执行的任务函数
+ *   timeReady(function () {
+ *     // 立即执行，输出 3
+ *     console.info(3);
+ *   });
+ * }, 2100);
  */
 
 /**

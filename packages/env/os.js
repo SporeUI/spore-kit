@@ -7,9 +7,11 @@
  * @method os
  * @returns {Object} UA 检查结果
  * @example
- * console.info(os().ios);
+ * var $os = require('spore-kit/packages/env/os');
+ * console.info($os().ios);
+ * console.info($os.detect());
  */
-var $assign = require('spore-kit-obj/assign');
+var $assign = require('../obj/assign');
 var $uaMatch = require('./uaMatch');
 
 var testers = {

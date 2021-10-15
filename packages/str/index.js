@@ -1,18 +1,18 @@
 /**
  * # 字符串处理与判断
- * @module spore-kit-str
+ * @module spore-kit/packages/str
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/str
  * @example
  * // 统一引入 spore-kit
  * var $kit = require('spore-kit');
  * console.info($kit.str.substitute);
  *
- * // 单独引入 spore-kit-str
- * var $str = require('spore-kit-str');
+ * // 单独引入 spore-kit/packages/str
+ * var $str = require('spore-kit/packages/str');
  * console.info($str.substitute);
  *
  * // 单独引入一个方法
- * var $substitute = require('spore-kit-str/substitute');
+ * var $substitute = require('spore-kit/packages/str/substitute');
  */
 
 exports.bLength = require('./bLength');

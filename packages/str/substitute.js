@@ -6,7 +6,8 @@
  * @param {RegExp} [reg=/\\?\{\{([^{}]+)\}\}/g] 解析模板的正则表达式
  * @return {String} 替换了模板的字符串
  * @example
- * substitute('{{city}}欢迎您', {city:'北京'}); // '北京欢迎您'
+ * var $substitute = require('spore-kit/packages/str/substitute');
+ * $substitute('{{city}}欢迎您', {city:'北京'}); // '北京欢迎您'
  */
 
 function substitute (str, obj, reg) {

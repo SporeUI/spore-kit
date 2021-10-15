@@ -5,10 +5,11 @@
  * @module cookie
  * @see https://www.npmjs.com/package/js-cookie
  * @example
- * cookie.set('name', 'value', {
- * 	expires: 1
+ * var $cookie = require('spore-kit/packages/cookie/cookie');
+ * $cookie.set('name', '中文', {
+ *   expires: 1
  * });
- * cookie.read('name')	// 'value'
+ * $cookie.read('name') // '中文'
  */
 
 var Cookie = require('js-cookie');

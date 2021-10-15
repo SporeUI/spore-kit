@@ -5,13 +5,15 @@
  * @param {Object} node 要计算 offset 的 dom 对象
  * @return {Object} offset 对象
  * @example
- * var offset = require('document-offset')
- * var target = document.getElementById('target')
- * console.log(offset(target))
+ * var $offset = require('spore-kit/packages/dom/offset');
+ * var target = document.getElementById('target');
+ * console.log($offset(target));
  * // {top: 69, left: 108}
  */
 
-var offset = null;
+var offset = function() {
+	return {};
+};
 
 if (typeof window !== 'undefined') {
 	offset = require('document-offset');

@@ -4,7 +4,8 @@
  * @param {String} str 含有实体字符的字符串
  * @returns {String} HTML字符串
  * @example
- * decodeHTML('&amp;&lt;&gt;&quot;&#39;&#32;'); // '&<>"\' '
+ * var $decodeHTML = require('spore-kit/packages/str/decodeHTML');
+ * $decodeHTML('&amp;&lt;&gt;&quot;&#39;&#32;'); // '&<>"\' '
  */
 
 function decodeHTML (str) {

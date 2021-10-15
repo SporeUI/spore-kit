@@ -15,9 +15,11 @@
  * @method browser
  * @returns {Object} UA 检查结果
  * @example
- * console.info(browser().chrome);
+ * var $browser = require('spore-kit/packages/env/browser');
+ * console.info($browser().chrome);
+ * console.info($browser.detect());
  */
-var $assign = require('spore-kit-obj/assign');
+var $assign = require('../obj/assign');
 var $uaMatch = require('./uaMatch');
 
 var testers = {

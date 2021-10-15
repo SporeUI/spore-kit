@@ -1,41 +1,41 @@
 /**
  * 基础工厂元件类
- * - 该类混合了 spore-kit-evt/events 的方法。
+ * - 该类混合了 spore-kit/packages/evt/events 的方法。
  * @param {Object} [options] 选项
  * @module Base
  * @example
- *	var Base = require('spore-kit-mvc/base');
+ * var $base = require('spore-kit/packages/mvc/base');
  *
- *	var ChildClass = Base.extend({
- *		defaults : {
- *			node : null
- *		},
- *		build : function() {
- *			this.node = $(this.conf.node);
- *		},
- *		setEvents : function(action) {
- *			var proxy = this.proxy();
- *			this.node[action]('click', proxy('onclick'));
- *		},
- *		onclick : function() {
- *			console.info('clicked');
- *			this.trigger('click');
- *		}
- *	});
+ * var ChildClass = $base.extend({
+ *   defaults : {
+ *     node : null
+ *   },
+ *   build : function() {
+ *     this.node = $(this.conf.node);
+ *   },
+ *   setEvents : function(action) {
+ *     var proxy = this.proxy();
+ *     this.node[action]('click', proxy('onclick'));
+ *   },
+ *   onclick : function() {
+ *     console.info('clicked');
+ *     this.trigger('click');
+ *   }
+ * });
  *
- *	var obj = new ChildClass({
- *		node : document.body
- *	});
+ * var obj = new ChildClass({
+ *   node : document.body
+ * });
  *
- *	obj.on('click', function() {
- *		console.info('obj is clicked');
- *	});
+ * obj.on('click', function() {
+ *   console.info('obj is clicked');
+ * });
  */
 
-var $events = require('spore-kit-evt/events');
 var $merge = require('lodash/merge');
 var $noop = require('lodash/noop');
 var $isPlainObject = require('lodash/isPlainObject');
+var $events = require('../evt/events');
 var $klass = require('./klass');
 var $proxy = require('./proxy');
 

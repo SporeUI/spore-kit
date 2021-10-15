@@ -16,17 +16,18 @@
  * @param {Function} [spec.complete] 获得数据的回调函数
  * @param {Function} [spec.success] 成功获得数据的回调函数
  * @example
- *	document.domain = 'qq.com';
- *	iframePost({
- *		url: 'http://a.qq.com/form',
- *		data: [{
- *			n1: 'v1',
- *			n2: 'v2'
- *		}],
- *		success: function (rs) {
- *			console.info(rs);
- *		}
- *	});
+ * var $iframePost = require('spore-kit/packages/io/iframePost');
+ * document.domain = 'qq.com';
+ * iframePost({
+ *   url: 'http://a.qq.com/form',
+ *   data: [{
+ *     n1: 'v1',
+ *     n2: 'v2'
+ *   }],
+ *   success: function (rs) {
+ *     console.info(rs);
+ *   }
+ * });
  */
 
 var hiddenDiv = null;

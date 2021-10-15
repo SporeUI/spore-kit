@@ -59,6 +59,7 @@
   "dependencies": {
     "document-offset": "^1.0.4",
     "js-cookie": "^3.0.1",
+    "klass": "^1.4.1",
     "lodash": "^4.17.21",
     "url-parse": "^1.5.3"
   },

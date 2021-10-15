@@ -20,9 +20,10 @@
  * @module easing
  * @see https://gist.github.com/gre/1650294
  * @example
- * easing.linear(0.5); // 0.5
- * easing.easeInQuad(0.5); // 0.25
- * easing.easeInCubic(0.5); // 0.125
+ * var $easing = require('spore-kit/packages/fx/easing');
+ * $easing.linear(0.5); // 0.5
+ * $easing.easeInQuad(0.5); // 0.25
+ * $easing.easeInCubic(0.5); // 0.125
  */
 var easing = {
 	// no easing, no acceleration

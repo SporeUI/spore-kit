@@ -3,25 +3,22 @@
  * - 构造实例时，需要传入事件白名单列表。
  * - 只有在白名单列表上的事件才可以被触发。
  * - 事件添加，移除，激发的调用方法参考 Events。
- * @see spore-kit-evt/events
+ * @see spore-kit/packages/evt/events
  * @class Listener
  * @example
  * @example
- * var Listener = require('spore-kit-evt/listener');
- *
- * var $kit = require('spore-kit');
- * var Listener = $kit.evt.Listener;
+ * var $listener = require('spore-kit/packages/evt/listener');
  *
  * // 白名单里只记录了 event1 事件
- * var channelGlobal = new Listener([
- * 	'event1'
+ * var channelGlobal = new $listener([
+ *   'event1'
  * ]);
  * channelGlobal.on('event1', function(){
- * 	console.log('event1');
+ *   console.log('event1');
  * });
  * channelGlobal.on('event2', function(){
- * 	// will not run
- * 	console.log('event2');
+ *   // will not run
+ *   console.log('event2');
  * });
  * channelGlobal.trigger('event1');
  * channelGlobal.trigger('event2');

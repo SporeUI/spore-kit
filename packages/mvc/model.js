@@ -1,43 +1,43 @@
 /**
  * 模型类: 基础工厂元件类，用于做数据包装，提供可观察的数据对象
- * - 继承自 spore-kit-mvc/base
+ * - 继承自 spore-kit/packages/mvc/base
  * @module Model
  * @param {Object} [options] 初始数据
  * @example
- *	var Model = require('spore-kit-mvc/model');
+ * var $model = require('spore-kit/packages/mvc/model');
  *
- *	var m1 = new Model({
- *		a : 1
- *	});
- *	m1.on('change:a', function(prevA){
- *		console.info(prevA);	// 1
- *	});
- *	m1.on('change', function(){
- *		console.info('model changed');
- *	});
- *	m1.set('a', 2);
+ * var m1 = new $model({
+ *   a : 1
+ * });
+ * m1.on('change:a', function(prevA){
+ *   console.info(prevA); // 1
+ * });
+ * m1.on('change', function(){
+ *   console.info('model changed');
+ * });
+ * m1.set('a', 2);
  *
- *	var MyModel = Model.extend({
- *		defaults : {
- *			a : 2,
- *			b : 2
- *		},
- *		events : {
- *			'change:a' : 'updateB'
- *		},
- *		updateB : function(){
- *			this.set('b', this.get('a') + 1);
- *		}
- *	});
+ * var MyModel = Model.extend({
+ *   defaults : {
+ *     a : 2,
+ *     b : 2
+ *   },
+ *   events : {
+ *     'change:a' : 'updateB'
+ *   },
+ *   updateB : function(){
+ *     this.set('b', this.get('a') + 1);
+ *   }
+ * });
  *
- *	var m2 = new MyModel();
- *	console.info(m2.get('b'));	// 2
+ * var m2 = new MyModel();
+ * console.info(m2.get('b'));	// 2
  *
- *	m2.set('a', 3);
- *	console.info(m2.get('b'));	// 4
+ * m2.set('a', 3);
+ * console.info(m2.get('b'));	// 4
  *
- *	m2.set('b', 5);
- *	console.info(m2.get('b'));	// 5
+ * m2.set('b', 5);
+ * console.info(m2.get('b'));	// 5
  */
 
 var $assign = require('lodash/assign');

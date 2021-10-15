@@ -6,10 +6,11 @@
  * @param {Number} count 多少单位时间之前
  * @returns {Date} 最近单位时间的起始时间对象
  * @example
- * var time = getLastStart(
- * 	new Date('2018-10-25'),
- * 	'month',
- * 	0
+ * var $getLastStart = require('spore-kit/packages/date/getLastStart');
+ * var time = $getLastStart(
+ *   new Date('2018-10-25'),
+ *   'month',
+ *   0
  * ).getTime(); // 1538323200000
  * new Date(time); // Mon Oct 01 2018 00:00:00 GMT+0800 (中国标准时间)
  */

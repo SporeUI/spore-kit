@@ -7,7 +7,8 @@
  * @param {Number} lng2 坐标2纬度
  * @returns {Number} 2个坐标之间的距离（千米）
  * @example
- * var distance = measureDistance(0, 0, 100, 100);
+ * var $measureDistance = require('spore-kit/packages/util/measureDistance');
+ * var distance = $measureDistance(0, 0, 100, 100);
  * // 9826.40065109978
  */
 

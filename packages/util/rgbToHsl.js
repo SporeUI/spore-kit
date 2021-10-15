@@ -8,9 +8,10 @@
  * @param {Number} b 蓝色色值
  * @returns {Array} HSL各值数组
  * @example
- * rgbToHsl(100, 200, 250); // => [0.5555555555555555,0.9374999999999999,0.6862745098039216]
- * rgbToHsl(0, 0, 0); // => [0,0,0]
- * rgbToHsl(255, 255, 255); // => [0,0,1]
+ * var $rgbToHsl = require('spore-kit/packages/util/rgbToHsl');
+ * $rgbToHsl(100, 200, 250); // => [0.5555555555555555,0.9374999999999999,0.6862745098039216]
+ * $rgbToHsl(0, 0, 0); // => [0,0,0]
+ * $rgbToHsl(255, 255, 255); // => [0,0,1]
  */
 
 function rgbToHsl(r, g, b) {
