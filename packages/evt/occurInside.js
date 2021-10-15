@@ -15,17 +15,16 @@
  */
 
 function occurInside(event, node) {
-	if (node && event && event.target) {
-		var pos = event.target;
-		while (pos) {
-			if (pos === node) {
-				return true;
-			} else {
-				pos = pos.parentNode;
-			}
-		}
-	}
-	return false;
+  if (node && event && event.target) {
+    var pos = event.target;
+    while (pos) {
+      if (pos === node) {
+        return true;
+      }
+      pos = pos.parentNode;
+    }
+  }
+  return false;
 }
 
 module.exports = occurInside;

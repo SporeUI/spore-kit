@@ -17,51 +17,51 @@ var pos = {};
 var timer = null;
 var touchStartBound = false;
 
-var tapStop = function(options) {
-	var $ = window.$ || window.Zepto || window.jQuery;
+var tapStop = function (options) {
+  var $ = window.$ || window.Zepto || window.jQuery;
 
-	var conf = $.extend({
-		// 遮罩存在时间
-		delay: 500
-	}, options);
+  var conf = $.extend({
+    // 遮罩存在时间
+    delay: 500,
+  }, options);
 
-	if (!miniMask) {
-		miniMask = $('<div></div>');
-		miniMask.css({
-			'display': 'none',
-			'position': 'absolute',
-			'left': 0,
-			'top': 0,
-			'margin-left': '-20px',
-			'margin-top': '-20px',
-			'z-index': 10000,
-			'background-color': 'rgba(0,0,0,0)',
-			'width': '40px',
-			'height': '40px'
-		}).appendTo(document.body);
-	}
+  if (!miniMask) {
+    miniMask = $('<div></div>');
+    miniMask.css({
+      display: 'none',
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      'margin-left': '-20px',
+      'margin-top': '-20px',
+      'z-index': 10000,
+      'background-color': 'rgba(0,0,0,0)',
+      width: '40px',
+      height: '40px',
+    }).appendTo(document.body);
+  }
 
-	if (!touchStartBound) {
-		$(document).on('touchstart', function(evt) {
-			if (!(evt && evt.touches && evt.touches.length)) {
-				return;
-			}
-			var touch = evt.touches[0];
-			pos.pageX = touch.pageX;
-			pos.pageY = touch.pageY;
-		});
-		touchStartBound = true;
-	}
+  if (!touchStartBound) {
+    $(document).on('touchstart', function (evt) {
+      if (!(evt && evt.touches && evt.touches.length)) {
+        return;
+      }
+      var touch = evt.touches[0];
+      pos.pageX = touch.pageX;
+      pos.pageY = touch.pageY;
+    });
+    touchStartBound = true;
+  }
 
-	var delay = parseInt(conf.delay, 10) || 0;
-	miniMask.show().css({
-		'left': pos.pageX + 'px',
-		'top': pos.pageY + 'px'
-	});
-	clearTimeout(timer);
-	timer = setTimeout(function() {
-		miniMask.hide();
-	}, delay);
+  var delay = parseInt(conf.delay, 10) || 0;
+  miniMask.show().css({
+    left: pos.pageX + 'px',
+    top: pos.pageY + 'px',
+  });
+  clearTimeout(timer);
+  timer = setTimeout(function () {
+    miniMask.hide();
+  }, delay);
 };
 
 module.exports = tapStop;

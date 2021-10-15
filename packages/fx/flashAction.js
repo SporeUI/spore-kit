@@ -25,38 +25,38 @@
  */
 var $assign = require('../obj/assign');
 
-function flashAction (options) {
-	var conf = $assign(
-		{
-			times: 3,
-			delay: 100,
-			actionOdd: null,
-			actionEven: null,
-			recover: null
-		},
-		options
-	);
+function flashAction(options) {
+  var conf = $assign(
+    {
+      times: 3,
+      delay: 100,
+      actionOdd: null,
+      actionEven: null,
+      recover: null,
+    },
+    options,
+  );
 
-	var queue = [];
-	for (var i = 0; i < conf.times * 2 + 1; i++) {
-		queue.push((i + 1) * conf.delay);
-	}
+  var queue = [];
+  for (var i = 0; i < conf.times * 2 + 1; i += 1) {
+    queue.push((i + 1) * conf.delay);
+  }
 
-	queue.forEach(function (time, index) {
-		setTimeout(function () {
-			if (index >= queue.length - 1) {
-				if (conf.recover === 'function') {
-					conf.recover();
-				}
-			} else if (index % 2 === 0) {
-				if (typeof conf.actionEven === 'function') {
-					conf.actionEven();
-				}
-			} else if (typeof conf.actionOdd === 'function') {
-				conf.actionOdd();
-			}
-		}, time);
-	});
+  queue.forEach(function (time, index) {
+    setTimeout(function () {
+      if (index >= queue.length - 1) {
+        if (conf.recover === 'function') {
+          conf.recover();
+        }
+      } else if (index % 2 === 0) {
+        if (typeof conf.actionEven === 'function') {
+          conf.actionEven();
+        }
+      } else if (typeof conf.actionOdd === 'function') {
+        conf.actionOdd();
+      }
+    }, time);
+  });
 }
 
 module.exports = flashAction;

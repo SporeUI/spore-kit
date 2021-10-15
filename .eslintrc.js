@@ -54,5 +54,6 @@ module.exports = {
     'no-prototype-builtins': 0,
     'consistent-return': 0,
     'prefer-template': 0,
+    'prefer-spread': 0,
   },
 };

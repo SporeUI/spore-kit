@@ -15,63 +15,63 @@
 
 var $assign = require('../obj/assign');
 
-function smoothScrollTo (node, spec) {
-	var $ = window.$ || window.Zepto || window.jQuery;
+function smoothScrollTo(node, spec) {
+  var $ = window.$ || window.Zepto || window.jQuery;
 
-	var conf = $assign(
-		{
-			delta: 0,
-			maxDelay: 3000,
-			callback: null
-		},
-		spec
-	);
+  var conf = $assign(
+    {
+      delta: 0,
+      maxDelay: 3000,
+      callback: null,
+    },
+    spec,
+  );
 
-	var offset = $(node).offset();
-	var target = offset.top + conf.delta;
-	var callback = conf.callback;
+  var offset = $(node).offset();
+  var target = offset.top + conf.delta;
+  var callback = conf.callback;
 
-	var prevStep;
-	var stayCount = 3;
+  var prevStep;
+  var stayCount = 3;
 
-	var timer = null;
+  var timer = null;
 
-	var stopTimer = function () {
-		if (timer) {
-			clearInterval(timer);
-			timer = null;
-			window.scrollTo(0, target);
-			if ($.isFunction(callback)) {
-				callback();
-			}
-		}
-	};
+  var stopTimer = function () {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+      window.scrollTo(0, target);
+      if ($.isFunction(callback)) {
+        callback();
+      }
+    }
+  };
 
-	timer = setInterval(function () {
-		var sTop = $(window).scrollTop();
-		var delta = sTop - target;
-		if (delta > 0) {
-			delta = Math.floor(delta * 0.8);
-		} else if (delta < 0) {
-			delta = Math.ceil(delta * 0.8);
-		}
+  timer = setInterval(function () {
+    var sTop = $(window).scrollTop();
+    var delta = sTop - target;
+    if (delta > 0) {
+      delta = Math.floor(delta * 0.8);
+    } else if (delta < 0) {
+      delta = Math.ceil(delta * 0.8);
+    }
 
-		var step = target + delta;
-		if (step === prevStep) {
-			stayCount--;
-		}
-		prevStep = step;
+    var step = target + delta;
+    if (step === prevStep) {
+      stayCount -= 1;
+    }
+    prevStep = step;
 
-		window.scrollTo(0, step);
+    window.scrollTo(0, step);
 
-		if (step === target || stayCount <= 0) {
-			stopTimer();
-		}
-	}, 16);
+    if (step === target || stayCount <= 0) {
+      stopTimer();
+    }
+  }, 16);
 
-	setTimeout(function () {
-		stopTimer();
-	}, conf.maxDelay);
+  setTimeout(function () {
+    stopTimer();
+  }, conf.maxDelay);
 }
 
 module.exports = smoothScrollTo;
