@@ -1,6 +1,7 @@
 /**
  * IOS sticky 效果 polyfill
  * - requires jQuery/Zepto
+ * @method fx/sticky
  * @param {Object} node 目标DOM元素
  * @param {Object} options 选项
  * @param {Boolean} [options.clone=true] 是否创建一个 clone 元素

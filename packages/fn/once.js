@@ -1,7 +1,7 @@
 /**
  * 包装为仅触发一次的函数
  * - 被包装的函数智能执行一次，之后不会再执行
- * @method once
+ * @method fn/once
  * @param {Function} fn 要延迟触发的函数
  * @param {Object} [bind] 函数的 this 指向
  * @returns {Function} 该函数仅能触发执行一次

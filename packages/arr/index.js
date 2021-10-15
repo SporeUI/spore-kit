@@ -1,6 +1,6 @@
 /**
- * # 类数组对象相关工具函数
- * @module arr
+ * 类数组对象相关工具函数
+ * @module spore-kit/packages/arr
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/arr
  * @example
  * // 统一引入 spore-kit

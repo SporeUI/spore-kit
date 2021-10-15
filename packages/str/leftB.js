@@ -1,7 +1,7 @@
 /* eslint-disable no-control-regex */
 /**
  * 从左到右取字符串，中文算两个字符
- * @method leftB
+ * @method str/leftB
  * @param {String} str
  * @param {Number} lens
  * @returns {String} str

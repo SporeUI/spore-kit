@@ -1,5 +1,5 @@
 /**
- * # 动画交互相关工具
+ * 动画交互相关工具
  * @module spore-kit/packages/fx
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/fx
  * @example

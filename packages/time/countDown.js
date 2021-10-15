@@ -1,6 +1,6 @@
 /**
  * 提供倒计时器统一封装
- * @method countDown
+ * @method time/countDown
  * @param {Object} spec 选项
  * @param {Date} [spec.base] 矫正时间，如果需要用服务端时间矫正倒计时，使用此参数
  * @param {Date} [spec.target=Date.now() + 3000] 目标时间
@@ -91,7 +91,7 @@ function countDown(spec) {
   /**
    * 重设目标时间
    * @method countDown#setTarget
-   * @memberof countDown
+   * @memberof time/countDown
    * @example
    * var cd = countDown();
    * var localTime = '2019/01/01';
@@ -104,7 +104,7 @@ function countDown(spec) {
   /**
    * 纠正时间差
    * @method countDown#correct
-   * @memberof countDown
+   * @memberof time/countDown
    * @example
    * var cd = countDown();
    * var serverTime = '2019/01/01';
@@ -135,7 +135,7 @@ function countDown(spec) {
   /**
    * 停止倒计时
    * @method countDown#stop
-   * @memberof countDown
+   * @memberof time/countDown
    * @example
    * var cd = countDown();
    * cd.stop();
@@ -155,7 +155,7 @@ function countDown(spec) {
   /**
    * 销毁倒计时
    * @method countDown#destroy
-   * @memberof countDown
+   * @memberof time/countDown
    * @example
    * var cd = countDown();
    * cd.destroy();

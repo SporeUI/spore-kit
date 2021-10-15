@@ -1,5 +1,5 @@
 /**
- * # 时间处理与交互工具
+ * 时间处理与交互工具
  * @module spore-kit/packages/time
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/time
  * @example

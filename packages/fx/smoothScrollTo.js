@@ -1,7 +1,7 @@
 /**
  * 平滑滚动到某个元素，只进行垂直方向的滚动
  * - requires jQuery/Zepto
- * @method smoothScrollTo
+ * @method fx/smoothScrollTo
  * @param {Object} node 目标DOM元素
  * @param {Object} spec 选项
  * @param {Number} [spec.delta=0] 目标滚动位置与目标元素顶部的间距，可以为负值

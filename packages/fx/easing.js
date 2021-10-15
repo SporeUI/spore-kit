@@ -19,7 +19,7 @@
  * - easeInQuint
  * - easeOutQuint
  * - easeInOutQuint
- * @module easing
+ * @module fx/easing
  * @see https://gist.github.com/gre/1650294
  * @example
  * var $easing = require('spore-kit/packages/fx/easing');

@@ -1,6 +1,6 @@
 /**
  * 十进制IP地址转十六进制
- * @method ipToHex
+ * @method str/ipToHex
  * @param {String} ip 十进制数字的IPV4地址
  * @return {String} 16进制数字IPV4地址
  * @example

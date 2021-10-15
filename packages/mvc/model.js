@@ -1,7 +1,7 @@
 /**
  * 模型类: 基础工厂元件类，用于做数据包装，提供可观察的数据对象
  * - 继承自 spore-kit/packages/mvc/base
- * @module Model
+ * @module mvc/Model
  * @param {Object} [options] 初始数据
  * @example
  * var $model = require('spore-kit/packages/mvc/model');
@@ -103,7 +103,7 @@ var Model = $base.extend({
    * - 绑定在原型上，不要在实例中直接修改这个对象。
    * @name Model#defaults
    * @type {Object}
-   * @memberof Model
+   * @memberof mvc/Model
    */
   defaults: {},
 
@@ -117,7 +117,7 @@ var Model = $base.extend({
    * - {'event':'method1 method2'}
    * @name Model#events
    * @type {Object}
-   * @memberof Model
+   * @memberof mvc/Model
    */
   events: {},
 
@@ -126,7 +126,7 @@ var Model = $base.extend({
    * - 绑定在原型上，不要在实例中直接修改这个对象。
    * @name Model#processors
    * @type {Object}
-   * @memberof Model
+   * @memberof mvc/Model
    * @example
    * processors : {
    *   name : {
@@ -157,7 +157,7 @@ var Model = $base.extend({
   /**
    * 深度混合传入的选项与默认选项，然后混合到数据对象中
    * @method Model#setOptions
-   * @memberof Model
+   * @memberof mvc/Model
    * @param {Object} [options] 选项
    */
   setOptions: function (options) {
@@ -169,7 +169,7 @@ var Model = $base.extend({
   /**
    * 绑定 events 对象列举的事件。在初始化时自动执行了 this.delegate('on')。
    * @method Model#delegate
-   * @memberof Model
+   * @memberof mvc/Model
    * @param {String} [action='on'] 绑定动作标记。可选：['on', 'off']
    */
   delegate: function (action, root, events, bind) {
@@ -183,7 +183,7 @@ var Model = $base.extend({
   /**
    * 数据预处理
    * @method Model#process
-   * @memberof Model
+   * @memberof mvc/Model
    * @param {String} key 模型属性名称。或者JSON数据。
    * @param {*} [val] 数据
    */
@@ -202,7 +202,7 @@ var Model = $base.extend({
   /**
    * 设置模型数据
    * @method Model#set
-   * @memberof Model
+   * @memberof mvc/Model
    * @param {String|Object} key 模型属性名称。或者JSON数据。
    * @param {*} [val] 数据
    */
@@ -225,7 +225,7 @@ var Model = $base.extend({
    * - 如果不传参数，则直接获取整个模型数据。
    * - 如果值是一个对象，则该对象会被深拷贝。
    * @method Model#get
-   * @memberof Model
+   * @memberof mvc/Model
    * @param {String} [key] 模型属性名称。
    * @returns {*} 属性名称对应的值
    */
@@ -248,7 +248,7 @@ var Model = $base.extend({
   /**
    * 获取模型上设置的所有键名
    * @method Model#keys
-   * @memberof Model
+   * @memberof mvc/Model
    * @returns {Array} 属性名称列表
    */
   keys: function () {
@@ -258,7 +258,7 @@ var Model = $base.extend({
   /**
    * 删除模型上的一个键
    * @method Model#remove
-   * @memberof Model
+   * @memberof mvc/Model
    * @param {String} key 属性名称。
    */
   remove: function (key) {
@@ -269,7 +269,7 @@ var Model = $base.extend({
   /**
    * 清除模型中所有数据
    * @method Model#clear
-   * @memberof Model
+   * @memberof mvc/Model
    */
   clear: function () {
     Object.keys(this[DATA]).forEach(removeAttr, this);
@@ -280,7 +280,7 @@ var Model = $base.extend({
    * 销毁模型，不会触发任何change事件。
    * - 模型销毁后，无法再设置任何数据。
    * @method Model#destroy
-   * @memberof Model
+   * @memberof mvc/Model
    */
   destroy: function () {
     this.changed = false;

@@ -1,6 +1,6 @@
 /**
  * 取字符串 utf8 编码长度，from 王集鹄
- * @method sizeOfUTF8String
+ * @method str/sizeOfUTF8String
  * @param {String} str
  * @returns {Number} 字符串长度
  * @example

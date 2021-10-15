@@ -1,6 +1,6 @@
 /**
  * 将参数设置到 location.search 上
- * @method setQuery
+ * @method location/setQuery
  * @param {String} url URL字符串
  * @param {Object} query 参数对象
  * @returns {String} 拼接好参数的URL字符串

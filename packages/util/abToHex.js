@@ -1,6 +1,6 @@
 /**
  * ArrayBuffer转16进制字符串
- * @method abToHex
+ * @method util/abToHex
  * @param {ArrayBuffer} buffer 需要转换的 ArrayBuffer
  * @returns {String} 16进制字符串
  * @example

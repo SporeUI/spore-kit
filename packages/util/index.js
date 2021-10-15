@@ -1,5 +1,5 @@
 /**
- * # 其他工具函数
+ * 其他工具函数
  * @module spore-kit/packages/util
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/util
  * @example

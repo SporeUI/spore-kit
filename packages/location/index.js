@@ -1,5 +1,5 @@
 /**
- * # 处理地址字符串
+ * 处理地址字符串
  * @module spore-kit/packages/location
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/location
  * @example

@@ -6,7 +6,7 @@
  * - complete 动画已完成
  * - stop 动画尚未完成就被中断
  * - cancel 动画被取消
- * @class Fx
+ * @class fx/Fx
  * @see https://mootools.net/core/docs/1.6.0/Fx/Fx
  * @constructor
  * @param {Object} [options] 动画选项
@@ -88,7 +88,7 @@ var Fx = $klass({
   /**
    * 设置实例的选项
    * @method Fx#setOptions
-   * @memberof Fx
+   * @memberof fx/Fx
    * @param {Object} options 动画选项
    */
   setOptions: function (options) {
@@ -98,7 +98,7 @@ var Fx = $klass({
   /**
    * 设置动画的执行方式，配置缓动效果
    * @interface Fx#getTransition
-   * @memberof Fx
+   * @memberof fx/Fx
    * @example
    * var $fx = require('spore-kit/packages/fx/fx');
    * var fx = new $fx();
@@ -137,7 +137,7 @@ var Fx = $klass({
   /**
    * 设置当前动画帧的过渡数值
    * @interface Fx#set
-   * @memberof Fx
+   * @memberof fx/Fx
    * @param {Number} now 当前动画帧的过渡数值
    * @example
    * var $fx = require('spore-kit/packages/fx/fx');
@@ -168,7 +168,7 @@ var Fx = $klass({
   /**
    * 开始执行动画
    * @method Fx#start
-   * @memberof Fx
+   * @memberof fx/Fx
    * @param {Number} from 动画开始数值
    * @param {Number} to 动画结束数值
    * @example
@@ -199,7 +199,7 @@ var Fx = $klass({
   /**
    * 停止动画
    * @method Fx#stop
-   * @memberof Fx
+   * @memberof fx/Fx
    * @example
    * var $fx = require('spore-kit/packages/fx/fx');
    * var fx = new $fx();
@@ -222,7 +222,7 @@ var Fx = $klass({
   /**
    * 取消动画
    * @method Fx#cancel
-   * @memberof Fx
+   * @memberof fx/Fx
    * @example
    * var $fx = require('spore-kit/packages/fx/fx');
    * var fx = new $fx();
@@ -242,7 +242,7 @@ var Fx = $klass({
   /**
    * 暂停动画
    * @method Fx#pause
-   * @memberof Fx
+   * @memberof fx/Fx
    * @example
    * var $fx = require('spore-kit/packages/fx/fx');
    * var fx = new $fx();
@@ -260,7 +260,7 @@ var Fx = $klass({
   /**
    * 继续执行动画
    * @method Fx#resume
-   * @memberof Fx
+   * @memberof fx/Fx
    * @example
    * var $fx = require('spore-kit/packages/fx/fx');
    * var fx = new $fx();
@@ -278,7 +278,7 @@ var Fx = $klass({
   /**
    * 判断动画是否正在运行
    * @method Fx#isRunning
-   * @memberof Fx
+   * @memberof fx/Fx
    * @returns {Boolean} 动画是否正在运行
    * @example
    * var $fx = require('spore-kit/packages/fx/fx');

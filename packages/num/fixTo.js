@@ -1,6 +1,6 @@
 /**
  * 修正补位
- * @method fixTo
+ * @method num/fixTo
  * @param {Number|String} num 要补位的数字
  * @param {Number} [w=2] w 补位数量
  * @return {String} 经过补位的字符串

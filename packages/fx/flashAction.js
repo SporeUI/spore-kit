@@ -1,6 +1,6 @@
 /**
  * 封装闪烁动作
- * @method flashAction
+ * @method fx/flashAction
  * @param {object} options 选项
  * @param {number} [options.times=3] 闪烁次数，默认3次
  * @param {number} [options.delay=100] 闪烁间隔时间(ms)

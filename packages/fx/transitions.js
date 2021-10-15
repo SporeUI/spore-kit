@@ -12,7 +12,7 @@
  * - Cubic
  * - Quart
  * - Quint
- * @module transitions
+ * @module fx/transitions
  * @see https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions
  * @example
  * var $fx = require('spore-kit/packages/fx/fx');

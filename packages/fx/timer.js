@@ -1,7 +1,7 @@
 /**
  * 用 requestAnimationFrame 包装定时器
  * - 如果浏览器不支持 requestAnimationFrame API，则使用 BOM 原本的定时器API
- * @module timer
+ * @module fx/timer
  * @example
  * var $timer = require('spore-kit/packages/fx/timer');
  * $timer.setTimeout(function () {

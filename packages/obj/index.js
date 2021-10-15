@@ -1,5 +1,5 @@
 /**
- * # 对象处理与判断
+ * 对象处理与判断
  * @module spore-kit/packages/obj
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/obj
  * @example

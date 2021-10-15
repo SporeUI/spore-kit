@@ -1,6 +1,6 @@
 /**
  * 测量地理坐标的距离
- * @method measureDistance
+ * @method util/measureDistance
  * @param {Number} lat1 坐标1精度
  * @param {Number} lng1 坐标1纬度
  * @param {Number} lat2 坐标2精度

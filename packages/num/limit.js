@@ -1,6 +1,6 @@
 /**
  * 限制数字在一个范围内
- * @method limit
+ * @method num/limit
  * @param {Number} num 要限制的数字
  * @param {Number} min 最小边界数值
  * @param {Number} max 最大边界数值

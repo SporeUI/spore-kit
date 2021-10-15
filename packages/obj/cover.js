@@ -1,6 +1,6 @@
 /**
  * 覆盖对象，不添加新的键
- * @method cover
+ * @method obj/cover
  * @param {Object} object 要覆盖的对象
  * @param {Object} item 要覆盖的属性键值对
  * @returns {Object} 覆盖后的源对象

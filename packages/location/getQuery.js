@@ -1,7 +1,7 @@
 /**
  * 解析 location.search 为一个JSON对象
  * - 或者获取其中某个参数
- * @method getQuery
+ * @method location/getQuery
  * @param {String} url URL字符串
  * @param {String} name 参数名称
  * @returns {Object|String} query对象 | 参数值

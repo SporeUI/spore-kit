@@ -1,6 +1,6 @@
 /**
- * # 日期相关工具
- * @module date
+ * 日期相关工具
+ * @module spore-kit/packages/date
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/date
  * @example
  * // 统一引入 spore-kit

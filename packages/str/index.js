@@ -1,5 +1,5 @@
 /**
- * # 字符串处理与判断
+ * 字符串处理与判断
  * @module spore-kit/packages/str
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/str
  * @example

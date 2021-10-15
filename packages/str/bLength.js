@@ -1,7 +1,7 @@
 /* eslint-disable no-control-regex */
 /**
  * 获取字符串长度，一个中文算2个字符
- * @method bLength
+ * @method str/bLength
  * @param {String} str 要计算长度的字符串
  * @returns {Number} 字符串长度
  * @example

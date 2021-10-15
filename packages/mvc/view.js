@@ -2,7 +2,7 @@
  * 视图类: 基础工厂元件类，用于对视图组件的包装
  * - 依赖 jQuery/Zepto
  * - 继承自 spore-kit/packages/mvc/base
- * @module View
+ * @module mvc/View
  * @param {Object} [options] 选项
  * @param {String|Object} [options.node] 选择器字符串，或者DOM元素，或者jquery对象，用于指定视图的根节点。
  * @param {String} [options.template] 视图的模板字符串，也可以是个字符串数组，创建视图DOM时会自动join为字符串处理。
@@ -82,7 +82,7 @@ var View = $base.extend({
    * 类的默认选项对象，绑定在原型上，不要在实例中直接修改这个对象。
    * @name View#defaults
    * @type {Object}
-   * @memberof View
+   * @memberof mvc/View
    */
   defaults: {
     node: '',
@@ -98,7 +98,7 @@ var View = $base.extend({
    * - {'selector event':'method1 method2'}
    * @name View#events
    * @type {Object}
-   * @memberof View
+   * @memberof mvc/View
    */
   events: {},
 
@@ -114,7 +114,7 @@ var View = $base.extend({
   /**
    * 深度混合传入的选项与默认选项，混合完成的选项对象可通过 this.conf 属性访问
    * @method View#setOptions
-   * @memberof View
+   * @memberof mvc/View
    * @param {Object} [options] 选项
    */
   setOptions: function (options) {
@@ -131,7 +131,7 @@ var View = $base.extend({
    * 绑定 events 对象列举的事件。
    * - 在初始化时自动执行了 this.delegate('on')。
    * @method View#delegate
-   * @memberof View
+   * @memberof mvc/View
    * @see spore-kit/packages/mvc/delegate
    * @param {String} [action='on'] 绑定动作标记。可选：['on', 'off']
    */
@@ -147,7 +147,7 @@ var View = $base.extend({
    * 获取 / 设置角色对象指定的 jQuery 对象。
    * - 注意：获取到角色元素后，该 jQuery 对象会缓存在视图对象中
    * @method View#role
-   * @memberof View
+   * @memberof mvc/View
    * @param {String} name 角色对象名称
    * @param {Object} [element] 角色对象指定的dom元素或者 jQuery 对象。
    * @returns {Object} 角色名对应的 jQuery 对象。
@@ -181,7 +181,7 @@ var View = $base.extend({
   /**
    * 清除视图缓存的角色对象
    * @method View#resetRoles
-   * @memberof View
+   * @memberof mvc/View
    */
   resetRoles: function () {
     var $ = get$();
@@ -197,7 +197,7 @@ var View = $base.extend({
   /**
    * 销毁视图，释放内存
    * @method View#destroy
-   * @memberof View
+   * @memberof mvc/View
    */
   destroy: function () {
     this.delegate('off');

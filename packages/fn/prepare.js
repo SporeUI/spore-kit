@@ -4,7 +4,7 @@
  * - 之前插入管理器的函数按队列顺序执行。
  * - 之后插入管理器的函数立即执行。
  * - 作用机制类似 jQuery.ready, 可以设置任何条件。
- * @module prepare
+ * @module fn/prepare
  * @returns {Function} 条件触发管理器函数，传入一个 function 作为任务执行函数参数
  * @example
  * var $prepare = require('spore-kit/packages/fn/prepare');

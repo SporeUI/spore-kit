@@ -1,7 +1,7 @@
 /**
  * 封装 iframe post 模式
  * - requires jQuery/Zepto
- * @method iframePost
+ * @method io/iframePost
  * @param {Object} spec 请求选项
  * @param {Object} [spec.form=null] 要请求的表单
  * @param {String} spec.url 请求地址

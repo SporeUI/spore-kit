@@ -1,7 +1,7 @@
 /**
  * 数字的千分位逗号分隔表示法
  * - IE8 的 toLocalString 给出了小数点后2位: N.00
- * @method comma
+ * @method num/comma
  * @see http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
  * @param {Number} num 数字
  * @returns {String} 千分位表示的数字

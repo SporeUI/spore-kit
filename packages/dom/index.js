@@ -1,6 +1,6 @@
 /**
- * # DOM 操作相关工具函数
- * @module dom
+ * DOM 操作相关工具函数
+ * @module spore-kit/packages/dom
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/dom
  * @example
  * // 统一引入 spore-kit

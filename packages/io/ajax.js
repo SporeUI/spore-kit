@@ -1,6 +1,6 @@
 /**
  * ajax 请求方法，使用方式与 jQuery, Zepto 类似，对 jQuery, Zepto 无依赖
- * @method ajax
+ * @method io/ajax
  * @see https://github.com/ForbesLindesay/ajax
  * @example
  * var $ajax = require('spore-kit/packages/io/ajax');

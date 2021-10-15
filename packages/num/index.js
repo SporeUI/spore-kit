@@ -1,5 +1,5 @@
 /**
- * # 处理数字，数据转换
+ * 处理数字，数据转换
  * @module spore-kit/packages/num
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/num
  * @example

@@ -1,5 +1,5 @@
 /**
- * # 函数包装，获取特殊执行方式
+ * 函数包装，获取特殊执行方式
  * @module spore-kit/packages/fn
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/fn
  * @example

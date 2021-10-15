@@ -1,6 +1,6 @@
 /**
  * 简单模板函数
- * @method substitute
+ * @method str/substitute
  * @param {String} str 要替换模板的字符串
  * @param {Object} obj 模板对应的数据对象
  * @param {RegExp} [reg=/\\?\{\{([^{}]+)\}\}/g] 解析模板的正则表达式

@@ -1,6 +1,6 @@
 /**
  * 全角字符转半角字符
- * @method dbcToSbc
+ * @method str/dbcToSbc
  * @param {String} str 包含了全角字符的字符串
  * @returns {String} 经过转换的字符串
  * @example

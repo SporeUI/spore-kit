@@ -1,6 +1,6 @@
 /**
  * ASCII字符串转16进制字符串
- * @method ascToHex
+ * @method util/ascToHex
  * @param {String} str 需要转换的ASCII字符串
  * @returns {String} 16进制字符串
  * @example

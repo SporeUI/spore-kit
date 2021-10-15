@@ -2,7 +2,7 @@
  * 包装为延迟触发的函数
  * - 用于处理密集事件，延迟时间内同时触发的函数调用。
  * - 最终只在最后一次调用延迟后，执行一次。
- * @method delay
+ * @method fn/delay
  * @param {Function} fn 要延迟触发的函数
  * @param {Number} duration 延迟时间(ms)
  * @param {Object} [bind] 函数的this指向

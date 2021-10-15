@@ -3,6 +3,7 @@
  * - 转换公式参考自 http://en.wikipedia.org/wiki/HSL_color_space.
  * - r, g, 和 b 需要在 [0, 255] 范围内
  * - 返回的 h, s, 和 l 在 [0, 1] 之间
+ * @method util/rgbToHsl
  * @param {Number} r 红色色值
  * @param {Number} g 绿色色值
  * @param {Number} b 蓝色色值

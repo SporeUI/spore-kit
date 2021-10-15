@@ -1,7 +1,7 @@
 /* eslint-disable no-control-regex */
 /**
  * 编码HTML，将HTML字符转为实体字符
- * @method encodeHTML
+ * @method str/encodeHTML
  * @param {String} str 含有HTML字符的字符串
  * @returns {String} 经过转换的字符串
  * @example

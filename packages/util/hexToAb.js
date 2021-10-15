@@ -1,6 +1,6 @@
 /**
  * 16进制字符串转ArrayBuffer
- * @method hexToAb
+ * @method util/hexToAb
  * @see https://caniuse.com/#search=ArrayBuffer
  * @param {String} str 需要转换的16进制字符串
  * @returns {ArrayBuffer} 被转换后的 ArrayBuffer 对象

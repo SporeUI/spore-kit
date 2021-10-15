@@ -1,7 +1,7 @@
 /**
  * 查找对象路径上的值(简易版)
  * @see lodash.get
- * @method find
+ * @method obj/find
  * @param {Object} object 要查找的对象
  * @param {String} path 要查找的路径
  * @return {*} 对象路径上的值

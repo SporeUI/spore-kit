@@ -1,5 +1,5 @@
 /**
- * # 处理网络交互
+ * 处理网络交互
  * @module spore-kit/packages/io
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/io
  * @example

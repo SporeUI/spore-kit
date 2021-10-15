@@ -1,6 +1,6 @@
 /**
  * 扩展并覆盖对象
- * @method assign
+ * @method obj/assign
  * @param {Object} obj 要扩展的对象
  * @param {Object} item 要扩展的属性键值对
  * @returns {Object} 扩展后的源对象

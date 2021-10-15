@@ -1,6 +1,6 @@
 /**
  * 时间数字拆分为天时分秒
- * @method parseUnit
+ * @method time/parseUnit
  * @param {Number} time 毫秒数
  * @param {Object} spec 选项
  * @param {String} [spec.maxUnit='day'] 拆分时间的最大单位，可选 ['day', 'hour', 'minute', 'second']

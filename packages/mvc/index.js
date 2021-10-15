@@ -1,5 +1,5 @@
 /**
- * # 兼容 IE8 的 MVC 简单实现
+ * 兼容 IE8 的 MVC 简单实现
  * @module spore-kit/packages/mvc
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/mvc
  * @example

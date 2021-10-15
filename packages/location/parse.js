@@ -1,6 +1,6 @@
 /**
  * 解析URL为一个对象
- * @method parse
+ * @method location/parse
  * @param {String} str URL字符串
  * @returns {Object} URL对象
  * @see https://github.com/unshiftio/url-parse
