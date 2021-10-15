@@ -22,42 +22,42 @@ var HOUR = 60 * 60 * 1000;
 var DAY = 24 * 60 * 60 * 1000;
 
 function getLastStart(time, type, count) {
-	var localTime = new Date(time);
-	var utcTime = $getUTCDate(time);
-	var stamp = utcTime;
-	var year;
-	var month;
-	var allMonths;
-	var unit;
-	if (!type) {
-		throw new Error('required param type');
-	}
-	count = count || 0;
-	if (type === 'year') {
-		year = utcTime.getUTCFullYear();
-		year -= count;
-		stamp = new Date(year + '/1/1');
-	} else if (type === 'month') {
-		year = utcTime.getUTCFullYear();
-		month = utcTime.getUTCMonth();
-		allMonths = year * 12 + month - count;
-		year = Math.floor(allMonths / 12);
-		month = allMonths - year * 12;
-		month += 1;
-		stamp = new Date([year, month, 1].join('/'));
-	} else {
-		unit = HOUR;
-		if (type === 'day') {
-			unit = DAY;
-		}
-		if (type === 'week') {
-			unit = 7 * DAY;
-		}
-		var newLocalTime = localTime - count * unit;
-		stamp = $getTimeSplit(newLocalTime, type);
-	}
+  var localTime = new Date(time);
+  var utcTime = $getUTCDate(time);
+  var stamp = utcTime;
+  var year;
+  var month;
+  var allMonths;
+  var unit;
+  if (!type) {
+    throw new Error('required param type');
+  }
+  count = count || 0;
+  if (type === 'year') {
+    year = utcTime.getUTCFullYear();
+    year -= count;
+    stamp = new Date(year + '/1/1');
+  } else if (type === 'month') {
+    year = utcTime.getUTCFullYear();
+    month = utcTime.getUTCMonth();
+    allMonths = year * 12 + month - count;
+    year = Math.floor(allMonths / 12);
+    month = allMonths - year * 12;
+    month += 1;
+    stamp = new Date([year, month, 1].join('/'));
+  } else {
+    unit = HOUR;
+    if (type === 'day') {
+      unit = DAY;
+    }
+    if (type === 'week') {
+      unit = 7 * DAY;
+    }
+    var newLocalTime = localTime - count * unit;
+    stamp = $getTimeSplit(newLocalTime, type);
+  }
 
-	return stamp;
+  return stamp;
 }
 
 module.exports = getLastStart;

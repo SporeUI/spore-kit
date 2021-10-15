@@ -47,61 +47,61 @@ var $substitute = require('../str/substitute');
 var $fixTo = require('../num/fixTo');
 var $getUTCDate = require('./getUTCDate');
 
-var rLimit = function(num, w) {
-	var str = $fixTo(num, w);
-	var delta = str.length - w;
-	return delta > 0 ? str.substr(delta) : str;
+var rLimit = function (num, w) {
+  var str = $fixTo(num, w);
+  var delta = str.length - w;
+  return delta > 0 ? str.substr(delta) : str;
 };
 
 function format(dobj, spec) {
-	var output = '';
-	var data = {};
-	var conf = $assign(
-		{
-			weekday: '日一二三四五六'.split(''),
-			template: '{{YYYY}}-{{MM}}-{{DD}} {{hh}}:{{mm}}'
-		},
-		spec
-	);
+  var output = '';
+  var data = {};
+  var conf = $assign(
+    {
+      weekday: '日一二三四五六'.split(''),
+      template: '{{YYYY}}-{{MM}}-{{DD}} {{hh}}:{{mm}}',
+    },
+    spec,
+  );
 
-	// 解决不同服务器时区不一致可能会导致日期初始化时间不一致的问题
-	// 传入数字以北京时区时间为准
-	var utcDate = $getUTCDate(dobj);
-	data.year = utcDate.getUTCFullYear();
-	data.month = utcDate.getUTCMonth() + 1;
-	data.date = utcDate.getUTCDate();
-	data.day = utcDate.getUTCDay();
-	data.hours = utcDate.getUTCHours();
-	data.miniutes = utcDate.getUTCMinutes();
-	data.seconds = utcDate.getUTCSeconds();
-	data.milliSeconds = utcDate.getUTCMilliseconds();
+  // 解决不同服务器时区不一致可能会导致日期初始化时间不一致的问题
+  // 传入数字以北京时区时间为准
+  var utcDate = $getUTCDate(dobj);
+  data.year = utcDate.getUTCFullYear();
+  data.month = utcDate.getUTCMonth() + 1;
+  data.date = utcDate.getUTCDate();
+  data.day = utcDate.getUTCDay();
+  data.hours = utcDate.getUTCHours();
+  data.miniutes = utcDate.getUTCMinutes();
+  data.seconds = utcDate.getUTCSeconds();
+  data.milliSeconds = utcDate.getUTCMilliseconds();
 
-	data.YYYY = rLimit(data.year, 4);
-	data.YY = rLimit(data.year, 2);
-	data.Y = data.year;
+  data.YYYY = rLimit(data.year, 4);
+  data.YY = rLimit(data.year, 2);
+  data.Y = data.year;
 
-	data.MM = $fixTo(data.month, 2);
-	data.M = data.month;
+  data.MM = $fixTo(data.month, 2);
+  data.M = data.month;
 
-	data.DD = $fixTo(data.date, 2);
-	data.D = data.date;
+  data.DD = $fixTo(data.date, 2);
+  data.D = data.date;
 
-	data.d = conf.weekday[data.day];
+  data.d = conf.weekday[data.day];
 
-	data.hh = $fixTo(data.hours, 2);
-	data.h = data.hours;
+  data.hh = $fixTo(data.hours, 2);
+  data.h = data.hours;
 
-	data.mm = $fixTo(data.miniutes, 2);
-	data.m = data.miniutes;
+  data.mm = $fixTo(data.miniutes, 2);
+  data.m = data.miniutes;
 
-	data.ss = $fixTo(data.seconds, 2);
-	data.s = data.seconds;
+  data.ss = $fixTo(data.seconds, 2);
+  data.s = data.seconds;
 
-	data.mss = $fixTo(data.milliSeconds, 3);
-	data.ms = data.milliSeconds;
+  data.mss = $fixTo(data.milliSeconds, 3);
+  data.ms = data.milliSeconds;
 
-	output = $substitute(conf.template, data);
-	return output;
+  output = $substitute(conf.template, data);
+  return output;
 }
 
 module.exports = format;

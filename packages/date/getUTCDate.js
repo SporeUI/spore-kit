@@ -14,8 +14,8 @@
  * utcDate.getUTCHours(); // 0
  */
 function getUTCDate(time) {
-	var utcDate = new Date(new Date(time).getTime() + 28800000);
-	return utcDate;
+  var utcDate = new Date(new Date(time).getTime() + 28800000);
+  return utcDate;
 }
 
 module.exports = getUTCDate;
