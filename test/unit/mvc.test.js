@@ -1,10 +1,10 @@
-const $mvc = require('spore-kit-mvc');
-var $events = require('spore-kit-evt/events');
-const $getUniqueKey = require('spore-kit-str/getUniqueKey');
+const $mvc = require('../../packages/mvc');
+var $events = require('../../packages/evt/events');
+const $getUniqueKey = require('../../packages/str/getUniqueKey');
 
 console.log(
 	Object.keys($mvc).map(
-		name => ('spore-kit-mvc/' + name)
+		name => ('../../packages/mvc/' + name)
 	).join('\n')
 );
 

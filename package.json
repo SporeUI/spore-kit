@@ -4,9 +4,8 @@
   "description": "原子化工具函数库",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./test/unit",
+    "test": "jest  --coverage ./test/unit",
     "test-package": "jest ./test/unit/num.test.js",
-    "cover": "jest --coverage ./test/unit",
     "cover-package": "gulp clean-cover && jest --coverage ./test/unit/num.test.js",
     "vuepress-dev": "vuepress dev docs",
     "vuepress-build": "vuepress build docs",

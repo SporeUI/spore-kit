@@ -1,8 +1,8 @@
-const $evt = require('spore-kit-evt');
+const $evt = require('../../packages/evt');
 
 console.log(
 	Object.keys($evt).map(
-		name => ('spore-kit-evt/' + name)
+		name => ('../../packages/evt/' + name)
 	).join('\n')
 );
 

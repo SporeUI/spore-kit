@@ -1,8 +1,8 @@
-const $fn = require('spore-kit-fn');
+const $fn = require('../../packages/fn');
 
 console.log(
 	Object.keys($fn).map(
-		name => ('spore-kit-fn/' + name)
+		name => ('../../packages/fn/' + name)
 	).join('\n')
 );
 

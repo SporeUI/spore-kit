@@ -1,8 +1,8 @@
-const $time = require('spore-kit-time');
+const $time = require('../../packages/time');
 
 console.log(
 	Object.keys($time).map(
-		name => ('spore-kit-time/' + name)
+		name => ('../../packages/time/' + name)
 	).join('\n')
 );
 

@@ -1,8 +1,8 @@
-const $util = require('spore-kit-util');
+const $util = require('../../packages/util');
 
 console.log(
 	Object.keys($util).map(
-		name => ('spore-kit-util/' + name)
+		name => ('../../packages/util/' + name)
 	).join('\n')
 );
 

@@ -1,8 +1,8 @@
-const $num = require('spore-kit-num');
+const $num = require('../../packages/num');
 
 console.log(
 	Object.keys($num).map(
-		name => ('spore-kit-num/' + name)
+		name => ('../../packages/num/' + name)
 	).join('\n')
 );
 

@@ -1,9 +1,9 @@
-const $env = require('spore-kit-env');
 const $mockUa = require('jest-useragent-mock');
+const $env = require('../../packages/env');
 
 console.log(
 	Object.keys($env).map(
-		name => ('spore-kit-env/' + name)
+		name => ('../../packages/env/' + name)
 	).join('\n')
 );
 

@@ -1,8 +1,8 @@
-const $location = require('spore-kit-location');
+const $location = require('../../packages/location');
 
 console.log(
 	Object.keys($location).map(
-		name => ('spore-kit-location/' + name)
+		name => ('../../packages/location/' + name)
 	).join('\n')
 );
 

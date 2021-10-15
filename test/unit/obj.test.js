@@ -1,8 +1,8 @@
-const $obj = require('spore-kit-obj');
+const $obj = require('../../packages/obj');
 
 console.log(
 	Object.keys($obj).map(
-		name => ('spore-kit-obj/' + name)
+		name => ('../../packages/obj/' + name)
 	).join('\n')
 );
 

@@ -1,8 +1,8 @@
-const $str = require('spore-kit-str');
+const $str = require('../../packages/str');
 
 console.log(
 	Object.keys($str).map(
-		name => ('spore-kit-str/' + name)
+		name => ('../../packages/str/' + name)
 	).join('\n')
 );
 

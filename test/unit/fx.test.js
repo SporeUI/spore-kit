@@ -1,8 +1,8 @@
-const $fx = require('spore-kit-fx');
+const $fx = require('../../packages/fx');
 
 console.log(
 	Object.keys($fx).map(
-		name => ('spore-kit-fx/' + name)
+		name => ('../../packages/fx/' + name)
 	).join('\n')
 );
 

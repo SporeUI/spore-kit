@@ -1,8 +1,8 @@
-const $io = require('spore-kit-io');
+const $io = require('../../packages/io');
 
 console.log(
 	Object.keys($io).map(
-		name => ('spore-kit-io/' + name)
+		name => ('../../packages/io/' + name)
 	).join('\n')
 );
 

@@ -1,8 +1,8 @@
-const $cookie = require('spore-kit-cookie');
+const $cookie = require('../../packages/cookie');
 
 console.log(
 	Object.keys($cookie).map(
-		name => ('spore-kit-cookie/' + name)
+		name => ('../../packages/cookie/' + name)
 	).join('\n')
 );
 

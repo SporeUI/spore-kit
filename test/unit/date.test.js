@@ -1,8 +1,8 @@
-const $date = require('spore-kit-date');
+const $date = require('../../packages/date');
 
 console.log(
 	Object.keys($date).map(
-		name => ('spore-kit-date/' + name)
+		name => ('../../packages/date/' + name)
 	).join('\n')
 );
 

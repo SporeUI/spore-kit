@@ -1,8 +1,8 @@
-const $dom = require('spore-kit-dom');
+const $dom = require('../../packages/dom');
 
 console.log(
 	Object.keys($dom).map(
-		name => ('spore-kit-dom/' + name)
+		name => ('../../packages/dom/' + name)
 	).join('\n')
 );
 

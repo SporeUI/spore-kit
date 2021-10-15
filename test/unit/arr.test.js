@@ -1,8 +1,8 @@
-const $arr = require('spore-kit-arr');
+const $arr = require('../../packages/arr');
 
 console.log(
 	Object.keys($arr).map(
-		name => ('spore-kit-arr/' + name)
+		name => ('../../packages/arr/' + name)
 	).join('\n')
 );
 

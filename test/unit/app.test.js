@@ -1,11 +1,11 @@
-const $app = require('spore-kit-app');
-const $browser = require('spore-kit-env/browser');
+const $app = require('../../packages/app');
+const $browser = require('../../packages/env/browser');
 
-jest.mock('spore-kit-env/browser');
+jest.mock('../../packages/env/browser');
 
 console.log(
 	Object.keys($app).map(
-		name => ('spore-kit-app/' + name)
+		name => ('../../packages/app/' + name)
 	).join('\n')
 );
 
