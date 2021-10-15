@@ -17,7 +17,9 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  extends: 'airbnb-base',
+  extends: [
+    'airbnb-base',
+  ],
   plugins: [
     'html',
     'jest',
@@ -38,5 +40,19 @@ module.exports = {
   // add your custom rules here
   rules: {
     'import/no-extraneous-dependencies': 0,
+    'no-var': 0,
+    'object-shorthand': 0,
+    'vars-on-top': 0,
+    'prefer-arrow-callback': 0,
+    'func-names': 0,
+    'no-restricted-properties': 0,
+    'no-continue': 0,
+    'no-param-reassign': 0,
+    'prefer-destructuring': 0,
+    'prefer-rest-params': 0,
+    'no-restricted-syntax': 0,
+    'no-prototype-builtins': 0,
+    'consistent-return': 0,
+    'prefer-template': 0,
   },
 };
