@@ -26,7 +26,7 @@
  * - s 秒原始数值
  * - mss 毫秒数值，精确到3位(9 => '009')
  * - ms 毫秒原始数值
- * @method format
+ * @method date/format
  * @param {Date} dobj 日期对象，或者可以被转换为日期对象的数据
  * @param {Object} [spec] 格式化选项
  * @param {Array} [spec.weekday='日一二三四五六'.split('')] 一周内各天对应名称，顺序从周日算起

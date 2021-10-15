@@ -1,14 +1,14 @@
 /**
  * 网络环境检测
- * @module network
+ * @module env/network
  */
 
 var supportOnline = null;
 
 /**
  * 判断页面是否支持联网检测
- * @method network.support
- * @memberof network
+ * @method env/network.support
+ * @memberof env/network
  * @returns {Boolean} 是否支持联网检测
  * @example
  * var $network = require('spore-kit/packages/env/network');
@@ -23,8 +23,8 @@ function support() {
 
 /**
  * 判断页面是否联网
- * @method network.onLine
- * @memberof network
+ * @method env/network.onLine
+ * @memberof env/network
  * @returns {Boolean} 是否联网
  * @example
  * var $network = require('spore-kit/packages/env/network');

@@ -6,7 +6,7 @@
  * - presto
  * - webkit
  * - gecko
- * @method core
+ * @method env/core
  * @returns {Object} UA 检查结果
  * @example
  * var $core = require('spore-kit/packages/env/core');

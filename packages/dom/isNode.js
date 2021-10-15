@@ -1,5 +1,6 @@
 /**
  * 判断对象是否为dom元素
+ * @method dom/isNode
  * @param {Object} node 要判断的对象
  * @return {Boolean} 是否为dom元素
  * @example

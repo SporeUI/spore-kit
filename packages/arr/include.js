@@ -1,6 +1,6 @@
 /**
  * 确认对象是否在数组中，不存在则将对象插入到数组中
- * @method include
+ * @method arr/include
  * @param {Array} arr 要操作的数组
  * @param {*} item 要插入的对象
  * @returns {Array} 经过处理的源数组

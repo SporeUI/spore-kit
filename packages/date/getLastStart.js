@@ -1,6 +1,6 @@
 /**
  * 获取过去一段时间的起始日期，如3月前第1天，2周前第1天，3小时前整点
- * @method getLastStart
+ * @method date/getLastStart
  * @param {Number|Date} time 实际时间
  * @param {String} type 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
  * @param {Number} count 多少单位时间之前

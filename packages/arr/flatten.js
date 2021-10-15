@@ -1,6 +1,6 @@
 /**
  * 数组扁平化
- * @method flatten
+ * @method arr/flatten
  * @param {array} arr 要操作的数组
  * @returns {array} 经过扁平化处理的数组
  * @example

@@ -1,7 +1,7 @@
 /**
  * 获取一个时间对象，其年月周日时分秒等 UTC 值与北京时间保持一致。
  * 解决不同服务器时区不一致场景下，可能会导致日期计算不一致的问题.
- * @method getUTCDate
+ * @method date/getUTCDate
  * @param {Number|Date} time 实际时间
  * @returns {Date} UTC时间
  * @example

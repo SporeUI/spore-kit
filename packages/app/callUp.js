@@ -10,7 +10,7 @@
  * - 此时无论 APP 是否已打开，都会触发 onFallback 事件与 fallback 回调事件函数
  * - fallback 默认操作是跳转到 fallbackUrl 客户端下载地址或者中间页地址
  * - 这样对于没有安装 APP 的移动端，页面会在超时事件发生时，直接跳转到 fallbackUrl
- * @method callUp
+ * @method app/callUp
  * @param {Object} options
  * @param {String} options.protocol 客户端APP呼起协议地址
  * @param {String} options.fallbackUrl 客户端下载地址或者中间页地址

@@ -1,6 +1,6 @@
 /**
  * # 处理与客户端相关的交互
- * @module spore-kit/packages/app
+ * @module app
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/app
  * @example
  * // 统一引入 spore-kit

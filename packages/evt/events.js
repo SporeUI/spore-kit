@@ -7,7 +7,7 @@
  * - 一个可以被混合到任何对象的模块，用于提供自定义事件。
  * - 可以用 on, off 方法来绑定移除事件。
  * - 用 trigger 来触发事件通知。
- * @class Events
+ * @class evt/Events
  * @see 类似工具: Mitt
  * @see http://aralejs.org/
  * @see https://github.com/documentcloud/backbone/blob/master/backbone.js
@@ -32,7 +32,7 @@ var Events = function () {};
  * - 绑定一个事件回调函数，或者用多个空格分隔来绑定多个事件回调函数。
  * - 传入参数 `'all'` 会在所有事件发生时被触发。
  * @method Events#on
- * @memberof Events
+ * @memberof evt/Events
  * @param {String} events 事件名称
  * @param {Function} callback 事件回调函数
  * @param {Object} [context] 回调函数的执行环境对象
@@ -79,7 +79,7 @@ Events.prototype.on = function (events, callback, context) {
  * - 如果不传递 callback 参数，会移除所有该时间名称的事件回调函数。
  * - 如果不指定事件名称，移除所有自定义事件回调函数。
  * @method Events#off
- * @memberof Events
+ * @memberof evt/Events
  * @param {String} [events] 事件名称
  * @param {Function} [callback] 要移除的事件回调函数
  * @param {Object} [context] 要移除的回调函数的执行环境对象
@@ -152,7 +152,7 @@ Events.prototype.off = function (events, callback, context) {
  * - 派发一个或者多个事件，会触发对应事件名称绑定的所有事件函数。
  * - 第一个参数是事件名称，剩下其他参数将作为事件回调的参数。
  * @method Events#trigger
- * @memberof Events
+ * @memberof evt/Events
  * @param {string} events 事件名称
  * @param {...*} [arg] 事件参数
  * @example
@@ -231,7 +231,7 @@ Events.prototype.trigger = function (events) {
  * Mix `Events` to object instance or Class function.
  * - 将自定事件对象，混合到一个类的实例。
  * @method Events.mixTo
- * @memberof Events
+ * @memberof evt/Events
  * @param {Object} receiver 要混合事件函数的对象
  * @example
  * var $events = require('spore-kit/packages/evt/events');

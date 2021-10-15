@@ -1,6 +1,6 @@
 /**
  * 查找符合条件的元素在数组中的位置
- * @method find
+ * @method arr/find
  * @param {Array} arr 要操作的数组
  * @param {Function} fn 条件函数
  * @param {Object} [context] 函数的this指向

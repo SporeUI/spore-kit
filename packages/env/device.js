@@ -8,7 +8,7 @@
  * - xiaomi
  * - samsong
  * - iphone
- * @method device
+ * @method env/device
  * @returns {Object} UA 检查结果
  * @example
  * var $device = require('spore-kit/packages/env/device');

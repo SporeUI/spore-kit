@@ -1,6 +1,6 @@
 /**
  * 获取 DOM 元素相对于 document 的边距
- * @method offset
+ * @method dom/offset
  * @see https://github.com/timoxley/offset
  * @param {Object} node 要计算 offset 的 dom 对象
  * @return {Object} offset 对象

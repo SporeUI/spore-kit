@@ -1,6 +1,6 @@
 /**
  * 获取某个时间的 整年|整月|整日|整时|整分 时间对象
- * @method getTimeSplit
+ * @method date/getTimeSplit
  * @param {Number|Date} time 实际时间
  * @param {String} type 单位时间类型，可选 ['year', 'month', 'week', 'day', 'hour']
  * @returns {Date} 时间整点对象

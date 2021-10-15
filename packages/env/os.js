@@ -4,7 +4,7 @@
  * 支持的类型检测
  * - ios
  * - android
- * @method os
+ * @method env/os
  * @returns {Object} UA 检查结果
  * @example
  * var $os = require('spore-kit/packages/env/os');

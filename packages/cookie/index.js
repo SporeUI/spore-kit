@@ -1,6 +1,6 @@
 /**
  * # 本地存储相关工具函数
- * @module spore-kit/packages/cookie
+ * @module cookie
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/cookie
  * @example
  * // 统一引入 spore-kit

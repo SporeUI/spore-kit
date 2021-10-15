@@ -1,6 +1,6 @@
 /**
  * UA字符串匹配列表
- * @method uaMatch
+ * @method env/uaMatch
  * @param {Object} list 检测 Hash 列表
  * @param {String} ua 用于检测的 UA 字符串
  * @param {Object} conf 检测器选项，传递给检测函数

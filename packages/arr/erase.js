@@ -1,6 +1,6 @@
 /**
  * 删除数组中的对象
- * @method erase
+ * @method arr/erase
  * @param {Array} arr 要操作的数组
  * @param {*} item 要清除的对象
  * @returns {Number} 对象原本所在位置

@@ -12,7 +12,7 @@
  * - qqhouse
  * - qqbrowser
  * - chrome
- * @method browser
+ * @method env/browser
  * @returns {Object} UA 检查结果
  * @example
  * var $browser = require('spore-kit/packages/env/browser');

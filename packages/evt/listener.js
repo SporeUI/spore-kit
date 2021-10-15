@@ -4,7 +4,7 @@
  * - 只有在白名单列表上的事件才可以被触发。
  * - 事件添加，移除，激发的调用方法参考 Events。
  * @see spore-kit/packages/evt/events
- * @class Listener
+ * @class evt/Listener
  * @example
  * @example
  * var $listener = require('spore-kit/packages/evt/listener');
@@ -38,8 +38,8 @@ Listener.prototype = {
   constructor: Listener,
   /**
    * 在白名单上定义一个事件名称
-   * @method Listener.prototype.define
-   * @memberof Listener
+   * @method Listener#define
+   * @memberof evt/Listener
    * @param {String} eventName
    */
   define: function (eventName) {
@@ -47,8 +47,8 @@ Listener.prototype = {
   },
   /**
    * 移除白名单上定义的事件名称
-   * @method Listener.prototype.undefine
-   * @memberof Listener
+   * @method Listener#undefine
+   * @memberof evt/Listener
    * @param {String} eventName
    */
   undefine: function (eventName) {
@@ -57,8 +57,8 @@ Listener.prototype = {
   /**
    * 广播组件绑定事件
    * @see <a href="#events-prototype-on">events.prototype.on</a>
-   * @method Listener.prototype.on
-   * @memberof Listener
+   * @method Listener#on
+   * @memberof evt/Listener
    * @param {String} eventName 要绑定的事件名称
    * @param {Function} fn 要绑定的事件回调函数
    */
@@ -68,8 +68,8 @@ Listener.prototype = {
   /**
    * 广播组件移除事件
    * @see <a href="#events-prototype-off">events.prototype.off</a>
-   * @method Listener.prototype.off
-   * @memberof Listener
+   * @method Listener#off
+   * @memberof evt/Listener
    * @param {String} eventName 要移除绑定的事件名称
    * @param {Function} fn 要移除绑定的事件回调函数
    */
@@ -79,8 +79,8 @@ Listener.prototype = {
   /**
    * 广播组件派发事件
    * @see <a href="#events-prototype-trigger">events.prototype.trigger</a>
-   * @method Listener.prototype.trigger
-   * @memberof Listener
+   * @method Listener#trigger
+   * @memberof evt/Listener
    * @param {String} eventName 要触发的事件名称
    * @param {...*} [arg] 事件参数
    */
