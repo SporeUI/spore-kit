@@ -10,7 +10,7 @@
     "cover-package": "gulp clean-cover && jest --coverage ./test/unit/num.test.js",
     "vuepress-dev": "vuepress dev docs",
     "vuepress-build": "vuepress build docs",
-    "doc-build": "node ./scripts/docs.js && sh ./scripts/doc-build.sh ./packages",
+    "doc-build": "node ./scripts/docs.js && sh ./scripts/doc-build.sh",
     "doc": "npm run cover && npm run doc-build && npm run vuepress-build",
     "prepublishOnly": "npm test && npm run build",
     "lint": "eslint ./packages",
