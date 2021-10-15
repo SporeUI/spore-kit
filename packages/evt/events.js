@@ -24,21 +24,6 @@
 // Regular expression used to split event strings
 var eventSplitter = /\s+/;
 
-var keys = Object.keys;
-
-if (!keys) {
-  keys = function (o) {
-    var result = [];
-
-    for (var name in o) {
-      if (o.hasOwnProperty(name)) {
-        result.push(name);
-      }
-    }
-    return result;
-  };
-}
-
 var Events = function () {};
 
 /**
@@ -130,7 +115,7 @@ Events.prototype.off = function (events, callback, context) {
     return this;
   }
 
-  events = events ? events.split(eventSplitter) : keys(cache);
+  events = events ? events.split(eventSplitter) : Object.keys(cache);
 
   // Loop through the callback list, splicing where appropriate.
   for (event = events.shift(); event; event = events.shift()) {
