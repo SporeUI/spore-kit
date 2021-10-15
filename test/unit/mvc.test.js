@@ -216,7 +216,7 @@ describe('mvc.klass', () => {
         this.a += 1;
       },
     });
-    Cls.statics('updateB', () => {
+    Cls.statics('updateB', function () {
       this.b += 2;
     });
     const obj = new Cls();
@@ -1239,7 +1239,7 @@ describe('mvc.view', () => {
     const obj = new TestView();
     obj.role('root').append('<button data-val="5"></button>');
 
-    obj.role('root').find('button').each(() => {
+    obj.role('root').find('button').each(function () {
       $(this).trigger('click');
     });
 
@@ -1282,7 +1282,7 @@ describe('mvc.view', () => {
     const obj = new TestView();
     obj.role('root').append('<button data-val="5"></button>');
 
-    obj.role('root').find('button').each(() => {
+    obj.role('root').find('button').each(function () {
       $(this).trigger('click');
     });
 
