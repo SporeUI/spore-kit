@@ -1,7 +1,11 @@
 # Spore-Kit
 
+![npm](https://img.shields.io/npm/v/spore-kit)
+![license](https://img.shields.io/npm/l/spore-kit)
 [![GitHub Pages Actions](https://github.com/SporeUI/sporeui.github.io/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/SporeUI/sporeui.github.io/actions/workflows/node.js.yml)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+![action-release](https://github.com/SporeUI/spore-kit/workflows/release/badge.svg)
+[![codecov](https://codecov.io/gh/SporeUI/spore-kit/branch/master/graph/badge.svg)](https://codecov.io/gh/TabSpace/colorogger)
 
 原子化工具函数库
 
