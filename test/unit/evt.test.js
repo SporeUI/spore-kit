@@ -8,7 +8,7 @@ $console.log(
   ).join('\n'),
 );
 
-describe('evt.events', () => {
+describe('evt.Events', () => {
   const $events = $evt.Events;
 
   test('实现正常的事件绑定能力', () => {
@@ -159,5 +159,73 @@ describe('evt.events', () => {
     inst.trigger('change');
     expect(va).toBe(1);
     expect(vb).toBe(11);
+  });
+});
+
+describe('evt.Listener', () => {
+  const $listener = $evt.Listener;
+
+  test('实现正常的事件绑定能力', () => {
+    const inst = new $listener();
+    let index = 0;
+    inst.define('change');
+    inst.on('change', (val) => {
+      index += val;
+    });
+    inst.trigger('change', 2);
+    expect(index).toBe(2);
+  });
+
+  test('未定义事件不会触发', () => {
+    const inst = new $listener([
+      'change',
+    ]);
+    let index = 0;
+    inst.define('change');
+    inst.on('change', (val) => {
+      index += val;
+    });
+    inst.trigger('change', 2);
+    expect(index).toBe(2);
+    inst.undefine('change');
+    inst.trigger('change', 2);
+    expect(index).toBe(2);
+  });
+
+  test('事件解绑', () => {
+    const inst = new $listener([
+      'change',
+    ]);
+    let index = 0;
+    inst.on('change', (val) => {
+      index += val;
+    });
+    inst.off('change');
+    inst.trigger('change', 0);
+    expect(index).toBe(0);
+  });
+});
+
+describe('evt.occurInside', () => {
+  test('事件解绑', () => {
+    const tpl = [
+      '<div>',
+      '<div class="box">',
+      '<div class="close">',
+      '</div>',
+      '</div>',
+      '<div class="out"></div>',
+      '</div>',
+    ].join('');
+    const jobj = $(tpl);
+    jobj.appendTo(document.body);
+    jobj.on('custom', (evt) => {
+      const rs1 = $evt.occurInside(evt, jobj.find('.box').get(0));
+      const rs2 = $evt.occurInside(evt, jobj.find('.out').get(0));
+      expect(rs1).toBe(true);
+      expect(rs2).toBe(false);
+    });
+    jobj.find('');
+    jobj.find('.close').trigger('custom');
   });
 });
