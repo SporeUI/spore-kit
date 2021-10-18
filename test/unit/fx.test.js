@@ -110,3 +110,87 @@ describe('fx.flashAction', () => {
     expect(arr[4]).toBe('f');
   });
 });
+
+describe('fx.Fx', () => {
+  const Fx = $fx.Fx;
+
+  test('动画函数正常执行', async () => {
+    const arr = [];
+    const fx = new Fx({
+      duration: 200,
+    });
+    fx.set = function (now) {
+      arr.push(now);
+    };
+    fx.on('complete', () => {
+      arr.push('f');
+    });
+    fx.start(0, 100);
+    await delay(300);
+
+    expect(arr.length).toBeGreaterThan(3);
+    expect(arr[0]).toBe(0);
+    expect(arr[1]).toBeGreaterThan(0);
+    expect(arr[1]).toBeLessThan(100);
+    expect(arr[arr.length - 2]).toBe(100);
+    expect(arr[arr.length - 1]).toBe('f');
+  });
+
+  test('动画可暂停和恢复', async () => {
+    const arr = [];
+    const fx = new Fx({
+      duration: 200,
+    });
+    fx.set = function (now) {
+      arr.push(now);
+    };
+    fx.on('complete', () => {
+      arr.push('f');
+    });
+    fx.start(0, 100);
+
+    await delay(100);
+    fx.pause();
+
+    expect(arr[0]).toBe(0);
+    expect(arr[1]).toBeGreaterThan(0);
+    expect(arr[arr.length - 1]).not.toBe('f');
+
+    fx.resume();
+    await delay(200);
+
+    expect(arr[arr.length - 3]).toBeLessThan(100);
+    expect(arr[arr.length - 2]).toBe(100);
+    expect(arr[arr.length - 1]).toBe('f');
+  });
+
+  test('动画可取消后接续执行下一个动画', async () => {
+    const arr = [];
+    const fx = new Fx({
+      duration: 200,
+      link: 'cancel',
+    });
+    fx.set = function (now) {
+      arr.push(now);
+    };
+    fx.on('cancel', () => {
+      arr.push('c');
+    });
+    fx.on('complete', () => {
+      arr.push('f');
+    });
+    fx.start(0, 100);
+
+    await delay(100);
+    fx.start(0, 200);
+
+    expect(arr[0]).toBe(0);
+    expect(arr[1]).toBeGreaterThan(0);
+    expect(arr[arr.length - 1]).toBe('c');
+
+    await delay(300);
+
+    expect(arr[arr.length - 2]).toBeGreaterThan(100);
+    expect(arr[arr.length - 1]).toBe('f');
+  });
+});
