@@ -2,6 +2,12 @@ const $fx = require('../../packages/fx');
 
 const $console = console;
 
+function delay(time) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time);
+  });
+}
+
 $console.log(
   Object.keys($fx).map(
     (name) => (`../../packages/fx/${name}`),
@@ -72,5 +78,35 @@ describe('fx.easing', () => {
   test('fx.easing.easeInOutQuint', () => {
     const val = $fx.easing.easeInOutQuint(0.3);
     expect(val).toBe(0.03888);
+  });
+});
+
+describe('fx.flashAction', () => {
+  test('闪烁动作交替进行', async () => {
+    const arr = [];
+    let va = 0;
+    let vb = 10;
+    $fx.flashAction({
+      times: 2,
+      delay: 10,
+      actionOdd() {
+        va += 1;
+        arr.push(va);
+      },
+      actionEven() {
+        vb += 1;
+        arr.push(vb);
+      },
+      recover() {
+        arr.push('f');
+      },
+    });
+    await delay(100);
+    expect(arr.length).toBe(5);
+    expect(arr[0]).toBe(11);
+    expect(arr[1]).toBe(1);
+    expect(arr[2]).toBe(12);
+    expect(arr[3]).toBe(2);
+    expect(arr[4]).toBe('f');
   });
 });

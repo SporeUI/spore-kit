@@ -42,7 +42,7 @@ function flashAction(options) {
   queue.forEach(function (time, index) {
     setTimeout(function () {
       if (index >= queue.length - 1) {
-        if (conf.recover === 'function') {
+        if (typeof conf.recover === 'function') {
           conf.recover();
         }
       } else if (index % 2 === 0) {
