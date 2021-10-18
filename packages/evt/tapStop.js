@@ -26,7 +26,7 @@ var tapStop = function (options) {
   }, options);
 
   if (!miniMask) {
-    miniMask = $('<div></div>');
+    miniMask = $('<div class="tap-stop-mask"></div>');
     miniMask.css({
       display: 'none',
       position: 'absolute',

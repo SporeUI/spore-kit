@@ -209,7 +209,7 @@ describe('evt.Listener', () => {
 describe('evt.occurInside', () => {
   test('事件解绑', () => {
     const tpl = [
-      '<div>',
+      '<div class="occur-inside">',
       '<div class="box">',
       '<div class="close">',
       '</div>',
@@ -227,5 +227,24 @@ describe('evt.occurInside', () => {
     });
     jobj.find('');
     jobj.find('.close').trigger('custom');
+  });
+});
+
+describe('evt.tapStop', () => {
+  test('点击触发遮罩插入', () => {
+    const tpl = [
+      '<div class="tap-stop">',
+      '<div class="box" style="width: 100px; height: 100px;">',
+      '</div>',
+      '</div>',
+    ].join('');
+    const jobj = $(tpl);
+    jobj.appendTo(document.body);
+    jobj.find('.box').on('touchstart', function () {
+      $evt.tapStop();
+      $(this).hide();
+      expect($('.tap-stop-mask').length).toBeGreaterThan(0);
+    });
+    jobj.find('.box').trigger('touchstart');
   });
 });
