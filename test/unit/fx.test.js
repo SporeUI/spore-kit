@@ -2,7 +2,7 @@ const $fx = require('../../packages/fx');
 
 const $console = console;
 
-function delay(time) {
+function defer(time) {
   return new Promise((resolve) => {
     setTimeout(resolve, time);
   });
@@ -101,7 +101,7 @@ describe('fx.flashAction', () => {
         arr.push('f');
       },
     });
-    await delay(100);
+    await defer(100);
     expect(arr.length).toBe(5);
     expect(arr[0]).toBe(11);
     expect(arr[1]).toBe(1);
@@ -126,7 +126,7 @@ describe('fx.Fx', () => {
       arr.push('f');
     });
     fx.start(0, 100);
-    await delay(300);
+    await defer(300);
 
     expect(arr.length).toBeGreaterThan(3);
     expect(arr[0]).toBe(0);
@@ -149,7 +149,7 @@ describe('fx.Fx', () => {
     });
     fx.start(0, 100);
 
-    await delay(100);
+    await defer(100);
     fx.pause();
 
     expect(arr[0]).toBe(0);
@@ -157,7 +157,7 @@ describe('fx.Fx', () => {
     expect(arr[arr.length - 1]).not.toBe('f');
 
     fx.resume();
-    await delay(200);
+    await defer(300);
 
     expect(arr[arr.length - 3]).toBeLessThan(100);
     expect(arr[arr.length - 2]).toBe(100);
@@ -180,13 +180,13 @@ describe('fx.Fx', () => {
     });
     fx.start(0, 100);
 
-    await delay(100);
+    await defer(100);
     fx.start(0, 200);
 
     expect(arr[0]).toBe(0);
     expect(arr[1]).toBeGreaterThan(0);
 
-    await delay(300);
+    await defer(300);
 
     expect(arr[arr.length - 1]).toBe('f');
     expect(arr.indexOf('c') < 0).toBe(true);
@@ -209,14 +209,14 @@ describe('fx.Fx', () => {
     });
     fx.start(0, 100);
 
-    await delay(100);
+    await defer(100);
     fx.start(0, 200);
 
     expect(arr[0]).toBe(0);
     expect(arr[1]).toBeGreaterThan(0);
     expect(arr[arr.length - 1]).toBe('c');
 
-    await delay(300);
+    await defer(300);
 
     expect(arr[arr.length - 2]).toBeGreaterThan(100);
     expect(arr[arr.length - 1]).toBe('f');
@@ -236,10 +236,43 @@ describe('fx.Fx', () => {
     });
     fx.start(0, 100);
 
-    await delay(100);
+    await defer(100);
     fx.stop();
 
     expect(arr.indexOf('f') < 0).toBe(true);
     expect(arr[arr.length - 1]).toBe('s');
+  });
+});
+
+describe('fx.smoothScrollTo', () => {
+  test('动画可直接终止', async () => {
+    const root = $('<div class="smooth-scroll-demo"></div>');
+    root.appendTo(document.body);
+    let winScrollY = 0;
+    const arr = [];
+    window.scrollTo = jest.fn().mockImplementation((vx, vy) => {
+      winScrollY = vy;
+      arr.push(vy);
+    });
+    $.fn.scrollTop = jest.fn().mockImplementation(() => winScrollY);
+    $.fn.offset = jest.fn().mockReturnValueOnce({
+      top: 1000,
+    });
+
+    let scrollEnded = false;
+    $fx.smoothScrollTo(root.get(0), {
+      maxDelay: 300,
+      callback() {
+        scrollEnded = true;
+      },
+    });
+    await defer(500);
+
+    expect(arr.length).toBeGreaterThan(0);
+    expect(arr[1]).toBeGreaterThan(0);
+    expect(arr[1]).toBeLessThan(1000);
+    expect(arr[arr.length - 2]).toBeLessThan(1000);
+    expect(arr[arr.length - 1]).toBe(1000);
+    expect(scrollEnded).toBe(true);
   });
 });
