@@ -164,6 +164,34 @@ describe('fx.Fx', () => {
     expect(arr[arr.length - 1]).toBe('f');
   });
 
+  test('默认动画结束前，忽略新传入的动画参数', async () => {
+    const arr = [];
+    const fx = new Fx({
+      duration: 200,
+    });
+    fx.set = function (now) {
+      arr.push(now);
+    };
+    fx.on('cancel', () => {
+      arr.push('c');
+    });
+    fx.on('complete', () => {
+      arr.push('f');
+    });
+    fx.start(0, 100);
+
+    await delay(100);
+    fx.start(0, 200);
+
+    expect(arr[0]).toBe(0);
+    expect(arr[1]).toBeGreaterThan(0);
+
+    await delay(300);
+
+    expect(arr[arr.length - 1]).toBe('f');
+    expect(arr.indexOf('c') < 0).toBe(true);
+  });
+
   test('动画可取消后接续执行下一个动画', async () => {
     const arr = [];
     const fx = new Fx({
@@ -192,5 +220,26 @@ describe('fx.Fx', () => {
 
     expect(arr[arr.length - 2]).toBeGreaterThan(100);
     expect(arr[arr.length - 1]).toBe('f');
+  });
+
+  test('动画可直接终止', async () => {
+    const arr = [];
+    const fx = new Fx();
+    fx.setOptions({
+      duration: 200,
+    });
+    fx.on('stop', () => {
+      arr.push('s');
+    });
+    fx.on('complete', () => {
+      arr.push('f');
+    });
+    fx.start(0, 100);
+
+    await delay(100);
+    fx.stop();
+
+    expect(arr.indexOf('f') < 0).toBe(true);
+    expect(arr[arr.length - 1]).toBe('s');
   });
 });
