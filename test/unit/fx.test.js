@@ -245,7 +245,7 @@ describe('fx.Fx', () => {
 });
 
 describe('fx.smoothScrollTo', () => {
-  test('动画可直接终止', async () => {
+  test('可执行滚动动画', async () => {
     const root = $('<div class="smooth-scroll-demo"></div>');
     root.appendTo(document.body);
     let winScrollY = 0;
@@ -274,5 +274,18 @@ describe('fx.smoothScrollTo', () => {
     expect(arr[arr.length - 2]).toBeLessThan(1000);
     expect(arr[arr.length - 1]).toBe(1000);
     expect(scrollEnded).toBe(true);
+  });
+});
+
+describe('fx.sticky', () => {
+  test('滚动超过元素位置后，元素设置为 fixed 样式', async () => {
+    const root = $('<div class="sticky-demo"></div>');
+    root.appendTo(document.body);
+    $.fn.offsetParent = jest
+      .fn()
+      .mockImplementation(() => $(document.body));
+    window.scrollY = 100;
+    $fx.sticky(root.get(0));
+    expect(root.css('position')).toBe('fixed');
   });
 });
