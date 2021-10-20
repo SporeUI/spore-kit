@@ -132,3 +132,9 @@ describe('io.ajax', () => {
     });
   });
 });
+
+describe('io.getScript', () => {
+  test('', () => {
+
+  });
+});
