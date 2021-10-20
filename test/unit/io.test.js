@@ -79,9 +79,6 @@ describe('io.ajax', () => {
       expect(typeof rs).toBe('string');
       done();
     });
-    $io.ajax.post(url, { a: 1 }, (rs) => {
-      expect(rs.code).toBe(200);
-    }, 'json');
   });
 
   test('timeout', (done) => {
@@ -134,7 +131,68 @@ describe('io.ajax', () => {
 });
 
 describe('io.getScript', () => {
-  test('', () => {
+  test('正常加载远程脚本', (done) => {
+    const url = 'https://sporeui.github.io/spore-kit/docs/js/test.js';
+    const script = $io.getScript({
+      src: url,
+      charset: 'utf8',
+      onLoad() {
+        const scriptNode = $('head').find(`script[src="${url}"]`);
+        expect(scriptNode.length).toBeGreaterThan(0);
+        done();
+      },
+    });
+    script.onload();
+  });
+});
 
+describe('io.loadSdk', () => {
+  test('正常加载 sdk', (done) => {
+    const url = 'https://sporeui.github.io/spore-kit/docs/js/test.js?action=loadsdk';
+    let cbCount = 0;
+    $io.loadSdk({
+      name: 'callbackValue',
+      url,
+    }).then((val) => {
+      cbCount += 1;
+      expect(val).toBe(1234);
+    });
+    $io.loadSdk({
+      name: 'callbackValue',
+      url,
+    }).then((val) => {
+      cbCount += 1;
+      expect(val).toBe(1234);
+      expect(cbCount).toBe(2);
+      done();
+    });
+    const scriptNode = $('head').find(`script[src="${url}"]`);
+    expect(scriptNode.length).toBe(1);
+    setTimeout(() => {
+      window.callbackValue = 1234;
+      scriptNode.get(0).onload();
+    }, 10);
+  });
+
+  test('缺失参数会有报错', async () => {
+    let err1 = null;
+    let err2 = null;
+    try {
+      await $io.loadSdk({
+        name: 'callbackValue',
+      });
+    } catch (err) {
+      err1 = err;
+    }
+    expect(err1).not.toBeNull();
+
+    try {
+      await $io.loadSdk({
+        url: 'none',
+      });
+    } catch (err) {
+      err2 = err;
+    }
+    expect(err2).not.toBeNull();
   });
 });
