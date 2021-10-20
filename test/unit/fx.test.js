@@ -289,3 +289,117 @@ describe('fx.sticky', () => {
     expect(root.css('position')).toBe('fixed');
   });
 });
+
+describe('fx.transitions', () => {
+  test('transitions.linear', () => {
+    const {
+      linear,
+    } = $fx.transitions;
+    expect(linear(0.3)).toBe(0.3);
+  });
+
+  test('transitions.Pow', () => {
+    const {
+      easeIn,
+      easeOut,
+      easeInOut,
+    } = $fx.transitions.Pow;
+    expect(easeIn(0.3)).toBe(0.0007289999999999998);
+    expect(easeOut(0.3)).toBe(0.8823510000000001);
+    expect(easeInOut(0.3)).toBe(0.023327999999999995);
+  });
+
+  test('transitions.Expo', () => {
+    const {
+      easeIn,
+      easeOut,
+      easeInOut,
+    } = $fx.transitions.Expo;
+    expect(easeIn(0.3)).toBe(0.02061731110582648);
+    expect(easeOut(0.3)).toBe(0.8105354291862003);
+    expect(easeInOut(0.3)).toBe(0.05440941020600775);
+  });
+
+  test('transitions.Circ', () => {
+    const {
+      easeIn,
+      easeOut,
+      easeInOut,
+    } = $fx.transitions.Circ;
+    expect(easeIn(0.3)).toBe(0.04606079858305434);
+    expect(easeOut(0.3)).toBe(0.714142842854285);
+    expect(easeInOut(0.3)).toBe(0.09999999999999998);
+  });
+
+  test('transitions.Sine', () => {
+    const {
+      easeIn,
+      easeOut,
+      easeInOut,
+    } = $fx.transitions.Sine;
+    expect(easeIn(0.3)).toBe(0.1089934758116321);
+    expect(easeOut(0.3)).toBe(0.45399049973954686);
+    expect(easeInOut(0.3)).toBe(0.20610737385376343);
+  });
+
+  test('transitions.Back', () => {
+    const {
+      easeIn,
+      easeOut,
+      easeInOut,
+    } = $fx.transitions.Back;
+    expect(easeIn(0.3)).toBe(-0.074934);
+    expect(easeOut(0.3)).toBe(0.894846);
+    expect(easeInOut(0.3)).toBe(-0.008495999999999983);
+  });
+
+  test('transitions.Bounce', () => {
+    const {
+      easeIn,
+      easeOut,
+      easeInOut,
+    } = $fx.transitions.Bounce;
+    expect(easeIn(0.3)).toBe(0.06937499999999996);
+    expect(easeOut(0.3)).toBe(0.6806250000000003);
+    expect(easeInOut(0.3)).toBe(0.04500000000000004);
+  });
+
+  test('transitions.Elastic', () => {
+    const {
+      easeIn,
+      easeOut,
+      easeInOut,
+    } = $fx.transitions.Elastic;
+    expect(easeIn(0.3)).toBe(-0.003906249999999992);
+    expect(easeOut(0.3)).toBe(0.875);
+    expect(easeInOut(0.3)).toBe(-0.015624999999999976);
+  });
+
+  test('transitions.Quad', () => {
+    const {
+      easeIn,
+      easeOut,
+      easeInOut,
+    } = $fx.transitions.Quad;
+    expect(easeIn(0.3)).toBe(0.09);
+    expect(easeOut(0.3)).toBe(0.51);
+    expect(easeInOut(0.3)).toBe(0.18);
+  });
+
+  test('Fx.getTransition', () => {
+    const inst = new $fx.Fx();
+    inst.getTransition = $fx.Fx.getTransition;
+    const fn = inst.getTransition();
+    expect(fn(0.3)).toBe(0.20610737385376343);
+  });
+
+  test('自定义动画选项', () => {
+    const inst = new $fx.Fx({
+      transition: 'Sine:In:Out',
+    });
+    inst.getTransition = $fx.Fx.getTransition;
+    const fn = inst.getTransition();
+    expect(typeof fn).toBe('function');
+    expect(fn(0.3)).toBe(0.20610737385376343);
+  });
+});
