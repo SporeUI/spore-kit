@@ -185,11 +185,11 @@ function iframePost(spec) {
 
   if (!conf.jsonpCallback) {
     that.callback = function (rs) {
-      if ($.isFunction(conf.complete)) {
-        conf.complete(rs, that, 'success');
-      }
       if ($.isFunction(conf.success)) {
         conf.success(rs, that, 'success');
+      }
+      if ($.isFunction(conf.complete)) {
+        conf.complete(rs, that, 'success');
       }
     };
     window[jsonpCallback] = that.callback;

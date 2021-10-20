@@ -196,3 +196,59 @@ describe('io.loadSdk', () => {
     expect(err2).not.toBeNull();
   });
 });
+
+describe('io.iframePost', () => {
+  test('正常加载 post 请求', (done) => {
+    const url = 'https://sporeui.github.io/spore-kit/docs/js/info.json';
+    let submitCalled = false;
+    window.HTMLFormElement.prototype.submit = jest.fn().mockImplementation(() => {
+      submitCalled = true;
+    });
+
+    let successCalled = false;
+    const inst = $io.iframePost({
+      url,
+      data: [{
+        n1: 'v1',
+      }, {
+        n2: 'v2',
+      }],
+      success(rs) {
+        successCalled = true;
+        expect(rs.val).toBe(42);
+        done();
+      },
+      complete() {
+        expect(successCalled).toBe(true);
+        done();
+      },
+    });
+
+    window[inst.jsonpCallback]({
+      val: 42,
+    });
+    expect(submitCalled).toBe(true);
+  });
+
+  test('正常加载 get 请求', (done) => {
+    const url = 'https://sporeui.github.io/spore-kit/docs/js/info.json';
+    const inst = $io.iframePost({
+      url,
+      jsonpMethod: 'get',
+      target: 'iframe-name',
+      acceptCharset: 'utf8',
+      data: {
+        n1: 'v1',
+        n2: 'v2',
+      },
+      success(rs) {
+        expect(rs.val).toBe(43);
+        done();
+      },
+    });
+
+    window[inst.jsonpCallback]({
+      val: 43,
+    });
+  });
+});
