@@ -1,13 +1,13 @@
 /**
  * 对象处理与判断
- * @module spore-kit/packages/obj
+ * @module @spore-ui/kit/packages/obj
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/obj
  * @example
- * // 统一引入 spore-kit
+ * // 统一引入 @spore-ui/kit
  * var $kit = require('@spore-ui/kit');
  * console.info($kit.obj.type);
  *
- * // 单独引入 spore-kit/packages/obj
+ * // 单独引入 @spore-ui/kit/packages/obj
  * var $obj = require('@spore-ui/kit/packages/obj');
  * console.info($obj.type);
  *

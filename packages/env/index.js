@@ -1,13 +1,13 @@
 /**
  * 环境检测与判断工具
- * @module spore-kit/packages/env
+ * @module @spore-ui/kit/packages/env
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/env
  * @example
- * // 统一引入 spore-kit
+ * // 统一引入 @spore-ui/kit
  * var $kit = require('@spore-ui/kit');
  * console.info($kit.env.touchable);
  *
- * // 单独引入 spore-kit/packages/env
+ * // 单独引入 @spore-ui/kit/packages/env
  * var $env = require('@spore-ui/kit/packages/env');
  * console.info($env.touchable);
  *

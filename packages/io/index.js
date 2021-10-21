@@ -1,13 +1,13 @@
 /**
  * 处理网络交互
- * @module spore-kit/packages/io
+ * @module @spore-ui/kit/packages/io
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/io
  * @example
- * // 统一引入 spore-kit
+ * // 统一引入 @spore-ui/kit
  * var $kit = require('@spore-ui/kit');
  * console.info($kit.io.getScript);
  *
- * // 单独引入 spore-kit/packages/io
+ * // 单独引入 @spore-ui/kit/packages/io
  * var $io = require('@spore-ui/kit/packages/io');
  * console.info($io.getScript);
  *

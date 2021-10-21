@@ -1,13 +1,13 @@
 /**
  * 函数包装，获取特殊执行方式
- * @module spore-kit/packages/fn
+ * @module @spore-ui/kit/packages/fn
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/fn
  * @example
- * // 统一引入 spore-kit
+ * // 统一引入 @spore-ui/kit
  * var $kit = require('@spore-ui/kit');
  * console.info($kit.fn.delay);
  *
- * // 单独引入 spore-kit/packages/fn
+ * // 单独引入 @spore-ui/kit/packages/fn
  * var $fn = require('@spore-ui/kit/packages/fn');
  * console.info($fn.delay);
  *
