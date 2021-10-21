@@ -1,6 +1,6 @@
 {
-  "name": "spore-kit",
-  "version": "0.0.0-development",
+  "name": "@spore-ui/kit",
+  "version": "0.0.1",
   "description": "原子化工具函数库",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "vuepress-build": "vuepress build docs",
     "doc-build": "node ./scripts/docs.js && sh ./scripts/doc-build.sh",
     "doc": "npm run cover && npm run doc-build && npm run vuepress-build",
-    "prepublishOnly": "npm test && npm run build",
+    "prepublishOnly": "npm run build",
     "lint": "eslint ./packages",
     "cz": "git add . && git cz"
   },
