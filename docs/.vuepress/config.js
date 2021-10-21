@@ -1,7 +1,7 @@
 module.exports = {
   base: '/spore-kit/docs/',
   dest: 'docs-dist/docs',
-  title: 'SPORE-KIT',
+  title: '@spore-ui/kit',
   serviceWorker: false,
   head: [
     ['link', {

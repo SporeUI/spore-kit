@@ -1,4 +1,4 @@
-# Spore-Kit
+# @spore-ui/kit
 
 ![npm](https://img.shields.io/npm/v/@spore-ui/kit)
 ![license](https://img.shields.io/npm/l/@spore-ui/kit)
@@ -32,15 +32,15 @@ npm i spore-kit
 ```
 
 ```javascript
-// 统一引入 spore-kit
-var $kit = require('spore-kit');
+// 统一引入 @spore-ui/kit
+var $kit = require('@spore-ui/kit');
 $kit.arr.contains([1, 2], 1); // true
 
-// 单独引入 spore-kit/packages/arr
-var $arr = require('spore-kit/packages/arr');
+// 单独引入 @spore-ui/kit/packages/arr
+var $arr = require('@spore-ui/kit/packages/arr');
 $arr.contains([1, 2], 1); // true
 
 // 单独引入一个方法（推荐）
-var $contains = require('spore-kit/packages/arr/contains');
+var $contains = require('@spore-ui/kit/packages/arr/contains');
 $contains([1, 2], 1); // true
 ```
