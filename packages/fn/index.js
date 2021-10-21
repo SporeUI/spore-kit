@@ -4,15 +4,15 @@
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/fn
  * @example
  * // 统一引入 spore-kit
- * var $kit = require('spore-kit');
+ * var $kit = require('@spore-ui/kit');
  * console.info($kit.fn.delay);
  *
  * // 单独引入 spore-kit/packages/fn
- * var $fn = require('spore-kit/packages/fn');
+ * var $fn = require('@spore-ui/kit/packages/fn');
  * console.info($fn.delay);
  *
  * // 单独引入一个方法
- * var $delay = require('spore-kit/packages/fn/delay');
+ * var $delay = require('@spore-ui/kit/packages/fn/delay');
  */
 
 exports.delay = require('./delay');

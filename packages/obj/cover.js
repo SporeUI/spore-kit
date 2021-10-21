@@ -5,7 +5,7 @@
  * @param {Object} item 要覆盖的属性键值对
  * @returns {Object} 覆盖后的源对象
  * @example
- * var $cover = require('spore-kit/packages/obj/cover');
+ * var $cover = require('@spore-ui/kit/packages/obj/cover');
  * var obj = {a: 1, b: 2};
  * console.info($cover(obj,{b: 3, c: 4})); //{a: 1, b: 3}
  */

@@ -6,7 +6,7 @@
  * @param {Number} count 多少单位时间之前
  * @returns {Date} 最近单位时间的起始时间对象
  * @example
- * var $getLastStart = require('spore-kit/packages/date/getLastStart');
+ * var $getLastStart = require('@spore-ui/kit/packages/date/getLastStart');
  * var time = $getLastStart(
  *   new Date('2018-10-25'),
  *   'month',

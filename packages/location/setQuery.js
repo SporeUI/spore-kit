@@ -5,7 +5,7 @@
  * @param {Object} query 参数对象
  * @returns {String} 拼接好参数的URL字符串
  * @example
- * var $setQuery = require('spore-kit/packages/location/setQuery');
+ * var $setQuery = require('@spore-ui/kit/packages/location/setQuery');
  * $setQuery('localhost'); // 'localhost'
  * $setQuery('localhost', {a: 1}); // 'localhost?a=1'
  * $setQuery('', {a: 1}); // '?a=1'

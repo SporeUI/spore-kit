@@ -4,7 +4,7 @@
  * @param {Date} [date] 符合规范的日期字符串或者数字，不传参数则使用当前客户端时间
  * @return {String} 转成为36进制的字符串
  * @example
- * var $getTime36 = require('spore-kit/packages/str/getTime36');
+ * var $getTime36 = require('@spore-ui/kit/packages/str/getTime36');
  * $getTime36('2020'); // 'k4ujaio0'
  */
 

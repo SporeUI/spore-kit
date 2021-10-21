@@ -33,7 +33,7 @@
  * @param {String} [spec.template='{{YYYY}}-{{MM}}-{{DD}} {{hh}}:{{mm}}'] 格式化模板
  * @return {String} 格式化完成的字符串
  * @example
- * var $format = require('spore-kit/packages/date/format');
+ * var $format = require('@spore-ui/kit/packages/date/format');
  * console.info(
  *   $format(new Date(),{
  *     template : '{{YYYY}}年{{MM}}月{{DD}}日 周{{d}} {{hh}}时{{mm}}分{{ss}}秒'

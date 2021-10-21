@@ -7,7 +7,7 @@
  * @module fn/prepare
  * @returns {Function} 条件触发管理器函数，传入一个 function 作为任务执行函数参数
  * @example
- * var $prepare = require('spore-kit/packages/fn/prepare');
+ * var $prepare = require('@spore-ui/kit/packages/fn/prepare');
  * // 生成一个管理器函数 timeReady
  * var timeReady = $prepare();
  *

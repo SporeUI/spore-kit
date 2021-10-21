@@ -9,7 +9,7 @@
  * @method env/core
  * @returns {Object} UA 检查结果
  * @example
- * var $core = require('spore-kit/packages/env/core');
+ * var $core = require('@spore-ui/kit/packages/env/core');
  * console.info($core().webkit);
  * console.info($core.detect());
  */

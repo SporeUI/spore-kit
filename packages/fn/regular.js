@@ -7,7 +7,7 @@
  * @param {Object} [bind] 函数的 this 指向
  * @return {Function} 经过包装的定时触发函数
  * @example
- * var $regular = require('spore-kit/packages/fn/regular');
+ * var $regular = require('@spore-ui/kit/packages/fn/regular');
  * var comp = {
  *   countWords : function(){
  *     console.info(this.length);

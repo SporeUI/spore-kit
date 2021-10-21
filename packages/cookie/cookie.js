@@ -5,7 +5,7 @@
  * @module cookie/cookie
  * @see https://www.npmjs.com/package/js-cookie
  * @example
- * var $cookie = require('spore-kit/packages/cookie/cookie');
+ * var $cookie = require('@spore-ui/kit/packages/cookie/cookie');
  * $cookie.set('name', '中文', {
  *   expires: 1
  * });

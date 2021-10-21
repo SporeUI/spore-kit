@@ -11,7 +11,7 @@ var supportOnline = null;
  * @memberof env/network
  * @returns {Boolean} 是否支持联网检测
  * @example
- * var $network = require('spore-kit/packages/env/network');
+ * var $network = require('@spore-ui/kit/packages/env/network');
  * $network.support(); // true/false
  */
 function support() {
@@ -27,7 +27,7 @@ function support() {
  * @memberof env/network
  * @returns {Boolean} 是否联网
  * @example
- * var $network = require('spore-kit/packages/env/network');
+ * var $network = require('@spore-ui/kit/packages/env/network');
  * $network.onLine(); // true/false
  */
 function onLine() {

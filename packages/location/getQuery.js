@@ -6,7 +6,7 @@
  * @param {String} name 参数名称
  * @returns {Object|String} query对象 | 参数值
  * @example
- * var $getQuery = require('spore-kit/packages/location/getQuery');
+ * var $getQuery = require('@spore-ui/kit/packages/location/getQuery');
  * var url = 'http://localhost/profile?beijing=huanyingni';
  * console.info( $getQuery(url) );
  * // {beijing : 'huanyingni'}

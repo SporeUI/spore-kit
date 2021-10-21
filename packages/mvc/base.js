@@ -4,7 +4,7 @@
  * @param {Object} [options] 选项
  * @module mvc/Base
  * @example
- * var $base = require('spore-kit/packages/mvc/base');
+ * var $base = require('@spore-ui/kit/packages/mvc/base');
  *
  * var ChildClass = $base.extend({
  *   defaults : {

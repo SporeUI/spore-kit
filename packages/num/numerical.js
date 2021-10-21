@@ -6,7 +6,7 @@
  * @param {Number} [sys=10] 进制
  * @return {Number} 转换而得的整数
  * @example
- * var $numerical = require('spore-kit/packages/num/numerical');
+ * var $numerical = require('@spore-ui/kit/packages/num/numerical');
  * $numerical('10x'); // 10
  * $numerical('x10'); // 0
  */

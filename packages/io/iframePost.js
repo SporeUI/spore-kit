@@ -16,7 +16,7 @@
  * @param {Function} [spec.complete] 获得数据的回调函数
  * @param {Function} [spec.success] 成功获得数据的回调函数
  * @example
- * var $iframePost = require('spore-kit/packages/io/iframePost');
+ * var $iframePost = require('@spore-ui/kit/packages/io/iframePost');
  * document.domain = 'qq.com';
  * iframePost({
  *   url: 'http://a.qq.com/form',

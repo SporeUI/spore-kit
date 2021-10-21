@@ -7,7 +7,7 @@
  * @method env/os
  * @returns {Object} UA 检查结果
  * @example
- * var $os = require('spore-kit/packages/env/os');
+ * var $os = require('@spore-ui/kit/packages/env/os');
  * console.info($os().ios);
  * console.info($os.detect());
  */

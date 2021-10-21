@@ -4,7 +4,7 @@
  * @param {ArrayBuffer} buffer 需要转换的 ArrayBuffer
  * @returns {String} 16进制字符串
  * @example
- * var $abToHex = require('spore-kit/packages/util/abToHex');
+ * var $abToHex = require('@spore-ui/kit/packages/util/abToHex');
  * var ab = new ArrayBuffer(2);
  * var dv = new DataView(ab);
  * dv.setUint8(0, 171);

@@ -6,7 +6,7 @@
  * @param {Object} node 用于比较事件发生区域的 Dom 对象
  * @returns {Boolean} 事件是否发生在 node 内
  * @example
- * var $occurInside = require('spore-kit/packages/evt/occurInside');
+ * var $occurInside = require('@spore-ui/kit/packages/evt/occurInside');
  * $('.layer').on('click', function(evt){
  *   if($occurInside(evt, $(this).find('close').get(0))){
  *     $(this).hide();

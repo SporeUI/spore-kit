@@ -6,7 +6,7 @@
  * @param {Object} [bind] 函数的 this 指向
  * @returns {Function} 该函数仅能触发执行一次
  * @example
- * var $once = require('spore-kit/packages/fn/once');
+ * var $once = require('@spore-ui/kit/packages/fn/once');
  * var fn = $once(function () {
  *   console.info('output');
  * });

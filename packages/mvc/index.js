@@ -4,15 +4,15 @@
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/mvc
  * @example
  * // 统一引入 spore-kit
- * var $kit = require('spore-kit');
+ * var $kit = require('@spore-ui/kit');
  * console.info($kit.mvc.Model);
  *
  * // 单独引入 spore-kit/packages/mvc
- * var $mvc = require('spore-kit/packages/mvc');
+ * var $mvc = require('@spore-ui/kit/packages/mvc');
  * console.info($mvc.Model);
  *
  * // 单独引入一个组件
- * var $model = require('spore-kit/packages/mvc/model');
+ * var $model = require('@spore-ui/kit/packages/mvc/model');
  */
 
 exports.klass = require('./klass');

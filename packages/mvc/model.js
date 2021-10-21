@@ -4,7 +4,7 @@
  * @module mvc/Model
  * @param {Object} [options] 初始数据
  * @example
- * var $model = require('spore-kit/packages/mvc/model');
+ * var $model = require('@spore-ui/kit/packages/mvc/model');
  *
  * var m1 = new $model({
  *   a : 1

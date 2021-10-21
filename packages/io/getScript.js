@@ -6,7 +6,7 @@
  * @param {String} [options.charset='utf-8'] script 编码
  * @param {Function} [options.onLoad] script 加载完成的回调函数
  * @example
- * var $getScript = require('spore-kit/packages/io/getScript');
+ * var $getScript = require('@spore-ui/kit/packages/io/getScript');
  * $getScript({
  *   src: 'https://code.jquery.com/jquery-3.3.1.min.js',
  *   onLoad: function () {

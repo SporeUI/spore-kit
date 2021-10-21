@@ -5,7 +5,7 @@
  * @param {Object} item 要扩展的属性键值对
  * @returns {Object} 扩展后的源对象
  * @example
- * var $assign = require('spore-kit/packages/obj/assign');
+ * var $assign = require('@spore-ui/kit/packages/obj/assign');
  * var obj = {a: 1, b: 2};
  * console.info($assign(obj, {b: 3, c: 4})); // {a: 1, b: 3, c: 4}
  * console.info($assign({}, obj, {b: 3, c: 4})); // {a: 1, b: 3, c: 4}

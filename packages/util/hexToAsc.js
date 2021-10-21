@@ -4,7 +4,7 @@
  * @param {String} str 需要转换的16进制字符串
  * @returns {String} ASCII字符串
  * @example
- * var $hexToAsc = require('spore-kit/packages/util/hexToAsc');
+ * var $hexToAsc = require('@spore-ui/kit/packages/util/hexToAsc');
  * $hexToAsc(); // => ''
  * $hexToAsc('2a2b'); // => '*+'
  */

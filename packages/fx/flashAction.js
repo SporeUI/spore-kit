@@ -8,7 +8,7 @@
  * @param {function} [options.actionEven] 偶数回调
  * @param {function} [options.recover] 状态恢复回调
  * @example
- * var $flashAction = require('spore-kit/packages/fx/flashAction');
+ * var $flashAction = require('@spore-ui/kit/packages/fx/flashAction');
  * // 文字闪烁，奇数次呈现为红色，偶数次成纤维蓝色，动画结束呈现为黑色
  * var text = $('#target span.txt');
  * $flashAction({

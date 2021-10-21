@@ -13,7 +13,7 @@
  * @see https://github.com/documentcloud/backbone/blob/master/backbone.js
  * @see https://github.com/joyent/node/blob/master/lib/events.js
  * @example
- * var $events = require('spore-kit/packages/evt/events');
+ * var $events = require('@spore-ui/kit/packages/evt/events');
  * var evt = new $events();
  * evt.on('action', function() {
  *   console.info('action triggered');
@@ -37,7 +37,7 @@ var Events = function () {};
  * @param {Function} callback 事件回调函数
  * @param {Object} [context] 回调函数的执行环境对象
  * @example
- * var $events = require('spore-kit/packages/evt/events');
+ * var $events = require('@spore-ui/kit/packages/evt/events');
  * var evt = new $events();
  *
  * // 绑定1个事件
@@ -84,7 +84,7 @@ Events.prototype.on = function (events, callback, context) {
  * @param {Function} [callback] 要移除的事件回调函数
  * @param {Object} [context] 要移除的回调函数的执行环境对象
  * @example
- * var $events = require('spore-kit/packages/evt/events');
+ * var $events = require('@spore-ui/kit/packages/evt/events');
  * var evt = new $events();
  * var bound = {};
  * bound.test = function () {};
@@ -156,7 +156,7 @@ Events.prototype.off = function (events, callback, context) {
  * @param {string} events 事件名称
  * @param {...*} [arg] 事件参数
  * @example
- * var $events = require('spore-kit/packages/evt/events');
+ * var $events = require('@spore-ui/kit/packages/evt/events');
  * var evt = new $events();
  *
  * // 触发事件名为 'event-name' 的事件
@@ -234,7 +234,7 @@ Events.prototype.trigger = function (events) {
  * @memberof evt/Events
  * @param {Object} receiver 要混合事件函数的对象
  * @example
- * var $events = require('spore-kit/packages/evt/events');
+ * var $events = require('@spore-ui/kit/packages/evt/events');
  * // 给一个实例混合自定义事件方法
  * var obj = {};
  * $events.mixTo(obj);

@@ -6,7 +6,7 @@
  * @param {Number} max 最大边界数值
  * @return {Number} 经过限制的数值
  * @example
- * var $limit = require('spore-kit/packages/num/limit');
+ * var $limit = require('@spore-ui/kit/packages/num/limit');
  * $limit(1, 5, 10); // 5
  * $limit(6, 5, 10); // 6
  * $limit(11, 5, 10); // 10

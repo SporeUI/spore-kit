@@ -7,7 +7,7 @@
  * @param {Object} [bind] 函数的 this 指向
  * @returns {Function} 经过包装的队列触发函数
  * @example
- * var $queue = require('spore-kit/packages/fn/queue');
+ * var $queue = require('@spore-ui/kit/packages/fn/queue');
  * var t1 = Date.now();
  * var doSomthing = $queue(function (index) {
  *   console.info(index + ':' + (Date.now() - t1));

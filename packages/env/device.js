@@ -11,7 +11,7 @@
  * @method env/device
  * @returns {Object} UA 检查结果
  * @example
- * var $device = require('spore-kit/packages/env/device');
+ * var $device = require('@spore-ui/kit/packages/env/device');
  * console.info($device().huawei);
  * console.info($device.detect());
  */

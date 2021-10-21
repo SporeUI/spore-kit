@@ -4,15 +4,15 @@
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/fx
  * @example
  * // 统一引入 spore-kit
- * var $kit = require('spore-kit');
+ * var $kit = require('@spore-ui/kit');
  * console.info($kit.fx.smoothScrollTo);
  *
  * // 单独引入 spore-kit/packages/fx
- * var $fx = require('spore-kit/packages/fx');
+ * var $fx = require('@spore-ui/kit/packages/fx');
  * console.info($fx.smoothScrollTo);
  *
  * // 单独引入一个方法
- * var $smoothScrollTo = require('spore-kit/packages/fx/smoothScrollTo');
+ * var $smoothScrollTo = require('@spore-ui/kit/packages/fx/smoothScrollTo');
  */
 
 exports.easing = require('./easing');

@@ -6,7 +6,7 @@
  * @param {String} path 要查找的路径
  * @return {*} 对象路径上的值
  * @example
- * var $find = require('spore-kit/packages/obj/find');
+ * var $find = require('@spore-ui/kit/packages/obj/find');
  * var obj = {a:{b:{c:1}}};
  * console.info($find(obj,'a.b.c')); // 1
  * console.info($find(obj,'a.c')); // undefined

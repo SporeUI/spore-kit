@@ -9,7 +9,7 @@
  * @param {Function} [spec.onStop] 倒计时结束的回调
  * @returns {Object} 倒计时对象实例
  * @example
- * var $countDown = require('spore-kit/packages/time/countDown');
+ * var $countDown = require('@spore-ui/kit/packages/time/countDown');
  * var target = Date.now() + 5000;
  * var cd1 = $countDown({
  *   target : target,

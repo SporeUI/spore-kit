@@ -7,7 +7,7 @@
  * @param {Object} [bind] 函数的 this 指向
  * @returns {Function} 经过包装的冷却触发函数
  * @example
- * var $lock = require('spore-kit/packages/fn/lock');
+ * var $lock = require('@spore-ui/kit/packages/fn/lock');
  * var request = function () {
  *   console.info('do request');
  * };

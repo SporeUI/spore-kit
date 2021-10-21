@@ -6,7 +6,7 @@
  * @param {Number} num 数字
  * @returns {String} 千分位表示的数字
  * @example
- * var $comma = require('spore-kit/packages/num/comma');
+ * var $comma = require('@spore-ui/kit/packages/num/comma');
  * $comma(1234567); //'1,234,567'
  */
 

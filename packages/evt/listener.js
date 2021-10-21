@@ -7,7 +7,7 @@
  * @class evt/Listener
  * @example
  * @example
- * var $listener = require('spore-kit/packages/evt/listener');
+ * var $listener = require('@spore-ui/kit/packages/evt/listener');
  *
  * // 白名单里只记录了 event1 事件
  * var channelGlobal = new $listener([

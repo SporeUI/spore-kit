@@ -15,7 +15,7 @@
  * @method env/browser
  * @returns {Object} UA 检查结果
  * @example
- * var $browser = require('spore-kit/packages/env/browser');
+ * var $browser = require('@spore-ui/kit/packages/env/browser');
  * console.info($browser().chrome);
  * console.info($browser.detect());
  */

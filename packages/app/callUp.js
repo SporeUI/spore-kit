@@ -22,7 +22,7 @@
  * @param {Function} [options.onFallback=null] 呼起操作未能成功执行时触发的回调事件函数
  * @param {Function} [options.onTimeout=null] 呼起超时触发的回调事件函数
  * @example
- * var $callUp = require('spore-kit/packages/app/callUp');
+ * var $callUp = require('@spore-ui/kit/packages/app/callUp');
  * $callUp({
  *   startTime: Date.now(),
  *   waiting: 800,

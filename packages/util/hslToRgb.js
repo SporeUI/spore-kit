@@ -9,7 +9,7 @@
  * @param {Number} l 亮度
  * @returns {Array} RGB色值数值
  * @example
- * var $hslToRgb = require('spore-kit/packages/util/hslToRgb');
+ * var $hslToRgb = require('@spore-ui/kit/packages/util/hslToRgb');
  * $hslToRgb(0, 0, 0); // => [0,0,0]
  * $hslToRgb(0, 0, 1); // => [255,255,255]
  * $hslToRgb(0.5555555555555555, 0.9374999999999999, 0.6862745098039216); // => [100,200,250]

@@ -5,7 +5,7 @@
  * @param {String} str 含有HTML字符的字符串
  * @returns {String} 经过转换的字符串
  * @example
- * var $encodeHTML = require('spore-kit/packages/str/encodeHTML');
+ * var $encodeHTML = require('@spore-ui/kit/packages/str/encodeHTML');
  * $encodeHTML(`&<>"\' `); // '&amp;&lt;&gt;&quot;&#39;&#32;'
  */
 

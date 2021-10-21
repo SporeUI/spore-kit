@@ -5,7 +5,7 @@
  * @param {String} ua 用于检测的 UA 字符串
  * @param {Object} conf 检测器选项，传递给检测函数
  * @example
- * var $uaMatch = require('spore-kit/packages/env/uaMatch');
+ * var $uaMatch = require('@spore-ui/kit/packages/env/uaMatch');
  * var rs = $uaMatch({
  *   trident: 'trident',
  *   presto: /presto/,

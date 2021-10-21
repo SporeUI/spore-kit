@@ -4,7 +4,7 @@
  * @module cookie/origin
  * @see https://www.npmjs.com/package/js-cookie
  * @example
- * var $cookie = require('spore-kit/packages/cookie/origin');
+ * var $cookie = require('@spore-ui/kit/packages/cookie/origin');
  * $cookie.set('name', 'value', {
  *   expires: 1
  * });

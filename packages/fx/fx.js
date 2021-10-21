@@ -17,7 +17,7 @@
  * @param {Boolean} [options.frameSkip=true] 是否跳帧
  * @param {String} [options.link='ignore'] 动画衔接方式，可选：['ignore', 'cancel']
  * @example
- * var $fx = require('spore-kit/packages/fx/fx');
+ * var $fx = require('@spore-ui/kit/packages/fx/fx');
  * var fx = new $fx({
  *   duration : 1000
  * });
@@ -100,7 +100,7 @@ var Fx = $klass({
    * @interface Fx#getTransition
    * @memberof fx/Fx
    * @example
-   * var $fx = require('spore-kit/packages/fx/fx');
+   * var $fx = require('@spore-ui/kit/packages/fx/fx');
    * var fx = new $fx();
    * fx.getTransition = function () {
    *   return function (p) {
@@ -140,7 +140,7 @@ var Fx = $klass({
    * @memberof fx/Fx
    * @param {Number} now 当前动画帧的过渡数值
    * @example
-   * var $fx = require('spore-kit/packages/fx/fx');
+   * var $fx = require('@spore-ui/kit/packages/fx/fx');
    * var fx = new $fx();
    * fx.set = function (now) {
    *   node.style.marginLeft = now + 'px';
@@ -172,7 +172,7 @@ var Fx = $klass({
    * @param {Number} from 动画开始数值
    * @param {Number} to 动画结束数值
    * @example
-   * var $fx = require('spore-kit/packages/fx/fx');
+   * var $fx = require('@spore-ui/kit/packages/fx/fx');
    * var fx = new $fx();
    * fx.start(); // 开始动画
    */
@@ -201,7 +201,7 @@ var Fx = $klass({
    * @method Fx#stop
    * @memberof fx/Fx
    * @example
-   * var $fx = require('spore-kit/packages/fx/fx');
+   * var $fx = require('@spore-ui/kit/packages/fx/fx');
    * var fx = new $fx();
    * fx.start();
    * fx.stop(); // 立刻停止动画
@@ -224,7 +224,7 @@ var Fx = $klass({
    * @method Fx#cancel
    * @memberof fx/Fx
    * @example
-   * var $fx = require('spore-kit/packages/fx/fx');
+   * var $fx = require('@spore-ui/kit/packages/fx/fx');
    * var fx = new $fx();
    * fx.start();
    * fx.cancel(); // 立刻取消动画
@@ -244,7 +244,7 @@ var Fx = $klass({
    * @method Fx#pause
    * @memberof fx/Fx
    * @example
-   * var $fx = require('spore-kit/packages/fx/fx');
+   * var $fx = require('@spore-ui/kit/packages/fx/fx');
    * var fx = new $fx();
    * fx.start();
    * fx.pause(); // 立刻暂停动画
@@ -262,7 +262,7 @@ var Fx = $klass({
    * @method Fx#resume
    * @memberof fx/Fx
    * @example
-   * var $fx = require('spore-kit/packages/fx/fx');
+   * var $fx = require('@spore-ui/kit/packages/fx/fx');
    * var fx = new $fx();
    * fx.start();
    * fx.pause();
@@ -281,7 +281,7 @@ var Fx = $klass({
    * @memberof fx/Fx
    * @returns {Boolean} 动画是否正在运行
    * @example
-   * var $fx = require('spore-kit/packages/fx/fx');
+   * var $fx = require('@spore-ui/kit/packages/fx/fx');
    * var fx = new $fx();
    * fx.start();
    * fx.pause();

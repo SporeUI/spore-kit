@@ -4,15 +4,15 @@
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/location
  * @example
  * // 统一引入 spore-kit
- * var $kit = require('spore-kit');
+ * var $kit = require('@spore-ui/kit');
  * console.info($kit.location.getQuery);
  *
  * // 单独引入 spore-kit/packages/location
- * var $location = require('spore-kit/packages/location');
+ * var $location = require('@spore-ui/kit/packages/location');
  * console.info($location.getQuery);
  *
  * // 单独引入一个方法
- * var $getQuery = require('spore-kit/packages/location/getQuery');
+ * var $getQuery = require('@spore-ui/kit/packages/location/getQuery');
  */
 
 exports.getQuery = require('./getQuery');

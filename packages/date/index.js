@@ -4,15 +4,15 @@
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/date
  * @example
  * // 统一引入 spore-kit
- * var $kit = require('spore-kit');
+ * var $kit = require('@spore-ui/kit');
  * console.info($kit.date.format);
  *
  * // 单独引入 spore-kit/packages/date
- * var $date = require('spore-kit/packages/date');
+ * var $date = require('@spore-ui/kit/packages/date');
  * console.info($date.format);
  *
  * // 单独引入一个方法
- * var $format = require('spore-kit/packages/date/format');
+ * var $format = require('@spore-ui/kit/packages/date/format');
  */
 
 exports.format = require('./format');

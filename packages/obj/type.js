@@ -4,7 +4,7 @@
  * @param {*} item 任何类型数据
  * @returns {String} 对象类型
  * @example
- * var $type = require('spore-kit/packages/obj/type');
+ * var $type = require('@spore-ui/kit/packages/obj/type');
  * $type({}); // 'object'
  * $type(1); // 'number'
  * $type(''); // 'string'

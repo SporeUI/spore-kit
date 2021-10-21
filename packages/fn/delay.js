@@ -8,7 +8,7 @@
  * @param {Object} [bind] 函数的this指向
  * @returns {Function} 经过包装的延迟触发函数
  * @example
- * var $delay = require('spore-kit/packages/fn/delay');
+ * var $delay = require('@spore-ui/kit/packages/fn/delay');
  * var comp = {
  *   countWords : function(){
  *     console.info(this.length);

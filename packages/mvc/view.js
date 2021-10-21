@@ -9,7 +9,7 @@
  * @param {Object} [options.events] 用于覆盖代理事件列表。
  * @param {Object} [options.role] 角色对象映射表，可指定role方法返回的jquery对象。
  * @example
- * var $view = require('spore-kit/packages/mvc/view');
+ * var $view = require('@spore-ui/kit/packages/mvc/view');
  *
  * var TPL = {
  *   box : [

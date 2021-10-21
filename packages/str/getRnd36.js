@@ -4,7 +4,7 @@
  * @param {Float} [rnd] 随机数，不传则生成一个随机数
  * @return {String} 转成为36进制的字符串
  * @example
- * var $getRnd36 = require('spore-kit/packages/str/getRnd36');
+ * var $getRnd36 = require('@spore-ui/kit/packages/str/getRnd36');
  * $getRnd36(0.5810766832590446); // 'kx2pozz9rgf'
  */
 

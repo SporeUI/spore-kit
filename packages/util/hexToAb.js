@@ -5,7 +5,7 @@
  * @param {String} str 需要转换的16进制字符串
  * @returns {ArrayBuffer} 被转换后的 ArrayBuffer 对象
  * @example
- * var $hexToAb = require('spore-kit/packages/util/hexToAb');
+ * var $hexToAb = require('@spore-ui/kit/packages/util/hexToAb');
  * var ab = $hexToAb();
  * ab.byteLength; // => 0
  * ab = $hexToAb('abcd');

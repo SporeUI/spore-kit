@@ -3,7 +3,7 @@
  * @method io/ajax
  * @see https://github.com/ForbesLindesay/ajax
  * @example
- * var $ajax = require('spore-kit/packages/io/ajax');
+ * var $ajax = require('@spore-ui/kit/packages/io/ajax');
  * document.domain = 'qq.com';
  * $ajax({
  *   url: 'http://a.qq.com/form',

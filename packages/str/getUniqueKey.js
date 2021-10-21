@@ -3,7 +3,7 @@
  * @method str/getUniqueKey
  * @returns {String} 随机字符串
  * @example
- * var $getUniqueKey = require('spore-kit/packages/str/getUniqueKey');
+ * var $getUniqueKey = require('@spore-ui/kit/packages/str/getUniqueKey');
  * $getUniqueKey(); // '166aae1fa9f'
  */
 

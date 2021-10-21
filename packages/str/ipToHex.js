@@ -4,7 +4,7 @@
  * @param {String} ip 十进制数字的IPV4地址
  * @return {String} 16进制数字IPV4地址
  * @example
- * var $ipToHex = require('spore-kit/packages/str/ipToHex');
+ * var $ipToHex = require('@spore-ui/kit/packages/str/ipToHex');
  * $ipToHex('255.255.255.255'); //return 'ffffffff'
  */
 

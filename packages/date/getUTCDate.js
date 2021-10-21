@@ -5,7 +5,7 @@
  * @param {Number|Date} time 实际时间
  * @returns {Date} UTC时间
  * @example
- * var $getUTCDate = require('spore-kit/packages/date/getUTCDate');
+ * var $getUTCDate = require('@spore-ui/kit/packages/date/getUTCDate');
  * var cnTime = 1540915200000; // (Wed Oct 31 2018 00:00:00 GMT+0800 (中国标准时间))
  * var utcDate = $getUTCDate(cnTime).getTime();
  * // 1540886400000 Tue Oct 30 2018 16:00:00 GMT+0800 (中国标准时间)

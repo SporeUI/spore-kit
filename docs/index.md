@@ -1,4 +1,4 @@
-# spore-kit
+# @spore-ui/kit
 
 原子化工具库
 
@@ -20,15 +20,15 @@ npm i spore-kit
 
 ```javascript
 // 统一引入 spore-kit
-var $kit = require('spore-kit');
+var $kit = require('@spore-ui/kit');
 console.info($kit.arr.contains); //function
 
 // 单独引入 spore-kit/packages/arr
-var $arr = require('spore-kit/packages/arr');
+var $arr = require('@spore-ui/kit/packages/arr');
 console.info($arr.contains); //function
 
 // 单独引入一个方法（推荐）
-var $contains = require('spore-kit/packages/arr/contains');
+var $contains = require('@spore-ui/kit/packages/arr/contains');
 ```
 
 ## 测试
