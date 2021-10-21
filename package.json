@@ -1,6 +1,6 @@
 {
   "name": "@spore-ui/kit",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "原子化工具函数库",
   "main": "index.js",
   "scripts": {
