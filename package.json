@@ -11,7 +11,7 @@
     "vuepress-dev": "vuepress dev docs",
     "vuepress-build": "vuepress build docs",
     "doc-build": "node ./scripts/docs.js && sh ./scripts/doc-build.sh",
-    "doc": "npm run cover && npm run doc-build && npm run vuepress-build",
+    "doc": "npm run test && npm run doc-build && npm run vuepress-build",
     "prepublishOnly": "npm run build",
     "pub": "npm publish --access public",
     "lint": "eslint ./packages",
