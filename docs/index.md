@@ -15,15 +15,15 @@
 ## 快速上手
 
 ```shell
-npm i spore-kit
+npm i @spore-ui/kit
 ```
 
 ```javascript
-// 统一引入 spore-kit
+// 统一引入 @spore-ui/kit
 var $kit = require('@spore-ui/kit');
 console.info($kit.arr.contains); //function
 
-// 单独引入 spore-kit/packages/arr
+// 单独引入 @spore-ui/kit/packages/arr
 var $arr = require('@spore-ui/kit/packages/arr');
 console.info($arr.contains); //function
 
