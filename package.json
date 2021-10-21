@@ -17,6 +17,9 @@
     "lint": "eslint ./packages",
     "cz": "git add . && git cz"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SporeUI/spore-kit.git"
