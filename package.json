@@ -57,7 +57,6 @@
     "jest-useragent-mock": "^0.1.1",
     "jquery": "^3.6.0",
     "jsdom": "^18.0.0",
-    "lerna": "^3.19.0",
     "lint-staged": "^10.2.11",
     "semantic-release": "^18.0.0",
     "vuepress": "^1.5.2"
