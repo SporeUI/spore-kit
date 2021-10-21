@@ -1,6 +1,6 @@
 /**
  * 处理数字，数据转换
- * @module @spore-ui/kit/packages/num
+ * @module spore-ui/kit/packages/num
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/num
  * @example
  * // 统一引入 @spore-ui/kit

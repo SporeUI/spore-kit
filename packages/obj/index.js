@@ -1,6 +1,6 @@
 /**
  * 对象处理与判断
- * @module @spore-ui/kit/packages/obj
+ * @module spore-ui/kit/packages/obj
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/obj
  * @example
  * // 统一引入 @spore-ui/kit

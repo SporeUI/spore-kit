@@ -1,6 +1,6 @@
 /**
  * 环境检测与判断工具
- * @module @spore-ui/kit/packages/env
+ * @module spore-ui/kit/packages/env
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/env
  * @example
  * // 统一引入 @spore-ui/kit

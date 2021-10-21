@@ -1,6 +1,6 @@
 /**
  * 处理事件与广播
- * @module @spore-ui/kit/packages/evt
+ * @module spore-ui/kit/packages/evt
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/evt
  * @example
  * // 统一引入 @spore-ui/kit

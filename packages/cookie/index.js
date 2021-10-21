@@ -1,13 +1,13 @@
 /**
  * 本地存储相关工具函数
- * @module @spore-ui/kit/packages/cookie
+ * @module spore-ui/kit/packages/cookie
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/cookie
  * @example
  * // 统一引入 @spore-ui/kit
  * var $kit = require('@spore-ui/kit');
  * console.info($kit.cookie.cookie);
  *
- * // 单独引入 @spore-ui/kit/packages/cookie
+ * // 单独引入 spore-ui/kit/packages/cookie
  * var $cookie = require('@spore-ui/kit/packages/cookie');
  * console.info($cookie.cookie);
  *

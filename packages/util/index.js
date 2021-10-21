@@ -1,6 +1,6 @@
 /**
  * 其他工具函数
- * @module @spore-ui/kit/packages/util
+ * @module spore-ui/kit/packages/util
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/util
  * @example
  * // 统一引入 @spore-ui/kit

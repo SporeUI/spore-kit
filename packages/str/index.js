@@ -1,6 +1,6 @@
 /**
  * 字符串处理与判断
- * @module @spore-ui/kit/packages/str
+ * @module spore-ui/kit/packages/str
  * @see https://github.com/SporeUI/spore-kit/tree/master/packages/str
  * @example
  * // 统一引入 @spore-ui/kit
