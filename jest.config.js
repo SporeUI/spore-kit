@@ -1,8 +1,8 @@
 module.exports = {
-	coverageDirectory: './docs-dist/coverage',
-	setupFiles: [
-		'./test/mocks/env.js',
-		'./test/mocks/client.js',
-		'jest-canvas-mock'
-	]
+  coverageDirectory: './docs-dist/coverage',
+  setupFiles: [
+    './test/mocks/env.js',
+    './test/mocks/client.js',
+    'jest-canvas-mock',
+  ],
 };
