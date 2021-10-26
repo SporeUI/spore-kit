@@ -1,6 +1,6 @@
 /**
  * 查找对象路径上的值(简易版)
- * @see lodash.get
+ * @see [lodash.get](https://lodash.com/docs/4.17.15#get)
  * @method obj/find
  * @param {Object} object 要查找的对象
  * @param {String} path 要查找的路径

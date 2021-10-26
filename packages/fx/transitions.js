@@ -13,7 +13,7 @@
  * - Quart
  * - Quint
  * @module fx/transitions
- * @see https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions
+ * @see [mootools/Fx.Transitions](https://mootools.net/core/docs/1.6.0/Fx/Fx.Transitions#Fx-Transitions)
  * @example
  * var $fx = require('@spore-ui/kit/packages/fx/fx');
  * var $transitions = require('@spore-ui/kit/packages/fx/transitions');

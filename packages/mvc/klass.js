@@ -3,7 +3,7 @@
  * class 的 ES5 实现
  * - 为代码通过 eslint 检查做了些修改
  * @module mvc/klass
- * @see https://github.com/ded/klass
+ * @see [klass](https://github.com/ded/klass)
  */
 
 var fnTest = (/xyz/).test(function () { var xyz; return xyz; }) ? (/\bsupr\b/) : (/.*/);

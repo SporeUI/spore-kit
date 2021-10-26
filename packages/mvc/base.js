@@ -1,6 +1,6 @@
 /**
  * 基础工厂元件类
- * - 该类混合了 spore-kit/packages/evt/events 的方法。
+ * - 该类混合了 [evt/Events](#evt-events) 的方法。
  * @param {Object} [options] 选项
  * @module mvc/Base
  * @example

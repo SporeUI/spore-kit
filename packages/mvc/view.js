@@ -1,7 +1,7 @@
 /**
  * 视图类: 基础工厂元件类，用于对视图组件的包装
  * - 依赖 jQuery/Zepto
- * - 继承自 spore-kit/packages/mvc/base
+ * - 继承自 [mvc/base](#mvc-base)
  * @module mvc/View
  * @param {Object} [options] 选项
  * @param {String|Object} [options.node] 选择器字符串，或者DOM元素，或者jquery对象，用于指定视图的根节点。
@@ -132,7 +132,7 @@ var View = $base.extend({
    * - 在初始化时自动执行了 this.delegate('on')。
    * @method View#delegate
    * @memberof mvc/View
-   * @see spore-kit/packages/mvc/delegate
+   * @see [mvc/delegate](#mvc-delegate)
    * @param {String} [action='on'] 绑定动作标记。可选：['on', 'off']
    */
   delegate: function (action, root, events, bind) {

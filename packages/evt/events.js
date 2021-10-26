@@ -8,10 +8,10 @@
  * - 可以用 on, off 方法来绑定移除事件。
  * - 用 trigger 来触发事件通知。
  * @class evt/Events
- * @see 类似工具: Mitt
- * @see http://aralejs.org/
- * @see https://github.com/documentcloud/backbone/blob/master/backbone.js
- * @see https://github.com/joyent/node/blob/master/lib/events.js
+ * @see [mitt](https://github.com/developit/mitt)
+ * @see [aralejs](http://aralejs.org/)
+ * @see [backbone](https://github.com/documentcloud/backbone/blob/master/backbone.js)
+ * @see [events](https://github.com/joyent/node/blob/master/lib/events.js)
  * @example
  * var $events = require('@spore-ui/kit/packages/evt/events');
  * var evt = new $events();

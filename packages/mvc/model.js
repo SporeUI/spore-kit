@@ -1,6 +1,6 @@
 /**
  * 模型类: 基础工厂元件类，用于做数据包装，提供可观察的数据对象
- * - 继承自 spore-kit/packages/mvc/base
+ * - 继承自 [mvc/base](#mvc-base)
  * @module mvc/Model
  * @param {Object} [options] 初始数据
  * @example

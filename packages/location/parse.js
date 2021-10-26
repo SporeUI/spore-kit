@@ -3,7 +3,7 @@
  * @method location/parse
  * @param {String} str URL字符串
  * @returns {Object} URL对象
- * @see https://github.com/unshiftio/url-parse
+ * @see [url-parse](https://github.com/unshiftio/url-parse)
  * @example
  * var $parse = require('@spore-ui/kit/packages/location/parse');
  * $parse('http://localhost/profile?beijing=huanyingni#123');

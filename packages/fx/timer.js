@@ -90,8 +90,8 @@ function factory(methodName) {
 
 /**
  * 设置重复调用定时器
- * @method timer.setInterval
- * @memberof timer
+ * @method timer#setInterval
+ * @memberof fx/timer
  * @param {Function} fn 定时重复调用的函数
  * @param {Number} [delay=0] 重复调用的间隔时间(ms)
  * @returns {Object} 定时器对象，可传入 clearInterval 方法来终止这个定时器
@@ -100,16 +100,16 @@ Timer.setInterval = factory('setInterval');
 
 /**
  * 清除重复调用定时器
- * @method timer.clearInterval
- * @memberof timer
+ * @method timer#clearInterval
+ * @memberof fx/timer
  * @param {Object} obj 定时器对象
  */
 Timer.clearInterval = factory('clearInterval');
 
 /**
  * 设置延时调用定时器
- * @method timer.setTimeout
- * @memberof timer
+ * @method timer#setTimeout
+ * @memberof fx/timer
  * @param {Function} fn 延时调用的函数
  * @param {Number} [delay=0] 延时调用的间隔时间(ms)
  * @returns {Object} 定时器对象，可传入 clearTimeout 方法来终止这个定时器
@@ -118,8 +118,8 @@ Timer.setTimeout = factory('setTimeout');
 
 /**
  * 清除延时调用定时器
- * @method timer.clearTimeout
- * @memberof timer
+ * @method timer#clearTimeout
+ * @memberof fx/timer
  * @param {Object} obj 定时器对象
  */
 Timer.clearTimeout = factory('clearTimeout');

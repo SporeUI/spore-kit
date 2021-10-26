@@ -37,7 +37,7 @@
     "conventional-changelog-cli": "^2.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "del": "^5.1.0",
-    "documentation": "^12.1.4",
+    "documentation": "^13.2.5",
     "eslint": "^7.6.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-friendly-formatter": "^4.0.1",

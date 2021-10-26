@@ -20,7 +20,7 @@
  * - easeOutQuint
  * - easeInOutQuint
  * @module fx/easing
- * @see https://gist.github.com/gre/1650294
+ * @see [easing.js](https://gist.github.com/gre/1650294)
  * @example
  * var $easing = require('@spore-ui/kit/packages/fx/easing');
  * $easing.linear(0.5); // 0.5

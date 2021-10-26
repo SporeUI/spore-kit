@@ -3,7 +3,7 @@
  * - 构造实例时，需要传入事件白名单列表。
  * - 只有在白名单列表上的事件才可以被触发。
  * - 事件添加，移除，激发的调用方法参考 Events。
- * @see spore-kit/packages/evt/events
+ * @see [evt/Events](#evt-events)
  * @class evt/Listener
  * @example
  * @example
@@ -56,7 +56,7 @@ Listener.prototype = {
   },
   /**
    * 广播组件绑定事件
-   * @see <a href="#events-prototype-on">events.prototype.on</a>
+   * @see [Events#on](#events-on)
    * @method Listener#on
    * @memberof evt/Listener
    * @param {String} eventName 要绑定的事件名称
@@ -67,7 +67,7 @@ Listener.prototype = {
   },
   /**
    * 广播组件移除事件
-   * @see <a href="#events-prototype-off">events.prototype.off</a>
+   * @see [Events#off](#events-off)
    * @method Listener#off
    * @memberof evt/Listener
    * @param {String} eventName 要移除绑定的事件名称
@@ -78,7 +78,7 @@ Listener.prototype = {
   },
   /**
    * 广播组件派发事件
-   * @see <a href="#events-prototype-trigger">events.prototype.trigger</a>
+   * @see [Events#trigger](#events-trigger)
    * @method Listener#trigger
    * @memberof evt/Listener
    * @param {String} eventName 要触发的事件名称

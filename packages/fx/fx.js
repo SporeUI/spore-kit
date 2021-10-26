@@ -7,12 +7,12 @@
  * - stop 动画尚未完成就被中断
  * - cancel 动画被取消
  * @class fx/Fx
- * @see https://mootools.net/core/docs/1.6.0/Fx/Fx
+ * @see [mootools/Fx](https://mootools.net/core/docs/1.6.0/Fx/Fx)
  * @constructor
  * @param {Object} [options] 动画选项
  * @param {Number} [options.fps=60] 帧速率(f/s)，实际上动画运行的最高帧速率不会高于 requestAnimationFrame 提供的帧速率
  * @param {Number} [options.duration=500] 动画持续时间(ms)
- * @param {String|Function} [options.transition] 动画执行方式，参见 spore-kit/packages/fx/transitions
+ * @param {String|Function} [options.transition] 动画执行方式，参见 [fx/transitions](#fx-transitions)
  * @param {Number} [options.frames] 从哪一帧开始执行
  * @param {Boolean} [options.frameSkip=true] 是否跳帧
  * @param {String} [options.link='ignore'] 动画衔接方式，可选：['ignore', 'cancel']

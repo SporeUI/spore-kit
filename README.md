@@ -28,7 +28,7 @@
 ## 快速上手
 
 ```shell
-npm i spore-kit
+npm i @spore-ui/kit
 ```
 
 ```javascript
@@ -44,3 +44,7 @@ $arr.contains([1, 2], 1); // true
 var $contains = require('@spore-ui/kit/packages/arr/contains');
 $contains([1, 2], 1); // true
 ```
+
+## 测试
+
+- [测试覆盖率](https://sporeui.github.io/spore-kit/coverage/lcov-report/index.html)
