@@ -28,6 +28,8 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: md-build
         run: npm run doc-build
+      - name: cp-files
+        run: cp ./README.md ./docs/index.md
       - name: vuepress-build
         run: npm run vuepress-build
       - name: github-pages-deploy

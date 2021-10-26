@@ -4,6 +4,7 @@ ignore
 dist
 docs-dist
 docs/docs.md
+docs/index.md
 docs/.vuepress/public/js/spore-kit.js
 docs/.vuepress/public/js/spore-kit.min.js
 
