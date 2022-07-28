@@ -33,6 +33,7 @@
  */
 
 var $merge = require('../obj/merge');
+var $type = require('../obj/type');
 var $noop = require('../fn/noop');
 var $events = require('../evt/events');
 var $klass = require('./klass');
@@ -74,7 +75,11 @@ var Base = $klass({
    * @param {Object} [options] 选项
    */
   setOptions: function (options) {
-    this.conf = $merge({}, this.defaults, options);
+    this.conf = this.conf || $merge({}, this.defaults);
+    if ($type(options) !== 'object') {
+      options = {};
+    }
+    $merge(this.conf, options);
   },
 
   /**
