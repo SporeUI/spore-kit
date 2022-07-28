@@ -103,16 +103,16 @@ describe('time.countDown', () => {
   test('可重设目标时间', (done) => {
     let step = 0;
     const now = Date.now();
-    const target1 = now + 150;
-    const target2 = now + 250;
+    const target1 = now + 200;
+    const target2 = now + 400;
     const cd1 = $time.countDown({
       target: target1,
-      interval: 50,
+      interval: 100,
       onChange() {
         step += 1;
       },
       onStop() {
-        expect(step).toBe(6);
+        expect(step).toBe(5);
         done();
       },
     });
