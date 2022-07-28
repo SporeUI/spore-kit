@@ -31,12 +31,12 @@ function get(obj, xpath, def) {
   for (index = 0; index < len; index += 1) {
     var key = arrXpath[index];
     var otype = $type(point);
-    if (otype === 'object') {
-      point = point[key];
-    } else if (otype === 'array') {
+    if (otype === 'array') {
       if (/^\d+$/.test(key)) {
         key = parseInt(key, 10);
       }
+      point = point[key];
+    } else if (typeof point === 'object') {
       point = point[key];
     } else {
       point = undefined;

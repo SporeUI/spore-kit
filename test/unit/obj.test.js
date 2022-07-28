@@ -176,6 +176,10 @@ describe('obj.get', () => {
   test('get({a: 1}, "a") => 1', () => {
     expect($obj.get({ a: 1 }, 'a')).toBe(1);
   });
+  test('get(window, "navigator.userAgent") => 1', () => {
+    const ua = $obj.get(window, 'navigator.userAgent');
+    expect(ua.indexOf('jsdom') > 0).toBe(true);
+  });
   test('get({a: 1}, "b", 0) => 0', () => {
     expect($obj.get({ a: 1 }, 'b', 0)).toBe(0);
   });
