@@ -150,3 +150,22 @@ describe('str.substitute', () => {
     expect(str).toBe('北京欢迎您');
   });
 });
+
+describe('str.keyPathSplit', () => {
+  test('keyPathSplit() => []', () => {
+    var rs = JSON.stringify($str.keyPathSplit());
+    expect(rs).toBe('[]');
+  });
+  test('keyPathSplit(null) => []', () => {
+    var rs = JSON.stringify($str.keyPathSplit(null));
+    expect(rs).toBe('[]');
+  });
+  test('keyPathSplit("") => []', () => {
+    var rs1 = JSON.stringify($str.keyPathSplit(''));
+    expect(rs1).toBe('[]');
+  });
+  test('keyPathSplit("[1].a[1][2].b.c") => ["1", "a", "1", "2", "b", "c"]', () => {
+    var rs1 = JSON.stringify($str.keyPathSplit('[1].a[1][2].b.c'));
+    expect(rs1).toBe('["1","a","1","2","b","c"]');
+  });
+});

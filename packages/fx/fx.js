@@ -30,7 +30,7 @@
  * fx.start(0, 600); // 1秒内数字从0增加到600
  */
 
-var $klass = require('klass');
+var $klass = require('../mvc/klass');
 var $events = require('../evt/events');
 var $erase = require('../arr/erase');
 var $contains = require('../arr/contains');

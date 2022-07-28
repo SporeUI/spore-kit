@@ -27,3 +27,4 @@ exports.ipToHex = require('./ipToHex');
 exports.leftB = require('./leftB');
 exports.sizeOfUTF8String = require('./sizeOfUTF8String');
 exports.substitute = require('./substitute');
+exports.keyPathSplit = require('./keyPathSplit');
