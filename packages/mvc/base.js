@@ -32,7 +32,7 @@
  * });
  */
 
-var $assign = require('../obj/assign');
+var $merge = require('../obj/merge');
 var $noop = require('../fn/noop');
 var $events = require('../evt/events');
 var $klass = require('./klass');
@@ -74,7 +74,7 @@ var Base = $klass({
    * @param {Object} [options] 选项
    */
   setOptions: function (options) {
-    this.conf = $assign({}, this.defaults, options);
+    this.conf = $merge({}, this.defaults, options);
   },
 
   /**
