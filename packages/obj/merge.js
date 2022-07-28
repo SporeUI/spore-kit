@@ -1,8 +1,14 @@
 var $type = require('./type');
-var $cloneDeep = require('./cloneDeep');
 
 var mergeArr;
 var mergeObj;
+
+var isObj = function (item) {
+  return (
+    item
+    && typeof item === 'object'
+  );
+};
 
 var mergeItem = function (origin, item, key) {
   var prev = origin[key];
@@ -12,8 +18,8 @@ var mergeItem = function (origin, item, key) {
   ) {
     mergeArr(prev, item);
   } else if (
-    $type(prev) === 'object'
-    && $type(item) === 'object'
+    isObj(prev)
+    && isObj(item)
   ) {
     mergeObj(prev, item);
   } else {
@@ -34,7 +40,7 @@ mergeObj = function (origin, source) {
 };
 
 /**
- * 深度克隆并混合源对象，会保留函数引用
+ * 深度混合源对象，会保留函数引用
  * @method obj/merge
  * @param {Object} origin 要混合的源对象
  * @param {Object} target 要混合的对象
@@ -47,20 +53,16 @@ mergeObj = function (origin, source) {
  * // {a:{b:{c:1,d:2}}};
  */
 var merge = function (origin) {
-  var mobj = $cloneDeep(origin);
-  if (
-    $type(mobj) !== 'object'
-    && $type(mobj) !== 'array'
-  ) return mobj;
+  if (typeof origin !== 'object') return origin;
   var rests = Array.prototype.slice.call(arguments, 1);
   rests.forEach(function (source) {
     if ($type(source) === 'array') {
-      mergeArr(mobj, source);
-    } else if ($type(source) === 'object') {
-      mergeObj(mobj, source);
+      mergeArr(origin, source);
+    } else if (isObj(source)) {
+      mergeObj(origin, source);
     }
   });
-  return mobj;
+  return origin;
 };
 
 module.exports = merge;

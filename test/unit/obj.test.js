@@ -221,7 +221,7 @@ describe('obj.merge', () => {
     var origin = { a: 1 };
     var mobj = $obj.merge(origin);
     origin.a = 2;
-    expect(mobj.a).toBe(1);
+    expect(mobj.a).toBe(2);
   });
   test('merge({a: 1}, {a: 2})', () => {
     var origin = { a: 1 };
@@ -229,15 +229,15 @@ describe('obj.merge', () => {
       b: 2,
     });
     origin.a = 3;
-    expect(mobj.a).toBe(1);
+    expect(mobj.a).toBe(3);
     expect(mobj.b).toBe(2);
-    expect(origin.b).toBeUndefined();
+    expect(origin.b).toBe(2);
   });
   test('merge([1, [2, 3, [4, 5]]], [3, [6, [7, 8], [9]]])', () => {
     var origin = [1, [2, 3, [4, 5]]];
     var source = [3, [6, [7, 8], [9]]];
     var mobj = $obj.merge(origin, source);
-    expect(origin[0]).toBe(1);
+    expect(origin[0]).toBe(3);
     expect(mobj[0]).toBe(3);
     expect(mobj[1][0]).toBe(6);
     expect(mobj[1][1][0]).toBe(7);

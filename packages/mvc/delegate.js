@@ -30,8 +30,8 @@ function delegate(action, root, events, bind) {
   dlg = action === 'on' ? 'delegate' : 'undelegate';
   events = $assign({}, events);
 
-  Object.keys(events).forEach(function (method) {
-    var handle = events[method];
+  Object.keys(events).forEach(function (handle) {
+    var method = events[handle];
     var selector;
     var event;
     var fns = [];
