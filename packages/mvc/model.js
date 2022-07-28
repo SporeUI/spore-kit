@@ -236,7 +236,7 @@ var Model = $base.extend({
     }
     if (typeof key === 'undefined') {
       var data = {};
-      Object.keys(this.keys()).forEach(function (k) {
+      this.keys().forEach(function (k) {
         data[k] = getAttr.call(this, k);
       }.bind(this));
       return data;
