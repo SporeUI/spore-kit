@@ -17,7 +17,7 @@ var cloneDeep;
 
 cloneArr = function (arr) {
   var carr = [];
-  arr.forEach((item, index) => {
+  arr.forEach(function (item, index) {
     carr[index] = cloneDeep(item);
   });
   return carr;
