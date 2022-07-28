@@ -16,6 +16,9 @@
  */
 
 exports.assign = require('./assign');
+exports.clone = require('./clone');
+exports.cloneDeep = require('./cloneDeep');
+exports.merge = require('./merge');
 exports.cover = require('./cover');
 exports.find = require('./find');
 exports.get = require('./get');

@@ -2,8 +2,9 @@ var $type = require('./type');
 var $keyPathSplit = require('../str/keyPathSplit');
 
 /**
- * 从对象路径取值
+ * 从对象路径取值(简易版)
  * @method obj/get
+ * @see [lodash.get](https://lodash.com/docs/4.17.15#get)
  * @param {Object|Array} obj 要取值的对象或者数组
  * @param {String} xpath 要取值的路径
  * @param {Any} [defaultValue] 值为 undefined 则取此默认值

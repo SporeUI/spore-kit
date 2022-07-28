@@ -40,12 +40,9 @@
  * console.info(m2.get('b')); // 5
  */
 
-var $assign = require('lodash/assign');
-var $isFunction = require('lodash/isFunction');
-var $isPlainObject = require('lodash/isPlainObject');
-var $isArray = require('lodash/isArray');
-var $forEach = require('lodash/forEach');
-var $cloneDeep = require('lodash/cloneDeep');
+var $assign = require('../obj/assign');
+var $type = require('../obj/type');
+var $cloneDeep = require('../obj/cloneDeep');
 var $base = require('./base');
 var $delegate = require('./delegate');
 
@@ -64,7 +61,7 @@ var setAttr = function (key, value) {
   var prevValue = data[key];
 
   var processor = this.processors[key];
-  if (processor && $isFunction(processor.set)) {
+  if (processor && $type(processor.set) === 'function') {
     value = processor.set(value);
   }
 
@@ -77,14 +74,14 @@ var setAttr = function (key, value) {
 
 var getAttr = function (key) {
   var value = this[DATA][key];
-  if ($isPlainObject(value)) {
+  if ($type(value) === 'object') {
     value = $cloneDeep(value);
-  } else if ($isArray(value)) {
+  } else if ($type(value === 'array')) {
     value = $cloneDeep(value);
   }
 
   var processor = this.processors[key];
-  if (processor && $isFunction(processor.get)) {
+  if (processor && $type(processor.get) === 'function') {
     value = processor.get(value);
   }
 
@@ -207,8 +204,9 @@ var Model = $base.extend({
    * @param {*} [val] 数据
    */
   set: function (key, val) {
-    if ($isPlainObject(key)) {
-      $forEach(key, function (v, k) {
+    if ($type(key) === 'object') {
+      Object.keys(key).forEach(function (k) {
+        var v = key[k];
         setAttr.call(this, k, v);
       }.bind(this));
     } else if (typeof key === 'string') {
@@ -238,7 +236,7 @@ var Model = $base.extend({
     }
     if (typeof key === 'undefined') {
       var data = {};
-      $forEach(this.keys(), function (k) {
+      Object.keys(this.keys()).forEach(function (k) {
         data[k] = getAttr.call(this, k);
       }.bind(this));
       return data;

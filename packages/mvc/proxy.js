@@ -8,7 +8,7 @@
  * @param {string} [name='proxy'] 函数名称
  */
 
-var $isFunction = require('lodash/isFunction');
+var $type = require('../obj/type');
 
 var AP = Array.prototype;
 
@@ -20,9 +20,9 @@ function proxy(instance, name, proxyArgs) {
   proxyArgs = proxyArgs || [];
   proxyArgs.shift();
   name = name || 'proxy';
-  if (!$isFunction(bound[name])) {
+  if ($type(bound[name]) !== 'function') {
     bound[name] = function () {
-      if ($isFunction(instance[name])) {
+      if ($type(instance[name]) === 'function') {
         var args = AP.slice.call(arguments);
         return instance[name].apply(instance, args.concat(proxyArgs));
       }

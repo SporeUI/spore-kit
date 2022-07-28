@@ -1,5 +1,5 @@
-var $assign = require('lodash/assign');
-var $get = require('lodash/get');
+var $assign = require('../obj/assign');
+var $get = require('../obj/get');
 var $getScript = require('./getScript');
 
 var propName = 'SPORE_SDK_PROMISE';

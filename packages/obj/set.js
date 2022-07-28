@@ -3,8 +3,9 @@ var $get = require('./get');
 var $keyPathSplit = require('../str/keyPathSplit');
 
 /**
- * 向对象路径设置值
+ * 向对象路径设置值(简易版)
  * @method obj/set
+ * @see [lodash.set](https://lodash.com/docs/4.17.15#set)
  * @param {Object|Array} obj 要设置值的对象或者数组
  * @param {String} xpath 要取值的路径
  * @param {Any} value 要设置的值

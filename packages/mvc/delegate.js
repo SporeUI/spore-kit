@@ -12,9 +12,8 @@
  * @param {Object} bind 指定事件函数绑定的对象，必须为MVC类的实例。
  */
 
-var $isFunction = require('lodash/isFunction');
-var $assign = require('lodash/assign');
-var $forEach = require('lodash/forEach');
+var $assign = require('../obj/assign');
+var $type = require('../obj/type');
 
 function delegate(action, root, events, bind) {
   var proxy;
@@ -22,7 +21,7 @@ function delegate(action, root, events, bind) {
   if (!root) {
     return;
   }
-  if (!bind || !$isFunction(bind.proxy)) {
+  if (!bind || $type(bind.proxy) !== 'function') {
     return;
   }
 
@@ -31,7 +30,8 @@ function delegate(action, root, events, bind) {
   dlg = action === 'on' ? 'delegate' : 'undelegate';
   events = $assign({}, events);
 
-  $forEach(events, function (method, handle) {
+  Object.keys(events).forEach(function (method) {
+    var handle = events[method];
     var selector;
     var event;
     var fns = [];
@@ -41,7 +41,7 @@ function delegate(action, root, events, bind) {
       fns = method.split(/\s+/).map(function (fname) {
         return proxy(fname);
       });
-    } else if ($isFunction(method)) {
+    } else if ($type(method) === 'function') {
       fns = [method];
     } else {
       return;
@@ -51,12 +51,12 @@ function delegate(action, root, events, bind) {
 
     if (handle.length >= 1) {
       selector = handle.join(' ');
-      if ($isFunction(root[dlg])) {
+      if ($type(root[dlg]) === 'function') {
         fns.forEach(function (fn) {
           root[dlg](selector, event, fn);
         });
       }
-    } else if ($isFunction(root[action])) {
+    } else if ($type(root[action]) === 'function') {
       fns.forEach(function (fn) {
         root[action](event, fn);
       });

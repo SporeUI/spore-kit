@@ -32,9 +32,8 @@
  * });
  */
 
-var $merge = require('lodash/merge');
-var $noop = require('lodash/noop');
-var $isPlainObject = require('lodash/isPlainObject');
+var $assign = require('../obj/assign');
+var $noop = require('../fn/noop');
 var $events = require('../evt/events');
 var $klass = require('./klass');
 var $proxy = require('./proxy');
@@ -69,17 +68,13 @@ var Base = $klass({
   },
 
   /**
-   * 深度混合传入的选项与默认选项，混合完成的选项对象可通过 this.conf 属性访问
+   * 混合传入的选项与默认选项，混合完成的选项对象可通过 this.conf 属性访问
    * @method Base#setOptions
    * @memberof mvc/Base
    * @param {Object} [options] 选项
    */
   setOptions: function (options) {
-    this.conf = this.conf || $merge({}, this.defaults);
-    if (!$isPlainObject(options)) {
-      options = {};
-    }
-    $merge(this.conf, options);
+    this.conf = $assign({}, this.defaults, options);
   },
 
   /**
