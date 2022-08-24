@@ -17,6 +17,7 @@
 
 exports.abToHex = require('./abToHex');
 exports.ascToHex = require('./ascToHex');
+exports.compareVersion = require('./compareVersion');
 exports.hexToAb = require('./hexToAb');
 exports.hexToAsc = require('./hexToAsc');
 exports.hslToRgb = require('./hslToRgb');

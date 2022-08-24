@@ -156,3 +156,44 @@ describe('util.measureDistance', () => {
     expect(distance).toBe(9826.40065109978);
   });
 });
+
+describe('util.compareVersion', () => {
+  test('compareVersion("", "") => { level: 0, delta: 0 }', () => {
+    const info = $util.compareVersion('', '');
+    expect(info.level).toBe(0);
+    expect(info.delta).toBe(0);
+  });
+
+  test('compareVersion("1", "") => { level: 0, delta: 1 }', () => {
+    const info1 = $util.compareVersion('1', '');
+    expect(info1.level).toBe(0);
+    expect(info1.delta).toBe(1);
+    const info2 = $util.compareVersion('', '1');
+    expect(info2.level).toBe(0);
+    expect(info2.delta).toBe(-1);
+  });
+
+  test('compareVersion("2.3", "") => { level: 0, delta: 2 }', () => {
+    const info1 = $util.compareVersion('2.3', '');
+    expect(info1.level).toBe(0);
+    expect(info1.delta).toBe(2);
+  });
+
+  test('compareVersion("2.5", "1.2") => { level: 0, delta: 1 }', () => {
+    const info1 = $util.compareVersion('2.5', '1.2');
+    expect(info1.level).toBe(0);
+    expect(info1.delta).toBe(1);
+  });
+
+  test('compareVersion("1.2.3", "1.2") => { level: 2, delta: 3 }', () => {
+    const info1 = $util.compareVersion('1.2.3', '1.2');
+    expect(info1.level).toBe(2);
+    expect(info1.delta).toBe(3);
+  });
+
+  test('compareVersion("1.2.3", "1.2.7") => { level: 2, delta: -4 }', () => {
+    const info1 = $util.compareVersion('1.2.3', '1.2.7');
+    expect(info1.level).toBe(2);
+    expect(info1.delta).toBe(-4);
+  });
+});
