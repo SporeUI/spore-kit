@@ -37,7 +37,7 @@ function compareVersion(v1, v2) {
 
   return {
     level: index,
-    delta,
+    delta: delta,
   };
 }
 
