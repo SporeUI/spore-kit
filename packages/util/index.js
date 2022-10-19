@@ -23,4 +23,5 @@ exports.hexToAsc = require('./hexToAsc');
 exports.hslToRgb = require('./hslToRgb');
 exports.job = require('./job');
 exports.measureDistance = require('./measureDistance');
+exports.parseRGB = require('./parseRGB');
 exports.rgbToHsl = require('./rgbToHsl');
