@@ -17,3 +17,4 @@
 
 exports.isNode = require('./isNode');
 exports.offset = require('./offset');
+exports.scrollLimit = require('./scrollLimit');
