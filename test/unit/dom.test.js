@@ -14,3 +14,21 @@ describe('dom.isNode', () => {
     expect(!!$dom.isNode({})).toBe(false);
   });
 });
+
+describe('dom.offset', () => {
+  test('offset(document.body) => {left: 0, top: 0}', () => {
+    const offsetBody = $dom.offset(document.body);
+    expect(offsetBody.left).toBe(0);
+    expect(offsetBody.top).toBe(0);
+  });
+});
+
+describe('dom.scrollLimit', () => {
+  test('scrollLimit methods', () => {
+    const limiterY = $dom.scrollLimit(document.body);
+    expect(typeof limiterY.attach).toBe('function');
+    expect(typeof limiterY.detach).toBe('function');
+    limiterY.attach();
+    limiterY.detach();
+  });
+});

@@ -112,4 +112,4 @@ function scrollLimit(el, options) {
   return inst;
 }
 
-module.scrollLimit = scrollLimit;
+module.exports = scrollLimit;
