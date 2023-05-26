@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "document-offset": "^1.0.4",
-    "js-cookie": "^3.0.1",
+    "js-cookie": "^3.0.5",
     "url-parse": "^1.5.3"
   },
   "lint-staged": {
