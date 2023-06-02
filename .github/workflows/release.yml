@@ -19,9 +19,9 @@ jobs:
         run: npm test
       - name: build
         run: npm run build
-      - name: Coverage
+      - name: coverage
         run: npx codecov -t ${{ secrets.CODECOV_TOKEN }}
-      - name: Semantic Release
+      - name: semantic-release
         uses: cycjimmy/semantic-release-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
