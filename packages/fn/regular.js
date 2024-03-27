@@ -1,7 +1,7 @@
 /**
  * 包装为规律触发的函数，用于降低密集事件的处理频率
  * - 在疯狂操作期间，按照规律时间间隔，来调用任务函数
- * @method fn/reqular
+ * @method fn/regular
  * @param {Function} fn 要延迟触发的函数
  * @param {Number} delay 延迟时间(ms)
  * @param {Object} [bind] 函数的 this 指向
@@ -20,7 +20,7 @@
  * }, 200, comp));
  */
 
-function reqular(fn, delay, bind) {
+function regular(fn, delay, bind) {
   var enable = true;
   var timer = null;
   return function () {
@@ -42,4 +42,4 @@ function reqular(fn, delay, bind) {
   };
 }
 
-module.exports = reqular;
+module.exports = regular;
