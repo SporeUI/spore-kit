@@ -170,6 +170,13 @@ describe('obj.get', () => {
     expect($obj.get(0)).toBeUndefined();
     expect($obj.get({ a: 1 })).toBeUndefined();
   });
+  test('get({a: null}, "a") => null', () => {
+    const obj = {
+      a: null,
+    };
+    expect($obj.get(obj, 'a')).toBe(null);
+    expect($obj.get(obj, 'a.b')).toBeUndefined();
+  });
   test('get({a: 1}, "").a => 1', () => {
     expect($obj.get({ a: 1 }, '').a).toBe(1);
   });

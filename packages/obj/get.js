@@ -36,6 +36,9 @@ function get(obj, xpath, def) {
         key = parseInt(key, 10);
       }
       point = point[key];
+    } else if (point === null) {
+      point = undefined;
+      break;
     } else if (typeof point === 'object') {
       point = point[key];
     } else {
