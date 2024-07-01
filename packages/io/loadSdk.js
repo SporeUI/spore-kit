@@ -5,16 +5,6 @@ var $getScript = require('./getScript');
 var propName = 'SPORE_SDK_PROMISE';
 var cache = null;
 
-if (typeof window !== 'undefined') {
-  cache = window[propName];
-  if (!cache) {
-    cache = {};
-    window[propName] = cache;
-  }
-} else {
-  cache = {};
-}
-
 /**
  * sdk 加载统一封装
  * - 多次调用不会发起重复请求
@@ -36,7 +26,18 @@ var loadSdk = function (options) {
     name: '',
     url: '',
     charset: 'utf-8',
+    wtop: window,
   }, options);
+
+  if (typeof conf.top !== 'undefined') {
+    cache = conf.top[propName];
+    if (!cache) {
+      cache = {};
+      conf.top[propName] = cache;
+    }
+  } else {
+    cache = {};
+  }
 
   var name = conf.name;
   if (!name) {
@@ -59,7 +60,7 @@ var loadSdk = function (options) {
       src: conf.url,
       charset: conf.charset,
       onLoad: function () {
-        var sdk = $get(window, name);
+        var sdk = $get(conf.top, name);
         pm.sdk = sdk;
         resolve(sdk);
       },
