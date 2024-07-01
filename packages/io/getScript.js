@@ -21,8 +21,10 @@ function getScript(options) {
   var src = options.src || '';
   var charset = options.charset || '';
   var onLoad = options.onLoad || function () {};
+  var wtop = options.wtop || window;
+  var doc = wtop.document;
 
-  var script = document.createElement('script');
+  var script = doc.createElement('script');
   script.async = 'async';
   script.src = src;
 
@@ -44,7 +46,7 @@ function getScript(options) {
     }
   };
   script.onload = script.onreadystatechange;
-  document.getElementsByTagName('head')[0].appendChild(script);
+  doc.getElementsByTagName('head')[0].appendChild(script);
   return script;
 }
 

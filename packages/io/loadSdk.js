@@ -29,11 +29,11 @@ var loadSdk = function (options) {
     wtop: window,
   }, options);
 
-  if (typeof conf.top !== 'undefined') {
-    cache = conf.top[propName];
+  if (typeof conf.wtop !== 'undefined') {
+    cache = conf.wtop[propName];
     if (!cache) {
       cache = {};
-      conf.top[propName] = cache;
+      conf.wtop[propName] = cache;
     }
   } else {
     cache = {};
@@ -59,8 +59,9 @@ var loadSdk = function (options) {
     $getScript({
       src: conf.url,
       charset: conf.charset,
+      wtop: conf.wtop,
       onLoad: function () {
-        var sdk = $get(conf.top, name);
+        var sdk = $get(conf.wtop, name);
         pm.sdk = sdk;
         resolve(sdk);
       },
