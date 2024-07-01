@@ -22,7 +22,7 @@ jobs:
       - name: coverage
         run: npx codecov -t ${{ secrets.CODECOV_TOKEN }}
       - name: semantic-release
-        uses: cycjimmy/semantic-release-action@v4
+        uses: cycjimmy/semantic-release-action@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -33,7 +33,7 @@ jobs:
       - name: vuepress-build
         run: npm run vuepress-build
       - name: github-pages-deploy
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: crazy-max/ghaction-github-pages@main
         with:
           target_branch: gh-pages
           build_dir: docs-dist
